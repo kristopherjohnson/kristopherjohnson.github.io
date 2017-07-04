@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - macbook</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/macbooks-and-caps-lock-and-control.html">MacBooks and Caps Lock and Control</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-03-08T23:46:44-05:00">
+                Published: Thu 08 March 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/rant.html">rant</a> <a href="/tag/macbook.html">macbook</a> <a href="/tag/capslock.html">capslock</a> </p>
+</footer><!-- /.post-info --><p>I learned to touch-type over 30 years ago, on an IBM Selectric typewriter. I'm a fast and accurate typist, compared to most programmers. I've always considered typing to be a basic skill that all programmers should take seriously. What goes on in your head is more important than how fast you can type, but the more efficient you are in getting your thoughts into the computer, the better you are going to be at your job.</p>
+<p>I've been dismayed at one "feature" of my MacBook: to prevent accidental triggering of the Caps Lock key by incompetent typists, Apple makes it necessary to hold down the Caps Lock key for an extra fraction of a second. If you just tap it quickly, it does nothing. See http://support.apple.com/kb/HT1192 for Apple's explanation. They have also baked this behavior into some of their keyboards: see http://support.apple.com/kb/TS1578.</p>
+<p>While I'm sure that many people welcome this feature, I do not. I type quickly and confidently, and my fingers hit the Caps Lock key at the appropriate times without me consciously thinking about it. I hit and release it so quickly that my MacBook ignores it. So when I type "UNIX is awesome!", "Party in the USA!" or "New York, NY", I see "unix is awesome!", "Party in the usa!" or "New York, ny" on the screen.</p>
+<p>There is no easy way to disable this feature. When I complain, most people respond "Big deal. We hardly ever use Caps Lock." Well, I do. I've been using it for 30 years, and it has always worked fine. Until Apple decided It Should Just Not Work.</p>
+<p>So, I looked into what I could do.
+<!--break-->
+The short answer is "Nothing". I have found a few mentions of kernel extensions and keyboard driver hacks, but this behavior seems to be embedded so deeply within OS X that there is no safe and reliable way to turn it off.</p>
+<p>The cool kids all remap their Caps Lock key to work as the Control key. The reasoning is that programmers have to use the Control key a lot, and nobody has typed anything in all caps since 1968, so there is no need for a Caps Lock key. I have resisted doing any remapping of my keyboards, because I often have to use computers and keyboards that are not mine, and I didn't want to have to remember which keyboards are remapped and which are not. But since the Caps Lock key is useless to me, I decided to go ahead and give it a try.</p>
+<p>This is easy to do on OS X: just go to <em>System Preferences</em> -&gt; <em>Keyboard</em> and click the <em>Modifier Keys...</em> button, and then you can change the Caps Lock key to work as Control.</p>
+<p>But then I don't have a Caps Lock key anymore, and I'd like to have one when I need to type "DANGER WILL ROBINSON! DANGER! DANGER! DANGER". Actually, joking aside, typing stuff in all caps comes up a lot in programming, and I've never understood why any programmers say they never need Caps Lock. Do they really hold down Shift while typing something like this?</p>
+<div class="highlight"><pre><span></span>int fd = creat(&quot;file.dat&quot;, O_RDWR | O_CREAT | O_DSYNC | O_RSYNC);
+if (fd == -1) {
+    if (errno == EEXIST) {
+        /* ... */
+</pre></div>
+
+
+<p>I wanted to map some other key to Caps Lock for those times when I needed it. Some people swap their Caps Lock with Control, but I knew that wouldn't work for me: my fingers expect Control to be where it is, and I frequently use Control along with Command and/or Option, and hitting all those at once is awkward if the only Control key is where the Caps Lock key usually is.</p>
+<p>What I really wanted to do was set things up so that double-tapping the Shift key would toggle Caps Lock mode, as it does on the virtual keyboards on iOS devices. I couldn't find a way to do that. So I decided I'd like to be able to hit Fn+Tab to trigger Caps Lock.</p>
+<p>It turns out that can be done with the <a href="http://pqrs.org/macosx/keyremap4macbook/">KeyRemap4MacBook</a> utility. It's a little hard to configure (especially if you aren't comfortable editing XML files), but I got it set up. If you want to play at home, here's what I did:</p>
+<ol>
+<li>Download and install <a href="http://pqrs.org/macosx/keyremap4macbook/">KeyRemap4MacBook</a>. You'll have to restart at the end of the installation.</li>
+<li>Open the <strong>System Preferences</strong> -&gt; <strong>KeyRemap4MacBook</strong> preference pane.</li>
+<li>Select the <strong>Misc &amp; Uninstall</strong> tab, and click the <strong>Open private.xml</strong> button. This will open a Finder window in the folder where the <code>private.xml</code> configuration file is located.</li>
+<li>Open <code>private.xml</code> in your favorite text editor (use TextEdit if you don't have a favorite text editor). It will be blank. Paste the following into it (which can also be found at https://gist.github.com/2002690 ):</li>
+</ol>
+<pre>
+&lt;?xml version="1.0"?>
+&lt;root>
+  &lt;item>
+    &lt;name>Private Settings&lt;/name>
+
+    &lt;item>
+      &lt;name>Fn+Tab to CapsLock&lt;/name>
+      &lt;identifier>private.fn_tab_to_capslock&lt;/identifier>
+      &lt;autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::FN, KeyCode::CAPSLOCK&lt;/autogen>
+    &lt;/item>
+
+  &lt;/item>
+&lt;/root>
+</pre>
+
+<p>Save the file, then go back to the <strong>System Preferences -&gt; KeyRemap4MacBook</strong> preference pane and do this:</p>
+<ol>
+<li>Select the <strong>Change Key</strong> tab.</li>
+<li>Click the <strong>ReloadXML</strong> button to load your configuration file.</li>
+<li>A <strong>Private Settings</strong> item should appear in the list in the preference pane. Expand the item, and check the <strong>Fn+Tab to CapsLock</strong> box.</li>
+</ol>
+<p>Now, you should be able to press Fn+Tab, and you'll see the Caps Lock key light up.</p>
+<p>I'm going to try this setup for a while, but I suspect I won't get used to it. Maybe I'll have to tweak it more, or maybe I'll just give up and learn to slow down for the Caps Lock key.</p>
+<p>I've ordered a <a href="http://www.daskeyboard.com/model-s-professional-for-mac/">Das Keyboard for Mac</a>. Maybe that will be the ultimate solution to my problem.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/new-15-inch-macbook-pro.html" rel="bookmark"
+                           title="Permalink to New 15-inch MacBook Pro">New 15-inch MacBook Pro</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-01-09T04:48:00-05:00">
+                Published: Fri 09 January 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/mac.html">mac</a> <a href="/tag/macbook.html">macbook</a> </p>
+</footer><!-- /.post-info -->                <p>
+A few days ago, I bought a 15-inch MacBook Pro.  For those of you keeping score, that brings the number of Macintoshes in our household to five.  We also have two iPhones and several iPods.  I wish the local Apple Store had some sort of customer loyalty program.
+</p>
+
+<p>
+I bought …</p>
+                <a class="readmore" href="/new-15-inch-macbook-pro.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/macbook-display-problem.html" rel="bookmark"
+                           title="Permalink to MacBook Display Problem">MacBook Display Problem</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2007-07-16T12:12:00-04:00">
+                Published: Mon 16 July 2007
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/macbook.html">macbook</a> <a href="/tag/photo.html">photo</a> </p>
+</footer><!-- /.post-info -->                <div style="float: right; margin-left: 10px; margin-bottom: 10px;"> <a href="http://www.flickr.com/photos/kristopherjohnson/825122256/" title="photo sharing"><img src="http://farm2.static.flickr.com/1435/825122256_f0dd95f25a_m.jpg" alt="" style="border: solid 2px #000000;" /></a> <br /> <span style="font-size: 0.9em; margin-top: 0px;">  <a href="http://www.flickr.com/photos/kristopherjohnson/825122256/">MacBook Display Problem</a>  <br />  Originally uploaded by <a href="http://www.flickr.com/people/kristopherjohnson/">kristopherjohnson</a> </span></div>
+
+<p>
+A couple of weeks ago, my Macbook's display started "flickering."  It seemed like I was getting some electromagnetic interference, so I didn't worry much at first.  But, it got progressively worse, and now the screen is unreadable.
+</p>
+
+<p>
+I took it in to the …</p>
+                <a class="readmore" href="/macbook-display-problem.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

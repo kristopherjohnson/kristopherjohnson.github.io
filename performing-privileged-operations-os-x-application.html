@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Performing Privileged Operations in an OS X Application</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/performing-privileged-operations-os-x-application.html" rel="bookmark"
+           title="Permalink to Performing Privileged Operations in an OS X Application">Performing Privileged Operations in an OS X Application</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-10T04:16:27-05:00">
+                Published: Thu 10 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/osx.html">osx</a> </p>
+</footer><!-- /.post-info -->      <p>I am currently developing an OS X application. The application needs to perform some operations that require root privileges (installing and uninstalling launchd daemons, sending signals to other users' processes, etc.) So I started looking for some documentation about how to do that. I figured it would take a few minutes.</p>
+<p>A day later, I finally think I understand it. The solution isn't complicated, but learning about it was difficult for a few reasons:</p>
+<ul>
+<li>Apple's "Authorization Services Programming Guide" is woefully out of date. It tells you to use <code>AuthorizationExecuteWithPrivileges()</code>, but that has been deprecated since OS X 10.7. It also has links to sample code that doesn't exist anymore. (Apple developer documentation people: It seems many of your docs are way out of date. Pls fix.)</li>
+<li>Apple provides a <a href="https://developer.apple.com/library/mac/samplecode/SMJobBless/Introduction/Intro.html">SMJobBless</a> sample that purports to demonstrate how to use the new <code>SMJobBless()</code> API that replaces <code>AuthorizationExecuteWithPrivileges()</code>. However, while it does indeed install some kind of service that could in theory run as root, the service it installs doesn't do anything, so it is useless as an example. (But you could waste a lot of time with it before you figure that out.)</li>
+<li>A lot of old documentation and sample code for the original low-level XPC API is still floating around, but once you have a clue (which I didn't), you'll just use the high-level <code>NSXPCConnection</code> API.</li>
+</ul>
+<p>So, in the hope I can help others avoid this tortuous path, here is how i would suggest others learn how to do this:</p>
+<ul>
+<li>Study the <a href="https://developer.apple.com/library/mac/samplecode/EvenBetterAuthorizationSample/Listings/Read_Me_About_EvenBetterAuthorizationSample_txt.html">EvenBetterAuthorizationSample</a>, which is up to date (as of OS X 10.11, anyway) and actually does something you can test and copy. Especially study the README file, which provides more information about <code>SMJobBless()</code> than any other Apple document.</li>
+<li>Watch the <a href="https://developer.apple.com/videos/play/wwdc2012-241/">WWDC 2012 Session 241 "Cocoa Interprocess Communication with XPC"</a> video if you are unfamiliar with XPC.</li>
+</ul>
+<p>And here is what I wish somebody could have told me before I started:</p>
+<ul>
+<li>What you will need to do is create a "helper tool" application to perform the privileged operations. This will be a command-line app that creates an XPC listener and handles requests.</li>
+<li>The helper app has to have an info.plist and a launchd plist with some magical keys (see the EvenBetterAuthorizationSample for details)</li>
+<li>The helper app will be embedded in the main app's package.</li>
+<li>The main app will use the <code>AuthorizationCreate()</code> and <code>SMJobBless()</code> functions to authenticate the user and install the helper tool as a privileged launchd service. (This is the point where the system will display a dialog asking the user for an admin username and password.)</li>
+<li>After the helper tool is installed, use <code>-[NSXPCConnection initWithMachServiceName:options:]</code> to connect to the helper tool. This will launch the helper tool on demand, running with root privileges.</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

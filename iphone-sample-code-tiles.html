@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>iPhone Sample Code: Tiles</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/iphone-sample-code-tiles.html" rel="bookmark"
+           title="Permalink to iPhone Sample Code: Tiles">iPhone Sample Code: Tiles</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-02-06T04:28:21-05:00">
+                Published: Sat 06 February 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/coreanimation.html">coreanimation</a> </p>
+</footer><!-- /.post-info -->      <p>As an exercise in using the <a href="http://en.wikipedia.org/wiki/Core_Animation">Core Animation</a> API, I've implemented a little iPhone app that reproduces the behavior of the iPhone home screen's icon reorganization interface. (You know, dragging the wiggly icons around.) You can download my sample code to see how it works. Some descriptions of the highlights follow below.
+<!--break-->
+<img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/Tiles_Screenshot.png" alt="Screenshot" style="float: right;"></p>
+<p>The source code and Xcode project can be downloaded here: <a href="https://github.com/kristopherjohnson/tilessample/zipball/master">tilessample</a>.</p>
+<p>Source is also available on <a href="https://github.com/kristopherjohnson/tilessample">GitHub</a>. </p>
+<p>The primary classes to look at are <a href="http://github.com/kristopherjohnson/tilessample/blob/master/Classes/TilesViewController.m"><code>TilesViewController</code></a> and <a href="http://github.com/kristopherjohnson/tilessample/blob/master/Classes/Tile.m"><code>Tile</code></a>. The view controller implements all of the "logic" of the application, while the <code>Tile</code> class has the animations.</p>
+<p>An instance of <code>Tile</code> represents one of the icons, and is derived from <code>CAGradientLayer</code>.  The gradient layer properties get set to provide a gloss effect for the tiles.  <code>Tile</code> also provides a few animations, initiated by calling these methods:</p>
+<ul>
+<li><code>appearDraggable</code>: Changes the tile to be partially transparent, and makes it slightly bigger. This is invoked when the user touches a tile.</li>
+<li><code>appearNormal</code>: Reverses the effects of <code>appearDraggable</code>. This is invoked when the tile is released.</li>
+<li><code>startWiggling</code>: Starts a tile "wiggling", as in the iPhone home screen while in reorganization mode.</li>
+<li><code>stopWiggling</code>: Stops the wiggling effect</li>
+</ul>
+<p>The <code>TilesViewController</code> class is pretty straightforward. When the user touches a the screen, the <code>touchesBegan</code> method determines which tile was touched, calls its <code>appearDraggable</code> method, and calls other tiles' <code>startWiggling</code> methods.</p>
+<p>As the user drags the tile around the screen, the <code>touchesMoved</code> method moves the dragged tile, and moves the other tiles as needed to provide an open space for it. Core Animation takes care of all the zooming around of the icons.</p>
+<p>When the user lets go of the tile, the <code>touchesEnded</code> method drops it in place and removes all the animations.</p>
+<p>Things I learned from this project:</p>
+<ul>
+<li>Turning on the <code>masksToBounds</code> property for layers slows things down quite noticeably.</li>
+<li>When hit-testing layers, you have to use a layer's presentation layer, not a model layer itself.</li>
+<li><code>CAGradientLayer</code> is easy to use.</li>
+</ul>
+<p>Here are some things I don't understand. (Maybe some smart person can explain.)</p>
+<ul>
+<li>When hit-testing to see which layer was touched, I had to do both <code>[touch locationInView:view]</code> and <code>[view convertPoint:location toView:nil]</code>. However, when handling touch-moves, I only have to use <code>[touch locationInView:view]</code>. I don't understand why the coordinate systems are (apparently) different.</li>
+</ul>
+<hr>
+<p><strong>Update: 2012-04-16:</strong> Changed the layer-initialization code so that it draws in high resolution on a Retina display. Updated the links above to point to GitHub. The tilessample repository on BitBucket is officially abandoned.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

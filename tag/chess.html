@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - chess</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/my-first-chess-program.html">My First Chess Program</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-04-22T19:07:16-04:00">
+                Published: Sat 22 April 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/chess.html">chess</a> <a href="/tag/self-indulgence.html">self-indulgence</a> </p>
+</footer><!-- /.post-info --><p>When I was a kid, back in the 70's and 80's, I thought chess programs were the most sophisticated computer programs in the world.  That was back when the average personal-computer chess program wasn't very good, and dedicated chess computers cost hundreds or thousands of dollars, so it seemed to me that chess was something very difficult for computers to do.  At the time, many experts still thought a computer would never be able to beat human grandmasters.  I dreamed that I would one day write The World's Greatest Chess Program, and that would prove I was a great computer programmer.</p>
+<p>But one's priorities change.  I did look into how chess programs worked when I was in college, and while I found the topic interesting, I didn't try writing my own program.  I still thought that writing a chess program was something every Real Computer Programmer should do, but I didn't get around to it.</p>
+<p>Now, at age 50, I've finally done it.  A few weeks ago I started writing a chess engine in <a href="https://swift.org">Swift</a>, and it is now capable of playing a real chess game. I call it "kjchess".
+<!--break-->
+It works, but it's slow.  On my 2013 MacBook Pro, my move search function can only search about four half-moves deep to find a move in a reasonable time, even when using all the CPU cores.  That is terrible, considering that it is worse than the 4MHz 8-bit <a href="http://www.spacious-mind.com/html/classic.html">Fidelity "Classic" chess computer</a> I had 25 years ago.</p>
+<p>Why is my engine so slow?  I initially gave myself a few constraints:</p>
+<ul>
+<li>Write it in "high-level" Swift (that is, it shouldn't look like a C or C++ program).</li>
+<li>Write it in a functional-programming style (in particular, use immutable data structures wherever possible).</li>
+<li>Don't refer to any other chess programs' source code.  Use only the knowledge of chess programming I've gleaned over the last few decades.</li>
+</ul>
+<p>These constraints made it an interesting exercise, but I relaxed them.  For example, I copied the <a href="https://en.wikipedia.org/wiki/Alpha–beta_pruning">minimax algorthm with alpha-beta pruning</a> from Wikipedia, and I've incorporated some positional evaluation ideas from <a href="https://chessprogramming.wikispaces.com/Simplified+evaluation+function">the Chess Programming Wiki</a>.</p>
+<p>Now that I've seen how slow it is, I think I need to abandon the "only immutable data structures" constraint.  I think the main reason my engine is so slow is that it creates a brand-new "position" structure for every possible move, leading to a lot of memory allocation, deallocation, and copying, whereas other engines have a single global position on which they make and unmake moves very quickly.</p>
+<p>Also, my engine doesn't save any search state between moves, and it doesn't do any pondering during the opponent's move.  I could probably make it a lot better by adding those features.</p>
+<p>Despite its limitations, it plays well enough to beat me once in a while.  That's not impressive, because I am a terrible chess player, but I figure I'm a winner either way. (I'm also a loser either way, but I can ignore that.)</p>
+<p>If you want to play it, and you have a Mac and know how to build Swift programs, you can check it out here: <a href="https://github.com/kristopherjohnson/kjchess">https://github.com/kristopherjohnson/kjchess</a></p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

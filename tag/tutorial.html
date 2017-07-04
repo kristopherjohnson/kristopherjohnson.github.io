@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - tutorial</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/shiny-iphone-buttons-without-photoshop.html">Shiny iPhone Buttons Without Photoshop</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2010-02-27T12:16:43-05:00">
+                Published: Sat 27 February 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/tutorial.html">tutorial</a> <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/coreanimation.html">coreanimation</a> </p>
+</footer><!-- /.post-info --><p><img style="float: right;" src="http://undefinedvalue.com/sites/undefinedvalue.com/files/GradientButtonsAppScreenshot.png" alt="Screenshot"></p>
+<p>Newcomers to iPhone development are sometimes surprised at how ugly the standard button controls are. They quickly learn that they need a graphic artist to create a nice-looking button image in Photoshop and then attach that to the buttons. However, in this tutorial, I'll show how to create nice shiny buttons in code, without any image files, by using a <code>CAGradientLayer</code>.
+<!--break-->
+(<em>Update (2010/5/20): Jeff LaMarche has posted code that is more capable than the code here, and I'd recommend taking a look at it.  See his <a href="http://iphonedevelopment.blogspot.com/2010/05/improved-gradient-buttons.html">Improved Gradient Buttons</a> post.</em>)</p>
+<p>(*Update (2014/11/20): Note that with iOS 7 and later, shiny curvy buttons are no longer typical in iOS user interfaces. The code described below should still work, but consider using the standard iOS button appearance instead.)</p>
+<p>The source code can be downloaded here: <a href="http://bitbucket.org/KristopherJohnson/gradientbuttons/get/tip.zip">gradientbuttons-tip.zip</a>. It is also available on <a href="https://github.com/kristopherjohnson/gradientbuttons">GitHub</a>.</p>
+<p>You can also follow along by looking at the source files in your web browser:</p>
+<ul>
+<li><a href="http://bitbucket.org/KristopherJohnson/gradientbuttons/src/tip/Classes/GradientButton.h">GradientButton.h</a></li>
+<li><a href="http://bitbucket.org/KristopherJohnson/gradientbuttons/src/tip/Classes/GradientButton.m">GradientButton.m</a></li>
+<li><a href="http://bitbucket.org/KristopherJohnson/gradientbuttons/src/tip/Classes/GradientButtonsViewController.h">GradientButtonsViewController.h</a></li>
+<li><a href="http://bitbucket.org/KristopherJohnson/gradientbuttons/src/tip/Classes/GradientButtonsViewController.m">GradientButtonsViewController.m</a></li>
+</ul>
+<h3>Creating the Buttons in Interface Builder</h3>
+<p><img style="float: left;" src="http://undefinedvalue.com/sites/undefinedvalue.com/files/GradientButtonsInterfaceBuilder.png" alt="Interface Builder screenshot"></p>
+<p>We'll start by laying out a view containing buttons. In Xcode, create a new View-based iPhone application, and call it "GradientButtons" (or whatever you want). Double-click the <code>GradientButtonsViewController.xib</code> resource to open it in Interface&nbsp;Builder.</p>
+<p>Drag a UIButton control from the library onto the view. Set its properties like this:</p>
+<ul>
+<li>Change the type to "Custom"</li>
+<li>Set the title to "Gray"</li>
+<li>Change the text color to white</li>
+<li>Change the background color to gray</li>
+</ul>
+<p>If you want to get fancy, you can also change the font, set the shadow, and so on.</p>
+<p>For purposes of this tutorial, I then created several copies of this button, and set each to have a different background color and title. You can skip that if you just want to see what a single button looks like.</p>
+<p>Save the Interface Builder file, and then run the project in Xcode. It works, but where are those shiny buttons I promised?</p>
+<h3>Adding the Shine Layer</h3>
+<p>To give the buttons the glossy shine, we'll add a <code>CAGradientLayer</code> overlay to each button. The overlay will be partially transparent, so the underlying text and background color will show through.</p>
+<p>Define a new class, <code>GradientButton</code>, derived from <code>UIButton</code>, like this:</p>
+<div class="highlight"><pre><span></span><span class="c1">// GradientButton.h:</span>
+
+<span class="cp">#import &lt;UIKit/UIKit.h&gt;</span>
+<span class="cp">#import &lt;QuartzCore/QuartzCore.h&gt;</span>
+
+<span class="k">@interface</span> <span class="nc">GradientButton</span> : <span class="bp">UIButton</span> <span class="p">{</span>
+    <span class="bp">CAGradientLayer</span> <span class="o">*</span><span class="n">shineLayer</span><span class="p">;</span>
+    <span class="bp">CALayer</span>         <span class="o">*</span><span class="n">highlightLayer</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</pre></div>
+
+
+<p>The first thing we want to do is give the button rounded corners and a border. This is easily done by setting the button's root layer's <code>cornerRadius</code> and <code>masksToBounds</code> properties, and using a border color that is a transparent gray (so that the actual background color will show through).</p>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initBorder</span> <span class="p">{</span>
+    <span class="bp">CALayer</span> <span class="o">*</span><span class="n">layer</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">layer</span><span class="p">;</span>
+    <span class="n">layer</span><span class="p">.</span><span class="n">cornerRadius</span> <span class="o">=</span> <span class="mf">8.0f</span><span class="p">;</span>
+    <span class="n">layer</span><span class="p">.</span><span class="n">masksToBounds</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="n">layer</span><span class="p">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">layer</span><span class="p">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithWhite</span><span class="p">:</span><span class="mf">0.5f</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.2f</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Next, we'll create the shine layer. All we need to do is create a <code>CAGradientLayer</code>, set its frame to match the button's bounds, and set the <code>colors</code> and <code>locations</code> properties to arrays of colors and locations.</p>
+<p>We set the gradient colors and locations like this:</p>
+<ul>
+<li>At the top, pure white with 40% opacity</li>
+<li>At the middle, pure white with 20% opacity, giving us a nice shine on the top half of the button</li>
+<li>Then, switch to a medium gray with 20% opacity, making the bottom half of the button darker than the top half</li>
+<li>Finally, at the very bottom, go back to pure white with 40% opacity to give the appearance of a little inner glow</li>
+</ul>
+<p>Note: I came up with these parameters after a lot of trial and error, to make the shine look good against all the background colors in my sample app. You will probably want to tweak them for the specific colors and overall look of your application. Make it shinier, make it flatter, give things a warm orangish glow rather than white, whatever. It's your app; do what you want to do.</p>
+<p>After setting those properties, we add the layer to the button's root layer.</p>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addShineLayer</span> <span class="p">{</span>
+    <span class="n">shineLayer</span> <span class="o">=</span> <span class="p">[</span><span class="bp">CAGradientLayer</span> <span class="n">layer</span><span class="p">];</span>
+    <span class="n">shineLayer</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">layer</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+    <span class="n">shineLayer</span><span class="p">.</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSArray</span> <span class="nl">arrayWithObjects</span><span class="p">:</span>
+                         <span class="p">(</span><span class="kt">id</span><span class="p">)[</span><span class="bp">UIColor</span> <span class="nl">colorWithWhite</span><span class="p">:</span><span class="mf">1.0f</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.4f</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">,</span>
+                         <span class="p">(</span><span class="kt">id</span><span class="p">)[</span><span class="bp">UIColor</span> <span class="nl">colorWithWhite</span><span class="p">:</span><span class="mf">1.0f</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.2f</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">,</span>
+                         <span class="p">(</span><span class="kt">id</span><span class="p">)[</span><span class="bp">UIColor</span> <span class="nl">colorWithWhite</span><span class="p">:</span><span class="mf">0.75f</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.2f</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">,</span>
+                         <span class="p">(</span><span class="kt">id</span><span class="p">)[</span><span class="bp">UIColor</span> <span class="nl">colorWithWhite</span><span class="p">:</span><span class="mf">0.4f</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.2f</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">,</span>
+                         <span class="p">(</span><span class="kt">id</span><span class="p">)[</span><span class="bp">UIColor</span> <span class="nl">colorWithWhite</span><span class="p">:</span><span class="mf">1.0f</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.4f</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">,</span>
+                         <span class="nb">nil</span><span class="p">];</span>
+    <span class="n">shineLayer</span><span class="p">.</span><span class="n">locations</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSArray</span> <span class="nl">arrayWithObjects</span><span class="p">:</span>
+                            <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithFloat</span><span class="p">:</span><span class="mf">0.0f</span><span class="p">],</span>
+                            <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithFloat</span><span class="p">:</span><span class="mf">0.5f</span><span class="p">],</span>
+                            <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithFloat</span><span class="p">:</span><span class="mf">0.5f</span><span class="p">],</span>
+                            <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithFloat</span><span class="p">:</span><span class="mf">0.8f</span><span class="p">],</span>
+                            <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithFloat</span><span class="p">:</span><span class="mf">1.0f</span><span class="p">],</span>
+                            <span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">layer</span> <span class="nl">addSublayer</span><span class="p">:</span><span class="n">shineLayer</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Note that, because we are adding the layer as a sublayer, we don't need to <code>retain</code> the <code>shineLayer</code> here.</p>
+<p>With those methods written, now we just need to define an <code>awakeFromNib</code> method so that they will be called when the buttons are loaded from the NIB. I also override <code>initWithFrame:</code> so that my snazzy buttons can be created programmatically rather than being loaded from a NIB.</p>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initLayers</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="n">initBorder</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="n">addShineLayer</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">awakeFromNib</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="n">initLayers</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithFrame:</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">)</span><span class="nv">frame</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">])</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="n">initLayers</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>You'll need to add the <code>QuartzCore</code> framework to your project to get it to link.</p>
+<p>The last thing we need to do is go back to Interface&nbsp;Builder and, for each button, go to the Identity inspector and change the class to <code>GradientButton</code>, then save.</p>
+<p>With that done, build and run the app. Now we have pretty buttons. However, if you press a button, nothing seems to happen. We need to highlight the button when it is touched.</p>
+<h3>Handling Touch Tracking</h3>
+<p>Back when I told you to define the <code>GradientButton</code> class, you may have noticed the <code>highlightLayer</code> instance variable, and wondered what that was for. Well, here's the deal: when the user touches the button, we'll just show a layer that makes the button look highlighted, and when the user stops touching the button, we'll hide that layer. Simple!</p>
+<p>So, we'll create a simple layer with a partially transparent gray color, set it to be hidden, and add it beneath the shine layer.</p>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addHighlightLayer</span> <span class="p">{</span>
+    <span class="n">highlightLayer</span> <span class="o">=</span> <span class="p">[</span><span class="bp">CALayer</span> <span class="n">layer</span><span class="p">];</span>
+    <span class="n">highlightLayer</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">0.25f</span>
+                                                     <span class="nl">green</span><span class="p">:</span><span class="mf">0.25f</span>
+                                                      <span class="nl">blue</span><span class="p">:</span><span class="mf">0.25f</span>
+                                                     <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.75</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">;</span>
+    <span class="n">highlightLayer</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">layer</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+    <span class="n">highlightLayer</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">layer</span> <span class="nl">insertSublayer</span><span class="p">:</span><span class="n">highlightLayer</span> <span class="nl">below</span><span class="p">:</span><span class="n">shineLayer</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>If you don't like gray, change the color as needed.</p>
+<p>Then, we override the <code>setHighlighted:</code> method so that the highlight layer is displayed whenever the button is touched (or any other time its <code>highlighted</code> property would be set true):</p>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setHighlighted:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">highlight</span> <span class="p">{</span>
+    <span class="n">highlightLayer</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="o">!</span><span class="n">highlight</span><span class="p">;</span>
+    <span class="p">[</span><span class="nb">super</span> <span class="nl">setHighlighted</span><span class="p">:</span><span class="n">highlight</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Note that because <code>hidden</code> is an animatable property, the highlight will fade in and fade out smoothly during a transition.</p>
+<p>Finally, we need to change our <code>initLayers</code> method so that it calls <code>addHighlightLayer</code>:</p>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initLayers</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="n">initBorder</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="n">addShineLayer</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="n">addHighlightLayer</span><span class="p">];</span>   <span class="c1">// added line</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Run the app, and the buttons should light up when you touch them.</p>
+<h3>But, Do the Buttons Actually Work?</h3>
+<p>Just to verify that our snazzy <code>GradientButton</code> class hasn't somehow broken the basic button functionality, add an event-handler method to the <code>GradientButtonsViewController</code> class.</p>
+<div class="highlight"><pre><span></span><span class="c1">// GradientButtonsViewController.h:</span>
+
+<span class="cp">#import &lt;UIKit/UIKit.h&gt;</span>
+
+<span class="k">@interface</span> <span class="nc">GradientButtonsViewController</span> : <span class="bp">UIViewController</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">colorButtonClicked:</span><span class="p">(</span><span class="bp">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="nv">sender</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
+
+
+<p>The event handler will just set the view's background color to match the color of whatever button was clicked.</p>
+<div class="highlight"><pre><span></span><span class="c1">// GradientButtonsViewController.m:</span>
+
+<span class="cp">#import &quot;GradientButtonsViewController.h&quot;</span>
+
+<span class="k">@implementation</span> <span class="nc">GradientButtonsViewController</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">colorButtonClicked:</span><span class="p">(</span><span class="bp">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
+    <span class="c1">// Set view&#39;s background to match button color</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">sender</span><span class="p">.</span><span class="n">backgroundColor</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+
+<p>Go back to Interface Builder and wire up the buttons to the controller's <code>colorButtonClicked:</code> handler.</p>
+<p>Run the app, and you should see the background change whenever you click a button.</p>
+<h3>Exercises for the Reader</h3>
+<p>That's basically it, but you can extend these ideas in a lot of ways. For example:</p>
+<ul>
+<li>When the <code>enabled</code> property of the button gets set to false, you can "dim" the button by changing its opacity.</li>
+<li>Use another layer to handle the button becoming <code>selected</code>.</li>
+<li>Instead of using static layers, add some animation. For example, your shiny button could pulsate while idle, and grow slightly when touched.</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/quick-and-dirty-guide-qunit.html" rel="bookmark"
+                           title="Permalink to Quick-and-Dirty Guide to QUnit">Quick-and-Dirty Guide to QUnit</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-12-06T22:07:52-05:00">
+                Published: Sun 06 December 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/tutorial.html">tutorial</a> <a href="/tag/qunit.html">qunit</a> <a href="/tag/jquery.html">jquery</a> <a href="/tag/javascript.html">javascript</a> <a href="/tag/unittesting.html">unittesting</a> </p>
+</footer><!-- /.post-info -->                <p>I'm playing around with <a href="http://en.wikipedia.org/wiki/Javascript">JavaScript</a> in my spare time, and have started creating a web app. As I usually do, particularly when learning something new, I am using a <a href="http://en.wikipedia.org/wiki/Test-driven_development">test-driven development</a> approach. I looked at a few JavaScript unit-testing frameworks, and decided to go with <a href="http://docs.jquery.com/QUnit">QUnit</a>, the testing framework used …</p>
+                <a class="readmore" href="/quick-and-dirty-guide-qunit.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

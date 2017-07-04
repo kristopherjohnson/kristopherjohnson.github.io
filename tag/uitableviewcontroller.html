@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - UITableViewController</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/kjmenutableviewcontroller-ios-menus-made-easy.html">KJMenuTableViewController - iOS Menus Made Easy</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-07-31T21:22:17-04:00">
+                Published: Sun 31 July 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/uitableviewcontroller.html">UITableViewController</a> <a href="/tag/ios.html">ios</a> </p>
+</footer><!-- /.post-info --><p>I have a new open-source library on Github for use by iOS developers: <a href="https://github.com/kristopherjohnson/KJMenuTableViewController">KJMenuTableViewController</a>.</p>
+<p>KJMenuTableViewController is an Xcode project that contains set of classes that simplifies the
+creation of "menus" in iOS applications using <code>UITableViewController</code>.</p>
+<p>The <code>UITableViewController</code> class is a generic mechanism for presenting a scrollable list of
+rows of items.  It is powerful and extensible, but it can be a chore to present a simple
+list of button-like objects that react when tapped.  One must provide implementations of several
+methods of the <code>UITableViewDataSource</code> and <code>UITableViewDelegate</code> classes, each of which will
+probably have a <code>case</code> statement to handle each of the individual items. It's not difficult, but it is
+tedious and error-prone.</p>
+<p>The KJMenuTableViewController classes simplify this usage case.  One simply defines a subclass of
+<code>KJMenuTableViewController</code> and overrides the <code>viewDidLoad</code> method to create sections and row items.
+<code>KJMenuTableViewController</code> implements the table view delegate and data source methods to
+appropriately display the sections and rows, and will take action when a row is tapped.</p>
+<p>The code to be executed when an item is tapped are written as a block.
+When the block is invoked, a <code>KJMenuItemInvocation</code> structure is passed to it. This structure
+contains pointers to the menu item, cell, and controller, so there is no reason for the block
+to retain any of these objects itself.  (Beware of retain cycles if the block <em>does</em> reference
+the menu item, cell, or controller.)
+<!--break--></p>
+<h2>Usage</h2>
+<p>Someday, this will be a proper library, but right now the library is distributed as a demo
+application that contains reusable classes.</p>
+<p>To make use of the reusable classes, copy the following source files from the demo project into
+your own application:</p>
+<ul>
+<li><code>KJMenuTableViewController.h</code> and <code>KJMenuTableViewController.m</code></li>
+<li><code>KJMenuSection.h</code> and <code>KJMenuSection.m</code></li>
+<li><code>KJMenuItem.h</code> and <code>KJMenuItem.m</code></li>
+</ul>
+<h2>Example</h2>
+<p>In this example snippet, the controller is a subclass of <code>KJMenuTableViewController</code>, which is itself
+a subclass of <code>UITableViewController</code>.  In the <code>viewDidLoad</code> method, we add a first section with
+two items, each of which displays its text in an alert box, and a second section that has
+an item that pushes a new controller onto the navigation stack.</p>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+
+    <span class="c1">// Add first section</span>
+
+    <span class="n">KJMenuSection</span> <span class="o">*</span><span class="n">section</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuSection</span> <span class="nl">sectionWithHeaderTitle</span><span class="p">:</span><span class="s">@&quot;First Section&quot;</span><span class="p">];</span>
+    <span class="n">section</span><span class="p">.</span><span class="n">footerTitle</span> <span class="o">=</span> <span class="s">@&quot;Select item above to display alert&quot;</span><span class="p">;</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">addSection</span><span class="p">:</span><span class="n">section</span><span class="p">];</span>
+
+    <span class="n">KJMenuItem</span> <span class="o">*</span><span class="n">item</span><span class="p">;</span>
+
+    <span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuItem</span> <span class="nl">itemWithTitle</span><span class="p">:</span><span class="s">@&quot;First&quot;</span><span class="p">];</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">detailText</span> <span class="o">=</span> <span class="s">@&quot;This is the first item&quot;</span><span class="p">;</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span> <span class="n">inv</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">RootViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="p">(</span><span class="n">RootViewController</span> <span class="o">*</span><span class="p">)</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">;</span>
+        <span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">titleText</span><span class="p">;</span>
+        <span class="bp">NSString</span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">controller</span> <span class="nl">displayAlertWithTitle</span><span class="p">:</span><span class="n">title</span> <span class="nl">message</span><span class="p">:</span><span class="n">message</span><span class="p">];</span>
+    <span class="p">};</span>
+    <span class="p">[</span><span class="n">section</span> <span class="nl">addItem</span><span class="p">:</span><span class="n">item</span><span class="p">];</span>
+
+    <span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuItem</span> <span class="nl">itemWithTitle</span><span class="p">:</span><span class="s">@&quot;Second&quot;</span><span class="p">];</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">detailText</span> <span class="o">=</span> <span class="s">@&quot;This is the second item&quot;</span><span class="p">;</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span> <span class="n">inv</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">RootViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="p">(</span><span class="n">RootViewController</span> <span class="o">*</span><span class="p">)</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">;</span>
+        <span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">titleText</span><span class="p">;</span>
+        <span class="bp">NSString</span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">controller</span> <span class="nl">displayAlertWithTitle</span><span class="p">:</span><span class="n">title</span> <span class="nl">message</span><span class="p">:</span><span class="n">message</span><span class="p">];</span>
+    <span class="p">};</span>
+    <span class="p">[</span><span class="n">section</span> <span class="nl">addItem</span><span class="p">:</span><span class="n">item</span><span class="p">];</span>
+
+    <span class="c1">// Add second section</span>
+
+    <span class="n">section</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuSection</span> <span class="nl">sectionWithHeaderTitle</span><span class="p">:</span><span class="s">@&quot;Second Section&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">addSection</span><span class="p">:</span><span class="n">section</span><span class="p">];</span>
+
+    <span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuItem</span> <span class="nl">itemWithTitle</span><span class="p">:</span><span class="s">@&quot;Push view&quot;</span>
+                       <span class="nl">accessoryType</span><span class="p">:</span><span class="n">UITableViewCellAccessoryDisclosureIndicator</span><span class="p">];</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">autoDeselectAfterSelect</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span> <span class="n">inv</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">MyViewController</span> <span class="o">*</span><span class="n">subcontroller</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyViewController</span> <span class="n">alloc</span><span class="p">]</span>
+                                           <span class="nl">initWithNibName</span><span class="p">:</span><span class="s">@&quot;MyViewController&quot;</span> <span class="nl">bundle</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">pushViewController</span><span class="p">:</span><span class="n">subcontroller</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+    <span class="p">};</span>
+    <span class="p">[</span><span class="n">section</span> <span class="nl">addItem</span><span class="p">:</span><span class="n">item</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>For a complete example, see the demo application's <a href="https://github.com/kristopherjohnson/KJMenuTableViewController/blob/master/KJMenuTableViewController/RootViewController.m">RootViewController.m</a>.</p>
+<h2>Future Directions</h2>
+<p>The following features are planned:</p>
+<ul>
+<li>Add convenience methods to reduce the verbosity of setting up a menu.</li>
+<li>Make it possible to add/remove menu items and change their attributes after menu has already been displayed. (As-is, you need to call the table view's <code>reloadData</code> method if you change anything after <code>viewDidLoad</code>.)</li>
+<li>Provide a mechanism so that only one item within a section has a checkmark, and when user selects another item the originally checked item is unchecked.</li>
+<li>Provide the ability to define a menu hierarchy that is handled by a single view controller.</li>
+<li>Add support for compilation with ARC enabled</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

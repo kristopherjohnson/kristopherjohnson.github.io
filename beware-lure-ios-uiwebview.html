@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Beware the Lure of the iOS UIWebView</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/beware-lure-ios-uiwebview.html" rel="bookmark"
+           title="Permalink to Beware the Lure of the iOS UIWebView">Beware the Lure of the iOS UIWebView</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-26T00:32:03-04:00">
+                Published: Tue 26 July 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/ios.html">ios</a> </p>
+</footer><!-- /.post-info -->      <p>Apple's iOS SDK provides a class, <a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UIWebView_Class/Reference/Reference.html">UIWebView</a>, that provides a simple way to display HTML content in an iOS application. Many apps use UIWebView to display web pages, online help, and other formatted content.</p>
+<p>For the basic purpose of displaying HTML content, it works pretty well. However, as it appears to just be a wrapper around WebKit, one might be tempted to use it to try to implement a full-fledged web browser embedded in an application. <em>Don't do this!</em> UIWebView has many limitations that make it unsuitable for this purpose:</p>
+<ul>
+<li>Many commonly used JavaScript functions, such as <code>alert()</code> and <code>window.open()</code>, don't work at all or only work in limited ways in a UIWebView. So many of the web sites one would try to visit do not work in a UIWebView.</li>
+<li>There are limited hooks for customizing the behavior. There are a few delegate methods that notify your app when the web view starts loading or finishes loading, but you can't detect many of the events you'd really want to detect.</li>
+<li>UIWebView does not send the same browser identification info that Mobile Safari does, so some servers will treat it as an unknown browser and return limited content.</li>
+</ul>
+<p>Of course, some intrepid developers have found ingenious ways to work around some of these limitations. If you really want to try it, or if you are curious about what kinds of hackery are needed to use UIWebView as a web browser, check out these links:</p>
+<ul>
+<li><a href="http://www.icab.de/blog/2009/07/27/webkit-on-the-iphone-part-1/">WebKit on the iPhone, part 1</a> and <a href="http://www.icab.de/blog/2009/08/05/webkit-on-the-iphone-part-2/">part 2</a></li>
+<li><a href="http://www.codingventures.com/2008/12/using-uiwebview-to-render-svg-files/">7 tips for using UIWebView</a></li>
+</ul>
+<p>The lesson I learned (after several hours of banging my head against the wall) is to pass web URLs over to Safari, rather than trying to display them in a UIWebView within my app. It's just not the right tool for this job.</p>
+<hr>
+<p><strong>Update (2011/10/1):</strong> My original post included this bullet point:</p>
+<ul>
+<li>You can't control authentication. UIWebView can open an HTTPS connection, but if the server-side certificate is self-signed, there is no way to get it to ignore the certificate, and so it just fails with an error message.</li>
+</ul>
+<p>I've been informed that this is not entirely true. It is possible to somehow "preconnect" to the server with an NSConnection, deal with authentication, and then pass the credentials to the UIWebView. More information is available here: http://stackoverflow.com/questions/11573164/uiwebview-to-view-self-signed-websites-no-private-api-not-nsurlconnection-i/15074358#15074358</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

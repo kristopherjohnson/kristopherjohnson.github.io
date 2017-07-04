@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Leopard Upgrade</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/leopard-upgrade.html" rel="bookmark"
+           title="Permalink to Leopard Upgrade">Leopard Upgrade</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2007-10-28T06:55:00-04:00">
+                Published: Sun 28 October 2007
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/mac.html">mac</a> <a href="/tag/leopard.html">leopard</a> </p>
+</footer><!-- /.post-info -->      <p>
+I've upgraded my MacBook from Tiger to Leopard.  I hit a couple of snags along the way; maybe this will help someone else avoid the same issues.
+</p>
+
+<p>
+1.  When I first attempted to upgrade, the Installer wouldn't allow me to select my hard drive for the upgrade.  I have been using a copy of my original hard drive, and the copy was apparently not partitioned with "GUID Partition Table."  It was booting fine under Tiger, but apparently there are new rules for Leopard.  The installer offered to erase my drive for me and partition it correctly, but I didn't want to lose all my applications and data.  The moral:  when partitioning a new drive for use as a boot disk, click the <b>Options...</b> button in Disk Utility's <b>Partition</b> page and select "GUID Partition Table" (the default selection is "Apple Partition Table"). 
+</p>
+
+<p>
+2.  After installation, the drive started booting, but then just sat on a blank blue screen for a long time.  This is apparently caused by an old version of Unsanity's Application Enhancer.  To remove this software and let Leopard boot, follow the "Solution 2" instructions given here: <a href="http://docs.info.apple.com/article.html?artnum=306857">http://docs.info.apple.com/article.html?artnum=306857</a>.
+</p>
+
+<p>
+3.  My wireless Mighty Mouse didn't work at first.  The Bluetooth icon didn't show up in the System Preferences, and the menu bar showed the icon but the menu said that Bluetooth was unavailable.  After rebooting a couple times, Bluetooth magically reappeared and the mouse worked as before.
+<p>
+After getting over those little bumps, Leopard appears to be working fine, and it is worth noting that the serious problems would not have occurred if I was using the original Apple-installed hard drive and I had not installed any hacky software.  So, can't blame Apple.
+</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

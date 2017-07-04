@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - galaxytab</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/trying-out-cyanogenmod-samsung-galaxy-tab-2-70.html">Trying Out CyanogenMod on a Samsung Galaxy Tab 2 7.0</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-09-29T04:35:59-04:00">
+                Published: Sun 29 September 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/galaxytab.html">galaxytab</a> <a href="/tag/cyanogenmod.html">cyanogenmod</a> <a href="/tag/android.html">android</a> </p>
+</footer><!-- /.post-info --><p>Last year, I bought a <a href="http://en.wikipedia.org/wiki/Samsung_Galaxy_Tab_2_7.0">Samsung Galaxy Tab 2 7.0</a> for use as an Android development/testing device. I didn't expect it to be good, and it wasn't. It was slow, clunky, and ugly in comparison to the iPad, just like every other Android tablet. But it was cheap, and I only used it to test apps I was developing, so it didn't bother me much.</p>
+<p>Earlier this year, it finally got an upgrade to Jelly Bean, which improved the slow/clunky aspects, but it still wasn't good. I bought a new Nexus 7 in July (which is an awesome Android tablet), so I went to <a href="http://www.gazelle.com">gazelle.com</a> to see what they would give me for a used Galaxy Tab 2 7.0. Their offer: $16.</p>
+<p>So, it went into the old-devices drawer. I kept it only because I might need it in an emergency if my Nexus 7 died at the worst possible time.</p>
+<p>When all the <a href="http://www.cyanogenmod.org/blog/a_new_chapter">news</a> and <a href="https://plus.google.com/106978520009932034644/posts/L8FJkrcahPs">drama</a> about <a href="http://www.cyanogenmod.org/about">CyanogenMod</a> (CM) broke last week, I decided I would give CyanogenMod a try. I was curious, and I had a device available to "sacrifice".</p>
+<p>And you know what? That crummy old Galaxy Tab 2 7.0 is actually a pretty nice tablet with CM installed. I now have an Android 4.2.2 Jelly Bean tablet without all the Samsung TouchWiz crapware. It's not as good as the Nexus 7, but it no longer feels like junk, and it might stay out of that drawer for a while. </p>
+<p>If you have an Android device in your junk drawer (or a Kindle Fire, or a NOOK), you might want to give CM a try. Read on if you're interested.
+<!--break--></p>
+<h2>Installation Pains</h2>
+<p>Installation wasn't easy, and is not recommended for non-technical users. If you've never flashed new firmware nor installed Linux on a computer, you may find it daunting. I expected problems, and was 50% certain I'd end up with a bricked device, but as I wrote above, this device was just one step away from the trash can anyway.</p>
+<p>I followed the instructions on this page:</p>
+<ul>
+<li>http://wiki.cyanogenmod.org/w/Install_CM_for_p3110</li>
+</ul>
+<p>I installed the latest stable release, <a href="http://get.cm/get/jenkins/42539/cm-10.1.3-p3110.zip">cm-10.1.3-p3110</a> along with the corresponding <a href="http://goo.im/gapps/gapps-jb-20130812-signed.zip">Google Apps</a> package.</p>
+<p>I ran into three problems during the process. I'll describe the problems and their solutions here in case anyone else hits the same issues and runs across this page in a search.</p>
+<h3>Unable to Install ClockworkMod</h3>
+<p>Before installing CM, one must install a custom <a href="http://www.androidcentral.com/what-recovery-android-z">recovery</a> partition that can be used to install CM. The suggested recovery is <a href="http://forum.xda-developers.com/wiki/ClockworkMod_Recovery">ClockworkMod</a>, and installation is described in that <em>How to Install CyanogenMod</em> document I was following. However, after following the steps in the document and then rebooting, booting into recovery resulted in me still having the standard default recovery, not ClockworkMod.</p>
+<p>I went through the steps a couple more times, and ended up with the same result. "Maybe I'm just not smart enough for CyanogenMod," I thought.</p>
+<p>I Googled around. Eventually I stumbled on a forum posting that suggested that the stock ROM might be restoring the original recovery partition, and the trick was to make sure you boot into recovery before that happened. I don't know exactly what I did, but followed the steps one more time, taking care to ensure that I booted into recovery immediately after the downloader said it was finished, and it worked. I was in ClockworkMod!</p>
+<h3>Unable to Install zip from sdcard</h3>
+<p>Once in ClockworkMod recovery, I was supposed to be able to choose the <em>Install zip from sdcard</em> menu item and then select the <code>cm-10.1.3-p3110.zip</code> file that I had earlier copied to the device's <code>/sdcard</code> directory. But when I selected that command, the file wasn't visible in the resulting list.</p>
+<p>I rebooted into the normal device OS, and verified that <code>cm-10.1.3-p3110.zip</code> was indeed in the <code>/sdcard</code> directory. Booted into recovery again, and again, unable to select that file.</p>
+<p>So, I chose the <em>Install from sideload</em> command instead, and then did <code>adb sideload cm-10.1.3-p3110.zip</code> from my Mac connected via USB. That worked. I then did the same thing with the Google Apps package.</p>
+<p>Subsequent research indicates that the zip files can be found by ClockworkMod in the <code>/sdcard/0/</code> directory, rather than in <code>/sdcard/</code>. This has something to do with support for multiple users.</p>
+<h3>Keyboard Not Functional</h3>
+<p>After sideloading the CM and Google Apps packages, I rebooted the device, and CyanogenMod appeared on the screen. Success!</p>
+<p>Well, not really. It asked me whether I wanted to set up a CyanogenMod account, and I clicked the button, and then it brought up the wi-fi selection screen, and I selected my wi-fi, and then it asked me for a password.</p>
+<p>But no keyboard was displayed. How does one enter a wi-fi password without a keyboard?</p>
+<p>So I just skipped through all the initial setup stuff. After I got to the Android home screen, every few seconds I got an error alert saying "Unfortunately, Android keyboard (AOSP) has stopped", indicating that the standard Android keyboard process was crashing repeatedly. That explained why no keyboard was displayed when I was prompted for my wi-fi password.</p>
+<p>My first thought was to install <a href="http://www.swiftkey.net">SwiftKey</a>, my preferred Android keyboard. But how does one download something from Google Play if one can't enter the wi-fi password?</p>
+<p>So, more Googling. The most popular suggested fix for this problem was to go into Settings &gt; Apps and clear data for the Android Keyboard and Dictionary Provider apps. I tried this, and it didn't help.</p>
+<p>Another popular suggestion was to try an older version of the Google Apps package. It didn't make sense to me that the Google Apps package would affect the standard Android keyboard, but I checked for older compatible Google Apps packages anyway.</p>
+<p>And this is how I discovered I had installed the wrong Google Apps package. I had installed the package designed for CM 4.2, but I had CM 4.1.</p>
+<p>So I rebooted back into recovery and installed the correct Google Apps package via sideload. For good measure, I also cleared the user data, the Dalvik cache and every other thing that seemed clearable or resettable in ClockworkMod.</p>
+<p>I rebooted, and the keyboard worked.</p>
+<h2>The Result</h2>
+<p>I expected CyanogenMod to be weird, but it isn't. It generally looks and works just like my Nexus 7 does. I can access my Google contacts, calendar, and mail. I can download and run my purchased apps from the Google Play store (although there are a couple that are marked "incompatible with your device"). I can read my Kindle books. I can access all my Dropbox stuff.</p>
+<p>I do see a few extra menu items in Settings, and there are probably a few magic features I haven't noticed yet, but if you are accustomed to pure Android as delivered in the Nexus devices, you'll find it familiar.</p>
+<h2>The Community</h2>
+<p>As with any large open-source project, the community of developers and users are the only source of help. The CM community is a lot like the Linux community: there are a few smart helpful people, a few users sincerely offering and seeking assistance, and a lot of arrogant assholes who want to make everyone feel stupid.</p>
+<p>Don't be part of that last group.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

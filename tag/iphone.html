@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - iphone</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/what-ive-learned-about-ios-development.html">What I've Learned about iOS Development</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-03-29T03:43:00-04:00">
+                Published: Tue 29 March 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> <a href="/tag/ipad.html">ipad</a> <a href="/tag/iosdev.html">iosdev</a> </p>
+</footer><!-- /.post-info --><p>I've been playing around with development for Mac OS X and iOS for a few years. I've had a pretty good grasp of how Cocoa and UIKit worked, and I've written some simple apps, but for the past month I've been working on my first <em>Real iOS Application</em>. I've had to solve some problems that were easily ignored when writing little apps for fun. What follows is a randomly ordered collection of some of the little techniques and tips I didn't know before, which may be useful for other Cocoa newbies.
+<!--break-->
+(More to come as I learn from more mistakes.)</p>
+<h2>NSDictionary is Incredibly Useful</h2>
+<p>As a long-time C++ programmer, whenever I have some sort of "object" with a bunch of "attributes" my instinct is to define a <code>class</code> or <code>struct</code> with a bunch of instance members. However, when using Objective-C, it is often easier and more useful to just throw all that stuff into an <code>NSDictionary</code> (or <code>NSMutableDictionary</code>), for the following reasons:</p>
+<ul>
+<li>You don't have to write code to save/load the data to/from files or <code>NSUserDefaults</code>. As long as you can live with <code>NSDictionary</code>'s serialization format, you get persistence for free.</li>
+<li>Many system classes and APIs already know how to work with dictionaries in interesting ways.</li>
+<li>It's easier than defining an Objective-C class with properties. I know some Objective-C fans will disagree, but the <code>@property</code> mechanism sucks. If you use an <code>NSDictionary</code>, then you can worry less about retain counts, <code>dealloc</code>, and other such things.</li>
+<li>It lets you write JavaScript-like or Python-like code, if you're into that sort of thing.</li>
+</ul>
+<p>The downside of using <code>NSDictionary</code> is that it may be less efficient than using a custom class or a <code>struct</code>. Use your brain.</p>
+<h2>Use NSValue to Box Pointers and Primitives</h2>
+<p>If you follow the above advice about using <code>NSDictionary</code>, you'll run into a couple of wrinkles with using it as a general-purpose attribute container:</p>
+<ul>
+<li>Keys and values have to be objects, not primitive types.</li>
+<li>The keys have to conform to the <code>NSCopying</code> protocol.</li>
+<li>The dictionary will retain values, which may introduce undesirable retain cycles.</li>
+</ul>
+<p>The workaround for these issues is to use the <code>NSValue</code> class and its subclasses, which can box most interesting values as objects that can be used as dictionary keys and values.</p>
+<p><code>+[NSValue valueWithNonretainedObject:]</code> is how you put objects into your collections without bumping the retain counts.</p>
+<h2>Use objc_setAssociatedObject() and objc_getAssociatedObject() to Extend Unsubclassable Classes</h2>
+<p>The Apple frameworks contain some classes which cannot be subclassed (or cannot be <em>easily</em> subclassed). If you just want to add some methods, then you can just define a category. In cases where you wish you could make a subclass to add a property or two, the workaround is to use <code>objc_setAssociatedObject()</code> and <code>objc_getAssociatedObject()</code>.</p>
+<h2>Don't Support Old iOS Versions If You Don't Absolutely Have To</h2>
+<p>I'm lucky in that I am developing an in-house application, not to be sold in the App Store, so I was able to decree that I would only support devices running iOS 4.2 and higher. This lets me take advantage of useful stuff that isn't available in pre-4.0 versions of iOS without cluttering the code with a lot of checks for feature support. It's nice to use blocks and regular expressions and other "new" iOS features without worrying about it.</p>
+<p>Even if I was developing for the App Store, I'd be tempted to require 4.0. People who haven't bought a new phone for a few years or who don't keep the OS up to date aren't going to pay for that app you're developing, so why do anything for them?</p>
+<h2>Don't Mix Objective-C and C++ Unnecessarily</h2>
+<p>For a while, I was enamored with "Objective-C++", which is what you get when you change your <code>.m</code> suffixes to <code>.mm</code> and put C++ code into your Objective-C code. I thought this would be nifty, because I could use cool stuff from C++ (templates, typesafe container classes, smart pointers, RAII, ...).</p>
+<p>I did this for a while, but found that every time I decided to rewrite the C++ parts in plain-old-idiomatic Objective-C, the result was cleaner. So I don't do it any more.</p>
+<p>I think use of Objective-C++ is best limited to cases where you need to integrate some existing C++ code or libraries into your app, or when the guts of the app are all written in C++ and you need to interface with Objective-C-based UI classes. Don't use it to "improve" Objective-C. Objective-C is already a clumsy combination of C and Smalltalk. Dumping a third language into the mix doesn't make it better.</p>
+<h2>Use the Static Analyzer</h2>
+<p>Objective-C's manual memory management sucks, but I have yet to see a memory leak in my app that wasn't caught by the static analyzer. Run that Analyze command once in a while.</p>
+<h2>You Don't Have to Use Interface Builder</h2>
+<p>I spent a long time struggling with figuring out how to do complicated things in Interface Builder (like laying out a tab bar with a set of navigation controllers, each with toolbar items in their button bars and ...). After all, this is how one creates GUIs on other platforms.</p>
+<p>IB can be helpful, particularly when laying out a form-style view, but in many cases it is easier to create your views and hook up the events by writing code.</p>
+<p>I'm not saying "Don't use Interface Builder," or "Interface Builder is for pussies." I'm just saying that if you know how to do it all in code, it will often be easier to get what you want.</p>
+<h2>Use UIWebView for Read-Only Views</h2>
+<p>For a view that simply displays information, it is often easier to write some simple HTML and CSS and display it in a UIWebView than it is to lay out a bunch of UIKit components. It also gives your non-Objective-C-knowing colleagues a way to help you out (but don't let them use Arial).</p>
+<h2>Use Xcode 4</h2>
+<p>At the time of this writing, Xcode 4 is new (released just a few weeks ago), and lots of people are having problems with it. Those people recommend sticking with Xcode 3.x until the problems get worked out.</p>
+<p>If you run into those problems, or if you are an old-timer who fears change, then by all means, use Xcode 3. But if you can use Xcode 4, then I heartily recommend it. The improved autocompletion alone is worth the risk of crashes and hiccups.</p>
+<p>Xcode 4 is pretty rough for a released Apple product, but iIt really isn't that bad. When I first started using, it seemed like it was crashing "all the time." I started recording each crash, and found that over the course of three weeks it crashed, on average, only about once per day. The crashes are annoying, but the effect on my productivity was neglible. YMMV.</p>
+<h2>Use Ingredients</h2>
+<p>The Xcode documentation viewer sucks. Install <a href="http://fileability.net/ingredients/">Ingredients</a>. It's free. Assign a keyboard shortcut to the <em>Look up in Ingredients</em> item in the Services menu.</p>
+<h2>Use TBXML for XML Parsing</h2>
+<p>I experimented with a few XML parsers, and settled on <a href="http://www.tbxml.co.uk/TBXML/TBXML_Free.html">TBXML</a> as my preferred parser. It's got the best combination of performance and ease of use.</p>
+<p>However, it is not necessarily the best for all purposes. See <a href="http://www.raywenderlich.com/553/how-to-chose-the-best-xml-parser-for-your-iphone-project">How to Choose the Best XML Parser for Your iPhone Project</a> for a survey of available XML parsers.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/find-my-iphone-success-story.html" rel="bookmark"
+                           title="Permalink to Find-My-iPhone Success Story">Find-My-iPhone Success Story</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-11-11T02:24:23-05:00">
+                Published: Thu 11 November 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> <a href="/tag/apple.html">apple</a> </p>
+</footer><!-- /.post-info -->                <p>My wife, stepson, and I carpooled today. I picked them up at school and we made the 45-minute drive back home. As we parked the car, my wife noticed that she didn't have her iPhone.
+<!--break-->
+She initially thought she had left it back in the teachers' lounge, so she called …</p>
+                <a class="readmore" href="/find-my-iphone-success-story.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/shiny-iphone-buttons-without-photoshop.html" rel="bookmark"
+                           title="Permalink to Shiny iPhone Buttons Without Photoshop">Shiny iPhone Buttons Without Photoshop</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-02-27T12:16:43-05:00">
+                Published: Sat 27 February 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/tutorial.html">tutorial</a> <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/coreanimation.html">coreanimation</a> </p>
+</footer><!-- /.post-info -->                <p><img style="float: right;" src="http://undefinedvalue.com/sites/undefinedvalue.com/files/GradientButtonsAppScreenshot.png" alt="Screenshot"></p>
+<p>Newcomers to iPhone development are sometimes surprised at how ugly the standard button controls are. They quickly learn that they need a graphic artist to create a nice-looking button image in Photoshop and then attach that to the buttons. However, in this tutorial, I'll show how to create nice shiny …</p>
+                <a class="readmore" href="/shiny-iphone-buttons-without-photoshop.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/jacksorbetter-iphone-updated.html" rel="bookmark"
+                           title="Permalink to JacksOrBetter for iPhone Updated">JacksOrBetter for iPhone Updated</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-02-17T01:10:27-05:00">
+                Published: Wed 17 February 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/jacksorbetter.html">jacksorbetter</a> <a href="/tag/iphone.html">iphone</a> </p>
+</footer><!-- /.post-info -->                <p><img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/jb-screenshot-small.png" alt="JacksOrBetter Screenshot" style="float: right;"></p>
+<p>Version 1.1 of JacksOrBetter for the iPhone and iPod&nbsp;Touch is now available, and it's still free. If you have an iPhone or iPod&nbsp;Touch, you can get it from <a href="http://itunes.apple.com/us/app/jacksorbetter-video-poker/id290542821?mt=8">the App&nbsp;Store</a>.</p>
+<p>This version has a lot of cosmetic improvements over version 1.0. Version 1.0 was …</p>
+                <a class="readmore" href="/jacksorbetter-iphone-updated.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/iphone-sample-code-tiles.html" rel="bookmark"
+                           title="Permalink to iPhone Sample Code: Tiles">iPhone Sample Code: Tiles</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-02-06T04:28:21-05:00">
+                Published: Sat 06 February 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/coreanimation.html">coreanimation</a> </p>
+</footer><!-- /.post-info -->                <p>As an exercise in using the <a href="http://en.wikipedia.org/wiki/Core_Animation">Core Animation</a> API, I've implemented a little iPhone app that reproduces the behavior of the iPhone home screen's icon reorganization interface. (You know, dragging the wiggly icons around.) You can download my sample code to see how it works. Some descriptions of the highlights …</p>
+                <a class="readmore" href="/iphone-sample-code-tiles.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/iphone-video-output.html" rel="bookmark"
+                           title="Permalink to iPhone Video Output">iPhone Video Output</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-26T09:30:19-05:00">
+                Published: Thu 26 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> </p>
+</footer><!-- /.post-info -->                <p>A common problem for iPhone developers is demonstrating the apps they've developed to others. Showing it on an actual device only works well if you are showing it to one or two people. Showing it in the iPhone Simulator running on a Mac takes a lot of setup, and may …</p>
+                <a class="readmore" href="/iphone-video-output.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/native-apps-vs-web-apps.html" rel="bookmark"
+                           title="Permalink to Native Apps vs. Web Apps">Native Apps vs. Web Apps</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-26T00:08:18-05:00">
+                Published: Thu 26 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/webdev.html">webdev</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/android.html">android</a> </p>
+</footer><!-- /.post-info -->                <p>This week, there was a lot of chatter in the blogosphere about the prospect of writing <a href="http://www.apple.com/webapps/whatarewebapps.html">web apps for the iPhone</a> instead of developing native apps.
+<!--break-->
+The furor started with Peter-Paul Koch's profanity-laden rant entitled <a href="http://www.quirksmode.org/blog/archives/2009/11/apple_is_not_ev.html">"Apple is not evil. iPhone developers are stupid."</a>. In this post, PPK asserts that most …</p>
+                <a class="readmore" href="/native-apps-vs-web-apps.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/iphone-os-filename-case-sensitivity.html" rel="bookmark"
+                           title="Permalink to iPhone OS Filename Case Sensitivity">iPhone OS Filename Case Sensitivity</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-12T00:51:59-05:00">
+                Published: Thu 12 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> </p>
+</footer><!-- /.post-info -->                <p>I hit a little snag while adding a feature to an iPhone app today. I added this code to load a logo to be displayed in a view:</p>
+<div class="highlight"><pre><span></span><span class="bp">UIImage</span> <span class="o">*</span><span class="n">logoImage</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Icon.png&quot;</span><span class="p">];</span>
+</pre></div>
+
+
+<p>This worked fine in the iPhone Simulator, so I thought I was done. I loaded the …</p>
+                <a class="readmore" href="/iphone-os-filename-case-sensitivity.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/authenticating-google-app-engine.html" rel="bookmark"
+                           title="Permalink to Authenticating with Google App Engine">Authenticating with Google App Engine</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-09T01:01:56-05:00">
+                Published: Mon 09 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> <a href="/tag/googleappengine.html">googleappengine</a> <a href="/tag/cocoa.html">cocoa</a> </p>
+</footer><!-- /.post-info -->                <p>I've finally got around to doing some work on that iPhone application that I've <a href="http://undefinedvalue.com/2009/11/01/not-quite-nanowrimo">committed to finishing this month</a>.</p>
+<p>On days I do a lot of work on the app, I don't feel obligated to work too hard on the blog, but I will post a little something about whatever …</p>
+                <a class="readmore" href="/authenticating-google-app-engine.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/easy-gradient-backgrounds-uitextviewcells.html" rel="bookmark"
+                           title="Permalink to Easy Gradient Backgrounds for UITextViewCells">Easy Gradient Backgrounds for UITextViewCells</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-03T00:28:23-05:00">
+                Published: Tue 03 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/ipad.html">ipad</a> <a href="/tag/iosdev.html">iosdev</a> </p>
+</footer><!-- /.post-info -->                <p>When you create a table-view-based iPhone app, by default you get tables with plain white rows.  But all the cool kids are making apps with 3D-ish gradient backgrounds.  You want to make those kinds of apps too, right?  This article explains how.
+<!--break--></p>
+<h2>Overview</h2>
+<p>Making table cells with custom backgrounds is …</p>
+                <a class="readmore" href="/easy-gradient-backgrounds-uitextviewcells.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="/tag/iphone2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

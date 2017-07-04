@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Android SDK Tools 22.0.1 Considered Harmful</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/android-sdk-tools-2201-considered-harmful.html" rel="bookmark"
+           title="Permalink to Android SDK Tools 22.0.1 Considered Harmful">Android SDK Tools 22.0.1 Considered Harmful</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-05-29T23:43:08-04:00">
+                Published: Wed 29 May 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/rant.html">rant</a> <a href="/tag/android.html">android</a> </p>
+</footer><!-- /.post-info -->      <p>After finishing up some work on an iOS app today, it was time to go make equivalent changes to the Android port of that app. "I'll just update my Android SDK before I get to work," I said (to myself). I opened the Android SDK Manager and let it update these SDK packages to these versions:</p>
+<ul>
+<li>Android SDK Tools: 22.0.1</li>
+<li>Android SDK Platform-tools: 17</li>
+<li>Android SDK Build-tools: 17</li>
+</ul>
+<p>Then I let Eclipse update the ADT. Then I got to work. I opened my Android app project and tried to run it. I found I couldn't make a working debug build or a release build, nor could I create a signed APK to install on a device.</p>
+<p>After a few hours of hair pulling, I got everything working. Here is what I learned. I hope it helps someone.
+<!--break--></p>
+<h2>Unable to resolve superclass</h2>
+<p>My first problem was that, even though I could create an APK, when I tried to run it on a device I would see a bunch of "unable to resolve superclass" errors in the Logcat console. It looked like some of the JARs I was using (<code>android-support-v4.jar</code>, <code>gcm.jar</code>, and some third-party libraries) weren't being included in the APK.</p>
+<p>I eventually found the answer here: http://stackoverflow.com/questions/16583786/android-sdk-tools-revision-22-issue</p>
+<p>Most of my app's code is in an Android library project, and then there is an application project that uses the library. Apparently revision 22 of the SDK breaks the way that application projects bring in JARs from a library project. To fix this, do the following on both the library project and the application project that uses the library:</p>
+<ol>
+<li>Right-click the project in Eclipse's Package Explorer and choose Properties.</li>
+<li>Choose <strong>Java Build Path</strong></li>
+<li>Choose <strong>Order and Export</strong></li>
+<li>Check the boxes next to <strong>Android Private Libraries</strong> and <strong>Android Dependencies</strong></li>
+</ol>
+<p>After making these changes, do a clean and then rebuild.</p>
+<p>With this change, I was able to build an APK that installed and ran on an Android device.</p>
+<p>This is apparently a bug with ADT 22. See https://code.google.com/p/android/issues/detail?id=55304</p>
+<h2>INSTALL_PARSE_FAILED_NO_CERTIFICATES</h2>
+<p>After getting the release build working, I tried making a debug build to run in the debugger. I figured it would just work, but I saw this error in the console:</p>
+<div class="highlight"><pre><span></span>Installation error: INSTALL_PARSE_FAILED_NO_CERTIFICATES
+</pre></div>
+
+
+<p>I verified that I had a <code>debug.keystore</code> file, which is what should hold the certificates for a debug build. Sure enough, it existed, and hasn't been changed in a couple of years. I hadn't changed anything about my project or my <code>debug.keystore</code>, but it looked like something about code signing has changed with the SDK.</p>
+<p>I decided to delete my <code>debug.keystore</code> file and let the SDK automatically recreate it. That solved the problem.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

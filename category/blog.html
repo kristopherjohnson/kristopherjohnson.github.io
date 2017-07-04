@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - Blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/my-first-chess-program.html">My First Chess Program</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-04-22T19:07:16-04:00">
+                Published: Sat 22 April 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/chess.html">chess</a> <a href="/tag/self-indulgence.html">self-indulgence</a> </p>
+</footer><!-- /.post-info --><p>When I was a kid, back in the 70's and 80's, I thought chess programs were the most sophisticated computer programs in the world.  That was back when the average personal-computer chess program wasn't very good, and dedicated chess computers cost hundreds or thousands of dollars, so it seemed to me that chess was something very difficult for computers to do.  At the time, many experts still thought a computer would never be able to beat human grandmasters.  I dreamed that I would one day write The World's Greatest Chess Program, and that would prove I was a great computer programmer.</p>
+<p>But one's priorities change.  I did look into how chess programs worked when I was in college, and while I found the topic interesting, I didn't try writing my own program.  I still thought that writing a chess program was something every Real Computer Programmer should do, but I didn't get around to it.</p>
+<p>Now, at age 50, I've finally done it.  A few weeks ago I started writing a chess engine in <a href="https://swift.org">Swift</a>, and it is now capable of playing a real chess game. I call it "kjchess".
+<!--break-->
+It works, but it's slow.  On my 2013 MacBook Pro, my move search function can only search about four half-moves deep to find a move in a reasonable time, even when using all the CPU cores.  That is terrible, considering that it is worse than the 4MHz 8-bit <a href="http://www.spacious-mind.com/html/classic.html">Fidelity "Classic" chess computer</a> I had 25 years ago.</p>
+<p>Why is my engine so slow?  I initially gave myself a few constraints:</p>
+<ul>
+<li>Write it in "high-level" Swift (that is, it shouldn't look like a C or C++ program).</li>
+<li>Write it in a functional-programming style (in particular, use immutable data structures wherever possible).</li>
+<li>Don't refer to any other chess programs' source code.  Use only the knowledge of chess programming I've gleaned over the last few decades.</li>
+</ul>
+<p>These constraints made it an interesting exercise, but I relaxed them.  For example, I copied the <a href="https://en.wikipedia.org/wiki/Alpha–beta_pruning">minimax algorthm with alpha-beta pruning</a> from Wikipedia, and I've incorporated some positional evaluation ideas from <a href="https://chessprogramming.wikispaces.com/Simplified+evaluation+function">the Chess Programming Wiki</a>.</p>
+<p>Now that I've seen how slow it is, I think I need to abandon the "only immutable data structures" constraint.  I think the main reason my engine is so slow is that it creates a brand-new "position" structure for every possible move, leading to a lot of memory allocation, deallocation, and copying, whereas other engines have a single global position on which they make and unmake moves very quickly.</p>
+<p>Also, my engine doesn't save any search state between moves, and it doesn't do any pondering during the opponent's move.  I could probably make it a lot better by adding those features.</p>
+<p>Despite its limitations, it plays well enough to beat me once in a while.  That's not impressive, because I am a terrible chess player, but I figure I'm a winner either way. (I'm also a loser either way, but I can ignore that.)</p>
+<p>If you want to play it, and you have a Mac and know how to build Swift programs, you can check it out here: <a href="https://github.com/kristopherjohnson/kjchess">https://github.com/kristopherjohnson/kjchess</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/50.html" rel="bookmark"
+                           title="Permalink to 50">50</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-01-17T05:27:46-05:00">
+                Published: Tue 17 January 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/self-indulgence.html">self-indulgence</a> <a href="/tag/birthday.html">birthday</a> </p>
+</footer><!-- /.post-info -->                <p>So, suddenly, I'm 50 years old.  Almost a quarter of my life behind me.</p>
+<p>50 really doesn't seem that bad.  40 felt much more like an <em>oh-man-I'm-old-and-have-wasted-my-life</em> event.  I'm much happier now than I was then.  This has been a great decade for me.  I met a wonderful woman, and …</p>
+                <a class="readmore" href="/50.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/whats-good-tcm-week.html" rel="bookmark"
+                           title="Permalink to What's Good on TCM This Week?">What's Good on TCM This Week?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-11-04T22:34:41-04:00">
+                Published: Fri 04 November 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/tcm.html">tcm</a> <a href="/tag/node.html">node</a> <a href="/tag/movies.html">movies</a> </p>
+</footer><!-- /.post-info -->                <p>I like old movies. In the old days, we had TV stations known as "UHF channels" that showed lots of old movies all night long. But UHF channels are gone, and today all we have is the Turner Classic Movies (TCM) channel and website.</p>
+<p>I like film noir, sci-fi, horror …</p>
+                <a class="readmore" href="/whats-good-tcm-week.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/cxxforth-simple-forth-implementation-c.html" rel="bookmark"
+                           title="Permalink to cxxforth: A Simple Forth Implementation in C++">cxxforth: A Simple Forth Implementation in C++</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-02-23T11:05:48-05:00">
+                Published: Tue 23 February 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/programming.html">programming</a> <a href="/tag/forth.html">forth</a> <a href="/tag/cxxforth.html">cxxforth</a> </p>
+</footer><!-- /.post-info -->                <p>Because implementing obsolete programming languages is a great use of my free time, I've created <a href="https://github.com/kristopherjohnson/cxxforth">cxxforth</a>, an implementation of <a href="https://en.wikipedia.org/wiki/Forth_(programming_language)">Forth</a> in <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a>.</p>
+<p>Inspired by <a href="http://git.annexia.org/?p=jonesforth.git;a=blob;f=jonesforth.S;h=45e6e854a5d2a4c3f26af264dfce56379d401425;hb=HEAD">JONESFORTH</a>, I wrote it in the style of a tutorial. The source code is automatically converted to a pretty-printed format: <a href="https://github.com/kristopherjohnson/cxxforth/blob/master/cxxforth.cpp.md">https://github.com/kristopherjohnson/cxxforth/blob …</a></p>
+                <a class="readmore" href="/cxxforth-simple-forth-implementation-c.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/gforth-interface-wiringpi-library.html" rel="bookmark"
+                           title="Permalink to A Gforth Interface to the wiringPi Library">A Gforth Interface to the wiringPi Library</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-24T13:50:16-05:00">
+                Published: Sun 24 January 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/wiringpi.html">wiringPi</a> <a href="/tag/raspberrypi.html">raspberrypi</a> <a href="/tag/gforth.html">gforth</a> </p>
+</footer><!-- /.post-info -->                <p>I recently obtained a <a href="https://www.raspberrypi.org">Raspberry Pi</a>, an <a href="https://www.arduino.cc">Arduino</a>, and a model train set. This should keep me busy and out of trouble for a while.</p>
+<p>My plan is to use the Arduino to read sensors and control the turnout switches on the track, but I think it is easier to …</p>
+                <a class="readmore" href="/gforth-interface-wiringpi-library.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/performing-privileged-operations-os-x-application.html" rel="bookmark"
+                           title="Permalink to Performing Privileged Operations in an OS X Application">Performing Privileged Operations in an OS X Application</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-10T04:16:27-05:00">
+                Published: Thu 10 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/osx.html">osx</a> </p>
+</footer><!-- /.post-info -->                <p>I am currently developing an OS X application. The application needs to perform some operations that require root privileges (installing and uninstalling launchd daemons, sending signals to other users' processes, etc.) So I started looking for some documentation about how to do that. I figured it would take a few …</p>
+                <a class="readmore" href="/performing-privileged-operations-os-x-application.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/marathon-aborted.html" rel="bookmark"
+                           title="Permalink to Marathon Aborted">Marathon Aborted</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-11-09T14:32:31-05:00">
+                Published: Mon 09 November 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/running.html">running</a> </p>
+</footer><!-- /.post-info -->                <p>A few months ago, I signed up for the <a href="http://www.battlefieldmarathon.com">Chickamauga Battlefield Marathon</a>, which will take place this Saturday (November 14). I thought I would have adequate time to train, but it hasn't worked out that way. I ran a half marathon last week, with a time of 2:30 (not …</p>
+                <a class="readmore" href="/marathon-aborted.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/brainfk-compiler-c.html" rel="bookmark"
+                           title="Permalink to A Brainf__k compiler in C++">A Brainf__k compiler in C++</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-11T14:41:53-04:00">
+                Published: Sun 11 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/brainfuck.html">brainfuck</a> </p>
+</footer><!-- /.post-info -->                <p>For fun, I wrote an interpreter for <a href="https://en.wikipedia.org/wiki/Brainfuck">a programming language with a rude name</a>, in C++.</p>
+<p>It's available here: <a href="https://gist.github.com/kristopherjohnson/e5fc3d19c251dc561f62">https://gist.github.com/kristopherjohnson/e5fc3d19c251dc561f62</a></p>
+<p>There are other C++ interpreters for this language, but most of them look a lot more like C than like C++. My goal was to …</p>
+                <a class="readmore" href="/brainfk-compiler-c.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/labor-day-run-autism-half-marathon-2015.html" rel="bookmark"
+                           title="Permalink to Labor Day Run for Autism Half Marathon 2015">Labor Day Run for Autism Half Marathon 2015</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-07T22:57:04-04:00">
+                Published: Mon 07 September 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/running.html">running</a> </p>
+</footer><!-- /.post-info -->                <p>Today I ran the "Labor Day Run for Autism Half Marathon" at Fowler Park/Big Creek Greenway.</p>
+<p>My time was 2:37. Not as good as I had expected. I was hoping for a time in the 2:20-2:30 range. I ran out of gas around mile 9, and …</p>
+                <a class="readmore" href="/labor-day-run-autism-half-marathon-2015.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/clock-using-d3js.html" rel="bookmark"
+                           title="Permalink to A Clock, using D3.js">A Clock, using D3.js</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-09T21:47:27-04:00">
+                Published: Sun 09 August 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/javascript.html">javascript</a> <a href="/tag/d3.html">d3</a> </p>
+</footer><!-- /.post-info -->                <p>Hey, look! I made a clock! The Apple Watch is now obsolete.</p>
+<iframe width="100%" height="400" src="//jsfiddle.net/oldmankris/0sgjf7kj/embedded/result,js,css,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>I am learning how to use the <a href="http://d3js.org">D3.js</a> library to do data visualizations. It doesn't really make sense to consider hour, minute, and second as data to be "visualized", but this was a simple exercise to learn …</p>
+                <a class="readmore" href="/clock-using-d3js.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 26
+        <a href="/category/blog2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

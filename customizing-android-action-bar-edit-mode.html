@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Customizing Android Action Bar for Edit Mode</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/customizing-android-action-bar-edit-mode.html" rel="bookmark"
+           title="Permalink to Customizing Android Action Bar for Edit Mode">Customizing Android Action Bar for Edit Mode</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-07-25T13:06:38-04:00">
+                Published: Thu 25 July 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/androiddev.html">androiddev</a> <a href="/tag/android.html">android</a> <a href="/tag/actionbar.html">actionbar</a> </p>
+</footer><!-- /.post-info -->      <p>I spent a <em>long</em> time trying to get a <a href="http://developer.android.com/design/patterns/actionbar.html">contextual action bar (CAB)</a> working for an editing mode in an Android app I'm developing. My goal was to have a CAB appear whenever the user started changing field values on a screen, and the user would tap the <em>Done</em> button when complete. The CAB would also show a "Revert Changes" button allowing the user to undo whatever they did.</p>
+<p>This initially seemed like the easiest way to indicate to the user that they had made changes and needed to explicitly save them, but Android's default implementation of CAB has some drawbacks:</p>
+<ul>
+<li>The standard button is titled "Done". I would prefer it to be "Save", but there is no easy-to-use <code>setTitle()</code> method available.</li>
+<li>If user hits the <em>BACK</em> button, the CAB disappears, and there is no straightforward way for the app to determine whether the CAB disappeared because the user hit Done or because they hit <em>BACK</em>, or any way to intercept the processing of the <em>BACK</em> button while a CAB is displayed.</li>
+<li>I have to write code to restore the CAB state on a <a href="http://developer.android.com/guide/topics/resources/runtime-changes.html">configuration change</a></li>
+</ul>
+<p>While browsing around the web trying to find examples of workarounds for these issues, I ran across a blog post explaining why using a CAB for this scenario won't work, even if I did fix the aforementioned problems:</p>
+<p><a href="http://dazcorp.blogspot.com/2013/04/edit-mode-and-why-using-contextual.html">Edit Mode and why using a Contextual ActionBar is a bad idea</a></p>
+<p>(Short version: If user double-taps or long-presses an edit field, it will pop up its own text-selection CAB which would blow away my CAB and eventually lead to a <code>NullPointerException</code>.)</p>
+<p>So, I'm not using a CAB, but will instead customize the look of the non-contextual action bar as suggested in that blog post.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

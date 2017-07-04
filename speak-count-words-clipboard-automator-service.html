@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>"Speak Count of Words on Clipboard" Automator Service</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/speak-count-words-clipboard-automator-service.html" rel="bookmark"
+           title="Permalink to "Speak Count of Words on Clipboard" Automator Service">"Speak Count of Words on Clipboard" Automator Service</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-01T23:43:35-05:00">
+                Published: Sun 01 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/snowleopard.html">snowleopard</a> <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/automator.html">automator</a> </p>
+</footer><!-- /.post-info -->      <p>As part of my <a href="http://undefinedvalue.com/2009/11/01/not-quite-nanowrimo">"write a blog entry every day during November"</a> commitment, I considered imposing a minimum word limit for each entry.  I've decided against that, because I don't want to feel pressure to add filler, but before deciding that, I created an Automator service that would help me to count words.
+<!--break--></p>
+<h2>How to Use the Service</h2>
+<p>To use it, just select some text, hit Command-C to copy it to the clipboard, and then choose <strong>Speak Count of Words on Clipboard</strong> from the application's <strong>Services</strong> menu. </p>
+<h2>How to Create It</h2>
+<p>Here's how to create the service (using Mac OS X 10.6 Snow Leopard, of course):</p>
+<ol>
+<li>Start Automator, and choose "Service" as the workflow template.</li>
+<li>Choose "no input" and "any application" in the "Service receives . . ." section at the top.</li>
+<li>Drag a <strong>Get Contents of Clipboard</strong> action from the left column to the workflow pane.</li>
+<li>Drag a <strong>Run Shell Script</strong> action from the left column to the workflow pane, beneath the <strong>Get Contents of Clipboard</strong> action.</li>
+<li>In the <strong>Run Shell Script</strong> text area, replace "cat" with this:<pre>
+echo "The selection contains &#96;wc -w&#96; words."</pre></li>
+<li>Drag a <strong>Speak Text</strong> action from the left column into the workflow area, beneath the <strong>Run Shell Script</strong> action.</li>
+<li>Choose the <strong>File -&gt; Save</strong> menu item, and save it as "Speak Count of Words on Clipboard".</li>
+</ol>
+<p>Here's how it should look:</p>
+<p><img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/Speak_Count_of_Words_on_Clipboard_service.png" alt="Picture"></p>
+<p>If you think you are going to use this a lot, go to the Services Preferences and assign a keyboard shortcut.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

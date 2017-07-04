@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Saving a View as a Photo in an iPhone App</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/saving-view-photo-iphone-app.html" rel="bookmark"
+           title="Permalink to Saving a View as a Photo in an iPhone App">Saving a View as a Photo in an iPhone App</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-01-16T06:52:00-05:00">
+                Published: Fri 16 January 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/code.html">code</a> </p>
+</footer><!-- /.post-info -->      <p>
+For an iPhone app that I'm working on, I want to be able to save the screen image to the Photos album.  My first attempt at this was complicated: I created a color space, a bitmap context, a <tt>CGImage</tt>, and finally a <tt>UIImage</tt>, copying and pasting most of the code from the <em>Quartz 2D Programming Guide</em>.  Unfortunately, it didn't work; I kept getting BAD_ACCESS signals when I called <tt>UIImageWriteToSavedPhotosAlbum()</tt>, even though it looked to me like everything was correct.
+</p>
+
+<p>
+After Googling for a bit for known issues with UIImageWriteToSavedPhotosAlbum, I ran across a far easier solution to the problem.  Here are the methods I ended up with:
+</p>
+
+<div style="overflow: scroll; border: 1px solid #666"><pre>
+// Create an image for the view and save it to the Photos library
+- (void)savePhotoOfView:(UIView *)view
+{
+    UIGraphicsBeginImageContext(view.bounds.size);
+    [view drawRect:view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    UIImageWriteToSavedPhotosAlbum(image,
+                                   self,
+                                   @selector(savedPhotoImage:didFinishSavingWithError:contextInfo:),
+                                   NULL);
+}
+
+// Called by UIImageWriteToSavedPhotosAlbum() when it completes
+- (void)   savedPhotoImage:(UIImage *)image
+  didFinishSavingWithError:(NSError *)error
+               contextInfo:(void *)contextInfo
+{    
+    NSString *message = @"This image has been saved to your Photos album";
+    if (error) {
+        message = [error localizedDescription];
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+</pre></div>
+
+<p>
+These just call the view's <tt>drawRect</tt> method to create an image, save the image to the Photos library, and then pop up an alert box to let the user know what happened.
+</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - installation</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/setting-new-mac-my-way.html">Setting Up a New Mac, My Way</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-08-30T18:02:30-04:00">
+                Published: Fri 30 August 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/setup.html">setup</a> <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/installation.html">installation</a> </p>
+</footer><!-- /.post-info --><p>Over the past couple of weeks, I've set up a few Mac OS X machines to do development of iOS and Android apps. Doing this used to be an all-day chore, but things like app stores, iCloud, and Dropbox have streamlined the process a lot.</p>
+<p>(I could streamline the process even more by cloning an existing drive or virtual machine, but I'd rather install everything from scratch to avoid the presence of old cruft.)</p>
+<p>As a reminder to myself, and to help out anyone else who needs to do this, here is my procedure for setting up an OS X machine <a href="http://undefinedvalue.com/2012/06/15/my-setup">the way I like it</a>:</p>
+<ol>
+<li>Install/re-install OS X.</li>
+<li>During the OS X setup process, use the same login account name and password that I use on other computers, and provide the Apple IDs for iCloud and iTunes (which are different, in my case).</li>
+<li>Open System Preferences and do the following:</li>
+<li>In the <em>General</em> panel, set <em>Sidebar icon size</em> to <em>Small</em> and <em>Show scroll bars</em> to <em>Always</em>.</li>
+<li>In the <em>Mission Control</em> panel, uncheck the <em>Automatically rearrange Spaces based on most recent use</em> box.</li>
+<li>In the <em>Mouse</em> and <em>Trackpad</em> panels, set all speeds to two ticks less than the maximums, and enable all the gestures.</li>
+<li>In the <em>Keyboard</em> panel, set <em>Key Repeat</em> and <em>Delay Until Repeat</em> all the way to the right, and check the <em>Use F1, F2, etc. keys as standard function keys</em> box</li>
+<li>In the <em>Keyboard</em> panel, go to the <em>Shortcuts</em> tab, select <em>Services</em>, and then enable the <em>New Terminal at Folder</em> service.</li>
+<li>In the <em>iCloud</em> panel, enable everything.</li>
+<li>In the <em>Sharing</em> panel, set the <em>Computer Name</em> to something unique (not "Kristopher's computer") and enable <em>Remote Management</em>, <em>Remote Login</em>, and <em>File Sharing</em>.</li>
+<li>Set up <em>Time Machine</em></li>
+<li>If this is a virtual machine, go to the <em>Desktop &amp; Screen Saver</em> panel and turn off the screen saver, and go to the <em>Energy Saver</em> panel and set the sleep sliders to <em>Never</em>.</li>
+<li>Use the <em>Software Update...</em> menu item to install any system updates that are available, and reboot if necessary.</li>
+<li>If this is a virtual machine, install VMWare Tools or Parallels Tools.</li>
+<li>Download and install these packages (using serial numbers and licenses stored in 1Password):</li>
+<li><a href="https://www.dropbox.com/gs">Dropbox</a> (and wait for everything to sync before continuing)</li>
+<li><a href="https://agilebits.com/onepassword">1Password</a></li>
+<li><a href="http://smilesoftware.com/TextExpander/index.html">TextExpander</a></li>
+<li><a href="http://www.keyboardmaestro.com/">Keyboard Maestro</a></li>
+<li><a href="http://www.google.com/chrome">Chrome</a></li>
+<li><a href="http://brettterpstra.com/projects/nvalt/">nvALT</a></li>
+<li><a href="http://www.sublimetext.com">Sublime Text</a></li>
+<li><a href="http://www.jetbrains.com/objc/download/">AppCode</a></li>
+<li><a href="http://www.sourcetreeapp.com">SourceTree</a></li>
+<li><a href="http://www.omnigroup.com/omnioutliner">OmniOutliner</a></li>
+<li><a href="http://www.omnigroup.com/omnipresence">OmniPresence</a></li>
+<li><a href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a></li>
+<li><a href="http://brettterpstra.com/projects/markdown-service-tools/">Markdown Service Tools</a> (copy the <code>.workflow</code> files to <code>~/Library/Services</code>)</li>
+<li><a href="http://www.tug.org/mactex/index.html">MacTeX</a></li>
+<li><a href="https://code.google.com/p/pandoc/downloads/list">Pandoc</a></li>
+<li><a href="http://www.openoffice.org/download/index.html">OpenOffice</a> and/or <a href="http://www.libreoffice.org/download">LibreOffice</a> (depending on mood)</li>
+<li><a href="http://sourceforge.net/projects/sourcecodepro.adobe/files/">Source Code Pro font</a></li>
+<li><a href="http://dejavu-fonts.org/wiki/Download">Deja Vu fonts</a></li>
+<li><a href="http://www.fantascienza.net/leonardo/ar/inconsolatag/inconsolata-g_font.zip">Inconsolata-g font</a></li>
+<li><a href="http://input.fontbureau.com/download/">Input font</a></li>
+<li><a href="http://www.crashplan.com">CrashPlan</a></li>
+<li><a href="http://www.macbartender.com">Bartender</a></li>
+<li><a href="http://www.noodlesoft.com/hazel.php">Hazel</a></li>
+<li><a href="http://www.kaleidoscopeapp.com">Kaleidoscope</a></li>
+<li><a href="http://www.utorrent.com">µTorrent</a></li>
+<li><a href="http://xquartz.macosforge.org/">XQuartz</a></li>
+<li><a href="http://freemind.sourceforge.net/wiki/index.php/Download">FreeMind</a></li>
+<li>Open the App Store app and install these applications (skipping any that are not needed):</li>
+<li>Xcode</li>
+<li>CodeRunner</li>
+<li>OS X Server</li>
+<li>Moom</li>
+<li>PopClip</li>
+<li>Alfred</li>
+<li>Pages</li>
+<li>Soulver</li>
+<li>Evernote</li>
+<li>Sketch</li>
+<li>Skitch</li>
+<li>Pixelmator</li>
+<li>MultiMarkdown Composer</li>
+<li>Open Xcode, accept the license agreement and download simulators and documentation. On a Terminal command line, execute <code>xcode-select --install</code> to install the command-line tools.</li>
+<li>Install <a href="http://brew.sh">Homebrew</a></li>
+<li>Open the Terminal application and run <code>java</code>. Download and install the JDK when prompted.</li>
+<li>Download and install the <a href="http://developer.android.com/sdk/index.html">ADT Bundle</a>. <em>(Note: This is old; now Android Studio is the thing to download and install.)</em></li>
+<li>After installation, launch the Eclipse application. Choose the <em>Android SDK Manager</em> menu item, and install/update everything in these subtrees:<ul>
+<li>Tools</li>
+<li>Android 4.3 (or whatever the newest API level is)</li>
+<li>Extras</li>
+</ul>
+</li>
+<li>Choose <em>Help &gt; Install New Software...</em>. Click the <em>Add...</em> button. Add this repository and install the Eclipse&nbsp;Color&nbsp;Theme plugin:<ul>
+<li>Name: Eclipse Color Theme Update Site</li>
+<li>Location: <code>http://eclipse-color-theme.github.io/update/</code></li>
+</ul>
+</li>
+<li>Download and install latest the HAXM driver from <a href="https://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager">https://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager</a>. (If that link is broken, go to <a href="https://software.intel.com/en-us/android/">https://software.intel.com/en-us/android/</a> and look for a HAXM download link.)</li>
+<li>Set up <code>~/.bashrc</code> to run my shared scripts that are in <code>~/Dropbox/bin</code>.</li>
+<li>Execute this in Terminal: <code>chflags nohidden ~/Library</code></li>
+<li>Set up ssh keys for <a href="https://confluence.atlassian.com/pages/viewpage.action?pageId=270827678">Bitbucket</a> and <a href="https://help.github.com/articles/generating-ssh-keys">GitHub</a>.</li>
+</ol>
+<p>Then to verify everything is ready to go, I use Git to grab the source code for an iOS app, and build it and run it, and then do the same for an Android app.</p>
+<p>(For my Windows setup, see <a href="http://undefinedvalue.com/2013/12/22/setting-windows-my-way">Setting Up Windows, My Way</a>.)</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

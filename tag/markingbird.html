@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - markingbird</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/markingbird-markdown-processor-swift.html">Markingbird: A Markdown Processor for Swift</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-08-18T12:43:35-04:00">
+                Published: Mon 18 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/swift.html">swift</a> <a href="/tag/markingbird.html">markingbird</a> <a href="/tag/markdown.html">markdown</a> <a href="/tag/iosdev.html">iosdev</a> </p>
+</footer><!-- /.post-info --><p><a href="https://github.com/kristopherjohnson/Markingbird">Markingbird</a> is a <a href="http://daringfireball.net/projects/markdown/">Markdown</a> processor written in <a href="https://developer.apple.com/swift/">Swift</a> for OS X and iOS. It is a translation/port of the <a href="https://code.google.com/p/markdownsharp/">MarkdownSharp</a> processor used by the <a href="http://blog.stackoverflow.com/2009/12/introducing-markdownsharp/">Stack Overflow</a> website.</p>
+<p>(If you have no idea what "Markdown" and "Swift" are, you can just stop reading now.)
+<!--break-->
+Repository: <a href="https://github.com/kristopherjohnson/Markingbird">https://github.com/kristopherjohnson/Markingbird</a></p>
+<p>See the <a href="https://github.com/kristopherjohnson/Markingbird/blob/master/README.md">README</a> for details on how to use it, and some of the details of how the C# code was translated to Swift.</p>
+<p>I can't claim much credit for this project. It is really just a line-by-line translation of <a href="http://blog.stackoverflow.com/2009/12/introducing-markdownsharp/">Jeff Atwood's C# code</a> into Swift. The result is not very pretty, as the C# code is itself based upon translations of Perl and PHP code. I don't recommend this as an example of how to write Swift code, but it does seem to work, and so I hope it is valuable to somebody someday.</p>
+<p>This project was useful to me in that it let me write a lot of Swift code without thinking too much about it. It helped me develop Swift-editing muscle memory, quick scanning and correction of Swift syntax issues, and interpretation of the Swift compiler's not-always-helpful error messages. I thought about giving up a few times, as manual translation of 1,800 lines of C# and regular expressions wasn't a great way to spend nights and weekends, but I just couldn't leave it partially finished.</p>
+<p>I did the translation by just copying and pasting the C# code into Xcode, and then fixing whatever was wrong. This was a real workout for Xcode 6 beta 5, as the SourceKitService or Xcode itself would often crash or lock up when it encountered C# code.</p>
+<p>The most annoying and fiddly part of the process was translating the C# regular-expression strings into Swift. It would be nice if Swift had a "raw" string literal like other languages do, but it doesn't, so I manually transformed each regular expression into a Swift/NSRegularExpression-compatible form. Sublime Text's multiple-selection feature was really helpful for this. I probably could have written some sort of a script to automate the translations, but actually looking at every line was valuable in finding edge cases.</p>
+<p>I also discovered a few differences between .NET regular expressions and Cocoa regular expressions. For example, in .NET you can use <code>[ ]</code> (a single space between square brackets) to mean a single space, but <code>NSRegularExpression</code> won't accept this, so I had to use <code>\\p{Z}</code> instead. Also, if a regular expression pattern ends with a <code>|</code> character, .NET apparently ignores it, but <code>NSRegularExpression</code> just lets it match empty strings.</p>
+<p>Some of the messiest code that I wrote myself (rather than simply translating) is code that manipulates individual characters and substrings. Swift's <code>String</code> type can make this difficult, due to its extensive Unicode support, so I found myself going back and forth between using <code>String</code> and <code>NSString</code> for string manipulation. The automatic bridging between those two types provided by Swift makes it pretty easy, but it would be nice if somebody made a library of utility functions for dealing with <code>String</code>. (BTW, I strongly recommend that all Swift programmers read Ole Begemann's <a href="http://oleb.net/blog/2014/07/swift-strings/">Strings in Swift</a> article to find out what's going on with <code>String</code>.)</p>
+<p>As of now, the <code>SimpleTests</code> test suite from MarkdownSharp works. I plan to port the remaining unit tests from MarkdownSharp, and add a few tests of my own. There are also a few TODOs left in the code that need to be addressed.</p>
+<p>I make no promises about the robustness or performance of Markingbird. If you find problems, please submit issues and pull requests via GitHub.</p>
+<p>I know some people will want to tell me that using regular expressions for this is bad, and this should be a real parser written in pure Swift. I agree completely: let me know when you have implemented that, and I'll post links to it.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

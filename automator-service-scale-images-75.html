@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Automator Service: Scale Images by 75%</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/automator-service-scale-images-75.html" rel="bookmark"
+           title="Permalink to Automator Service: Scale Images by 75%">Automator Service: Scale Images by 75%</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-06T17:17:14-05:00">
+                Published: Fri 06 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/automator.html">automator</a> </p>
+</footer><!-- /.post-info -->      <p>Here is yet another Snow Leopard Automator service: This one takes an image file and scales it down to 75% of its original size. This is great for screenshots, as all the text is still readable at that size, but you can put it in a web page or document without filling the screen.
+<!--break--></p>
+<h2>How to Use It</h2>
+<ol>
+<li>Select one or more image files in the Finder.</li>
+<li>From the Services menu, choose <strong>Scale Images by 75%</strong></li>
+<li>Look for the scaled images on the desktop.</li>
+</ol>
+<p>For example, to create the Automator screenshot you see at the bottom of this article, I used Shift-Command-4 to select an area of the screen. The screenshot image file was put on my desktop. Then I right-clicked the image file and chose <strong>Scale Images by 75%</strong>, which created a new image file next to the original.</p>
+<h2>How to Create It</h2>
+<p>In Automator, create a new Service that receives selected <strong>image files</strong> in <strong>Finder</strong>.</p>
+<p>Add these actions:</p>
+<ol>
+<li><strong>Copy Finder Items</strong> (Note: you can skip this if you would rather replace the original image file.)</li>
+<li><strong>Scale Images</strong> with <strong>By Percentage</strong> set to 75.</li>
+</ol>
+<p>Save the service as "Scale Images by 75%".</p>
+<p><img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/Scale_Images_by_75_percent.png" alt="Picture"></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

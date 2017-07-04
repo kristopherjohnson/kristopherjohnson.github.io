@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - code</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/changing-background-color-and-section-header-text-color-grouped-style-uitableview.html">Changing Background Color and Section Header Text Color in a Grouped-style UITableView</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2009-08-26T00:10:40-04:00">
+                Published: Wed 26 August 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/programming.html">programming</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/code.html">code</a> <a href="/tag/cocoa.html">cocoa</a> <a href="/tag/iosdev.html">iosdev</a> </p>
+</footer><!-- /.post-info --><p>While working on an iPhone application, I decided I wanted to change the colors of the background and section headers of a <code>UITableView</code> with the <code>UITableViewStyleGrouped</code> style. It took a lot more work than I expected, so I'm sharing what I learned with anyone else who needs to do this.
+<!--break-->
+To review: when you create a table view with the grouped style, each section of the table shows up as a rounded rectangle, section titles are displayed as dark gray text between the rectangles, and the background is gray. I wanted the background to be a pale pastel color, so I looked into how to change that.</p>
+<p>Of course, I first looked at the options in Interface Builder.  A table view has a background color that can be set in IB, but setting that didn't accomplish anything.</p>
+<p>With a bit of Googling, I learned that the way to give a table view a background color is to set the background color to <code>[UIColor clearColor]</code>, and let the color (or image) of whatever is behind the table view show through. So, I set my window's <code>backgroundColor</code> to the color I wanted, and then added this to my table view's controller class:</p>
+<div class="highlight"><pre><span></span><span class="cp">#define TableViewTag 8888</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+
+    <span class="c1">// Make table view&#39;s background transparent to allow window background to be visible</span>
+    <span class="bp">UITableView</span> <span class="o">*</span><span class="n">tableView</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">viewWithTag</span><span class="p">:</span><span class="n">TableViewTag</span><span class="p">];</span>
+    <span class="n">tableView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">clearColor</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>In Interface Builder, I set the tag of the table view to 8888. Another way to do this would be to have an outlet for the table view, but I didn't want to do that in this particular case.</p>
+<p>So, that gave the table the background color I wanted, but I then noticed that the dark-gray section titles didn't look good against that color. I started looking for some sort of "<code>sectionHeaderTextColor</code>" property on the table view, but of course, there was no such thing.</p>
+<p>After more Googling, I concluded that there was no way to just set the color. What you have to do is provide your own custom section header view containing a text label. With that, you can set whatever colors you want. So, I added these implementations of <code>UITableViewDataSource</code> protocol methods to my table view controller:</p>
+<div class="highlight"><pre><span></span><span class="cp">#define SectionHeaderHeight 40</span>
+
+
+<span class="p">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">heightForHeaderInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="nb">self</span> <span class="nl">tableView</span><span class="p">:</span><span class="n">tableView</span> <span class="nl">titleForHeaderInSection</span><span class="p">:</span><span class="n">section</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">SectionHeaderHeight</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// If no section header title, no section header needed</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">viewForHeaderInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span> <span class="p">{</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">sectionTitle</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">tableView</span><span class="p">:</span><span class="n">tableView</span> <span class="nl">titleForHeaderInSection</span><span class="p">:</span><span class="n">section</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sectionTitle</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Create label with section title</span>
+    <span class="bp">UILabel</span> <span class="o">*</span><span class="n">label</span> <span class="o">=</span> <span class="p">[[[</span><span class="bp">UILabel</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">clearColor</span><span class="p">];</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithHue</span><span class="p">:(</span><span class="mf">136.0</span><span class="o">/</span><span class="mf">360.0</span><span class="p">)</span>  <span class="c1">// Slightly bluish green</span>
+                                 <span class="nl">saturation</span><span class="p">:</span><span class="mf">1.0</span>
+                                 <span class="nl">brightness</span><span class="p">:</span><span class="mf">0.60</span>
+                                      <span class="nl">alpha</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">shadowColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">whiteColor</span><span class="p">];</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">shadowOffset</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIFont</span> <span class="nl">boldSystemFontOfSize</span><span class="p">:</span><span class="mi">16</span><span class="p">];</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">sectionTitle</span><span class="p">;</span>
+
+    <span class="c1">// Create header view and add label as a subview</span>
+    <span class="bp">UIView</span> <span class="o">*</span><span class="n">view</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="n">SectionHeaderHeight</span><span class="p">)];</span>
+    <span class="p">[</span><span class="n">view</span> <span class="n">autorelease</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">label</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="n">view</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>I also added a suitable implementation of <code>tableView:titleForHeaderInSection:</code>, and everything worked.</p>
+<p>If there is a simpler way to do this, I'd love to hear about it.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/adding-custom-view-nsstatusitem.html" rel="bookmark"
+                           title="Permalink to Adding a Custom View to an NSStatusItem">Adding a Custom View to an NSStatusItem</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-07-07T11:48:30-04:00">
+                Published: Tue 07 July 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/programming.html">programming</a> <a href="/tag/menubarcountdown.html">menubarcountdown</a> <a href="/tag/code.html">code</a> <a href="/tag/cocoa.html">cocoa</a> <a href="/tag/macdev.html">macdev</a> </p>
+</footer><!-- /.post-info -->                <p>My <a href="http://capablehands.net/menubarcountdown">Menubar Countdown</a> application uses an <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSStatusItem_Class/Reference/Reference.html">NSStatusItem</a> to display itself in the menu bar.  I recently had to add a custom view to that status item, and thought I'd share what I learned about the process here.
+<!--break-->
+A little background: a <em>status item</em> is one of those little thingees you …</p>
+                <a class="readmore" href="/adding-custom-view-nsstatusitem.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/saving-view-photo-iphone-app.html" rel="bookmark"
+                           title="Permalink to Saving a View as a Photo in an iPhone App">Saving a View as a Photo in an iPhone App</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-01-16T06:52:00-05:00">
+                Published: Fri 16 January 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/code.html">code</a> </p>
+</footer><!-- /.post-info -->                <p>
+For an iPhone app that I'm working on, I want to be able to save the screen image to the Photos album.  My first attempt at this was complicated: I created a color space, a bitmap context, a <tt>CGImage</tt>, and finally a <tt>UIImage</tt>, copying and pasting most of the code …</p>
+                <a class="readmore" href="/saving-view-photo-iphone-app.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

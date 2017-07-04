@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - apache</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/enabling-fastcgi-php-ubuntu.html">Enabling FastCGI for PHP on Ubuntu</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2009-05-02T08:44:35-04:00">
+                Published: Sat 02 May 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/ubuntu.html">ubuntu</a> <a href="/tag/sysadmin.html">sysadmin</a> <a href="/tag/php.html">php</a> <a href="/tag/fastcgi.html">fastcgi</a> <a href="/tag/debian.html">debian</a> <a href="/tag/apache.html">apache</a> <a href="/tag/drupal.html">drupal</a> </p>
+</footer><!-- /.post-info --><p>I'm setting up a <a href="http://en.wikipedia.org/wiki/Virtual_private_server">virtual private server</a>. If all goes well, I'll be moving all my websites from their current shared-hosting arrangements to this VPS.</p>
+<p>I started with a minimal Ubuntu 8.10 image and installed all the LAMP stuff. Things went smoothly until I decided to try to enable FastCGI for Drupal. Googling for things like "ubuntu apache php fastcgi" results in zillions of links to suggested methods, all of which were very complicated and required digging through docs.  I figured there had to be a simple way to do it.</p>
+<p>After a few hours of research, I finally did stumble upon what I wanted.  My problem was that I was googling for "ubuntu", when I should have been googling for "debian".</p>
+<p>The info I needed was here: http://michiel.vanbaak.info/docsphp5fcgi.htm.  Thank you, Michiel&nbsp;van&nbsp;Baak!</p>
+<p>(To those of you saying "But you should really be using <a href="http://en.wikipedia.org/wiki/Nginx">nginx</a> instead of Apache," my response is "Yes, I know. Leave me alone.")</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - node</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/whats-good-tcm-week.html">What's Good on TCM This Week?</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-11-04T22:34:41-04:00">
+                Published: Fri 04 November 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/tcm.html">tcm</a> <a href="/tag/node.html">node</a> <a href="/tag/movies.html">movies</a> </p>
+</footer><!-- /.post-info --><p>I like old movies. In the old days, we had TV stations known as "UHF channels" that showed lots of old movies all night long. But UHF channels are gone, and today all we have is the Turner Classic Movies (TCM) channel and website.</p>
+<p>I like film noir, sci-fi, horror, and westerns. TCM has a lot of these movies, but it also shows a lot of stuff I'm not interested in. I don't like browsing the upcoming schedule via the TCM website or via my cable provider's interface, so I wanted a way to generate a schedule just for me so that I can record good stuff on my DVR, or watch available movies on <a href="http://www.tcm.com/watchtcm/">Watch TCM</a> or my cable provider's on-demand service.</p>
+<p>It turns out that TCM offers a <a href="http://www.tcm.com/tcmws/v1/docs/welcome.html">web services APIs</a> that allow one to retrieve schedule information. So I've whipped up a script that that grabs the schedule for the next week and identifies the movies that match my preferences.</p>
+<p>The result is a web page: <a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a>.</p>
+<p>The page displays the movies coming up during the next week that might be "good" according to my taste. You can click the name of a movie or name of a director, actor, or screenwriter to search the TCM database for more information.</p>
+<p>Your preferences may not match mine. That's OK; if you are a computer person, you might be able to customize my script to find your musicals or romances or screwball comedies or whatever it is you want. It's available on GitHub: <a href="https://github.com/kristopherjohnson/kjtcmws">https://github.com/kristopherjohnson/kjtcmws</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/os-x-automator-service-reformatting-json-text.html" rel="bookmark"
+                           title="Permalink to An OS X Automator Service for Reformatting JSON Text">An OS X Automator Service for Reformatting JSON Text</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-03-01T16:35:11-05:00">
+                Published: Fri 01 March 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/node.html">node</a> <a href="/tag/json.html">json</a> <a href="/tag/automator.html">automator</a> </p>
+</footer><!-- /.post-info -->                <p><strong>Note: This is an old post. I now use jq (<a href="http://stedolan.github.io/jq/">http://stedolan.github.io/jq/</a>) instead of the <code>formatjson</code> Node script described below, and I recommend that you do too.</strong></p>
+<p>I had some JSON files that were not indented consistently. I edit these files by hand, so I wanted a …</p>
+                <a class="readmore" href="/os-x-automator-service-reformatting-json-text.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/nodejs-cheatsheet.html" rel="bookmark"
+                           title="Permalink to Node.js Cheatsheet">Node.js Cheatsheet</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-11-20T15:54:01-05:00">
+                Published: Tue 20 November 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/node.html">node</a> <a href="/tag/javascript.html">javascript</a> <a href="/tag/cheatsheet.html">cheatsheet</a> </p>
+</footer><!-- /.post-info -->                <p>I am learning about <a href="http://nodejs.org">node.js</a>. This is my cheatsheet. It may not be useful to you at all.</p>
+<p>Also see <a href="http://undefinedvalue.com/2011/06/16/my-javascript-cheatsheet">My JavaScript Cheatsheet</a>.
+<!--break--></p>
+<h2>Documentation</h2>
+<ul>
+<li>API Docs: <a href="http://nodejs.org/api/">http://nodejs.org/api/</a></li>
+<li>Debugger: <a href="http://nodejs.org/api/debugger.html">http://nodejs.org/api/debugger.html</a></li>
+<li>Cluster: <a href="http://nodejs.org/docs/latest/api/cluster.html">http://nodejs.org/docs/latest/api/cluster.html</a></li>
+<li><em>Up and Running …</em></li></ul>
+                <a class="readmore" href="/nodejs-cheatsheet.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

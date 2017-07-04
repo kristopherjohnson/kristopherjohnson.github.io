@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Measuring Elapsed Time in C# Methods</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/measuring-elapsed-time-c-methods.html" rel="bookmark"
+           title="Permalink to Measuring Elapsed Time in C# Methods">Measuring Elapsed Time in C# Methods</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-10T01:12:02-05:00">
+                Published: Fri 10 February 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/codesnippet.html">codesnippet</a> <a href="/tag/c.html">c#</a> <a href="/tag/net.html">.NET</a> </p>
+</footer><!-- /.post-info -->      <p>When determining why some damned thing in my .NET programs is taking so damned long, it is useful to be able to look at the elapsed time for various sections of code.  The straightforward way to do this is to create an instance of <code>System.Diagnostics.Stopwatch</code>, start it, do the thing, then stop the <code>Stopwatch</code> and print out the elapsed time.</p>
+<p>But it gets tedious to keep adding those <code>var stopwatch = new Stopwatch(); stopwatch.Start();</code> and <code>stopwatch.Stop(); Print(stopwatch.ElapsedMilliseconds);</code> lines all over the place, and it also makes the code less readable, so I made a little class to simplify things.
+<!--break-->
+Here is the class:</p>
+<div class="highlight"><pre><span></span>public static class Timed
+{
+    /// <span class="nt">&lt;summary&gt;</span>
+    /// Execute action then invoke reporting action with elapsed time
+    /// <span class="nt">&lt;/summary&gt;</span>
+    /// <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;timedAction&quot;</span><span class="nt">&gt;</span>action to be executed and elapsed time measured<span class="nt">&lt;/param&gt;</span>
+    /// <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;reportAction&quot;</span><span class="nt">&gt;</span>action to be executed with the elapsed number of milliseconds passed as a parameter<span class="nt">&lt;/param&gt;</span>
+    /// <span class="nt">&lt;returns&gt;</span>number of milliseconds elapsed during timedAction<span class="nt">&lt;/returns&gt;</span>
+    public static long Execute(Action timedAction, Action<span class="nt">&lt;long&gt;</span> reportAction)
+    {
+        var stopwatch = new System.Diagnostics.Stopwatch();
+
+        stopwatch.Start();
+        timedAction();
+        stopwatch.Stop();
+
+        var elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+
+        if (reportAction != null)
+        {
+            reportAction(elapsedMilliseconds);
+        }
+
+        return elapsedMilliseconds;
+    }
+
+    /// <span class="nt">&lt;summary&gt;</span>
+    /// Invoke specified action and return number of milliseconds elapsed
+    /// <span class="nt">&lt;/summary&gt;</span>
+    /// <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;timedAction&quot;</span><span class="nt">&gt;</span>timed action to be executed<span class="nt">&lt;/param&gt;</span>
+    /// <span class="nt">&lt;returns&gt;</span>number of milliseconds elapsed<span class="nt">&lt;/returns&gt;</span>
+    public static long Execute(Action timedAction)
+    {
+        return Timed.Execute(timedAction, null);
+    }
+}
+</pre></div>
+
+
+<p>So, for example, if one wanted to measure the time used by the loop in this method:</p>
+<div class="highlight"><pre><span></span>public void BlurpAllFrables()
+{
+    foreach (var frable in GetFrables())
+        frable.Blurp();
+}
+</pre></div>
+
+
+<p>one could do this:</p>
+<div class="highlight"><pre><span></span>public void BlurpAllFrables()
+{
+    Timed.Execute(() =&gt;
+    {
+        foreach (var frable in GetFrables())
+            frable.Blurp();
+    },
+    (long millis) =&gt;
+    {
+        Trace.WriteLine(String.Format(&quot;Blurping frables took {0} ms&quot;, millis.ToString()));
+    });
+}
+</pre></div>
+
+
+<p>or one could do this:</p>
+<div class="highlight"><pre><span></span>public void BlurpAllFrables()
+{
+    var millis = Timed.Execute(() =&gt;
+    {
+        foreach (var frable in GetFrables())
+            frable.Blurp();
+    });
+
+    Trace.WriteLine(String.Format(&quot;Blurping frables took {0} ms&quot;, millis.ToString()));
+}
+</pre></div>
+
+
+<p>(Or one could use an actual profiler.)</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

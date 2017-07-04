@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Node.js Cheatsheet</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/nodejs-cheatsheet.html" rel="bookmark"
+           title="Permalink to Node.js Cheatsheet">Node.js Cheatsheet</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-11-20T15:54:01-05:00">
+                Published: Tue 20 November 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/node.html">node</a> <a href="/tag/javascript.html">javascript</a> <a href="/tag/cheatsheet.html">cheatsheet</a> </p>
+</footer><!-- /.post-info -->      <p>I am learning about <a href="http://nodejs.org">node.js</a>. This is my cheatsheet. It may not be useful to you at all.</p>
+<p>Also see <a href="http://undefinedvalue.com/2011/06/16/my-javascript-cheatsheet">My JavaScript Cheatsheet</a>.
+<!--break--></p>
+<h2>Documentation</h2>
+<ul>
+<li>API Docs: <a href="http://nodejs.org/api/">http://nodejs.org/api/</a></li>
+<li>Debugger: <a href="http://nodejs.org/api/debugger.html">http://nodejs.org/api/debugger.html</a></li>
+<li>Cluster: <a href="http://nodejs.org/docs/latest/api/cluster.html">http://nodejs.org/docs/latest/api/cluster.html</a></li>
+<li><em>Up and Running with Node.js</em>: <a href="http://ofps.oreilly.com/titles/9781449398583/">http://ofps.oreilly.com/titles/9781449398583/</a></li>
+<li><em>Async JavaScript: Build More Responsive Apps with Less Code</em> by Trevor Burnham: <a href="http://pragprog.com/book/tbajs/async-javascript">http://pragprog.com/book/tbajs/async-javascript</a></li>
+<li><a href="http://stephensugden.com/middleware_guide/">A short guide to Connect Middleware</a></li>
+</ul>
+<h2>Installation</h2>
+<ul>
+<li>Downloadable installers: http://nodejs.org/download/</li>
+<li>Installing via various package managers: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager</li>
+<li>Source code: https://github.com/joyent/node</li>
+</ul>
+<h2>Debugging</h2>
+<ul>
+<li><a href="http://nodejs.org/api/debugger.html">http://nodejs.org/api/debugger.html</a></li>
+<li><a href="https://github.com/dannycoates/node-inspector">https://github.com/dannycoates/node-inspector</a></li>
+</ul>
+<h2>Utilities</h2>
+<ul>
+<li><a href="https://npmjs.org">npm</a> - package manager for Node</li>
+<li><a href="https://github.com/isaacs/node-supervisor">supervisor</a> - automatically restarts Node-based server when files change</li>
+<li><a href="https://github.com/remy/nodemon">nodemon</a> - automatically restarts Node-based server when files change</li>
+<li><a href="https://github.com/nodejitsu/forever">forever</a> - ensures that a script runs continuously</li>
+<li><a href="http://jfromaniello.github.com/winser/">Winser</a> - runs Node as a Windows service, using <a href="http://nssm.cc">nssm</a></li>
+<li><a href="http://jashkenas.github.com/docco/">docco</a> and <a href="https://github.com/mbrevoort/docco-husky">docco-husky</a> - documentation generator</li>
+<li><a href="https://github.com/dannycoates/node-inspector">node-inspector</a> - browser-based debugging interface</li>
+</ul>
+<h2>Modules</h2>
+<p>These libraries are especially useful (to me, for what I have done):</p>
+<ul>
+<li><a href="http://expressjs.com">Express</a> - web application framework</li>
+<li><a href="http://www.senchalabs.org/connect/">Connect</a> - middleware framework</li>
+<li><a href="http://jade-lang.com">Jade</a> - template engine</li>
+<li><a href="http://socket.io">Socket.IO</a> - support for WebSockets and other connection mechanisms</li>
+<li><a href="https://github.com/mikeal/request">Request</a> - simplified HTTP requests</li>
+<li><a href="https://github.com/Leonidas-from-XIV/node-xml2js">xml2js</a> - simple XML-to-JavaScript converter</li>
+<li><a href="https://github.com/flatiron/nconf">nconf</a> - configuration files</li>
+<li><a href="http://pdfkit.org">PDFKit</a> - PDF generation</li>
+<li><a href="http://backbonejs.org">Backbone</a> - client-side data models, views, UI binding</li>
+<li><a href="http://underscorejs.org/">Underscore</a> - functional programming helper library</li>
+<li><a href="https://github.com/caolan/async">Async.js</a> - asynchronous JavaScript</li>
+<li><a href="https://github.com/kriskowal/q">Q.js</a> - asynchronous promises</li>
+<li><a href="http://visionmedia.github.com/mocha/">Mocha</a> - testing framework</li>
+<li><a href="http://github.com/visionmedia/should.js">should.js</a> - BDD-style assertion library</li>
+<li><a href="http://chaijs.com/">Chai</a> - BDD- and TDD-style assertion library</li>
+</ul>
+<p>See https://npmjs.org for a complete list of all available modules.</p>
+<h2>Creating a New Web App with the Express Framework</h2>
+<p>If you don't already have the Express framework installed, do this:</p>
+<div class="highlight"><pre><span></span>npm install -g express
+</pre></div>
+
+
+<p>To create a new app, do this:</p>
+<div class="highlight"><pre><span></span>express --sessions MyNewApp
+cd MyNewApp
+npm install
+</pre></div>
+
+
+<p>To run the app:</p>
+<div class="highlight"><pre><span></span>cd MyNewApp
+node app
+</pre></div>
+
+
+<p>By default, the app will listen for requests on port 3000, so you can browse to http://locahost:3000/ to view the app. Modify <code>app.js</code> or set the <code>PORT</code> environment variable to use a different port.</p>
+<h2>Snippets</h2>
+<script src="https://gist.github.com/4118742.js?file=nodejs_snippets.js"></script>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

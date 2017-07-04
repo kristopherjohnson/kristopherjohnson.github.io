@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Building Emacs from Source for Mac OS X</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/building-emacs-source-mac-os-x.html" rel="bookmark"
+           title="Permalink to Building Emacs from Source for Mac OS X">Building Emacs from Source for Mac OS X</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-09-12T22:29:05-04:00">
+                Published: Sat 12 September 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/emacs.html">emacs</a> </p>
+</footer><!-- /.post-info -->      <p>There are a few binary Emacs packages for OS X floating around out there, but I always build it myself from the sources. This usually results in an Emacs that works the way I expect, rather than the way some "helpful" distributor thinks it ought to work.</p>
+<p>I'll assume you have the developer tools and <code>bzr</code> installed, and know how to open Terminal and type some commands. Here are the commands you need to type:</p>
+<blockquote>
+<p>bzr init-repo --2a emacs/</p>
+<p>cd emacs</p>
+<p>bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk/</p>
+<p>cd trunk</p>
+<p>./configure --with-ns</p>
+<p>make install</p>
+</blockquote>
+<p>When this is complete, you'll end up with <code>Emacs.app</code> in the <code>nextstep</code> subdirectory. You can run <code>Emacs.app</code> from there, or copy it to your Applications directory.</p>
+<hr>
+<p><strong>Update 2010/10/29:</strong> Discovered that the Emacs team now uses Bazaar (<code>bzr</code>) rather than CVS. Updated the instructions accordingly, following advice from http://www.emacswiki.org/emacs/EmacsForMacOS and http://www.emacswiki.org/emacs/BzrForEmacsDevs. Also, found what appears to be a faithful binary distribution at http://emacsformacosx.com/.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - backups</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/backup-restoration-story.html">A Backup Restoration Story</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-12-29T03:17:16-05:00">
+                Published: Mon 29 December 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/rant.html">rant</a> <a href="/tag/crashplan.html">crashplan</a> <a href="/tag/backups.html">backups</a> </p>
+</footer><!-- /.post-info --><p>For most of my computing lifetime, I didn't bother with backups. They were too much trouble, and back when it took 20 floppy disks to back up a Mac hard disk, they took too much time. But now with services like <a href="http://en.wikipedia.org/wiki/Time_Machine_(OS_X)">Time Machine</a>, <a href="http://www.code42.com/crashplan/">CrashPlan</a>, <a href="https://www.backblaze.com">Backblaze</a>, <a href="https://www.dropbox.com">Dropbox</a>, and <a href="https://www.google.com/drive/">Google Drive</a>, it is pretty easy to keep redundant copies of everything. I had files in these locations:</p>
+<ul>
+<li>my main laptop</li>
+<li>my old laptop (given to stepson for schoolwork), which still had all my files on it from the time before I got the new laptop</li>
+<li>family iMac, which in addition to having copies of my important files also had an external hard drive that held Time Machine backups for all home computers</li>
+<li>CrashPlan (offsite backup)</li>
+<li>Dropbox (which is not really a "backup", but it means it's easy to maintain multiple copies of important files)</li>
+</ul>
+<p>So I thought I was pretty well backed up, until a few events happened in a short period of time:</p>
+<ol>
+<li>My main laptop's SSD filled up with work-related stuff, so I deleted some big non-work-related stuff (Aperture library, virtual machine images), because I knew I had copies of those things on my old laptop, our iMac, and in CrashPlan offsite backup.</li>
+<li>My old laptop died when the kid dumped a glass of milk on it. So that's one old copy gone, but hey, we have others, right?</li>
+<li>The external hard drive that held our Time Machine backups failed. So I bought a new external drive and reconfigured Time Machine on all our machines to back up to it. That meant we lost our old Time Machine backups, I didn't worry because I knew I had copies of important stuff on the family iMac, and we'd have fresh new Time Machine backups in no time.</li>
+<li>The old family iMac died. We were lucky in that Apple botched the repair, and gave us a brand new machine to replace it, but the downside was that we lost everything that was on that machine's internal hard drive.</li>
+</ol>
+<p>These events all happened within a month. In hindsight, I wish I'd reacted faster, but at the time, I just thought, "It's OK, we still have other backups."</p>
+<p>So, anyway, we get this new iMac, and I figure I can just plug the external Time Machine drive into it and we'll have all our data back. But no: apparently I when I configured all the other family Macs to back themselves up to the family iMac's external drive, I neglected to configure the iMac to back <em>itself</em> up.</p>
+<p>I had to fall back to the CrashPlan backup. I am very glad we had it, because otherwise we would have lost our family photo archives and some other important stuff. But the downside is that it has taken about five days to restore everything from CrashPlan. I don't know whether to blame our ISP or CrashPlan for the slowness of the restoration, but being unable to use that new machine for five days has been annoying.</p>
+<p>CrashPlan's restoration functions suck. When I set up the CrashPlan app on the new iMac, it asked whether I would like to synchronize that new iMac with the old iMac's backup. "Sure, that would be awesome" I thought, and I clicked Yes. Then it took <em>two days</em> for the synchronization to complete, and during that time I couldn't restore anything.</p>
+<p>Then, when synchronization finally completed, I checked the box to restore the entire hard drive and clicked the <em>Restore</em> button. CrashPlan spent a couple of hours counting up how many files that was and how big they were, and then it crashed. I tried again, waited a couple of hours again, and it crashed again. (So you need to have a plan for when CrashPlan crashes.)</p>
+<p>Because it apparently couldn't restore the entire hard drive at once, I selectively restored individual folders (<code>Applications</code>, <code>/Users/kdj</code>, <code>/Users/pebble</code>, etc.). This worked, but again I had to sit at the computer for a long time while CrashPlan counted up all the files, because after selecting something, you can't click <em>Restore</em> until it finishes counting them up.</p>
+<p>And then after restoring, I noticed some files missing, so I had to go back into CrashPlan and play with the options to get it to restore files from the date our old iMac died, and to include deleted/hidden files.</p>
+<p>So, lessons learned:</p>
+<ul>
+<li>Make sure <em>all</em> machines are backing up to Time Machine. Check this every week or so.</li>
+<li>Restoring from CrashPlan sucks. Maybe that's just the nature of restoring a few hundred gigabytes of data over the Internet, but I may look into <a href="https://www.backblaze.com">other options</a> when my annual subscription expires.</li>
+<li>When some link in the backup chain breaks, fix it right away.</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/netgear-readynas-duo-2000-setup-and-review.html" rel="bookmark"
+                           title="Permalink to Netgear ReadyNAS Duo 2000 Setup and Review">Netgear ReadyNAS Duo 2000 Setup and Review</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-08-20T00:40:10-04:00">
+                Published: Thu 20 August 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/sysadmin.html">sysadmin</a> <a href="/tag/review.html">review</a> <a href="/tag/readynas.html">readynas</a> <a href="/tag/netgear.html">netgear</a> <a href="/tag/backups.html">backups</a> </p>
+</footer><!-- /.post-info -->                <p>I have previously written about my <a href="http://undefinedvalue.com/2007/10/26/backups">backup strategy</a>. I've never really worried about backups too much. In the 30 years I've been using computers, I've never lost a hard drive.</p>
+<p>...until last weekend. My wife's MacBook Air was displaying some funny behavior, so I ran Disk Utility on it. Disk …</p>
+                <a class="readmore" href="/netgear-readynas-duo-2000-setup-and-review.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/backups.html" rel="bookmark"
+                           title="Permalink to Backups">Backups</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2007-10-26T11:32:00-04:00">
+                Published: Fri 26 October 2007
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/sysadmin.html">sysadmin</a> <a href="/tag/backups.html">backups</a> </p>
+</footer><!-- /.post-info -->                <p>
+I've never been good at keeping backups.  Back in the good old days, when all my data fit on one floppy disk, I made copies of those, but the first time I had to back up a 20-MB (yes, <i>megabyte</i>) hard drive onto a stack of floppies, I gave up …</p>
+                <a class="readmore" href="/backups.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

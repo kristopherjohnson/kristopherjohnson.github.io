@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>F#'s Pipe-Forward Operator in Swift</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/fs-pipe-forward-operator-swift.html" rel="bookmark"
+           title="Permalink to F#'s Pipe-Forward Operator in Swift">F#'s Pipe-Forward Operator in Swift</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-14T01:09:09-04:00">
+                Published: Mon 14 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/swift.html">swift</a> <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/functionalprogramming.html">functionalprogramming</a> <a href="/tag/fsharp.html">fsharp</a> </p>
+</footer><!-- /.post-info -->      <p><em>Note: At WWDC 2015, Apple announced Swift 2, which includes changes and a new feature called "protocol extensions" that render much of the code below either irrelevant or incorrect. This article applies to Swift 1.x.</em></p>
+<p>Apple's new <a href="https://developer.apple.com/swift/">Swift</a> programming language isn't really a <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming language</a>. However, it does support generic types and functional-programming patterns, so many FP aficionados are implementing their favorite functional idioms and libraries from other programming languages in Swift.</p>
+<p>I've been a functional-programming enthusiast for a couple of decades, and I'm playing with this myself. A feature I like in the <a href="http://en.wikipedia.org/wiki/F_Sharp_(programming_language)">F# programming language</a> is its <a href="http://www.kevinberridge.com/2012/12/neat-f-pipe-forward.html">pipe-forward operator</a>, <code>|&gt;</code>, which helps to write readable functional code. This article explains what that operator is, why you would want to use it, and how to do it in Swift.</p>
+<p>Disclaimer: The code in this article is based upon the versions of the Swift language in Xcode 6.3. Future changes to Swift syntax or its standard library may render all of this incorrect or obsolete.
+<!--break--></p>
+<h2>Life without pipe-forward</h2>
+<p>Before describing pipe-forward, let's look at an example that demonstrates why we might want it. Say we need to write code that takes an array of integers, filters out the odd numbers, sorts the remaining even numbers in descending order, and then renders the result as a string of comma-separated numbers. Using methods of Swift's <a href="https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/Array.html#//apple_ref/doc/uid/TP40014608-CH5-SW1">Array</a> and <a href="https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html#//apple_ref/doc/uid/TP40014608-CH7-SW1">String</a> classes, we could do it like this:</p>
+<div class="highlight"><pre><span></span>let numbers = [67, 83, 4, 99, 22, 18, 21, 24, 23, 2, 86]
+
+let result = &quot;, &quot;.join(numbers.filter { $0 % 2 == 0 }
+                              .sorted { $1 &lt; $0 }
+                              .map { $0.description })
+</pre></div>
+
+
+<p>The value of <code>result</code> is the string <code>"86, 24, 22, 18, 4, 2"</code>.</p>
+<p>That <code>result</code> expression might be a little complicated, but at a glance it is easy to see that it filters the numbers,  sorts them, maps the values to strings, and then uses <code>String.join()</code> to construct the result.</p>
+<p>If you aren't familiar with using <code>map</code> and <code>filter</code> to transform collections, read <a href="http://robnapier.net/maps">the Cocoaphony article</a>.</p>
+<p>Now what if, instead of an <em>array</em> of numbers, we have a <em>sequence</em> of numbers? A sequence doesn't have methods like <code>Array</code> does. Instead we will have to use the <code>filter()</code>, <code>sorted()</code>, and <code>map()</code> free functions provided by the Swift standard library. If we try to write the code as a single expression like we did above, we end up with something like this:</p>
+<div class="highlight"><pre><span></span><span class="x">let seq = SequenceOf(numbers)</span>
+
+<span class="x">let seqResult =</span>
+<span class="x">    &quot;, &quot;.join(map(sorted(filter(seq)</span><span class="cp">{</span><span class="err">$</span><span class="m">0</span> <span class="o">%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span><span class="cp">}</span><span class="x">)</span><span class="cp">{</span><span class="err">$</span><span class="m">1</span> <span class="o">&lt;</span> <span class="err">$</span><span class="m">0</span><span class="cp">}</span><span class="x">)</span><span class="cp">{</span><span class="err">$</span><span class="m">0.d</span><span class="na">escription</span><span class="cp">}</span><span class="x">)</span>
+</pre></div>
+
+
+<p>or like this:</p>
+<div class="highlight"><pre><span></span>let seqResultMultiLine =
+    &quot;, &quot;.join(
+        map(
+            sorted(
+                filter(seq) { $0 % 2 == 0 }
+            ) { $1 &lt; $0 }
+        ) { $0.description })
+</pre></div>
+
+
+<p>That's not very readable, is it? We can see at a glance that <code>filter</code>, <code>map</code>, <code>sorted</code>, and <code>join</code> are being used, but we have to read it inside-out and backwards to follow the order of evaluation and figure out which closure goes with which function call and how the data is flowing through those functions. We probably wouldn't even try to write it as a single expression, and would instead write it as a sequence of intermediate results to make it understandable:</p>
+<div class="highlight"><pre><span></span>let filteredNumbers = filter(seq) { $0 % 2 == 0 }
+let sortedNumbers = sorted(filteredNumbers) { $1 &lt; $0 }
+let numbersAsStrings = map(sortedNumbers) { (n: Int) -&gt; String in n.description }
+let commaSeparatedResult = &quot;, &quot;.join(numbersAsStrings)
+</pre></div>
+
+
+<p>That's easier to understand, but it's noisier than the original <code>Array</code>-based code.</p>
+<h2>Life with pipe-forward</h2>
+<p>Wouldn't it be nice if we could call a function on a value using a postfix notation like we call a method on an object? That is, wouldn't it be nice if we could write something like this?</p>
+<div class="highlight"><pre><span></span>let pipeResult =
+    seq |&gt; filteredWithPredicate { $0 % 2 == 0 }
+        |&gt; sortedByPredicate { $1 &lt; $0 }
+        |&gt; mappedWithTransform { $0.description }
+        |&gt; String.join(&quot;, &quot;)
+</pre></div>
+
+
+<p>We can. That <code>|&gt;</code> operator is called the "pipe-forward" or "forward pipe" operator in F#.</p>
+<p>This:</p>
+<div class="highlight"><pre><span></span>x |&gt; f
+</pre></div>
+
+
+<p>is equivalent to this:</p>
+<div class="highlight"><pre><span></span>f(x)
+</pre></div>
+
+
+<p>and this:</p>
+<div class="highlight"><pre><span></span>x |&gt; f |&gt; g |&gt; h
+</pre></div>
+
+
+<p>is equivalent to this:</p>
+<div class="highlight"><pre><span></span>h(g(f(x)))
+</pre></div>
+
+
+<p>It's just syntactic sugar, but it is often clearer to express a sequence of function calls as a chain read left-to-right/top-to-bottom than as a cluster of nested subexpressions.</p>
+<p>It can be defined as an operator in Swift like this:</p>
+<div class="highlight"><pre><span></span>infix operator |&gt;   { precedence 50 associativity left }
+
+public func |&gt; &lt;T,U&gt;(lhs: T, rhs: T -&gt; U) -&gt; U {
+    return rhs(lhs)
+}
+</pre></div>
+
+
+<p>We have some work to do before we can evaluate <code>pipeResult</code> above with our <code>|&gt;</code> operator. The problem is that the <code>filter()</code>, <code>sorted()</code>, and <code>map()</code> functions provided by the Swift standard library don't have their parameters in the order we need, and they are not written to support <a href="http://en.wikipedia.org/wiki/Partial_application">partial application</a>.  For example, let's look at the first subexpression:</p>
+<div class="highlight"><pre><span></span>seq |&gt; filteredWithPredicate { $0 % 2 == 0 }
+</pre></div>
+
+
+<p>The pipe-forward operator transforms it to this:</p>
+<div class="highlight"><pre><span></span>filteredWithPredicate({ $0 % 2 == 0 })(seq)
+</pre></div>
+
+
+<p>So we need <code>filteredWithPredicate</code> to be a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Declarations.html#//apple_ref/doc/uid/TP40014097-CH34-XID_591">curried function</a> that takes the predicate as the first argument and sequence as second argument. Unfortunately, the library's <code>fillter/sorted/map</code> functions are not curried and are called with the sequence as the first argument and function as second argument.  To make the <code>pipeResult</code> expression compile and run, we need to provide some "adapter functions" that have the necessary signatures:</p>
+<div class="highlight"><pre><span></span>// Curried adapter function for Swift Standard Library&#39;s filter() function
+public func filteredWithPredicate&lt;S : SequenceType&gt;
+    (includeElement: (S.Generator.Element) -&gt; Bool)
+    (source: S)
+    -&gt; [S.Generator.Element]
+{
+    return filter(source, includeElement)
+}
+
+// Curried adapter function for Swift Standard Library&#39;s sorted() function
+public func sortedByPredicate&lt;S : SequenceType&gt;
+    (predicate: (S.Generator.Element, S.Generator.Element) -&gt; Bool)
+    (source: S)
+    -&gt; [S.Generator.Element]
+{
+    return sorted(source, predicate)
+}
+
+// Curried adapter function for Swift Standard Library&#39;s map() function
+public func mappedWithTransform&lt;S: SequenceType, T&gt;
+    (transform: (S.Generator.Element) -&gt; T)
+    (source: S)
+    -&gt; [T]
+{
+    return map(source, transform)
+}
+</pre></div>
+
+
+<p>These adapter declarations may look complicated, but all we did was copy the signatures of the original functions, then curry the parameters and reverse their order.</p>
+<p>Note that we don't need to write an adapter function to use the <code>String.join()</code> method, because instance methods of structs and classes can be used as curried functions. See <a href="http://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/">Ole Begemann's article</a> for more details.</p>
+<p>With those adapter function declarations, the <code>pipeResult</code> expression works as expected. Complete code that can be pasted into a Swift playground is available here: <a href="https://gist.github.com/kristopherjohnson/ed97acf0bbe0013df8af">https://gist.github.com/kristopherjohnson/ed97acf0bbe0013df8af</a></p>
+<p>It might seem like we have done a <em>lot</em> of work just to have a pretty-looking filter-sort-map-reduce expression, but thanks to generic types, all of the above can be reused wherever we need it.  All our data-processing code can look like simple transformation pipelines, and that's worth the effort.</p>
+<p>In Microsoft's Visual Studio, if you are writing F# code and you type <code>|&gt;</code>, the IDE pops up an auto-completion list of all the functions that can be applied to the value on the left, just like typing a <code>.</code> after an object brings up a list of its methods and properties. Xcode can do this too, but without <code>|&gt;</code> being a standard Swift operator, few developers will be able to take advantage of it. If you think <code>|&gt;</code> and functional auto-complete would be a useful addition to Swift and Xcode, you can submit a bug report to Apple requesting it. (You can <a href="http://www.openradar.me/radar?id=5837161337192448">dupe my radar</a>.)</p>
+<h2>Optional chaining</h2>
+<p>What if we have functions that return Optionals, and want to pipe those to functions that take non-Optional values? We can define a couple of operators to handle those cases:</p>
+<div class="highlight"><pre><span></span>infix operator |&gt;!  { precedence 50 associativity left }
+infix operator |&gt;&amp;  { precedence 50 associativity left }
+
+public func |&gt;! &lt;T,U&gt;(lhs: T?, rhs: T -&gt; U) -&gt; U {
+    return rhs(lhs!)
+}
+
+public func |&gt;&amp; &lt;T,U&gt;(lhs: T?, rhs: T -&gt; U) -&gt; U? {
+    return lhs.map(rhs)
+}
+</pre></div>
+
+
+<p>The <code>|&gt;!</code> operator unwraps its left-side argument and passes it to the function on the right. This is safe if we know that the Optional value will never be nil.</p>
+<p>The <code>|&gt;&amp;</code> operator checks whether the left-side argument is <code>nil</code>. If so, the value of the expression is <code>nil</code>. If not, then the Optional is unwrapped and the right-side function is applied to it. (I'd rather name this operator <code>|&gt;?</code>, but Swift doesn't allow the <code>?</code> character in operator names.)  This is the same as just calling <code>Optional.map()</code>, but if we are using a pipeline it is useful to use just pipe operators rather than mixing pipes and method calls.</p>
+<p>Here are some simple usage examples, using the Swift Standard Library's <code>find()</code> function, which returns an <code>Int?</code> which is the index of the searched-for value, or <code>nil</code> if not found:</p>
+<div class="highlight"><pre><span></span>let elements = [2, 4, 6, 8, 10]
+
+func reportIndexOfValue(value: Int)(index: Int) -&gt; String {
+    let message = &quot;Found \(value) at index \(index)&quot;
+    println(message)
+    return message
+}
+
+find(elements, 6) |&gt;! reportIndexOfValue(6)    // &quot;Found 6 at index 2&quot;
+
+find(elements, 3) |&gt;&amp; reportIndexOfValue(3)    // nil
+find(elements, 4) |&gt;&amp; reportIndexOfValue(4)    // {Some &quot;Found 4 at index 1&quot;}
+</pre></div>
+
+
+<h2>Functions with multiple parameters, and tuples</h2>
+<p>It might seem that the pipe-forward operator is only useful when passing an argument to a function that takes a single parameter. However, a Swift function can be applied to a tuple of arguments, so you can use a tuple on the left side of <code>|&gt;</code> and a function taking multiple arguments on the right side.</p>
+<p>In other words, this:</p>
+<div class="highlight"><pre><span></span>(x, y, z) |&gt; f
+</pre></div>
+
+
+<p>is equivalent to this:</p>
+<div class="highlight"><pre><span></span>f(x, y, z)
+</pre></div>
+
+
+<p>For example:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Foundation</span>
+
+<span class="n">func</span> <span class="n">diagonalLength</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">width</span> <span class="o">+</span> <span class="n">height</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">let</span> <span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">diagonalLength</span>                     <span class="o">//</span> <span class="n">result</span> <span class="ow">is</span> <span class="mf">5.0</span>
+
+<span class="n">func</span> <span class="n">multiplyAndDivide</span><span class="p">(</span><span class="n">multiplier1</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">multiplier2</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">divisor</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">multiplier1</span> <span class="o">*</span> <span class="n">multiplier2</span> <span class="o">/</span> <span class="n">divisor</span>
+<span class="p">}</span>
+
+<span class="n">let</span> <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">multiplyAndDivide</span>         <span class="o">//</span> <span class="n">result</span> <span class="ow">is</span> <span class="mf">4.0</span>
+</pre></div>
+
+
+<p>These can be useful in more complex pipeline expressions that require use of tuples as arguments, results, or intermediate values. We can use <a href="https://gist.github.com/kristopherjohnson/04dbc470e17f67f836a2">zip() or zip3()</a> to combine values from other sequences into tuples to be piped into functions.</p>
+<p>You could even do something like this:</p>
+<div class="highlight"><pre><span></span>let evenNumbers = (seq, { $0 % 2 == 0 }) |&gt; filter
+</pre></div>
+
+
+<p>That seems unnecessarily weird in isolation, but it may be useful in the context of a larger pipe expression.</p>
+<h2>For more</h2>
+<p>Martin Fowler's <a href="http://martinfowler.com/articles/collection-pipeline/">Collection Pipeline</a> article is a good overview of the general pattern, with examples in multiple programming languages.</p>
+<p>For more about F#'s pipe-forward operator and related operators, see the "Function Composition and Pipelining" section of this page: <a href="http://msdn.microsoft.com/en-us/library/dd233229.aspx">http://msdn.microsoft.com/en-us/library/dd233229.aspx</a></p>
+<p><a href="https://twitter.com/airspeedswift">@AirspeedSwift</a> has some advanced examples of using pipe-forward with other FP techniques in Swift. See these articles:</p>
+<ul>
+<li><a href="http://airspeedvelocity.net/2014/12/03/a-straw-man-argument-for-more-trying-functional-programming-in-swift/">A straw man argument for trying more functional-style programming in Swift</a></li>
+<li><a href="http://airspeedvelocity.net/2014/12/05/zipwith-pipe-forward-and-treating-functions-like-objects/">zipWith, pipe forward, and treating functions like objects</a></li>
+</ul>
+<h2>Acknowledgements</h2>
+<p>Thanks to <a href="https://twitter.com/gregtitus">Greg Titus</a> and <a href="https://twitter.com/cocoaphony">Rob Napier</a> for assistance and critique.</p>
+<h2>Afterword</h2>
+<p>The above was originally written with an early beta of Swift. As of Xcode 6 beta 4, the Swift standard library provides a <code>lazy()</code> function that transforms a sequence into an object that has lazily evaluated <code>filter()</code> and <code>map()</code> methods, so we could solve the problem like this:</p>
+<div class="highlight"><pre><span></span><span class="x">let lazyResult =</span>
+<span class="x">    &quot;, &quot;.join(lazy(seq).filter(</span><span class="cp">{</span> <span class="err">$</span><span class="m">0</span> <span class="o">%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span> <span class="cp">}</span><span class="x">).array</span>
+<span class="x">                       .sorted(</span><span class="cp">{</span><span class="err">$</span><span class="m">1</span> <span class="o">&lt;</span> <span class="err">$</span><span class="m">0</span><span class="cp">}</span><span class="x">)</span>
+<span class="x">                       .map </span><span class="cp">{</span> <span class="err">$</span><span class="m">0.d</span><span class="na">escription</span> <span class="cp">}</span><span class="x">)</span>
+</pre></div>
+
+
+<p>I still prefer the <code>pipeResult</code> expression. I think it looks more like a data-flow illustration. The lazy version has some excess noise (<code>lazy()</code>, <code>.array</code>), and it may be even more mystifying to non-functional programmers than the pipeline notation is.</p>
+<h2 id="pipeAdapted">Another afterword</h2>
+
+<p>Above, after the definitions of the "adapter functions", I wrote "all we did was copy the signatures of the original functions, then curry the parameters and reverse their order." That seems like something we should be able to do with a higher-level function, right?</p>
+<div class="highlight"><pre><span></span>// Given a function with signature (A, B) -&gt; T, return curried
+// function with signature (B)(A) -&gt; T
+func pipeAdapted&lt;A, B, T&gt;(f: (A, B) -&gt; T) -&gt; (B -&gt; A -&gt; T) {
+    return { b in { a in f(a, b) } }
+}
+
+let pipeAdaptedResult =
+    seq |&gt; pipeAdapted(filter)({ $0 % 2 == 0 })
+        |&gt; pipeAdapted(sorted)({ $1 &lt; $0 })
+        |&gt; pipeAdapted(map)({ $0.description })
+        |&gt; String.join(&quot;, &quot;)
+</pre></div>
+
+
+<p>Here, we use a <code>pipeAdapted()</code> function to transform the standard library's <code>filter</code>, <code>sorted</code>, and <code>map</code> functions into what we need, instead of writing those adapters. If you and your team members are all FP ninjas who don't bat an eye at throwing functions around, then you may prefer this, but my preference is still for the version that uses the adapter functions.</p>
+<p>An alternative that may be a little more palatable to non-FP people is to define another pipe operator that lets us specify a function and predicate, like so:</p>
+<div class="highlight"><pre><span></span>infix operator |&gt;*  { precedence 50 associativity left }
+
+// Transform &quot;x |&gt;* (f, predicate)&quot; to &quot;f(x, predicate)&quot;
+public func |&gt;* &lt;A, B, C, T&gt;(lhs: A, rhs: ((A, (B) -&gt; C) -&gt; T, (B) -&gt; C)) -&gt; T {
+    return (rhs.0)(lhs, rhs.1)
+}
+
+let pipeStarResult =
+    seq |&gt;* (filter, { $0 % 2 == 0 })
+        |&gt;* (sorted, { $1 &lt; $0 })
+        |&gt;* (map, { $0.description })
+        |&gt; String.join(&quot;, &quot;)
+</pre></div>
+
+
+<p>Note that a big problem with either of these approaches is that the Swift compiler takes a very, very, VERY long time to compile them, presumably due to a combinatorial explosion in the type-inferencing mechanism with all those generic types. This may be a temporary issue that will be resolved as the Swift compiler matures, but for now, it's hard to recommend these approaches for general-purpose use.</p>
+<p>We can hope that a future version of Swift will provide better built-in support for curried functions and partial application.</p>
+<p>Finally, one could skip all this "currying" and "adapter" business and use some closures to define ad-hoc anonymous functions that can be applied to sequences in a pipeline:</p>
+<div class="highlight"><pre><span></span>let closuresResult =
+    seq |&gt; { s in filter(s) { $0 % 2 == 0 } }
+        |&gt; { s in sorted(s) { $1 &lt; $0 } }
+        |&gt; { s in map(s) { $0.description } }
+        |&gt; String.join(&quot;, &quot;)
+</pre></div>
+
+
+<p>I still find something like this hard to read, but with more FP-in-Swift experience, it may be as clear as <code>pipeResult</code>. And thankfully, it compiles quickly.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

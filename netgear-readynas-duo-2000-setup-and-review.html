@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Netgear ReadyNAS Duo 2000 Setup and Review</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/netgear-readynas-duo-2000-setup-and-review.html" rel="bookmark"
+           title="Permalink to Netgear ReadyNAS Duo 2000 Setup and Review">Netgear ReadyNAS Duo 2000 Setup and Review</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-08-20T00:40:10-04:00">
+                Published: Thu 20 August 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/sysadmin.html">sysadmin</a> <a href="/tag/review.html">review</a> <a href="/tag/readynas.html">readynas</a> <a href="/tag/netgear.html">netgear</a> <a href="/tag/backups.html">backups</a> </p>
+</footer><!-- /.post-info -->      <p>I have previously written about my <a href="http://undefinedvalue.com/2007/10/26/backups">backup strategy</a>. I've never really worried about backups too much. In the 30 years I've been using computers, I've never lost a hard drive.</p>
+<p>...until last weekend. My wife's MacBook Air was displaying some funny behavior, so I ran Disk Utility on it. Disk Utility said the drive had problems, so I clicked <em>Repair Disk</em>, and it would not boot thereafter. I called Apple, and their expert told me I'd have to erase the drive and reinstall the operating system. We had no backups for that machine. My wife was not happy to lose everything. And of course, it is <em>my</em> fault she had no backups. (I've told her about Time Machine, but she didn't believe it could really be that easy to set up, so she never did.)</p>
+<p>So, better late than never, I decided to get some network storage and start backing up everything to it. A friend was happy with his Netgear ReadyNAS, so I ordered a Netgear ReadyNAS Duo 2000 from Amazon, along with two 1-TB Western Digital Caviar Green hard drives. Total price came out to about $400.</p>
+<p>The ReadyNAS has two drive bays. Most models come with a drive included, but I bought the "bare" one that has no preinstalled drives, assuming that it would be cheaper to buy my own drives. Upon reading the manuals, I immediately hit a problem: the manuals explain how to add a second hard drive to a ReadyNAS that comes with a single drive, but nothing about what to do if you have an empty ReadyNAS.</p>
+<p>Hoping for the best, I installed the two Caviar drives in the NAS, plugged it into the network, plugged it into power, and hit the power button. It turned on, but the slowly blinking LED didn't give me a warm fuzzy feeling.</p>
+<p>I installed the RAIDar software, which one uses to manage the device, and it told me I had bad disks.</p>
+<p>After about half an hour of Googling, registering the product, registering for the Netgear forums, and registering for the ReadyNAS forums (each of which required separate sign-up forms and e-mail confirmations), I finally found a current <a href="http://www.readynas.com/forum/faq.php">ReadyNAS FAQ</a> (after hitting a few old FAQs that were created before my model existed). There was nothing specific about my situation, but I decided I would try the "factory reset". That worked: RAIDar enabled its Setup button, and I was able to initialize everything.</p>
+<p>I was initially worried about the fan noise. When the ReadyNAS boots up, the fans are incredibly loud for something that small. After 30 seconds or so, the noise drops a little, but it was still really loud. A Google search for "readynas loud fan" indicated that lots of users have replaced their ReadyNAS fans, due to the noise. But after the drives got formatted, the fan noise dropped to a barely detectable level. It's not as quiet as my Macs, but it's not loud enough to be annoying.</p>
+<p>It was very easy to set up <a href="http://www.readynas.com/?p=1097">Time Machine with the ReadyNAS</a>. (First thing I did was back up my wife's Air, of course.)</p>
+<p>The ReadyNAS has a lot of other features that I am not yet using. $400 for a backup solution seems a little pricey, when one can buy a 1-TB drive and enclosure for about $100, but having storage available on the network means we're more likely to actually do backups. We'll see how things go.</p>
+<p>A complete description of all the features can be found here: http://www.readynas.com/?p=177</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

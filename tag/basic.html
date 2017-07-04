@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - basic</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/good-old-days-and-tiny-basic.html">The Good Old Days and Tiny BASIC</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-12-21T02:14:03-05:00">
+                Published: Sun 21 December 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/tinybasic.html">tinybasic</a> <a href="/tag/swift.html">swift</a> <a href="/tag/basic.html">basic</a> </p>
+</footer><!-- /.post-info --><p>This week, we learned that <a href="http://www.drdobbs.com/architecture-and-design/farewell-dr-dobbs/240169421"><em>Dr. Dobb's Journal</em> is shutting down after 38 years</a>. Admittedly, I haven't paid much attention to <em>Dr. Dobb's</em> for the past few years, but back when I was a kid who wanted to be a programmer, I anxiously awaited each monthly issue so that I could read every single article multiple times. We didn't have the Internet to give us whatever training we needed whenever we wanted, so magazines like <em>Dr. Dobb's</em> were precious.</p>
+<p>While reminiscing about <em>Dr. Dobb's</em> with other grieving Twitter users, somebody brought up the fact that the first issue was titled <a href="http://www.drdobbs.com/architecture-and-design/sourcecode/dr-dobbs-journal-30/30000144">"Dr. Dobb's Journal of Tiny BASIC Calisthenics &amp; Orthodontia: Running Light Without Overbyte"</a>  (which I think is the coolest magazine title I've ever heard). It started as a xerographed newsletter to tell people about <a href="http://en.wikipedia.org/wiki/Tiny_BASIC"><em>Tiny BASIC</em></a>, a simplified <a href="http://en.wikipedia.org/wiki/BASIC">BASIC programming language</a> interpreter that could run in 2 or 3 kilobytes of memory. That was an important feature back when personal computers had only 4 kilobytes of memory.</p>
+<p>Having just completed an implementation of a <a href="https://github.com/kristopherjohnson/suwaneeforth">Forth programming language interpreter</a> in Apple's new <a href="https://developer.apple.com/swift/">Swift</a> programming language, I got the idea of implementing a Tiny BASIC interpreter in Swift. It didn't make any sense. I didn't want to write any programs in Tiny BASIC. I didn't think anybody else would want to write any programs in Tiny BASIC. There are more important things I could be doing with my free time.</p>
+<p>But, apparently, reimplementing 50-year-old programming languages in Swift is my thing now</p>
+<p>I did it. I call it "Finch", and if you want it, you can find it here:</p>
+<ul>
+<li>https://github.com/kristopherjohnson/FinchBasic</li>
+</ul>
+<p>Useless as it may be, it was an interesting exercise. Most of the Tiny BASIC implementations you find are focused on the original goal: getting a full implementation to fit in a few kilobytes. That isn't an important goal anymore, but I liked the idea of implementing a very-simple programming language. I focused on these goals:</p>
+<ul>
+<li>Use Swift's high-level abstraction features, rather than writing code that looks like C or assembly language.</li>
+<li>Make it easy for new Swift programmers to understand, so it could be useful as a beginner's example or in a tutorial.</li>
+<li>Make it easy for people to hack on to add new features.</li>
+</ul>
+<p>I think I did alright. It's about a thousand lines of code (not counting blank lines and comments), which is smaller than a <a href="http://www.ittybittycomputers.com/IttyBitty/TinyBasic/TinyBasic.c">C-based Tiny BASIC implementation</a> I found, and I don't think I did anything too complicated. I will have to wait and see if anyone else wants to hack on it.</p>
+<p>BASIC was the first programming language I learned. I expressed an interest in programming after attending an IBM open house, and my father brought home a BASIC programming manual. I studied it intently, but there weren't any computers around, so it was a while before I could try out what I had learned. But eventually the Radio Shack at the local mall started selling the <a href="http://en.wikipedia.org/wiki/TRS-80">TRS-80</a>, and I could walk into that store and write my very first program:</p>
+<div class="highlight"><pre><span></span>10 PRINT &quot;TRS-80 SUCKS! &quot;;
+20 GOTO 10
+RUN
+</pre></div>
+
+
+<p>With great power comes great responsibility.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

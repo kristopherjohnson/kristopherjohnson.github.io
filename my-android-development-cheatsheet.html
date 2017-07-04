@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>My Android Development Cheatsheet</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/my-android-development-cheatsheet.html" rel="bookmark"
+           title="Permalink to My Android Development Cheatsheet">My Android Development Cheatsheet</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-02-24T00:10:44-05:00">
+                Published: Fri 24 February 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/cheatsheet.html">cheatsheet</a> <a href="/tag/android.html">android</a> </p>
+</footer><!-- /.post-info -->      <p>If I had my druthers, I'd spend all my time developing mobile apps. I've always been fascinated with pocket-sized computers, and have owned many through the years. Unfortunately, for most of my life such devices have been little more than toys, and so I've had to focus my expertise on writing code for "real computers".</p>
+<p>This is true even now, during the explosion of smartphone and tablet usage. I'm one of those dinosaurs who knows how to use C, C++, MFC, ATL, CORBA, UNIX, and other ancient magic, so there are sometimes a few months of old-school development between mobile-development gigs. I write iOS stuff for fun, so I keep those skills sharp, but Android is something I touch only when I'm being paid to do so. Thus, I have to find a way to quickly get back up to speed when the Android work does come.</p>
+<p>This is my little refresher for when I arrive back in Android-land. It may not help you at all.</p>
+<p><strong>WARNING:</strong> The below was written back when I wrote apps that targeted Android 2.x. A lot of it is obsolete with the 4.x API. Someday maybe I'll update this.
+<!--break--></p>
+<h2>References</h2>
+<ul>
+<li><a href="http://developer.android.com/index.html">Android Development Home</a></li>
+<li><a href="http://developer.android.com/guide/index.html">Android Dev Guide</a></li>
+<li><a href="http://developer.android.com/design/index.html">Android Design</a></li>
+<li><a href="http://developer.android.com/reference/packages.html">Android API Reference</a></li>
+<li><a href="http://support.google.com/googleplay/android-developer/">Google Play (formerly Android Market)</a></li>
+</ul>
+<h2>Eclipse</h2>
+<ul>
+<li><a href="http://eclipse.org/downloads/">Downloading Eclipse</a> (get the package for Java developers)</li>
+<li>Note: A new Mac won't have Java the runtime installed. You will be prompted to download and install it when you try to run Eclipse the first time.</li>
+<li><a href="http://developer.android.com/sdk/index.html">Downloading and Installing the SDK</a></li>
+<li>Use Ctrl+Space for "Content Assist" (autocomplete)</li>
+<li>Search -&gt; File... is the only decent multi-file search command. And that's where the multi-file Replace button is hidden.</li>
+<li>Code templates, key bindings, and other settings are saved per-workspace. They can be exported and imported into other workspaces.</li>
+</ul>
+<h2>Android SDK</h2>
+<ul>
+<li>Do <code>android update project --path .</code> to prepare a directory for command-line builds. This will create <code>local.properties</code>. To make a release build, do <code>ant all clean release</code>. </li>
+<li><a href="http://developer.android.com/guide/publishing/app-signing.html">App Signing</a>. To share a <code>debug.keystore</code> between developers, create it like this: <code>keytool -genkey -keypass android -keystore debug.keystore -alias androiddebugkey -storepass android -validity 1000 -dname "CN=Android Debug,O=Android,C=US"</code></li>
+</ul>
+<h2>Compatibility Library</h2>
+<p>A <a href="http://developer.android.com/sdk/compatibility-library.html">compatibility library</a> is available to provide newer API features to older API levels.</p>
+<h2>Application Resources</h2>
+<p>See http://developer.android.com/guide/topics/resources/index.html</p>
+<h2>Styles and Themes</h2>
+<p>Application-specific styles are defined in XML files in the <code>res/values</code> folder of the project. Syntax for style definitions is described here: http://developer.android.com/guide/topics/resources/style-resource.html</p>
+<p>The standard Android style and theme definitions can be found in the <code>platforms/android-N/data/res/values</code> folder in the Android SDK (where <em>N</em> is the platform version).</p>
+<p>All available style properties are listed here: http://developer.android.com/reference/android/R.attr.html</p>
+<p>All available styles are listed here: http://developer.android.com/reference/android/R.style.html</p>
+<p>For more on Styles and Themes: http://developer.android.com/guide/topics/ui/themes.html</p>
+<h2>Assets</h2>
+<p>These tools help generate assets for Android apps:</p>
+<ul>
+<li>Android Asset Studio: <a href="http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html">http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html</a></li>
+<li>ActoinBar Style Generator: <a href="http://actionbarstylegenerator.com/">http://actionbarstylegenerator.com/</a></li>
+<li>Android Holo Colors: <a href="http://android-holo-colors.com">http://android-holo-colors.com</a></li>
+</ul>
+<h2>Activity Lifecycle</h2>
+<p>Activities exist in one of three states:</p>
+<ul>
+<li>Resumed (or Running): activity is in foreground and has user focus</li>
+<li>Paused: another activity is in the foreground and has focus, but this activity is still visible</li>
+<li>Stopped: activity is completely obscured, but still maintains state</li>
+</ul>
+<p>Lifecycle callbacks:</p>
+<ul>
+<li><code>onCreate()</code> - followed by <code>onStart()</code></li>
+<li><code>onRestart()</code> - followed by <code>onStart()</code></li>
+<li><code>onStart()</code><ul>
+<li><code>onResume()</code> - followed by <code>onPause()</code></li>
+<li><code>onPause()</code> - followed by <code>onResume()</code> or <code>onStop()</code></li>
+</ul>
+</li>
+<li><code>onStop()</code> - followed by <code>onDestroy()</code> or <code>onRestart()</code></li>
+<li><code>onDestroy()</code> - final call</li>
+</ul>
+<p>Activity is killable after <code>onPause()</code>, <code>onStop()</code>, or <code>onDestroy()</code>. (Only <code>onPause()</code> is "guaranteed" to be called.)</p>
+<p>When Activity A starts Activity B:</p>
+<ol>
+<li>A's <code>onPause()</code> method executes</li>
+<li>B's <code>onCreate()</code>, <code>onStart()</code>, and <code>onResume()</code> methods execute.</li>
+<li>If A is no longer visible, its <code>onStop()</code> method executes</li>
+</ol>
+<p><code>onSaveInstanceState(Bundle)</code> will be called if an activity may be killed. If called, it will be called before <code>onStop()</code>, but there are no guarantees about whether it will occur before or after <code>onPause()</code>. Bundle will be passed to <code>onCreate(Bundle)</code> and <code>onRestoreInstanceState(Bundle)</code> if activity is recreated. By default, this mechanism saves/restores states of all views in the hierarchy, as long as each widget has an ID.</p>
+<h2>Fragments and Loaders</h2>
+<p>See <a href="http://developer.android.com/guide/topics/fundamentals/fragments.html">Fragments</a> and <a href="http://developer.android.com/guide/topics/fundamentals/loaders.html">Loaders</a>. Also see http://android-developers.blogspot.com/2011/02/android-30-fragments-api.html.</p>
+<p>The compatibility library has support for fragments and loaders. Need to derive class from <a href="http://developer.android.com/reference/android/support/v4/app/FragmentActivity.html">FragmentActivity</a> and use <code>getSupportFragmentManager()</code> and <code>getSupportLoaderManager()</code>.</p>
+<h2>Menus</h2>
+<p>For basic implementation of menu triggered by MENU button or action bar, override <code>onCreateOptionsMenu()</code> and <code>onOptionsItemSelected()</code>.</p>
+<p>To change options menu after creation, override <code>onPrepareOptionsMenu()</code>. On Android 3.0+, need to call <code>invalidateOptionsMenu()</code> to force system to call <code>onPrepareOptionsMenu()</code>.</p>
+<p>To create context menu for a view, call <code>registerForContextMenu()</code>, then implement <code>onCreateContextMenu()</code> and <code>onContextItemSelected()</code>.</p>
+<p>More about menus here: http://developer.android.com/guide/topics/ui/menus.html</p>
+<h2>Dialogs</h2>
+<p>Override <code>onCreateDialog(int)</code> and maybe <code>onPrepareDialog(int, Dialog)</code>. Use the <code>AlertDialog</code>, <code>ProgressDialog</code>, <code>DatePickerDialog</code>, or <code>TimePickerDialog</code> classes, or create custom dialog.</p>
+<p>Call <code>showDialog(int)</code> to display the dialog. Call Dialog's <code>dismiss()</code> or activity's <code>dismissDialog(int)</code> to close it. Implement <code>DialogInterface.OnDismissListener</code> and/or <code>DialogInterface.OnCancelListener</code> for notification.</p>
+<p>Consider using new fragments API for dialogs.</p>
+<h2>ListView and ListActivity</h2>
+<ul>
+<li><a href="http://developer.android.com/reference/android/app/ListActivity.html">ListActivity</a></li>
+<li><a href="http://developer.android.com/reference/android/widget/ListView.html">ListView</a></li>
+<li><a href="http://developer.android.com/reference/android/widget/ListAdapter.html">ListAdapter</a></li>
+<li><a href="http://developer.android.com/resources/tutorials/views/hello-listview.html">Hello, ListView tutorial</a></li>
+</ul>
+<p><a href="http://developer.android.com/reference/android/R.layout.html">R.layout</a> lists standard list item layouts.</p>
+<p><a href="http://github.com/commonsguy/cwac-merge">CWAC MergeAdapter</a> makes it easy to bind list items to different kinds of data.</p>
+<p>Call adapter's <code>notifyDataSetChanged()</code> method when data changes, to force views and observers to update.</p>
+<h2>Tabs</h2>
+<p>See the <a href="http://developer.android.com/resources/tutorials/views/hello-tabwidget.html">Tab Layout tutorial</a></p>
+<p>Note that newer Android apps should use the ActionBar API rather than old-style tabs.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - osx</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/performing-privileged-operations-os-x-application.html">Performing Privileged Operations in an OS X Application</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-12-10T04:16:27-05:00">
+                Published: Thu 10 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/osx.html">osx</a> </p>
+</footer><!-- /.post-info --><p>I am currently developing an OS X application. The application needs to perform some operations that require root privileges (installing and uninstalling launchd daemons, sending signals to other users' processes, etc.) So I started looking for some documentation about how to do that. I figured it would take a few minutes.</p>
+<p>A day later, I finally think I understand it. The solution isn't complicated, but learning about it was difficult for a few reasons:</p>
+<ul>
+<li>Apple's "Authorization Services Programming Guide" is woefully out of date. It tells you to use <code>AuthorizationExecuteWithPrivileges()</code>, but that has been deprecated since OS X 10.7. It also has links to sample code that doesn't exist anymore. (Apple developer documentation people: It seems many of your docs are way out of date. Pls fix.)</li>
+<li>Apple provides a <a href="https://developer.apple.com/library/mac/samplecode/SMJobBless/Introduction/Intro.html">SMJobBless</a> sample that purports to demonstrate how to use the new <code>SMJobBless()</code> API that replaces <code>AuthorizationExecuteWithPrivileges()</code>. However, while it does indeed install some kind of service that could in theory run as root, the service it installs doesn't do anything, so it is useless as an example. (But you could waste a lot of time with it before you figure that out.)</li>
+<li>A lot of old documentation and sample code for the original low-level XPC API is still floating around, but once you have a clue (which I didn't), you'll just use the high-level <code>NSXPCConnection</code> API.</li>
+</ul>
+<p>So, in the hope I can help others avoid this tortuous path, here is how i would suggest others learn how to do this:</p>
+<ul>
+<li>Study the <a href="https://developer.apple.com/library/mac/samplecode/EvenBetterAuthorizationSample/Listings/Read_Me_About_EvenBetterAuthorizationSample_txt.html">EvenBetterAuthorizationSample</a>, which is up to date (as of OS X 10.11, anyway) and actually does something you can test and copy. Especially study the README file, which provides more information about <code>SMJobBless()</code> than any other Apple document.</li>
+<li>Watch the <a href="https://developer.apple.com/videos/play/wwdc2012-241/">WWDC 2012 Session 241 "Cocoa Interprocess Communication with XPC"</a> video if you are unfamiliar with XPC.</li>
+</ul>
+<p>And here is what I wish somebody could have told me before I started:</p>
+<ul>
+<li>What you will need to do is create a "helper tool" application to perform the privileged operations. This will be a command-line app that creates an XPC listener and handles requests.</li>
+<li>The helper app has to have an info.plist and a launchd plist with some magical keys (see the EvenBetterAuthorizationSample for details)</li>
+<li>The helper app will be embedded in the main app's package.</li>
+<li>The main app will use the <code>AuthorizationCreate()</code> and <code>SMJobBless()</code> functions to authenticate the user and install the helper tool as a privileged launchd service. (This is the point where the system will display a dialog asking the user for an admin username and password.)</li>
+<li>After the helper tool is installed, use <code>-[NSXPCConnection initWithMachServiceName:options:]</code> to connect to the helper tool. This will launch the helper tool on demand, running with root privileges.</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/setting-new-mac-my-way.html" rel="bookmark"
+                           title="Permalink to Setting Up a New Mac, My Way">Setting Up a New Mac, My Way</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-30T18:02:30-04:00">
+                Published: Fri 30 August 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/setup.html">setup</a> <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/installation.html">installation</a> </p>
+</footer><!-- /.post-info -->                <p>Over the past couple of weeks, I've set up a few Mac OS X machines to do development of iOS and Android apps. Doing this used to be an all-day chore, but things like app stores, iCloud, and Dropbox have streamlined the process a lot.</p>
+<p>(I could streamline the process …</p>
+                <a class="readmore" href="/setting-new-mac-my-way.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/solving-symbol-not-found-perlgthrkeyptr-when-running-git-svn-certain-unnamed-operating-sy.html" rel="bookmark"
+                           title="Permalink to Solving "Symbol not found: _Perl_Gthr_key_ptr" When Running git-svn on Certain Unnamed Operating System Beta Versions">Solving "Symbol not found: _Perl_Gthr_key_ptr" When Running git-svn on Certain Unnamed Operating System Beta Versions</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-21T16:32:29-04:00">
+                Published: Wed 21 August 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/perl.html">perl</a> <a href="/tag/osx.html">osx</a> <a href="/tag/git.html">git</a> <a href="/tag/dyld.html">dyld</a> <a href="/tag/bashrc.html">bashrc</a> </p>
+</footer><!-- /.post-info -->                <p>Let's say that you are using a beta version of a new operating system that you can't name because it is covered by a non-disclosure agreement, and you have also installed the newest version of its development tools, which are also covered by NDA, and when you try to run …</p>
+                <a class="readmore" href="/solving-symbol-not-found-perlgthrkeyptr-when-running-git-svn-certain-unnamed-operating-sy.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/mac-software-software-developers.html" rel="bookmark"
+                           title="Permalink to Mac Software for Software Developers">Mac Software for Software Developers</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-05T01:22:23-05:00">
+                Published: Thu 05 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> </p>
+</footer><!-- /.post-info -->                <p>A fellow developer who is getting his first Mac asked me what software he should get. Here is a list of Mac software that I, as a software developer, find useful.
+<!--break-->
+First, let's look at what apps come in the box, at no extra charge:</p>
+<ul>
+<li>Basic contacts, calendar, and email …</li></ul>
+                <a class="readmore" href="/mac-software-software-developers.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/speak-count-words-clipboard-automator-service.html" rel="bookmark"
+                           title="Permalink to "Speak Count of Words on Clipboard" Automator Service">"Speak Count of Words on Clipboard" Automator Service</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-01T23:43:35-05:00">
+                Published: Sun 01 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/snowleopard.html">snowleopard</a> <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/automator.html">automator</a> </p>
+</footer><!-- /.post-info -->                <p>As part of my <a href="http://undefinedvalue.com/2009/11/01/not-quite-nanowrimo">"write a blog entry every day during November"</a> commitment, I considered imposing a minimum word limit for each entry.  I've decided against that, because I don't want to feel pressure to add filler, but before deciding that, I created an Automator service that would help me …</p>
+                <a class="readmore" href="/speak-count-words-clipboard-automator-service.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/little-service-converts-files-epub-format.html" rel="bookmark"
+                           title="Permalink to A Little Service That Converts Files to EPUB Format">A Little Service That Converts Files to EPUB Format</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-10-09T13:26:19-04:00">
+                Published: Fri 09 October 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/service.html">service</a> <a href="/tag/reader.html">reader</a> <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/epub.html">epub</a> <a href="/tag/automator.html">automator</a> <a href="/tag/sonyreader.html">sonyreader</a> </p>
+</footer><!-- /.post-info -->                <!--break-->
+
+<p>My wife recently gave me a nice gift: a <a href="http://en.wikipedia.org/wiki/Sony_Reader">Sony Reader</a> device. She'd been watching me read books using the Kindle for iPhone app, and felt sorry for me because I had to read from such a small screen. The Reader is really nice. (Thanks, honey.)</p>
+<p>Now I'm learning all …</p>
+                <a class="readmore" href="/little-service-converts-files-epub-format.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/building-emacs-source-mac-os-x.html" rel="bookmark"
+                           title="Permalink to Building Emacs from Source for Mac OS X">Building Emacs from Source for Mac OS X</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-09-12T22:29:05-04:00">
+                Published: Sat 12 September 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/emacs.html">emacs</a> </p>
+</footer><!-- /.post-info -->                <p>There are a few binary Emacs packages for OS X floating around out there, but I always build it myself from the sources. This usually results in an Emacs that works the way I expect, rather than the way some "helpful" distributor thinks it ought to work.</p>
+<p>I'll assume you …</p>
+                <a class="readmore" href="/building-emacs-source-mac-os-x.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/we-loves-preciousss.html" rel="bookmark"
+                           title="Permalink to We Loves the Preciousss">We Loves the Preciousss</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-09-02T11:41:21-04:00">
+                Published: Wed 02 September 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/snowleopard.html">snowleopard</a> <a href="/tag/osx.html">osx</a> </p>
+</footer><!-- /.post-info -->                <p>It's not always easy to be an Apple fanboy: read "<a href="http://www.kungfugrippe.com/post/177715198/confessional">In Nomine Jobs, et Woz, et Spiritus Schiller</a>" by Merlin Mann</p>
+<p>I've installed Snow Leopard on my old 13-inch white Macbook (which I don't use for anything important). I've had no problems with it, but I'm going to wait a …</p>
+                <a class="readmore" href="/we-loves-preciousss.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/leopard-impressions.html" rel="bookmark"
+                           title="Permalink to Leopard Impressions">Leopard Impressions</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2007-11-01T11:25:00-04:00">
+                Published: Thu 01 November 2007
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/leopard.html">leopard</a> </p>
+</footer><!-- /.post-info -->                <p>
+Unlike the Windows world, where operating systems upgrades are sources of frustration and loathing, among Mac users upgrades are met with enthusiastic interest. I've been using <a href="http://www.apple.com/macosx">Leopard</a> (Mac OS X 10.5) for a few days now.
+</p>
+
+<p>
+The performance improvements promised by Apple are real.  Everything feels snappier.  Spotlight is …</p>
+                <a class="readmore" href="/leopard-impressions.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

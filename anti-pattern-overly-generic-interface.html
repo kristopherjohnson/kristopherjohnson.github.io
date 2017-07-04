@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Anti-pattern: The Overly Generic Interface</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/anti-pattern-overly-generic-interface.html" rel="bookmark"
+           title="Permalink to Anti-pattern: The Overly Generic Interface">Anti-pattern: The Overly Generic Interface</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-07-04T14:43:25-04:00">
+                Published: Sat 04 July 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/programming.html">programming</a> </p>
+</footer><!-- /.post-info -->      <p>While learning about <a href="http://en.wikipedia.org/wiki/Core_Animation">Core Animation</a>, I was disappointed to find that it is plagued by the anti-pattern that I call the <em>Overly Generic Interface</em>.
+<!--break-->
+The Overly Generic Interface is an interface that provides a very small set of functions, but each function takes parameters that allow one to do a lot of different things.  For example, in C++ an overly generic interface would look like this:</p>
+<div class="highlight"><pre><span></span><span class="c1">// A Value object can hold a string, an integer, a float, an object pointer, etc.</span>
+<span class="kr">class</span> <span class="nx">Value</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="kr">class</span> <span class="nb">Object</span> <span class="p">{</span>
+<span class="kr">public</span><span class="o">:</span>
+    <span class="c1">// Return the value of a named property</span>
+    <span class="nx">Value</span> <span class="nx">getProperty</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">propertyName</span><span class="p">);</span>
+
+    <span class="c1">// Set the value of a named property</span>
+    <span class="k">void</span> <span class="nx">setProperty</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">propertyName</span><span class="p">,</span>
+                     <span class="kr">const</span> <span class="nx">Value</span><span class="o">&amp;</span> <span class="nx">newValue</span><span class="p">);</span>
+
+    <span class="c1">// Set the values of multiple named properties with one call</span>
+    <span class="k">void</span> <span class="nx">setProperties</span><span class="p">(</span><span class="kr">const</span> <span class="nx">map</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&gt;</span> <span class="nx">properties</span><span class="p">);</span>
+
+    <span class="c1">// Invoke a named operation with a parameter list</span>
+    <span class="k">void</span> <span class="nx">performOperation</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">operationName</span><span class="p">,</span>
+                          <span class="kr">const</span> <span class="nx">list</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;&amp;</span> <span class="nx">parameters</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>And application code that uses the interface looks something like this:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span>: <span class="kt">public</span> <span class="nb">Object</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+
+<span class="kr">enum</span> <span class="nx">Gender</span> <span class="p">{</span> <span class="nx">Female</span><span class="p">,</span> <span class="nx">Male</span> <span class="p">};</span>
+
+<span class="c1">// Initialize husband, using the set-one-property-at-a-time interface</span>
+<span class="nx">Person</span> <span class="nx">husband</span><span class="p">;</span>
+<span class="nx">husband</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span> <span class="nx">ValueFromString</span><span class="p">(</span><span class="s2">&quot;Kristopher&quot;</span><span class="p">));</span>
+<span class="nx">husband</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s2">&quot;lastName&quot;</span><span class="p">,</span>  <span class="nx">ValueFromString</span><span class="p">(</span><span class="s2">&quot;Johnson&quot;</span><span class="p">));</span>
+<span class="nx">husband</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span>    <span class="nx">ValueFromInt</span><span class="p">(</span><span class="nx">Male</span><span class="p">));</span>
+
+<span class="c1">// Initialize wife, using the set-all-properties-in-one-operation interface</span>
+<span class="nx">Person</span> <span class="nx">wife</span><span class="p">;</span>
+<span class="nx">map</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&gt;</span> <span class="nx">wifeProperties</span>
+<span class="nx">wifeProperties</span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ValueFromString</span><span class="p">(</span><span class="s2">&quot;Pebble&quot;</span><span class="p">);</span>
+<span class="nx">wifeProperties</span><span class="p">[</span><span class="s2">&quot;lastName&quot;</span><span class="p">]</span>  <span class="o">=</span> <span class="nx">ValueFromString</span><span class="p">(</span><span class="s2">&quot;Johnson&quot;</span><span class="p">);</span>
+<span class="nx">wifeProperties</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">]</span>    <span class="o">=</span> <span class="nx">ValueFromInt</span><span class="p">(</span><span class="nx">Female</span><span class="p">);</span>
+<span class="nx">wife</span><span class="p">.</span><span class="nx">setProperties</span><span class="p">(</span><span class="nx">wifeProperties</span><span class="p">);</span>
+
+<span class="c1">// Invoke the recordMarriage operation</span>
+<span class="nx">list</span> <span class="nx">params</span><span class="p">;</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">ValueFromPointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">husband</span><span class="p">));</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">ValueFromPointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">wife</span><span class="p">));</span>
+<span class="nx">recorder</span><span class="p">.</span><span class="nx">performOperation</span><span class="p">(</span><span class="s2">&quot;recordMarriage&quot;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The supposed benefits (as far as I can tell) of a very generic interface are these:</p>
+<ul>
+<li>Changes to the interface are not needed as new properties and operations are added.</li>
+<li>If the set of properties and operations is huge, you don't need a huge class declaration.</li>
+<li>The set of available properties and operations can be different for different instances of a class.</li>
+<li>Property names and operation names can be "magic" things with powerful behavior.  (For example, maybe the above interface could let you specify something like <code>wifesName = husband.getProperty("findWife#name")</code>.)</li>
+<li>It makes it easy to create tools that bind things to other things, via names and string values.</li>
+<li>There can be performance benefits for the “set multiple properties in a single call” operation.</li>
+<li>There can be performance benefits if it maps directly to a lower-level interface (a device driver, for example).</li>
+</ul>
+<p>However, I hate such interfaces, for these reasons:</p>
+<ul>
+<li>The code is ugly and hard to read.</li>
+<li>The compiler can't check whether you’ve correctly spelled all the property names or whether you have passed the right type of data for each one.  (For example, did you notice that I capitalized the name of the <code>gender</code> property inconsistently in the above example?  If not, how would you have found that bug?)</li>
+<li>The debugger can't easily show you the values of properties in an object, because they are not exposed as simple instance variables.</li>
+<li>Somewhere external to code, you need to maintain documentation about what all the valid names and values are.  And you need to constantly refer to that external documentation, because your IDE won't be able to help you with auto-completion and other time-saving features.</li>
+<li>Magic is not always helpful. The magic names often have a syntax that is different from that of the “host language,” so programmers essentially have another language to learn.</li>
+</ul>
+<p>As an illustration of the first objection, I think the following would be a lot more readable and easier to maintain than the above:</p>
+<div class="highlight"><pre><span></span>Person husband;
+husband.setFirstName(&quot;Kristopher&quot;);
+husband.setLastName(&quot;Johnson&quot;);
+husband.setGender(Male);
+
+Person wife;
+wife.setFirstName(&quot;Pebble&quot;);
+wife.setLastName(&quot;Johnson&quot;);
+wife.setGender(Female);
+
+recorder.recordMarriage(husband, wife);
+</pre></div>
+
+
+<p>Note that the <code>Person</code> class here could be derived from <code>Object</code>, like this:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span>: <span class="kt">public</span> <span class="nb">Object</span> <span class="p">{</span>
+<span class="kr">public</span><span class="o">:</span>
+    <span class="kt">string</span> <span class="nx">getFirstName</span><span class="p">();</span>
+    <span class="k">void</span> <span class="nx">setFirstName</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">newValue</span><span class="p">);</span>
+
+    <span class="kt">string</span> <span class="nx">getLastName</span><span class="p">();</span>
+    <span class="k">void</span> <span class="nx">setLastName</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">newValue</span><span class="p">);</span>
+
+    <span class="c1">// and so on, for all properties</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>and in this case you would have both the generic <code>Object</code> interface and the specific <code>Person</code> interfaces available.  I have no objection to that.</p>
+<p>A generic interface is often useful (e.g., <a href="http://developer.apple.com/documentation/Cocoa/Reference/CocoaBindingsRef/CocoaBindingsRef.html">Cocoa Bindings</a>). My objection is to those API’s that <em>only</em> provide the generic interface. In Core&nbsp;Animation, practically everything is done by creating <code>NSDictionary</code> objects, populating them with obscure keys and objects, and then passing them to the API. There are a few higher-level interfaces available, but they don't provide access to all of Core&nbsp;Animation's functionality, so using the low-level overly generic interface is a necessity.</p>
+<p>Names are important, and therefore names should be explicitly declared.  Otherwise, they are hidden from the compiler, from the IDE, from the debugger, and from programmers who read class declarations.  Hidden names and magic names cause problems.</p>
+<p>When confronted with an Overly Generic Interface, I almost always end up writing some sort of wrapper around it.  It would be nice if I didn't have to do so.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

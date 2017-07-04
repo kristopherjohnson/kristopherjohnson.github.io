@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Setting Up Drupal 6 on Ubuntu 10.10 on EC2</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/setting-drupal-6-ubuntu-1010-ec2.html" rel="bookmark"
+           title="Permalink to Setting Up Drupal 6 on Ubuntu 10.10 on EC2">Setting Up Drupal 6 on Ubuntu 10.10 on EC2</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-11-13T03:14:23-05:00">
+                Published: Sat 13 November 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/ubuntu.html">ubuntu</a> <a href="/tag/ec2.html">ec2</a> <a href="/tag/drupal.html">drupal</a> <a href="/tag/admin.html">admin</a> </p>
+</footer><!-- /.post-info -->      <p>For several years, I've been using pretty-cheap web hosting services for my blog, my <a href="http://capablehands.net">corporate website</a>, and other webby things. However, I'm pretty sure that it would be even cheaper to use <a href="http://aws.amazon.com/ec2/">Amazon EC2</a>, especially as they now offer <a href="http://aws.amazon.com/free/">free usage</a> for a year. I also like the ease with which one can scale EC2 servers up or down, and run temporary instances for a few cents per hour.</p>
+<p>Of course, this means I have to figure out how to move everything from where it is to a new EC2 instance. Most of the stuff I care about is managed in <a href="http://drupal.org/">Drupal</a>, so step one is figuring out how to set up Drupal on an EC2 host.</p>
+<p>I decided to go with <a href="http://www.ubuntu.com">Ubuntu</a> as my OS, because I'm a long-time Debian user and my brushes with Ubuntu have been positive. A little research showed that they had an easy-to-install <code>drupal6</code> package and a few other packages that I plan to use in my plans for world conquest.</p>
+<p>But no matter how easy/straightforward things look, they are always a little bit complicated. Here are my notes for setting things up, which may be helpful to others, and will probably be helpful to me whenever I end up redoing this.</p>
+<p>I assume the reader has basic knowledge of how to connect to servers via SSH, knows a little bit about setting up Apache and Drupal, and is comfortable using a text editor to modify configuration files.
+<!--break--></p>
+<h3>Launch Ubuntu 10.10 Instance on EC2</h3>
+<p>(For more details and help, check out the <a href="https://help.ubuntu.com/community/EC2StartersGuide">EC2StartersGuide</a> in Ubuntu Community Documentation.)</p>
+<ol>
+<li>If you don't already have an Amazon Web Services account, go to http://aws.amazon.com/ and click the Sign Up Now button. After you give them all your info (including credit card info), you may need to wait for authorization to use the services. (I had to wait about 12 hours.) Then create and download your private keys and certificates. (Note: in the rest of this document, I'll use the symbol <code>$EC2_PKEY</code> to mean the full path and name of your stored private key file.)</li>
+<li>Sign in to the <a href="https://console.aws.amazon.com/s3/home">AWS Management Console</a> (which, unfortunately, requires Adobe Flash Player, so you can't do this on an iPad).</li>
+<li>Click the <em>Amazon EC2</em> tab, and click the <em>Launch Instance</em> button</li>
+<li>Choose a suitable AMI. I went with ami-508c7839, which is a 32-bit EBS-based Ubuntu 10.10 instance that runs in the US-East availability zone. For lists of other available Ubuntu AMIs, see the <a href="https://help.ubuntu.com/community/EC2StartersGuide">EC2StartersGuide</a> and the <a href="http://alestic.com/">Alestic</a> site.</li>
+<li>On the <em>Instance Details</em> page of the wizard, set these details:</li>
+<li>Number of instances: 1</li>
+<li>Instance type: Micro (required for Free Tier)</li>
+<li>Availability Zone: No preference</li>
+<li>Launch Instances</li>
+<li>For <em>Advanced Instance Options</em>, accept the defaults.</li>
+<li>Fill in something for the Name tag. You will eventually have a list of instances, so make this descriptive.</li>
+<li>Choose a new key pair or create a new one.</li>
+<li>Choose an existing security group or create a new security group. It is <strong>very important</strong> that you set up a security group that allows access via the SSH port, and you probably want the HTTP port open also.</li>
+<li>Assuming everything looks good, click the <em>Launch Instance</em> button.</li>
+<li>Return to the <em>Amazon EC2</em> tab in the AWS Management Console. You should see your new instance with a status of "Pending". Wait for it to become "Running".</li>
+<li>Select your new instance in the top pane. In the bottom pane, you will see a bunch of info. Select the contents of the <em>Public DNS</em> field. It will look something like this: <code>ec2-XX-XX-XX-XXX.compute-1.amazonaws.com</code>. This is the hostname you will use to connect. In the rest of this guide, I'll denote this address as <code>$EC2_HOST</code>in the rest of this article.</li>
+<li>Verify that you can connect to the new instance. If you have Mac OS X, Linux, or another UNIXy box, you can run SSH like this: <code>ssh -i $EC2_PKEY ubuntu@$EC2_HOST</code>. If you are on Windows, then figure out how to use <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>.  If all is well, you will be greeted with a prompt like this: <code>ubuntu@ip-XX-XX-XXX-XXX:~$</code>.</li>
+</ol>
+<h3>Set Up DNS</h3>
+<p>You <em>could</em> use that Public DNS to connect to your server forever, but you will probably want a real domain name. So, head on over to your favorite registrar and register a new domain, or change an existing domain to point to your new server.</p>
+<p>Amazon recommends using a CNAME (alias) record that points to your EC2 instance's public DNS. However, I've found that the public DNS can change for no apparent reason, so if you expect people to connect to your site, you should use Amazon's Elastic IP service to assign a static IP address to your server. (Note that after assigning the static IP, the public DNS for your server will change to match the static IP, so be sure to refresh your EC2 dashboard instance display after setting up the Elastic IP to get the final DNS or IP address.)</p>
+<p>I'll use the symbol $MY_HOSTNAME in the remainder of this document to denote the domain name that you want to use. (In my case, $MY_HOSTNAME is "happyspacelab.com".)</p>
+<h3>Install Drupal and Related Packages</h3>
+<ol>
+<li>Go back to your SSH command prompt on the EC2 box (reconnecting if necessary).</li>
+<li>Update the package index with this command: <code>sudo apt-get update</code></li>
+<li>Upgrade existing packages with this command: <code>sudo apt-get upgrade</code> (Answer "Yes" when asked whether to continue.)</li>
+<li>Install Drupal and all dependencies (Apache, MySQL, PHP, etc.) with this command: <code>sudo apt-get install drupal6</code></li>
+<li>You will be prompted for various passwords and names. Write down whatever you enter.</li>
+<li>Mail Configuration: No configuration (unless you really want to do this now)</li>
+<li>Database type: mysql</li>
+<li>Default choices for everything else</li>
+<li>Restart Apache with this command: <code>sudo /etc/init.d/apache2 restart</code></li>
+<li>Verify that Apache is working and all the firewalls have port 80 open by visiting your site with a web browser. You can use <code>http://$EC2_HOST</code> or <code>http://$MY_HOSTNAME</code> (assuming enough time has passed for DNS propagation). You should see a web page that says "It Works!".</li>
+<li>Visit the Drupal installation page: <code>http://$EC2_HOST/drupal6/install.php</code> (and then follow normal Drupal installation procedures)</li>
+<li>Click the link to set up in English</li>
+<li>Fill in the fields and click <em>Send and continue</em><ul>
+<li>Note: You will not be able to enable Clean URLs at this time. Don't worry; we'll get to that.</li>
+</ul>
+</li>
+<li>If you have not set up email on the server, you'll get a warning that mail could not be sent. Ignore.
+At this point, you should have a usable Drupal installation, accessible at <code>http://$EC2_HOST/drupal6/</code> or at <code>http://$MY_HOSTNAME/drupal6</code>. Go into the Administration screens and configure the site as desired, or wait until you have finished subsequent steps.</li>
+</ol>
+<h3>Set Up Virtual Host</h3>
+<p>The <code>/drupal6/</code> part of the URL is ugly, so we'll set up virtual hosting so that the Drupal content is available at <code>http://$MY_HOSTNAME/</code>.</p>
+<ol>
+<li>Go back to your SSH command prompt on the EC2 box (reconnecting if necessary).</li>
+<li><code>cd /etc/apache2/sites-available</code></li>
+<li>Create a new file named $MY_HOSTNAME (substituting your actual hostname), with these contents (and remember to start your editor with <code>sudo</code>):
+    &lt;VirtualHost <em>:80&gt;
+        ServerAdmin webmaster@$MY_HOSTNAME.com
+        ServerName $MY_HOSTNAME
+        ServerAlias $MY_HOSTNAME </em>.$MY_HOSTNAME.com
+        DocumentRoot /usr/share/drupal6
+        RewriteEngine On
+        RewriteOptions inherit
+    &lt;/VirtualHost&gt;</li>
+<li><code>sudo a2ensite $MY_HOSTNAME</code></li>
+<li><code>sudo a2enmod rewrite</code></li>
+<li>Open the file <code>/usr/share/drupal6/.htaccess</code> with a text editor (remember <code>sudo</code>), and uncomment the line that says
+    RewriteBase /</li>
+<li><code>sudo /etc/init.d/apache2 restart</code></li>
+<li>Visit <code>http://$MY_HOSTNAME/</code> with a web browser. You should see the Drupal front page, rather than the "It Works!" page.</li>
+</ol>
+<h3>Enable Clean URLs</h3>
+<p>With the virtual hosting stuff set up, you can now enable Clean URLs in Drupal. Log in to the Drupal page as administrator, go to Administrator &gt; Site Configuration &gt; Clean URLs, select <em>Enable</em> and click <em>Save configuration</em>.</p>
+<h3>Set Up Memcached</h3>
+<p>Amazon will be charging us for EBS I/O requests (we only get one million free I/O requests per month with the Free Tier), so let's set up Drupal to use <a href="http://memcached.org/">memcached</a> to reduce the amount of I/O and improve performance.</p>
+<p>This is a simple setup, using a single memcached instance running on the local machine. For more complicated situations, refer to the <a href="http://drupal.org/project/memcache">Drupal memcache module documentation</a>.</p>
+<ol>
+<li><code>sudo apt-get install memcached php5-memcached</code></li>
+<li>In the file <code>/etc/php5/apache2/conf.d/memcached.ini</code>, add this line: <code>memcache.hash_strategy="consistent"</code></li>
+<li>Download and unarchive the <a href="http://drupal.org/project/memcache">Memcache API and Integration</a> module in <code>/usr/share/drupal6/sites/all/modules</code></li>
+<li>In your site's <code>settings.php</code>, add the snippet provided below to set <code>cache_inc</code> and <code>memcache_key_prefix</code>.</li>
+<li><code>sudo /etc/init.d/apache2 reload</code></li>
+<li>Go to Administer &gt; Site building &gt; Modules and enable the Memcache Admin module</li>
+<li>Go to Administer &gt; Site configuration &gt; Memcache and enable "Show memcache statistics at the bottom of each page". After this is enabled, you can scroll down to the bottom of the page to verify that memcache is working and that things are in the cache. (You can then disable this if you find the display annoying.)</li>
+</ol>
+<p>Here is the snippet to be added/modified in <code>settings.php</code>. In place of <code>some_unique_prefix</code>, substitute your site's name or some other value that is unique for your site.</p>
+<div class="highlight"><pre><span></span>$conf = array(
+    &#39;cache_inc&#39; =&gt; &#39;/usr/share/drupal6/sites/all/modules/memcache/memcache.inc&#39;,
+    &#39;memcache_key_prefix&#39; =&gt; &#39;some_unique_prefix&#39;,
+);
+</pre></div>
+
+
+<h3>Set up Alternative PHP Cache</h3>
+<p>As a further measure to reduce the number of I/O requests and improve performance, we'll install the <a href="http://www.php.net/manual/en/intro.apc.php">Alternative PHP Cache</a> (APC).</p>
+<ol>
+<li><code>sudo apt-get install php-apc</code></li>
+<li>Add the following line to <code>/etc/php5/conf.d/apc.ini</code></li>
+</ol>
+<pre>
+apc.stat = 0
+</pre>
+
+<p>You can monitor the performance of APC by installing the <code>apc.php</code> script:</p>
+<ol>
+<li><code>sudo gunzip /usr/share/doc/php-apc/apc.php.gz</code></li>
+<li><code>sudo ln -s /usr/share/doc/php-apc/apc.php /usr/share/drupal6/apc.php</code></li>
+<li>In a web browser, go to <code>http://$MY_HOSTNAME/apc.php</code>. You should see stats for APC.</li>
+</ol>
+<h3>Performance Adjustments</h3>
+<ol>
+<li>Go to Administer &gt; Site configuration &gt; Performance</li>
+<li>Set <em>Caching Mode</em> to "Normal"</li>
+<li>Set <em>Page compression</em> to "Disabled" (Apache is already configured to compress stuff, so there is no need to have Drupal do it.)</li>
+<li>Set <em>Block cache</em>, <em>Optimize CSS files</em>, and <em>Optimize JavaScript files</em> to "Enabled"</li>
+<li>Click the <em>Save configuration</em> button</li>
+</ol>
+<h3>Set Up Drupal Multisite</h3>
+<p>If you are cheap enough to go with free hosting, you'll probably want to go ahead and put multiple Drupal sites, each with their own doman name, on this same host. This is fairly easy to do. Here are a bunch of documents describing how to do it: http://drupal.org/node/43816</p>
+<p>However, here are quick-and-dirty instructions:</p>
+<ol>
+<li>For each site, create a file in <code>/etc/apache2/sites-available</code> like you did in the <strong>Set Up Virtual Host</strong> section, above.  Substitute the appropriate host name in each new file.</li>
+<li><code>cd /usr/share/drupal6/sites</code></li>
+<li>Copy the <code>default</code> site to a directory named $MY_HOSTNAME: <code>sudo cp -a default $MY_HOSTNAME</code></li>
+<li>For each site, you need to create another database. Here's the easy way to do that:</li>
+<li>Run this command: <code>sudo dpkg-reconfigure drupal6</code></li>
+<li>Answer the prompts as follows:<ol>
+<li>Reinstall database: Yes</li>
+<li>Database type: mysql</li>
+<li>Connection method: Unix socket</li>
+<li>Name of the database's administrative user: root</li>
+<li>Password: [root's MySQL password, as you specified when MySQL was installed]</li>
+<li>Username for drupal6: [enter a site-specific user name to own the new database, e.g., "myhostname2"]</li>
+<li>Database name: [enter a site-specific database name, e.g., "myhostname2"] </li>
+</ol>
+</li>
+<li>The new configuration is in the <code>/usr/share/drupal6/sites/default</code> directory. Copy that to host-specific directory: <code>sudo cp -a default myhostname2</code></li>
+<li>The <code>sites\default</code> directory that you just copied has a <code>files</code> directory which is a symlink to <code>/var/lib/drupal6/files</code>. If you don't want all your Drupal instances to put their files in the same place, then do the following:<ol>
+<li><code>sudo rm myhostname2/files</code></li>
+<li><code>sudo mkdir myhostname2/files</code></li>
+<li><code>sudo chown myhostname2/files</code></li>
+<li><code>sudo chgrp www-data myhostname2/files</code></li>
+<li><code>sudo chmod 750 myhostname2/files</code></li>
+</ol>
+</li>
+<li><code>sudo /etc/init.d/apache2 restart</code></li>
+<li>Visit <code>http://myhostname/install.php</code> to complete the installation process for this new Drupal instance.</li>
+<li>Repeat the site-specific steps for setting up memcached (update settings.php, enable the module, etc.), and repeat the Performance Adjustments steps</li>
+</ol>
+<p>For more details on this method of setting up multisite on Ubuntu, see http://drupal.org/node/138889</p>
+<p>After setting up a few sites this way, I found that the daily Drupal cron job would run for some of my sites, but not for others. The cron job is triggered by the file <code>/etc/cron.d/drupal6</code>, which calls <code>/usr/share/drupal6/scripts.cron.sh</code>, but I never figured out exactly why it was working for some sites and other others.</p>
+<p>I was able to get the cron job running for all sites by adding a <code>baseurl.php</code> file to each of the <code>/usr/share/drupal6/sites</code> subdirectories. <code>/usr/share/drupal6/scripts.cron.sh</code> looks at this file, and at <code>settings.php</code>, to determine the appropriate URL for invoking the script that site. The contents of each file should look like this:</p>
+<div class="highlight"><pre><span></span><span class="o">$</span><span class="nt">base_url</span> <span class="o">=</span> <span class="s1">&#39;http://example.com&#39;</span><span class="o">;</span>
+</pre></div>
+
+
+<p>Substitute the appropriate host name for <code>example.com</code>. Note that the URL should <em>not</em> have a slash at the end.</p>
+<h3>Cleaning Up</h3>
+<p>So, you've followed all the instructions above, and you've got a working Drupal server. Congratulations!</p>
+<p>Remember that Amazon is going to be charging you for this instance that you've set up. Even if you stop the instance, Amazon still charges you by the hour. So, if you aren't really ready to use this instance, you'll want to terminate it via the AWS Management Console.</p>
+<p>Note that "terminating" really means "deleting". After terminating the instance, you won't be able to restart it. It's gone forever, unless you take steps to save the image in S3.</p>
+<h3>Odds and Ends</h3>
+<ul>
+<li>The Drupal <a href="http://drupal.org/project/backup_migrate">Backup and Migrate</a> module makes it easy to move Drupal data from your old site to your new site.</li>
+<li>If you don't want to set up your system as a mail server, but do want SMTP to work so that Drupal can send you mail, look at the <a href="http://drupal.org/project/smtp">SMTP Authentication</a> module.</li>
+<li><a href="http://duplicity.nongnu.org/">Duplicity</a> is a nifty tool for making incremental backups to Amazon S3 (or other destinations). See http://www.problogdesign.com/how-to/automatic-amazon-s3-backups-on-ubuntu-debian/.</li>
+</ul>
+<h3>To-Do</h3>
+<p>There are a few little things I want to figure out when I have time. If anyone already knows the answers, I'd appreciate learning about them.</p>
+<ul>
+<li>The Ubuntu AMI is a 15 GB boot image, but I am using less than 2 GB of it. The Amazon Free Tier only allows 10 GB of EBS storage, so I've thought about shrinking the boot image. (On the other hand, 5 GB of excess storage only costs fifty cents per month, so why worry?)</li>
+<li>I want to automatically back up my volume and my MySQL database to S3 periodically.</li>
+</ul>
+<h3>References</h3>
+<p>Here are some links I traversed while figuring this stuff out:</p>
+<ul>
+<li>https://help.ubuntu.com/community/EC2StartersGuide</li>
+<li>http://drupal.org/node/138889</li>
+<li>http://groups.drupal.org/node/8004</li>
+<li>http://awebfactory.com.ar/node/275</li>
+<li>http://www.sunsetlakesoftware.com/2010/09/15/how-run-drupal-amazon-ec2-using-new-micro-instance</li>
+<li>http://www.control-escape.com/web/configuring-apache2-debian.html</li>
+<li>http://drupal.org/project/memcache</li>
+<li>http://fplanque.com/dev/linux/install-apc-php-cache-debian-lenny</li>
+<li>http://www.imminentweb.com/technologies/tune-apc-improve-php-performance</li>
+<li>http://2bits.com/articles/high-php-execution-times-drupal-and-tuning-apc-includeonce-performance.html</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

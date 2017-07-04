@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Want to Develop iOS Apps? Learn Objective-C.</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/want-develop-ios-apps-learn-objective-c.html" rel="bookmark"
+           title="Permalink to Want to Develop iOS Apps? Learn Objective-C.">Want to Develop iOS Apps? Learn Objective-C.</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-06T14:41:42-04:00">
+                Published: Sun 06 May 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/rant.html">rant</a> <a href="/tag/iosdev.html">iosdev</a> </p>
+</footer><!-- /.post-info -->      <p>As an iOS software developer, I am often asked whether "we" (a team I'm working with, or someone I'm advising) should avoid using Objective-C and instead use a higher-level or easier-to-learn programming language. In general, my answer is "No". The rest of this post explains why.
+<!--break--></p>
+<h2>The Problem</h2>
+<p>A bit of background: Apple provides a development tool called "<a href="http://en.wikipedia.org/wiki/Xcode">Xcode</a>" which is what they want developers to use to write iOS apps. Programs are written using a programming language called "Objective-C", which enhances C with Smalltalk-style object-oriented message-passing features. Developers also use a tool called "Interface Builder" to visually lay out user-interface elements. Finally, there is a vast collection of libraries known as the "<a href="https://developer.apple.com/technologies/ios/cocoa-touch.html">Cocoa Touch frameworks</a>" which provide the programming interfaces to all the cool stuff that iPhones and iPads can do. </p>
+<p>While many iOS developers enjoy the nature of Objective-C, many others think it is a terrible language for application development. Writing code in Objective-C seems very complicated to people accustomed to writing applications in C&#x266f;, Java, Ruby, Python, Javascript, and other more modern languages. Many would-be iOS developers don't know C and don't want to learn it. Objective-C developers have to think too much about memory management and other low-level aspects of their applications. Apple is the only company that uses Objective-C, so those who would like to reuse code across different platforms are frustrated due to its non-portability. The Xcode environment has many detractors, and even its fans admit that its bugs and quirks can be maddening.</p>
+<p>I am not going to defend Objective-C or Xcode. Many iOS developers would like to use other programming languages and tools.</p>
+<h2>The Alternatives</h2>
+<p>The alternatives to Objective-C and Xcode can be grouped into two categories. One category is the set of tools that allow developers to write their apps in other programming languages, using some sort of bridge to the Cocoa Touch frameworks, which are then compiled down to native code just like Objective-C is. Examples of this category are <a href="http://xamarin.com/monotouch">MonoTouch</a> (for C&#x266f;) and <a href="http://www.rubymotion.com/">RubyMotion</a> (for Ruby).</p>
+<p>The other category is the set of tools that allow developers to use HTML/CSS/Javascript to write webapp-style code, which is then packaged as something that will run as a native app.  These tools provide some means to access the raw Cocoa Touch frameworks if desired, but the real purpose is to shield developers from them. Examples of these are <a href="http://phonegap.com/">PhoneGap</a> and <a href="http://www.appcelerator.com/">Titanium Appcelerator</a>. </p>
+<h2>My Advice</h2>
+<p>For most developers, my advice is to stay away from these things. Go ahead and evaluate them, and maybe one of them is a good fit for your particular set of circumstances, but if you don't know that you have a good reason to use them, just bite the bullet and learn Objective-C.</p>
+<p>Here's why: Developing a good iOS app requires use of the Cocoa Touch frameworks. Learning how to use those frameworks is what is difficult about iOS development. Learning Objective-C should take a competent programmer only a day or two, but learning the frameworks is a never-ending struggle. Apple's documentation and samples for the frameworks use Objective-C. Most of the third-party libraries and other components you will want to use are in Objective-C. The smart people who answer iOS development questions in online forums use Objective-C.</p>
+<p>if you are using another programming language to interface with all this Objective-C stuff, you end up with these little walls you have to hop over a lot. I'd prefer not to build those walls. <a href="http://merbist.com/2012/05/04/macruby-on-ios-rubymotion-review/">The RubyMotion review by Matt Aimonetti</a> describes how difficult it can be, especially for beginners.</p>
+<p>The only exception to this rule is if you can create a good webapp-style app using PhoneGap or Titanium Appcelerator. The big benefit of this approach is that you can reuse or share HTML/CSS/Javascript code across platforms, so when your iOS app is done you can release versions for Android, Windows Phone, and other platforms with a minimal amount of additional work.</p>
+<p>But when you take this approach, you will end up with a webappish app, not an app that takes advantage of what makes iOS special (or what makes any other platform special). Maybe that's the right solution for you, but you'll have to accept that some users will react by saying "Eww, this feels like a webapp".</p>
+<h2>The Right Tool for the Job</h2>
+<p>In general, it's a good idea to use whatever tools and APIs are officially supported by your vendor. If you are doing iOS development, that means you should use Objective-C and Xcode. If you are doing Android development, use Java and Eclipse with the Android Development Toolkit. If you are doing Windows development, use C&#x266f; and Visual Studio. Going with other solutions might have benefits, but whenever you choose an unsupported development environment, you are taking a big risk. At any time, the vendor might make changes to its APIs or toolchain that break all tools you rely upon.</p>
+<p>Using the right tool for the job is a good idea. Using anything other than Objective-C to develop iOS apps results in more work and more risk. Just go ahead and learn it. You might even like it.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

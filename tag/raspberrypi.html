@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - raspberrypi</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/gforth-interface-wiringpi-library.html">A Gforth Interface to the wiringPi Library</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-01-24T13:50:16-05:00">
+                Published: Sun 24 January 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/wiringpi.html">wiringPi</a> <a href="/tag/raspberrypi.html">raspberrypi</a> <a href="/tag/gforth.html">gforth</a> </p>
+</footer><!-- /.post-info --><p>I recently obtained a <a href="https://www.raspberrypi.org">Raspberry Pi</a>, an <a href="https://www.arduino.cc">Arduino</a>, and a model train set. This should keep me busy and out of trouble for a while.</p>
+<p>My plan is to use the Arduino to read sensors and control the turnout switches on the track, but I think it is easier to use the RPi to do some initial experimentation with driving relays and other electronic components. I did the typical <a href="https://gist.github.com/kristopherjohnson/1f3c0e70899766447dd0">make-an-LED-blink</a> exercise using the <a href="http://wiringpi.com">wiringPi</a> library. It wasn't difficult, but I wished there was an interactive way to play with the <a href="https://www.raspberrypi.org/documentation/usage/gpio/README.md">GPIO</a> pins, rather than going through a cycle of editing, compiling, and executing a C program whenever I wanted to try something.</p>
+<p>Then I remembered <a href="https://en.wikipedia.org/wiki/Forth_%28programming_language%29">Forth</a>. Forth was designed as an interactive language for controlling hardware, and seemed like the perfect solution for me.</p>
+<p>After looking at a few possibilities for Forth-based solutions, I decided to use <a href="https://www.gnu.org/software/gforth/">Gforth</a>, as it provides a straightforward way to call functions in the wiringPi library without the need to build my own Forth.</p>
+<p>Here is my Gforth interface to the wiringPi library: <a href="https://github.com/kristopherjohnson/wiringPi_gforth">https://github.com/kristopherjohnson/wiringPi_gforth</a></p>
+<p>Now, back to the train set...</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Quick-and-Dirty Guide to QUnit</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/quick-and-dirty-guide-qunit.html" rel="bookmark"
+           title="Permalink to Quick-and-Dirty Guide to QUnit">Quick-and-Dirty Guide to QUnit</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-12-06T22:07:52-05:00">
+                Published: Sun 06 December 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/tutorial.html">tutorial</a> <a href="/tag/qunit.html">qunit</a> <a href="/tag/jquery.html">jquery</a> <a href="/tag/javascript.html">javascript</a> <a href="/tag/unittesting.html">unittesting</a> </p>
+</footer><!-- /.post-info -->      <p>I'm playing around with <a href="http://en.wikipedia.org/wiki/Javascript">JavaScript</a> in my spare time, and have started creating a web app. As I usually do, particularly when learning something new, I am using a <a href="http://en.wikipedia.org/wiki/Test-driven_development">test-driven development</a> approach. I looked at a few JavaScript unit-testing frameworks, and decided to go with <a href="http://docs.jquery.com/QUnit">QUnit</a>, the testing framework used by the jQuery project.</p>
+<p>QUnit isn't too hard to set up or use, but my unfamiliarity with JavaScript, jQuery, and related things meant it took a little more work than it should have. A few out-of-date QUnit tutorials on the web made things worse. So, here is a quick-and-dirty QUnit tutorial that might be helpful for others who are the same boat that I was in.
+<!--break--></p>
+<h3>Download Library Files</h3>
+<p>First, we need to download jQuery and the two files that make up QUnit. Here are the links:</p>
+<ul>
+<li><a href="http://jquery.com/">jquery.js</a> (Click the big <strong>Download</strong> button on the right side of that page.)</li>
+<li><a href="http://github.com/jquery/qunit/raw/master/qunit/qunit.js">qunit.js</a></li>
+<li><a href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css">qunit.css</a></li>
+</ul>
+<p><strong>Note:</strong> When you download jQuery, you'll end up with a file called <code>jquery-1.3.2.min.js</code>, or something like that. I rename it to <code>jquery.js</code> to keep things simple.</p>
+<p>We'll put all three files into the directory where the JavaScript code is going to be. Of course, in real life you can put them wherever you want.</p>
+<h3>Production Code to be Tested</h3>
+<p>Next, we will need some JavaScript code to test. Some poor confused souls put their JavaScript code and tests in their HTML files, but we're going to do things The Right Way and put the production code and the test code into their own files.</p>
+<p>Here is our production module, <code>calculator.js</code>, which provides sophisticated mathematical functionality:</p>
+<div class="highlight"><pre><span></span>// calculator.js
+
+var Calculator = function () {
+    this.add      = function (a, b) { return a + b; };
+    this.subtract = function (a, b) { return a - b; };
+    this.multiply = function (a, b) { return a * b; };
+    this.divide   = function (a, b) { return a / b; };
+};
+</pre></div>
+
+
+<h3>Test Cases</h3>
+<p>Here are our tests, in <code>calculator_tests.js</code>:</p>
+<div class="highlight"><pre><span></span>// calculator_tests.js
+
+Calculator.runTests = function () {
+
+    test(&quot;add&quot;, function () {
+        var c = new Calculator();
+        equals(c.add(1, 1), 2, &quot;1 + 1&quot;);
+        equals(c.add(2, 2), 4, &quot;2 + 2&quot;);
+    });
+
+    test(&quot;subtract&quot;, function () {
+        var c = new Calculator();
+        equals(c.subtract(1, 1), 0, &quot;1 - 1&quot;);
+        equals(c.subtract(100, 1), 99, &quot;100 - 1&quot;);
+    });
+
+    test(&quot;multiply&quot;, function () {
+        var c = new Calculator();
+        equals(c.multiply(1, 1), 1, &quot;1 * 1&quot;);
+        equals(c.multiply(2, 2), 4, &quot;2 * 2&quot;);
+        equals(c.multiply(17, 23), 391, &quot;17 * 23&quot;);
+    });
+
+    test(&quot;divide&quot;, function () {
+        var c = new Calculator();
+        equals(c.divide(1, 1), 1, &quot;1 / 1&quot;);
+        equals(c.divide(8, 2), 4, &quot;8 / 2&quot;);
+        equals(c.divide(1, 0), Infinity, &quot;1 / 0&quot;);
+    });
+};
+</pre></div>
+
+
+<p>Here, I've made my test function a member of the module I'm testing, but you can define it however you want.</p>
+<p>See the <a href="http://docs.jquery.com/QUnit#API_documentation">QUnit API documentation</a> for info about the test functions. All you need to know to understand the above is that <code>test(name, function)</code> creates a test case, and <code>equals(actual, expected, message)</code> checks equivalence of results.</p>
+<h3>HTML Test Runner</h3>
+<p>Finally, we need an HTML file, <code>calculator_tests.html</code>, which loads all the modules, runs the tests, and displays the results in a web browser:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+
+<span class="c">&lt;!-- Load jQuery and QUnit --&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;jquery.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;qunit.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;qunit.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- Load modules to be tested --&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;calculator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;calculator_tests.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- This jQuery fragment calls Calculator.runTests() after the document loads --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+$(document).ready(function(){
+    Calculator.runTests();    
+});
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+<span class="c">&lt;!-- QUnit will put the results in the elements here --&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;qunit-header&quot;</span><span class="nt">&gt;</span>Calculator Tests<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;qunit-banner&quot;</span><span class="nt">&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;qunit-userAgent&quot;</span><span class="nt">&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;ol</span> <span class="na">id=</span><span class="s">&quot;qunit-tests&quot;</span><span class="nt">&gt;&lt;/ol&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p>With all those files in place, just open <code>calculator_tests.html</code> in a web browser, and it will show the results. Successful tests will be green, and failed tests will be red. You can click the individual tests to get detailed lists of the assertions.</p>
+<p>So, that's it. Read the QUnit docs, and start writing some tests.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

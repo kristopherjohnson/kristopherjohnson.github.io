@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - gravatar</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/downloading-image-gravatar-using-command-line.html">Downloading an Image from Gravatar Using the Command Line</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-08-13T20:28:08-04:00">
+                Published: Mon 13 August 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/shell.html">shell</a> <a href="/tag/gravatar.html">gravatar</a> <a href="/tag/bash.html">bash</a> </p>
+</footer><!-- /.post-info --><p>I am signed up for the <a href="join.app.net">app.net</a> alpha, and wanted to upload my avatar picture. Unfortunately, I can't find my avatar picture anywhere on my computer.</p>
+<p><a href="http://gravatar.com">Gravatar</a> is a free service that allows you to save your avatar (picture) for use by multiple websites. Gravatar has a copy of the avatar I wanted, so I hoped I could just download it via the same user interface you use to upload images. It turns out that you can't do that: the user interface lets you upload pictures, but does not provide a download option. So I had to figure out how to retrieve my image the way that a Gravatar web client would.</p>
+<p>According to the <a href="http://en.gravatar.com/site/implement/images/">Gravatar documentation</a>, one can get a image for a user by doing an HTTP GET with a URL of this form:</p>
+<div class="highlight"><pre><span></span>http://www.gravatar.com/avatar/HASH
+</pre></div>
+
+
+<p>where <code>HASH</code> is the MD5 hash of the user's email address. You can calculate this using the <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/md5.1.html">md5</a> command-line utility.</p>
+<p>So, here is the complete command line that will calculate my MD5 hash and the retrieve the image using the <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/curl.1.html">curl</a> utility:</p>
+<script src="https://gist.github.com/3343852.js?file=gravatar.sh"></script>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

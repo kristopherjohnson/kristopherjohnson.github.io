@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - appstore</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/distributing-custom-ios-b2b-app.html">Distributing a Custom iOS B2B App</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-07-12T23:22:47-04:00">
+                Published: Thu 12 July 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/b2b.html">b2b</a> <a href="/tag/appstore.html">appstore</a> </p>
+</footer><!-- /.post-info --><p>I recently went through the process of distributing a free <a href="https://developer.apple.com/programs/volume/b2b/">custom B2B app</a> in the App Store. I hit a few snags, and I found very little information about the process, or help in online forums, and Apple Support assistance was very slow. So I'm documenting what I learned here. I hope it helps someone.
+<!--break--></p>
+<h2>Overview</h2>
+<p>A <em>custom B2B app</em> is an iOS app that is distributed through the App Store, but which is only available for purchase by a specific set of customers.  It lets you take advantage of the App Store infrastructure while still restricting distribution of the app.  Thus, it can be an attractive alternative to using the iOS Enterprise Developer Program or ad-hoc deployment to distribute in-house apps.</p>
+<p>There are some significant restrictions:</p>
+<ul>
+<li>The customers must be members of Apple's <a href="http://www.apple.com/business/vpp/">Volume Purchase Program</a> (VPP). To enroll in the program, the customer must have a DUNS number. To purchase apps, the customer must use the VPP portal rather than going through the usual App Store mechanisms. When the customer purchases apps through the VPP, they receive redemption codes when they can then distribute to employees for installation on devices.</li>
+<li>The VPP is currently only available in the US. (It is "coming soon" to Australia, Canada, France, Germany, Italy, Japan, New Zealand, Spain, and United Kingdom.)</li>
+<li>Even though the apps are targeted at the needs of a specific set of customers, they still must go through Apple's review process, which takes time and could result in a rejection.</li>
+</ul>
+<p>There used to be another restriction: B2B apps had to have a minimum price of $9.99, and Apple would take a 30% commission. This may not seem like a significant restriction, but many potential customers would balk at paying a per-download price for a custom app after paying up-front development costs. However, Apple recently changed the rules to allow custom B2B apps to be distributed for free.</p>
+<p>The <a href="https://developer.apple.com/videos/wwdc/2012/">WWDC 2012 session video</a> "Building and Distributing Custom B2B Apps for IOS" is worth watching if you are interested in distributing a B2B app. (Note that you'll need to be a registered iOs developer to access this video.)</p>
+<h2>Prerequisites</h2>
+<p>To distribute a custom B2B app, one must be a member of the <a href="https://developer.apple.com/programs/ios/">iOS Developer Program</a>.</p>
+<p>In addition, one must agree to the iOS Paid Applications agreement, and must provide banking and tax information to Apple. This is true <em>even if your custom B2B apps will be free.</em> (I don't know why this is true, but I suspect it has something to do with the original requirement that B2B apps have a minimum price.)</p>
+<h2>Submission and Distribution</h2>
+<p>In general, submitting a B2B app to the App Store works just like submitting a for-the-public app. You first create the new app in iTunes Connect, then you use Xcode to upload the binary, then you wait for Apple to approve it. Here is what is different:</p>
+<ul>
+<li>You will need the Apple ID associated with each customer's VPP account.</li>
+<li>When creating the app in iTunes Connect, on the page where you set the Availability Date and Price Tier, there is a <em>Custom B2B App</em> checkbox. Check it, and you will be able to enter the customers' Apple IDs.</li>
+<li>When the app is approved for sale, your customers purchase redemption codes from the VPP portal. It will not be available in the App Store app or iTunes.</li>
+</ul>
+<p>Note that you cannot convert a regular app to a B2B app, or vice versa. Once it is created one way, you can't change it. For a B2B app, you can add Apple IDs for additional customers after creation.</p>
+<h2>My Story</h2>
+<p>What follows is my own personal history of trying to get this stuff set up, and the snags we hit ("we" meaning myself, my colleagues and customers).</p>
+<p>The background is that we had initially deployed an app to a customer's employees using ad-hoc distribution to a set of about 20 devices. The customer decided to roll the app out to a few hundred more employees, so we looked at the options, and when Apple announced that VPP apps no longer had a minimum-price restriction, we decided to go down that path.</p>
+<p>My initial attempt to add a new free custom B2B app in iTunes Connect failed. The B2B option was not available on the screen where it was supposed to be. We eventually guessed that we'd need to accept the iOS Paid Applications agreement (even though the app was free). After doing that, then the B2B option was available. I submitted the app, and waited.</p>
+<p>After about a week, the status went from "Waiting for Review" to "in Review", but we immediately received a message stating that the app would require additional review time. I don't know whether all B2B apps require additional review, or if there was something about our app that raised questions, or if it was just because it went into review on the Fourth of July.</p>
+<p>About five days later, the status changed to "Ready for Sale". Mission accomplished, right? No. The customer reported that they could not see the app in their VPP portal. We found information online stating that once an app was accepted, it might take 24 hours before it would be visible. So we waited 24 hours. Customer still couldn't see it.</p>
+<p>After a few days of exchanging email with Apple Support, we finally heard that we needed to supply banking and tax information to Apple (even though the app is free). So we did that, and then the customer could see the app in their VPP portal. Woo-hoo! Now we're done, right?</p>
+<p>No. When the customer attempted to "purchase" the free app, they got an error message saying "An unknown error occurred". So we send more email to Apple Support. Eventually somebody at Apple gives me a phone call, and tells me everything is set up correctly in iTunes Connect and the App Store, so there is nothing more we needed to do, and that the customer needed to contact VPP support to resolve their purchasing issue.</p>
+<p>We told the customer they would need to contact VPP support. The customer reported dissatisfaction with VPP support (the word "sucks" was used). The customer was also annoyed to discover that their <a href="http://en.wikipedia.org/wiki/Mobile_device_management">MDM</a> solution, MaaS360, supports purchase of App Store apps, but does not support purchase of custom B2B apps through the VPP. Thus, when they download redemption codes from the VPP, they have to manually mail them out to employees, rather than relying on the MDM to automatically update the managed devices.</p>
+<p>So, the end result is that the customer didn't love this solution, but they can live with it. If we consider the B2B route with any future customers, we will definitely have some discussions about the pros and cons.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

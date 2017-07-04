@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>iPhone OS Filename Case Sensitivity</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/iphone-os-filename-case-sensitivity.html" rel="bookmark"
+           title="Permalink to iPhone OS Filename Case Sensitivity">iPhone OS Filename Case Sensitivity</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-12T00:51:59-05:00">
+                Published: Thu 12 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/iphone.html">iphone</a> </p>
+</footer><!-- /.post-info -->      <p>I hit a little snag while adding a feature to an iPhone app today. I added this code to load a logo to be displayed in a view:</p>
+<div class="highlight"><pre><span></span><span class="bp">UIImage</span> <span class="o">*</span><span class="n">logoImage</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Icon.png&quot;</span><span class="p">];</span>
+</pre></div>
+
+
+<p>This worked fine in the iPhone Simulator, so I thought I was done. I loaded the app onto my iPod Touch, and it didn't work. Running in the debugger, I discovered that <code>logoImage</code> was being set to <code>nil</code>.</p>
+<p>Why would this not work on a device, when it ran fine in the simulator?</p>
+<p>It turns out that the iPhone OS filesystem is case-sensitive, while the Mac OS X filesystem is not case-sensitive. The actual name of the image file was <code>icon.png</code>, with a lowercase-<em>i</em>, so it didn't match on iPhone OS.</p>
+<p>No big deal, but it's another reminder that you always need to test on an actual device before considering an iPhone development task <em>done</em>.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

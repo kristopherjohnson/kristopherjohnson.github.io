@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - powerpoint</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/applescript-bulk-conversion-powerpoint-documents-keynote.html">AppleScript for Bulk Conversion of PowerPoint Documents to Keynote</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-02-18T01:47:43-05:00">
+                Published: Fri 18 February 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/powerpoint.html">powerpoint</a> <a href="/tag/keynote.html">keynote</a> <a href="/tag/applescript.html">applescript</a> </p>
+</footer><!-- /.post-info --><p>The instructor in one of my MBA-prerequisite classes distributed a set of PowerPoint presentations as course notes. I want to review these on my iPad, so I needed to convert them to Keynote.</p>
+<p>This is pretty easy to do manually on a Mac: Just right-click the PPT file, select <strong>Open With... -&gt; Keynote</strong> from the menu (which reads the PowerPoint file into Keynote), then <strong>File -&gt; Save As...</strong> to store it where you want it. However, I am a programmer, so I would rather spend a few hours figuring out how to write a program to do a repetitive task than simply spend the five minutes needed to do it by hand.</p>
+<p>At first I tried using Apple's Automator utility, which is supposed to make stuff like this easy, but I couldn't figure it out. So, I took the plunge into AppleScript.</p>
+<p>As with every foray I make into AppleScriptLand, I was frustrated, annoyed, saddened, and exhausted by the experience. But I did succeed (if two hours spent futzing with AppleScript can possibly be called a <em>success</em>).</p>
+<p>So, if you have need for a utility for converting a bunch of PowerPoint files to Keynote, open up the AppleScript Editor and copy and paste this script into the window:</p>
+<div class="highlight"><pre><span></span>on open droppedFiles
+    set theDestinationFolder to (choose folder with prompt &quot;Choose destination folder&quot;) as Unicode text
+    repeat with theFile in droppedFiles
+        tell application &quot;Keynote&quot;
+            open theFile
+            set theSlideshow to slideshow 1
+            set theDestinationPath to theDestinationFolder &amp; (name of theSlideshow)
+            save theSlideshow in theDestinationPath
+            close theSlideshow
+        end tell
+    end repeat
+end open
+</pre></div>
+
+
+<p>Click the <strong>Compile</strong> button, and assuming you see no errors, choose <strong>File -&gt; Save</strong>, set the File Format to <strong>Application</strong>, and save it to the desired place with the desired name.</p>
+<p>Then, to convert files, just select them in the Finder and drag them onto the application icon. You will be prompted for a destination folder, then the script will do its thing.</p>
+<p>The script looks pretty simple and straightforward, right? Well, AppleScript is a language that is easy to read, but very, very difficult to write. Every programming language that tries to "look like plain English" is a nightmare to use, because like English, the rules are illogical, arbitrary, and self-contradictory. Every application, like Keynote, has its own commands and object types, and the documentation is poor, so you end up doing a lot of experimentation and hair-pulling. The hardest part of this particular script was figuring out that I needed to add the <code>as Unicode text</code> conversion in order to produce a valid file path.</p>
+<p>(This article is based upon my question and answer in the <a href="http://apple.stackexchange.com/questions/8317/applescript-or-automator-workflow-for-bulk-converting-powerpoint-presentations-to">Ask Different</a> Q&amp;A forum.)</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

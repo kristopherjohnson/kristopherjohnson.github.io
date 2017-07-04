@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Undefined Value - snowleopard</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/automator-service-copy-file-paths-clipboard.html">Automator Service: Copy File Paths to Clipboard</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2009-11-05T09:12:31-05:00">
+                Published: Thu 05 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/snowleopard.html">snowleopard</a> <a href="/tag/automator.html">automator</a> </p>
+</footer><!-- /.post-info --><p>Here's another Snow Leopard Automator-based service: It takes the Finder selection and puts the file paths on the clipboard, for easy pasting into command lines or scripts.
+<!--break--></p>
+<h2>How to Use It</h2>
+<ol>
+<li>In the Finder, select one or more files or folders.</li>
+<li>From the Services menu, select <strong>Copy Files Paths to Clipboard</strong></li>
+<li>Go somewhere and select <strong>Edit -&gt; Paste</strong> to put the full path(s) to the file(s) there.</li>
+</ol>
+<p>For example, if I go to my home folder, select the "Documents" and "Downloads" folders, and then invoke the service, this is what ends up on the clipboard:</p>
+<div class="highlight"><pre><span></span>/Users/kdj/Documents
+/Users/kdj/Downloads
+</pre></div>
+
+
+<h2>How to Make It</h2>
+<p>Open Automator, create a new Service, and set it to receive selected files or folders in the Finder.</p>
+<p>Add these actions:</p>
+<ol>
+<li><strong>Run Shell Script</strong>, with shell <code>/bin/bash</code>, passing input <strong>as arguments</strong>, with this script:<pre><code>
+    for f in "$@"
+    do
+        echo "$f"
+    done
+</code></pre></li>
+<li><strong>Copy to Clipboard</strong></li>
+</ol>
+<p>Save it, and name it "Copy File Paths to Clipboard".</p>
+<p><img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/Copy_File_Paths_to_Clipboard.png" alt="Picture"></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/speak-count-words-clipboard-automator-service.html" rel="bookmark"
+                           title="Permalink to "Speak Count of Words on Clipboard" Automator Service">"Speak Count of Words on Clipboard" Automator Service</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-01T23:43:35-05:00">
+                Published: Sun 01 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/snowleopard.html">snowleopard</a> <a href="/tag/osx.html">osx</a> <a href="/tag/mac.html">mac</a> <a href="/tag/automator.html">automator</a> </p>
+</footer><!-- /.post-info -->                <p>As part of my <a href="http://undefinedvalue.com/2009/11/01/not-quite-nanowrimo">"write a blog entry every day during November"</a> commitment, I considered imposing a minimum word limit for each entry.  I've decided against that, because I don't want to feel pressure to add filler, but before deciding that, I created an Automator service that would help me …</p>
+                <a class="readmore" href="/speak-count-words-clipboard-automator-service.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/we-loves-preciousss.html" rel="bookmark"
+                           title="Permalink to We Loves the Preciousss">We Loves the Preciousss</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-09-02T11:41:21-04:00">
+                Published: Wed 02 September 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/snowleopard.html">snowleopard</a> <a href="/tag/osx.html">osx</a> </p>
+</footer><!-- /.post-info -->                <p>It's not always easy to be an Apple fanboy: read "<a href="http://www.kungfugrippe.com/post/177715198/confessional">In Nomine Jobs, et Woz, et Spiritus Schiller</a>" by Merlin Mann</p>
+<p>I've installed Snow Leopard on my old 13-inch white Macbook (which I don't use for anything important). I've had no problems with it, but I'm going to wait a …</p>
+                <a class="readmore" href="/we-loves-preciousss.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/menubar-countdown-12-works-snow-leopard.html" rel="bookmark"
+                           title="Permalink to Menubar Countdown 1.2 Works with Snow Leopard">Menubar Countdown 1.2 Works with Snow Leopard</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-09-02T02:49:28-04:00">
+                Published: Wed 02 September 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/snowleopard.html">snowleopard</a> <a href="/tag/menubarcountdown.html">menubarcountdown</a> </p>
+</footer><!-- /.post-info -->                <p><a href="http://capablehands.net/menubarcountdown">Menubar Countdown</a>, my Mac OS X countdown timer application, has been tested with 10.6 Snow Leopard, and it seems to work just fine.</p>
+<p>(But if anyone finds otherwise, please let me know.)</p>
+                <a class="readmore" href="/menubar-countdown-12-works-snow-leopard.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

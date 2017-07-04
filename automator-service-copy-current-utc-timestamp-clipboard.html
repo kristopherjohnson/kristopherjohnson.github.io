@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Automator Service: Copy Current UTC Timestamp to Clipboard</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/automator-service-copy-current-utc-timestamp-clipboard.html" rel="bookmark"
+           title="Permalink to Automator Service: Copy Current UTC Timestamp to Clipboard">Automator Service: Copy Current UTC Timestamp to Clipboard</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-10T00:12:31-05:00">
+                Published: Tue 10 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/automator.html">automator</a> </p>
+</footer><!-- /.post-info -->      <p>Yeah, I know, you're probably getting sick of these Automator services. But I really do create a new one of these practically every day to make my life a little easier, and maybe some of these will be useful to others.</p>
+<p>This one puts a UTC timestamp on the clipboard. The timestamp is an <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>-format string like "2009-11-09T13:14:03Z". If you'd like a different format, type "man date" in Terminal to see how to change the output format of the <code>date</code> command in the shell script below.
+<!--break--></p>
+<h2>How to Use It</h2>
+<p>Choose <strong>Copy Current UTC Timestamp to Clipboard</strong> from the Services menu, then paste it into wherever you need it.</p>
+<h2>How to Make it</h2>
+<ol>
+<li>Start up Automator, and create a new Service which takes <strong>no input</strong> in <strong>any application</strong></li>
+<li>Add a <strong>Run Shell Script</strong> action, with shell <strong>/bin/bash</strong> and which passes input <strong>to stdin</strong>. Replace the shell script text with this:<pre>
+<br>/bin/date -u '+%FT%TZ'<br></pre></li>
+<li>Add a <strong>Copy to Clipboard</strong> action.</li>
+<li>Choose <strong>File -&gt; Save</strong> and name it "Copy Current UTC Timestamp to Clipboard"</li>
+</ol>
+<p><img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/Copy_UTC_Timestamp_to_Clipboard.png" alt="Screenshot"></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

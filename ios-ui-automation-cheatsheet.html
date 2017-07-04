@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>iOS UI Automation Cheatsheet</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/ios-ui-automation-cheatsheet.html" rel="bookmark"
+           title="Permalink to iOS UI Automation Cheatsheet">iOS UI Automation Cheatsheet</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-02-22T16:00:46-05:00">
+                Published: Fri 22 February 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/unittesting.html">unittesting</a> <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/cheatsheet.html">cheatsheet</a> </p>
+</footer><!-- /.post-info -->      <p>I have just learned about Apple's UI Automation testing framework. Unfortunately, I don't have an iOS project to work on at the moment, so I am probably going to forget all about it. This is my cheatsheet. It may not help you at all.</p>
+<h2>Tutorials</h2>
+<ul>
+<li><a href="http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation">http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation</a></li>
+<li><a href="http://alexvollmer.com/posts/2010/07/03/working-with-uiautomation/">http://alexvollmer.com/posts/2010/07/03/working-with-uiautomation/</a></li>
+<li><a href="https://developer.apple.com/videos/wwdc/2010/">WWDC 2010 Session 306 - Automating User Interface Testing with Instruments</a></li>
+</ul>
+<h2>Documentation</h2>
+<ul>
+<li><a href="http://developer.apple.com/library/ios/#documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UI Automation JavaScript Reference</a></li>
+<li><a href="http://developer.apple.com/library/ios/#documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/UsingtheAutomationInstrument/UsingtheAutomationInstrument.html">Instruments User Guide: Automating UI Testing</a></li>
+</ul>
+<h2>Tips</h2>
+<ul>
+<li>Use the Tuneup library: <a href="https://github.com/alexvollmer/tuneup_js">https://github.com/alexvollmer/tuneup_js</a></li>
+<li>Assign an <code>accessibilityIdentifier</code> to each UI element.</li>
+<li>Set <code>UIATarget.onAlert</code> to handle externally generated alerts.</li>
+<li>Use <code>UIAElement.logElementTree()</code> to figure out how to navigate the visual hierarchy.</li>
+<li>If a value doesn't change when expected, try adding <code>UIATarget.delay(1);</code></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

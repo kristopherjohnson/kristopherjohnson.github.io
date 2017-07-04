@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>My JavaScript Cheatsheet</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/my-javascript-cheatsheet.html" rel="bookmark"
+           title="Permalink to My JavaScript Cheatsheet">My JavaScript Cheatsheet</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-16T18:49:43-04:00">
+                Published: Thu 16 June 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/jquery.html">jquery</a> <a href="/tag/javascript.html">javascript</a> <a href="/tag/cheatsheet.html">cheatsheet</a> </p>
+</footer><!-- /.post-info -->      <p>A couple of times per year, I have to work on something that requires me to write some <a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a>. When I do, I have to reacquaint myself with the language by skimming through <a href="http://undefinedvalue.com/2009/11/29/javascript-good-parts"><em>JavaScript: The Good Parts</em></a> and finding some good online reference documentation.</p>
+<p>In an effort to reduce the time needed to do this next time, I'm recording the little things that I ran across that I didn't remember or wished I could have found faster. So this is my own personal refresher for JavaScript. It may not help you at all.</p>
+<p>Also see my <a href="http://undefinedvalue.com/2012/11/20/nodejs-cheatsheet">Node.js Cheatsheet</a>.</p>
+<h2>Reference Links</h2>
+<ul>
+<li><a href="http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%203rd%20edition,%20December%201999.pdf">ECMAScript Language Specification, 3rd edition (PDF)</a></li>
+<li><a href="http://docs.webplatform.org/wiki/javascript">webplatform.org: JavaScript</a></li>
+<li>Mozilla Developer Network</li>
+<li><a href="https://developer.mozilla.org/en/JavaScript/Reference">JavaScript Reference</a></li>
+<li><a href="https://developer.mozilla.org/en/JavaScript/Guide">JavaScript Guide</a></li>
+<li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array">Array</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">Date</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error">Error</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function">Function</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Math">Math</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number">Number</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object">Object</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp">RegExp</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String">String</a></li>
+<li>Douglas Crockford: <a href="http://javascript.crockford.com/code.html">Code Conventions</a>, <a href="http://javascript.crockford.com/private.html">Private Members</a></li>
+<li><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/">Essential JavaScript Patterns for Beginners</a></li>
+<li><a href="http://docs.jquery.com/Main_Page">jQuery Docs</a>, <a href="http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery">Getting Started with jQuery</a>, <a href="http://undefinedvalue.com/2009/12/06/quick-and-dirty-guide-qunit">Quick and Dirty Guide to QUnit</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/bb397536.aspx">Microsoft Ajax Library Client Reference</a></li>
+<li><a href="http://www.w3.org/TR/2000/WD-DOM-Level-1-20000929/">DOM Level 1</a></li>
+<li><a href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html">DOM Level 2 Core</a>, <a href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html">DOM Level 2 Events</a>, <a href="http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109/html.html">DOM Level 2 HTML</a></li>
+<li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html">DOM Level 3 Core</a>, <a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html">DOM Level 3 XPath</a></li>
+<li><a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/WebKitDOMRef/index.html#//apple_ref/doc/uid/TP40006089">WebKit DOM Reference</a>, <a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Conceptual/SafariJSProgTopics/WebKitJavaScript.html#//apple_ref/doc/uid/TP40001483">WebKit DOM Programming Topics</a>, <a href="http://developer.apple.com/library/safari/#documentation/ScriptingAutomation/Conceptual/JSCodingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40006088">Apple JavaScript Coding Guidelines</a></li>
+<li><a href="https://developer.mozilla.org/en/Gecko_DOM_Reference">Gecko DOM Reference</a></li>
+<li><a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest</a></li>
+<li><a href="http://dev.w3.org/geo/api/spec-source.html">Geolocation API Specification</a>
+<!--break--></li>
+</ul>
+<h2>Gotchas</h2>
+<p>Generally, use <tt>===</tt> and <tt>!==</tt> rather than <tt>==</tt> and <tt>!=</tt> (which coerce arguments before comparison).</p>
+<p>Numeric values are really IEEE floating-point, even when they look like integers.</p>
+<p><tt>NaN</tt> is not equal to itself. Use <tt>isNaN()</tt></p>
+<p>Semicolons are often optional, but interpreter may insert semicolons in unexpected places, so it is best to use semicolons and to put opening braces on the same line as the keyword.</p>
+<p>If <code>var</code> declaration is missing, then a variable is global.  The scope of a <code>var</code> is the entire function in which it is declared (blocks do not create a new scope)</p>
+<p>Note difference between <code>substr(startIndex, charCount)</code> and <code>substring(startIndex, endIndex)</code>.</p>
+<p>Avoid using <tt>/<em> </em>/</tt> style comments, as regular expressions can contain similar character sequences.</p>
+<h2>Special Values and Constants</h2>
+<pre>
+null, undefined, false, true, NaN, Infinity
+</pre>
+
+<p>Values that are considered to be "false" in conditionals: <tt>undefined, null, false, '', 0, NaN</tt></p>
+<p><tt>typeof obj</tt> returns one of these values: <tt>'undefined', 'object', 'boolean', 'number', 'string', 'function'</tt>. If the operand is an array or <tt>null</tt>, then the result is <tt>'object'</tt>. If the operand is a regexp, the result may be either <tt>'object'</tt> or <tt>'function'</tt>.</p>
+<h2>Standard Methods</h2>
+<ul>
+<li>array.<strong>concat</strong>(item...)</li>
+<li>array.<strong>join</strong>(separator)</li>
+<li>array.<strong>pop</strong>()</li>
+<li>array.<strong>push</strong>(item...)</li>
+<li>array.<strong>reverse</strong>()</li>
+<li>array.<strong>shift</strong>()</li>
+<li>array.<strong>slice</strong>(start, end)</li>
+<li>array.<strong>sort</strong>(comparefn)</li>
+<li>array.<strong>splice</strong>(start, deleteCount, item...)</li>
+<li>array.<strong>unshift</strong>(item...)</li>
+<li>function.<strong>apply</strong>(thisArg, argArray)</li>
+<li>number.<strong>toExponential</strong>(fractionDigits)</li>
+<li>number.<strong>toFixed</strong>(fractionDigits)</li>
+<li>number.<strong>toPrecision</strong>(precision)</li>
+<li>number.<strong>toString</strong>(radix)</li>
+<li>object.<strong>hasOwnProperty</strong>(name)</li>
+<li>regexp.<strong>exec</strong>(string)</li>
+<li>regexp.<strong>test</strong>(string)</li>
+<li>string.<strong>charAt</strong>(pos)</li>
+<li>string.<strong>charCodeAt</strong>(pos)</li>
+<li>string.<strong>concat</strong>(string...)</li>
+<li>string.<strong>indexOf</strong>(searchString, position)</li>
+<li>string.<strong>lastIndexOf</strong>(searchString, position)</li>
+<li>string.<strong>localeCompare</strong>(that)</li>
+<li>string.<strong>match</strong>(regexp)</li>
+<li>string.<strong>replace</strong>(searchValue, replaceValue)</li>
+<li>string.<strong>search</strong>(regexp)</li>
+<li>string.<strong>slice</strong>(start, end)</li>
+<li>string.<strong>split</strong>(separator, limit)</li>
+<li>string.<strong>substring</strong>(start, end)</li>
+<li>string.<strong>toLocaleLowerCase</strong>()</li>
+<li>string.<strong>toLocaleUpperCase</strong>()</li>
+<li>string.<strong>toLowerCase</strong>()</li>
+<li>string.<strong>toUpperCase</strong>()</li>
+<li>String.<strong>fromCharCode</strong>(char...)</li>
+</ul>
+<h2>Syntax Examples and Snippets</h2>
+<script src="https://gist.github.com/4046616.js?file=cheatsheet.js"></script>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The Easiest Programming Bug I Spent Way Too Much Time Trying to Solve</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Undefined Value </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/easiest-programming-bug-i-spent-way-too-much-time-trying-solve.html" rel="bookmark"
+           title="Permalink to The Easiest Programming Bug I Spent Way Too Much Time Trying to Solve">The Easiest Programming Bug I Spent Way Too Much Time Trying to Solve</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-11-12T21:02:46-05:00">
+                Published: Tue 12 November 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/puzzle.html">puzzle</a> <a href="/tag/programming.html">programming</a> <a href="/tag/debugging.html">debugging</a> </p>
+</footer><!-- /.post-info -->      <p>I ran across a question on Quora: <a href="http://www.quora.com/Programming-Languages/Whats-the-easiest-programming-bug-you-spent-way-too-much-time-trying-to-solve">What's the easiest programming bug you spent way too much time trying to solve?</a>.</p>
+<p>Here is my answer to that question. Some time during my first few years of programming, I wrote code similar to this little snippet and expected it to print "FOO", but instead it prints "None of the above". It is written in C, but should be comprehensible to anyone who knows a language with similar syntax (C++, Java, JavaScript, C#, etc.). It took me about a half day of staring and single-stepping in a debugger to figure out what was wrong. When I looked at the disassembly listing, I was convinced I'd found a bug in the C compiler. Maybe you can figure it out faster than I could.</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">FOO</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">BAR</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">FOO</span><span class="p">;</span>
+
+    <span class="k">switch</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nl">FOO</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="nl">BAR</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;BAR&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;None of the above&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
