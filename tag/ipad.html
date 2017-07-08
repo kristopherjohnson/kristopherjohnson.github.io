@@ -1,237 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - ipad</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - ipad</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/what-ive-learned-about-ios-development.html">What I've Learned about iOS Development</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-03-29T03:43:00-04:00">
-                Published: Tue 29 March 2011
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/iphone.html">iphone</a> <a href="/tag/ipad.html">ipad</a> <a href="/tag/iosdev.html">iosdev</a> </p>
-</footer><!-- /.post-info --><p>I've been playing around with development for Mac OS X and iOS for a few years. I've had a pretty good grasp of how Cocoa and UIKit worked, and I've written some simple apps, but for the past month I've been working on my first <em>Real iOS Application</em>. I've had to solve some problems that were easily ignored when writing little apps for fun. What follows is a randomly ordered collection of some of the little techniques and tips I didn't know before, which may be useful for other Cocoa newbies.
-<!--break-->
-(More to come as I learn from more mistakes.)</p>
-<h2>NSDictionary is Incredibly Useful</h2>
-<p>As a long-time C++ programmer, whenever I have some sort of "object" with a bunch of "attributes" my instinct is to define a <code>class</code> or <code>struct</code> with a bunch of instance members. However, when using Objective-C, it is often easier and more useful to just throw all that stuff into an <code>NSDictionary</code> (or <code>NSMutableDictionary</code>), for the following reasons:</p>
-<ul>
-<li>You don't have to write code to save/load the data to/from files or <code>NSUserDefaults</code>. As long as you can live with <code>NSDictionary</code>'s serialization format, you get persistence for free.</li>
-<li>Many system classes and APIs already know how to work with dictionaries in interesting ways.</li>
-<li>It's easier than defining an Objective-C class with properties. I know some Objective-C fans will disagree, but the <code>@property</code> mechanism sucks. If you use an <code>NSDictionary</code>, then you can worry less about retain counts, <code>dealloc</code>, and other such things.</li>
-<li>It lets you write JavaScript-like or Python-like code, if you're into that sort of thing.</li>
-</ul>
-<p>The downside of using <code>NSDictionary</code> is that it may be less efficient than using a custom class or a <code>struct</code>. Use your brain.</p>
-<h2>Use NSValue to Box Pointers and Primitives</h2>
-<p>If you follow the above advice about using <code>NSDictionary</code>, you'll run into a couple of wrinkles with using it as a general-purpose attribute container:</p>
-<ul>
-<li>Keys and values have to be objects, not primitive types.</li>
-<li>The keys have to conform to the <code>NSCopying</code> protocol.</li>
-<li>The dictionary will retain values, which may introduce undesirable retain cycles.</li>
-</ul>
-<p>The workaround for these issues is to use the <code>NSValue</code> class and its subclasses, which can box most interesting values as objects that can be used as dictionary keys and values.</p>
-<p><code>+[NSValue valueWithNonretainedObject:]</code> is how you put objects into your collections without bumping the retain counts.</p>
-<h2>Use objc_setAssociatedObject() and objc_getAssociatedObject() to Extend Unsubclassable Classes</h2>
-<p>The Apple frameworks contain some classes which cannot be subclassed (or cannot be <em>easily</em> subclassed). If you just want to add some methods, then you can just define a category. In cases where you wish you could make a subclass to add a property or two, the workaround is to use <code>objc_setAssociatedObject()</code> and <code>objc_getAssociatedObject()</code>.</p>
-<h2>Don't Support Old iOS Versions If You Don't Absolutely Have To</h2>
-<p>I'm lucky in that I am developing an in-house application, not to be sold in the App Store, so I was able to decree that I would only support devices running iOS 4.2 and higher. This lets me take advantage of useful stuff that isn't available in pre-4.0 versions of iOS without cluttering the code with a lot of checks for feature support. It's nice to use blocks and regular expressions and other "new" iOS features without worrying about it.</p>
-<p>Even if I was developing for the App Store, I'd be tempted to require 4.0. People who haven't bought a new phone for a few years or who don't keep the OS up to date aren't going to pay for that app you're developing, so why do anything for them?</p>
-<h2>Don't Mix Objective-C and C++ Unnecessarily</h2>
-<p>For a while, I was enamored with "Objective-C++", which is what you get when you change your <code>.m</code> suffixes to <code>.mm</code> and put C++ code into your Objective-C code. I thought this would be nifty, because I could use cool stuff from C++ (templates, typesafe container classes, smart pointers, RAII, ...).</p>
-<p>I did this for a while, but found that every time I decided to rewrite the C++ parts in plain-old-idiomatic Objective-C, the result was cleaner. So I don't do it any more.</p>
-<p>I think use of Objective-C++ is best limited to cases where you need to integrate some existing C++ code or libraries into your app, or when the guts of the app are all written in C++ and you need to interface with Objective-C-based UI classes. Don't use it to "improve" Objective-C. Objective-C is already a clumsy combination of C and Smalltalk. Dumping a third language into the mix doesn't make it better.</p>
-<h2>Use the Static Analyzer</h2>
-<p>Objective-C's manual memory management sucks, but I have yet to see a memory leak in my app that wasn't caught by the static analyzer. Run that Analyze command once in a while.</p>
-<h2>You Don't Have to Use Interface Builder</h2>
-<p>I spent a long time struggling with figuring out how to do complicated things in Interface Builder (like laying out a tab bar with a set of navigation controllers, each with toolbar items in their button bars and ...). After all, this is how one creates GUIs on other platforms.</p>
-<p>IB can be helpful, particularly when laying out a form-style view, but in many cases it is easier to create your views and hook up the events by writing code.</p>
-<p>I'm not saying "Don't use Interface Builder," or "Interface Builder is for pussies." I'm just saying that if you know how to do it all in code, it will often be easier to get what you want.</p>
-<h2>Use UIWebView for Read-Only Views</h2>
-<p>For a view that simply displays information, it is often easier to write some simple HTML and CSS and display it in a UIWebView than it is to lay out a bunch of UIKit components. It also gives your non-Objective-C-knowing colleagues a way to help you out (but don't let them use Arial).</p>
-<h2>Use Xcode 4</h2>
-<p>At the time of this writing, Xcode 4 is new (released just a few weeks ago), and lots of people are having problems with it. Those people recommend sticking with Xcode 3.x until the problems get worked out.</p>
-<p>If you run into those problems, or if you are an old-timer who fears change, then by all means, use Xcode 3. But if you can use Xcode 4, then I heartily recommend it. The improved autocompletion alone is worth the risk of crashes and hiccups.</p>
-<p>Xcode 4 is pretty rough for a released Apple product, but iIt really isn't that bad. When I first started using, it seemed like it was crashing "all the time." I started recording each crash, and found that over the course of three weeks it crashed, on average, only about once per day. The crashes are annoying, but the effect on my productivity was neglible. YMMV.</p>
-<h2>Use Ingredients</h2>
-<p>The Xcode documentation viewer sucks. Install <a href="http://fileability.net/ingredients/">Ingredients</a>. It's free. Assign a keyboard shortcut to the <em>Look up in Ingredients</em> item in the Services menu.</p>
-<h2>Use TBXML for XML Parsing</h2>
-<p>I experimented with a few XML parsers, and settled on <a href="http://www.tbxml.co.uk/TBXML/TBXML_Free.html">TBXML</a> as my preferred parser. It's got the best combination of performance and ease of use.</p>
-<p>However, it is not necessarily the best for all purposes. See <a href="http://www.raywenderlich.com/553/how-to-chose-the-best-xml-parser-for-your-iphone-project">How to Choose the Best XML Parser for Your iPhone Project</a> for a survey of available XML parsers.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+    <div class="row">
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/air-display-vs-maxivista.html" rel="bookmark"
-                           title="Permalink to Air Display vs. MaxiVista">Air Display vs. MaxiVista</a></h1>
-                </header>
+        <div class="nine columns">
+<section id="content">
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-01-28T23:19:24-05:00">
-                Published: Fri 28 January 2011
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/review.html">review</a> <a href="/tag/ipad.html">ipad</a> </p>
-</footer><!-- /.post-info -->                <p>Most of the time, I work at the Windows 7 computer in my home office with a dual-monitor setup. A lot of non-geeks have never used a dual-monitor setup: you will just have to trust me when I tell you that, for a programmer or any other person who needs …</p>
-                <a class="readmore" href="/air-display-vs-maxivista.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/my-ipad-review.html" rel="bookmark"
-                           title="Permalink to My iPad Review">My iPad Review</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-05-16T14:30:36-04:00">
-                Published: Sun 16 May 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/review.html">review</a> <a href="/tag/ipad.html">ipad</a> </p>
-</footer><!-- /.post-info -->                <p>So, I've had an iPad for about a month and a half. Here are my impressions:</p>
-<p>Overall, it's really nice. It fills the need for a little Internet-connected device that lets me watch video, read books, read online news, and browse the web. I used to keep my old 13-inch …</p>
-                <a class="readmore" href="/my-ipad-review.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/looking-ipad-application-beta-testers.html" rel="bookmark"
-                           title="Permalink to Looking for iPad Application Beta Testers">Looking for iPad Application Beta Testers</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-05-15T14:20:11-04:00">
-                Published: Sat 15 May 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/ipad.html">ipad</a> <a href="/tag/betatest.html">betatest</a> </p>
-</footer><!-- /.post-info -->                <p>Some time in the next few weeks, I hope to have an iPad game ready for submission to the App Store. I am looking for people to help me test the app.
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/what-ive-learned-about-ios-development.html" rel="bookmark" title="Permalink to What I've Learned about iOS Development">What I've Learned about iOS Development</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2011-03-29T03:43:00-04:00"> Tue 29 March 2011 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iphone.html">iphone</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ipad.html">ipad</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iosdev.html">iosdev</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>I've been playing around with development for Mac OS X and iOS for a few years. I've had a pretty good grasp of how Cocoa and UIKit worked, and I've written some simple apps, but for the past month I've been working on my first <em>Real iOS Application</em>. I've had …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/air-display-vs-maxivista.html" rel="bookmark" title="Permalink to Air Display vs. MaxiVista">Air Display vs. MaxiVista</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2011-01-28T23:19:24-05:00"> Fri 28 January 2011 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/review.html">review</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ipad.html">ipad</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Most of the time, I work at the Windows 7 computer in my home office with a dual-monitor setup. A lot of non-geeks have never used a dual-monitor setup: you will just have to trust me when I tell you that, for a programmer or any other person who needs …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/my-ipad-review.html" rel="bookmark" title="Permalink to My iPad Review">My iPad Review</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-05-16T14:30:36-04:00"> Sun 16 May 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/review.html">review</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ipad.html">ipad</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>So, I've had an iPad for about a month and a half. Here are my impressions:</p>
+<p>Overall, it's really nice. It fills the need for a little Internet-connected device that lets me watch video, read books, read online news, and browse the web. I used to keep my old 13-inch …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/looking-ipad-application-beta-testers.html" rel="bookmark" title="Permalink to Looking for iPad Application Beta Testers">Looking for iPad Application Beta Testers</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-05-15T14:20:11-04:00"> Sat 15 May 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ipad.html">ipad</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/betatest.html">betatest</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Some time in the next few weeks, I hope to have an iPad game ready for submission to the App Store. I am looking for people to help me test the app.
 <!--break-->
 You need to have the following:</p>
 <ul>
 <li>An iPad</li>
-<li>Somebody with whom to play the game (it's a two-player …</li></ul>
-                <a class="readmore" href="/looking-ipad-application-beta-testers.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/thoughts-ipad.html" rel="bookmark"
-                           title="Permalink to Thoughts on the iPad">Thoughts on the iPad</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-01-29T23:55:57-05:00">
-                Published: Fri 29 January 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/selfindulgence.html">selfindulgence</a> <a href="/tag/ipad.html">ipad</a> </p>
-</footer><!-- /.post-info -->                <p>I like the iPad. A few friends and acquaintances accuse me of being stupid and easily fascinated by sparkly objects. Rather than have the same argument over and over again, I'm writing all my thoughts and predictions here. I will speak no further on the subject until I actually own …</p>
-                <a class="readmore" href="/thoughts-ipad.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/easy-gradient-backgrounds-uitextviewcells.html" rel="bookmark"
-                           title="Permalink to Easy Gradient Backgrounds for UITextViewCells">Easy Gradient Backgrounds for UITextViewCells</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-11-03T00:28:23-05:00">
-                Published: Tue 03 November 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/samplecode.html">samplecode</a> <a href="/tag/iphone.html">iphone</a> <a href="/tag/ipad.html">ipad</a> <a href="/tag/iosdev.html">iosdev</a> </p>
-</footer><!-- /.post-info -->                <p>When you create a table-view-based iPhone app, by default you get tables with plain white rows.  But all the cool kids are making apps with 3D-ish gradient backgrounds.  You want to make those kinds of apps too, right?  This article explains how.
+<li>Somebody with whom to play the game (it's a two-player …</li></ul> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/thoughts-ipad.html" rel="bookmark" title="Permalink to Thoughts on the iPad">Thoughts on the iPad</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-01-29T23:55:57-05:00"> Fri 29 January 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/selfindulgence.html">selfindulgence</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ipad.html">ipad</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>I like the iPad. A few friends and acquaintances accuse me of being stupid and easily fascinated by sparkly objects. Rather than have the same argument over and over again, I'm writing all my thoughts and predictions here. I will speak no further on the subject until I actually own …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/easy-gradient-backgrounds-uitextviewcells.html" rel="bookmark" title="Permalink to Easy Gradient Backgrounds for UITextViewCells">Easy Gradient Backgrounds for UITextViewCells</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2009-11-03T00:28:23-05:00"> Tue 03 November 2009 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/samplecode.html">samplecode</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iphone.html">iphone</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ipad.html">ipad</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iosdev.html">iosdev</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>When you create a table-view-based iPhone app, by default you get tables with plain white rows.  But all the cool kids are making apps with 3D-ish gradient backgrounds.  You want to make those kinds of apps too, right?  This article explains how.
 <!--break--></p>
 <h2>Overview</h2>
-<p>Making table cells with custom backgrounds is …</p>
-                <a class="readmore" href="/easy-gradient-backgrounds-uitextviewcells.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+<p>Making table cells with custom backgrounds is …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

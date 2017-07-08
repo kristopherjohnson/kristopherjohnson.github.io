@@ -1,43 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Drupal Rocks</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="drupal" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/drupal-rocks.html" rel="bookmark"
-           title="Permalink to Drupal Rocks">Drupal Rocks</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-04-18T12:51:15-04:00">
-                Published: Sat 18 April 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/drupal.html">drupal</a> </p>
-</footer><!-- /.post-info -->      <p>I first dabbled in web development back in the mid 1990's. Back in those dark times, you created web sites by writing raw HTML, or by writing C or Perl CGI scripts. You spent about 1% of your time creating interesting content and behavior, and 99% of your time dinking with site layout, page layout, link updates, database administration, and other "plumbing" issues. I decided web development wasn't for me.</p>
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/drupal-rocks.html" rel="bookmark"
+         title="Permalink to Drupal Rocks">Drupal Rocks</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2009-04-18T12:51:15-04:00">
+      Sat 18 April 2009
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/drupal.html">drupal</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I first dabbled in web development back in the mid 1990's. Back in those dark times, you created web sites by writing raw HTML, or by writing C or Perl CGI scripts. You spent about 1% of your time creating interesting content and behavior, and 99% of your time dinking with site layout, page layout, link updates, database administration, and other "plumbing" issues. I decided web development wasn't for me.</p>
 <p>As years have passed, I've dabbled with some of the techologies that were supposed to make web development better: ASP, JSP, PHP, ASP.NET, Rails, Django, etc. While these eliminated some of the tedium of development, they also added a lot of complexity. Those technologies give you tools for building a web site, but they don't give you a web site. You still spent 1% of your time on creativity and 99% of your time on plumbing. A "real web site" still required a team of programmers, designers, and editors to create and maintain.</p>
 <p>I've set up a few wikis. Those are nice in that they are easy to set up, and then the users can create content. Wikis are awesome for providing a collaborative publishing environment. The downside is that they all look ugly; you wouldn't want to use them for general-public web sites.</p>
 <p>So, I've stuck with writing raw HTML for my personal web sites. This caused my sites to suffer, because writing raw HTML for an entire site sucks, especially if you want to provide navigation links, multi-column layout, headers and footers, and other niceties.  My <a href="http://capablehands.net">Capable Hands Technologies, Inc.</a> web site kept its "Under Construction" home page for two years, because it just didn't seem to be worth the effort to put something there.</p>
@@ -48,37 +66,41 @@
 <p>The only downside to Drupal is that it is written in PHP, which is one of those programming languages which is wildly popular but which also sucks tremendously. But I understand that the Drupal codebase is one of the few examples of well-written, well-structured PHP, so I may tinker with the code a bit to learn some things.</p>
 <p>Of course, Drupal is not the only "content management system" out there. WordPress or MovableType may meet your needs if you have a blog, or you may want something like Joomla or Zope instead of Drupal. The real lesson (for me) is that writing whole pages in HTML is something we don't need to do anymore.</p>
 <p>Anyway, this old dog has learned some new tricks, and <em>Undefined Value</em> is now running on Drupal. As I learn more about Drupal, I'll be adding features. I apologize in advance for anything I screw up.</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

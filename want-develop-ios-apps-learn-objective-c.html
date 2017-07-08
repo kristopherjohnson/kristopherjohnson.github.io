@@ -1,43 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Want to Develop iOS Apps? Learn Objective-C.</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="rant" />
+    <meta name="tags" content="iosdev" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/want-develop-ios-apps-learn-objective-c.html" rel="bookmark"
-           title="Permalink to Want to Develop iOS Apps? Learn Objective-C.">Want to Develop iOS Apps? Learn Objective-C.</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-05-06T14:41:42-04:00">
-                Published: Sun 06 May 2012
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/rant.html">rant</a> <a href="/tag/iosdev.html">iosdev</a> </p>
-</footer><!-- /.post-info -->      <p>As an iOS software developer, I am often asked whether "we" (a team I'm working with, or someone I'm advising) should avoid using Objective-C and instead use a higher-level or easier-to-learn programming language. In general, my answer is "No". The rest of this post explains why.
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/want-develop-ios-apps-learn-objective-c.html" rel="bookmark"
+         title="Permalink to Want to Develop iOS Apps? Learn Objective-C.">Want to Develop iOS Apps? Learn Objective-C.</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2012-05-06T14:41:42-04:00">
+      Sun 06 May 2012
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/rant.html">rant</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iosdev.html">iosdev</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>As an iOS software developer, I am often asked whether "we" (a team I'm working with, or someone I'm advising) should avoid using Objective-C and instead use a higher-level or easier-to-learn programming language. In general, my answer is "No". The rest of this post explains why.
 <!--break--></p>
 <h2>The Problem</h2>
 <p>A bit of background: Apple provides a development tool called "<a href="http://en.wikipedia.org/wiki/Xcode">Xcode</a>" which is what they want developers to use to write iOS apps. Programs are written using a programming language called "Objective-C", which enhances C with Smalltalk-style object-oriented message-passing features. Developers also use a tool called "Interface Builder" to visually lay out user-interface elements. Finally, there is a vast collection of libraries known as the "<a href="https://developer.apple.com/technologies/ios/cocoa-touch.html">Cocoa Touch frameworks</a>" which provide the programming interfaces to all the cool stuff that iPhones and iPads can do. </p>
@@ -55,37 +75,41 @@
 <h2>The Right Tool for the Job</h2>
 <p>In general, it's a good idea to use whatever tools and APIs are officially supported by your vendor. If you are doing iOS development, that means you should use Objective-C and Xcode. If you are doing Android development, use Java and Eclipse with the Android Development Toolkit. If you are doing Windows development, use C&#x266f; and Visual Studio. Going with other solutions might have benefits, but whenever you choose an unsupported development environment, you are taking a big risk. At any time, the vendor might make changes to its APIs or toolchain that break all tools you rely upon.</p>
 <p>Using the right tool for the job is a good idea. Using anything other than Objective-C to develop iOS apps results in more work and more risk. Just go ahead and learn it. You might even like it.</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

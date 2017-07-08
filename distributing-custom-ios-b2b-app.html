@@ -1,43 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Distributing a Custom iOS B2B App</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="iosdev" />
+    <meta name="tags" content="b2b" />
+    <meta name="tags" content="appstore" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/distributing-custom-ios-b2b-app.html" rel="bookmark"
-           title="Permalink to Distributing a Custom iOS B2B App">Distributing a Custom iOS B2B App</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-07-12T23:22:47-04:00">
-                Published: Thu 12 July 2012
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/b2b.html">b2b</a> <a href="/tag/appstore.html">appstore</a> </p>
-</footer><!-- /.post-info -->      <p>I recently went through the process of distributing a free <a href="https://developer.apple.com/programs/volume/b2b/">custom B2B app</a> in the App Store. I hit a few snags, and I found very little information about the process, or help in online forums, and Apple Support assistance was very slow. So I'm documenting what I learned here. I hope it helps someone.
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/distributing-custom-ios-b2b-app.html" rel="bookmark"
+         title="Permalink to Distributing a Custom iOS B2B App">Distributing a Custom iOS B2B App</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2012-07-12T23:22:47-04:00">
+      Thu 12 July 2012
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iosdev.html">iosdev</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/b2b.html">b2b</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/appstore.html">appstore</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I recently went through the process of distributing a free <a href="https://developer.apple.com/programs/volume/b2b/">custom B2B app</a> in the App Store. I hit a few snags, and I found very little information about the process, or help in online forums, and Apple Support assistance was very slow. So I'm documenting what I learned here. I hope it helps someone.
 <!--break--></p>
 <h2>Overview</h2>
 <p>A <em>custom B2B app</em> is an iOS app that is distributed through the App Store, but which is only available for purchase by a specific set of customers.  It lets you take advantage of the App Store infrastructure while still restricting distribution of the app.  Thus, it can be an attractive alternative to using the iOS Enterprise Developer Program or ad-hoc deployment to distribute in-house apps.</p>
@@ -70,37 +92,41 @@
 <p>No. When the customer attempted to "purchase" the free app, they got an error message saying "An unknown error occurred". So we send more email to Apple Support. Eventually somebody at Apple gives me a phone call, and tells me everything is set up correctly in iTunes Connect and the App Store, so there is nothing more we needed to do, and that the customer needed to contact VPP support to resolve their purchasing issue.</p>
 <p>We told the customer they would need to contact VPP support. The customer reported dissatisfaction with VPP support (the word "sucks" was used). The customer was also annoyed to discover that their <a href="http://en.wikipedia.org/wiki/Mobile_device_management">MDM</a> solution, MaaS360, supports purchase of App Store apps, but does not support purchase of custom B2B apps through the VPP. Thus, when they download redemption codes from the VPP, they have to manually mail them out to employees, rather than relying on the MDM to automatically update the managed devices.</p>
 <p>So, the end result is that the customer didn't love this solution, but they can live with it. If we consider the B2B route with any future customers, we will definitely have some discussions about the pros and cons.</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

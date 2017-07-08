@@ -1,99 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - git</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - git</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/solving-symbol-not-found-perlgthrkeyptr-when-running-git-svn-certain-unnamed-operating-sy.html">Solving "Symbol not found: _Perl_Gthr_key_ptr" When Running git-svn on Certain Unnamed Operating System Beta Versions</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-08-21T16:32:29-04:00">
-                Published: Wed 21 August 2013
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/perl.html">perl</a> <a href="/tag/osx.html">osx</a> <a href="/tag/git.html">git</a> <a href="/tag/dyld.html">dyld</a> <a href="/tag/bashrc.html">bashrc</a> </p>
-</footer><!-- /.post-info --><p>Let's say that you are using a beta version of a new operating system that you can't name because it is covered by a non-disclosure agreement, and you have also installed the newest version of its development tools, which are also covered by NDA, and when you try to run the <code>git svn</code> command, you get this output:</p>
-<div class="highlight"><pre><span></span><span class="n">dyld</span><span class="o">:</span> <span class="n">lazy</span> <span class="n">symbol</span> <span class="n">binding</span> <span class="n">failed</span><span class="o">:</span> <span class="n">Symbol</span> <span class="n">not</span> <span class="n">found</span><span class="o">:</span> <span class="n">_Perl_Gthr_key_ptr</span>
-  <span class="n">Referenced</span> <span class="n">from</span><span class="o">:</span> <span class="sr">/usr/../Library/Perl/5.12/darwin-thread-multi-2level/auto/SVN/_Core/</span><span class="n">_Core</span><span class="o">.</span><span class="na">bundle</span>
-  <span class="n">Expected</span> <span class="k">in</span><span class="o">:</span> <span class="n">flat</span> <span class="kd">namespace</span>
+    <div class="row">
 
-<span class="n">dyld</span><span class="o">:</span> <span class="n">Symbol</span> <span class="n">not</span> <span class="n">found</span><span class="o">:</span> <span class="n">_Perl_Gthr_key_ptr</span>
-  <span class="n">Referenced</span> <span class="n">from</span><span class="o">:</span> <span class="sr">/usr/../Library/Perl/5.12/darwin-thread-multi-2level/auto/SVN/_Core/</span><span class="n">_Core</span><span class="o">.</span><span class="na">bundle</span>
-  <span class="n">Expected</span> <span class="k">in</span><span class="o">:</span> <span class="n">flat</span> <span class="kd">namespace</span>
+        <div class="nine columns">
+<section id="content">
 
-<span class="n">error</span><span class="o">:</span> <span class="n">git</span><span class="o">-</span><span class="n">svn</span> <span class="n">died</span> <span class="n">of</span> <span class="n">signal</span> <span class="mi">5</span>
-</pre></div>
-
-
-<p>Apparently, the problem is that <code>git-svn</code> is implemented in Perl, and there is something wrong with the Perl configuration used when you run <code>/usr/bin/git</code>.</p>
-<p>What do you do?</p>
-<p>It turns out you can fix this by putting the Git executables provided by the new development tools at the head of your PATH, by executing this command (or adding it to <code>.bashrc</code>):</p>
-<div class="highlight"><pre><span></span>export PATH=&quot;/Applications/XXXXX.app/Contents/Developer/usr/libexec/git-core&quot;:$PATH
-</pre></div>
-
-
-<p>where <code>XXXXX.app</code> is the unnamed development tool.</p>
-<p>Alternatively, you can add all the command-line tools to your PATH like this:</p>
-<div class="highlight"><pre><span></span>export PATH=”/Applications/XXXXX.app/Contents/Developer/usr/bin/”:$PATH
-</pre></div>
-
-
-<p>Credit to <a href="http://vandadnp.wordpress.com/2012/04/06/git-from-command-line-after-installing-xcode-on-os-x-lion/">Vandad Nahavandipoor</a> for the hint.</p>
-<p>Another option would be to use the <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcrun.1.html">xcrun</a> utility to run <code>git</code>. You can do this:</p>
-<div class="highlight"><pre><span></span>xcrun git svn blah-blah-blah
-</pre></div>
-
-
-<p>or put this into your <code>.bashrc</code> so that you don't have to remember to type <code>xcrun</code>:</p>
-<div class="highlight"><pre><span></span>alias git=&#39;xcrun git&#39;
-</pre></div>
-
-
-<p>If you are the kind of person who thinks its a good idea to replace system files with symlinks, you might try symlinking <code>/usr/bin/git</code> to <code>/Applications/XXXXX.app/Contents/Developer/usr/libexec/git-core/git</code>. However, that alone doesn't work, because Git will still run the <code>git-svn</code> executable from its default location, <code>/Library/Developer/CommandLineTools/usr/libexec/git-core</code>, and you will still have the <code>_Perl_Gthr_key_ptr</code> problem. So you also need to symlink the default location to <code>/Applications/XXXXX.app/Contents/Developer/usr/libexec/git-core/</code>, or set the <code>GIT_EXEC_PATH</code> environment variable.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/git-gui-clients-os-x.html" rel="bookmark"
-                           title="Permalink to Git GUI Clients for OS X">Git GUI Clients for OS X</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-02-28T13:55:54-05:00">
-                Published: Thu 28 February 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/github.html">github</a> <a href="/tag/git.html">git</a> </p>
-</footer><!-- /.post-info -->                <p>I have recently evaluated a few <a href="http://git-scm.com">Git</a> GUI apps for OS X. Here are my impressions.
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/solving-symbol-not-found-perlgthrkeyptr-when-running-git-svn-certain-unnamed-operating-sy.html" rel="bookmark" title="Permalink to Solving "Symbol not found: _Perl_Gthr_key_ptr" When Running git-svn on Certain Unnamed Operating System Beta Versions">Solving "Symbol not found: _Perl_Gthr_key_ptr" When Running git-svn on Certain Unnamed Operating System Beta Versions</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2013-08-21T16:32:29-04:00"> Wed 21 August 2013 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/perl.html">perl</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/osx.html">osx</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/git.html">git</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/dyld.html">dyld</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/bashrc.html">bashrc</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Let's say that you are using a beta version of a new operating system that you can't name because it is covered by a non-disclosure agreement, and you have also installed the newest version of its development tools, which are also covered by NDA, and when you try to run …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/git-gui-clients-os-x.html" rel="bookmark" title="Permalink to Git GUI Clients for OS X">Git GUI Clients for OS X</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2013-02-28T13:55:54-05:00"> Thu 28 February 2013 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/github.html">github</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/git.html">git</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>I have recently evaluated a few <a href="http://git-scm.com">Git</a> GUI apps for OS X. Here are my impressions.
 <!--break--></p>
 <h2>SourceTree</h2>
 <p><a href="http://www.sourcetreeapp.com">http://www.sourcetreeapp.com</a></p>
@@ -108,62 +75,55 @@
 </ul>
 <p>Cons:</p>
 <ul>
-<li>Least attractive …</li></ul>
-                <a class="readmore" href="/git-gui-clients-os-x.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+<li>Least attractive …</li></ul> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/workflow-remote-cvs-local-git.html" rel="bookmark" title="Permalink to Workflow for Remote CVS, Local Git">Workflow for Remote CVS, Local Git</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-07-02T13:31:32-04:00"> Fri 02 July 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/git.html">git</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/cvs.html">cvs</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>One of my clients uses a <a href="http://ximbiot.com/cvs/">CVS</a> repository for all its source code. People recognize that there are better options available than CVS, but it's been cranking along fine for 15 years, and they see no compelling reason to change.</p>
+<p>However, I really like being able to commit incremental changes …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/workflow-remote-cvs-local-git.html" rel="bookmark"
-                           title="Permalink to Workflow for Remote CVS, Local Git">Workflow for Remote CVS, Local Git</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-07-02T13:31:32-04:00">
-                Published: Fri 02 July 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/git.html">git</a> <a href="/tag/cvs.html">cvs</a> </p>
-</footer><!-- /.post-info -->                <p>One of my clients uses a <a href="http://ximbiot.com/cvs/">CVS</a> repository for all its source code. People recognize that there are better options available than CVS, but it's been cranking along fine for 15 years, and they see no compelling reason to change.</p>
-<p>However, I really like being able to commit incremental changes …</p>
-                <a class="readmore" href="/workflow-remote-cvs-local-git.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

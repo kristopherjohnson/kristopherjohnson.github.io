@@ -1,78 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Enabling FastCGI for PHP on Ubuntu</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="ubuntu" />
+    <meta name="tags" content="sysadmin" />
+    <meta name="tags" content="php" />
+    <meta name="tags" content="fastcgi" />
+    <meta name="tags" content="debian" />
+    <meta name="tags" content="apache" />
+    <meta name="tags" content="drupal" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/enabling-fastcgi-php-ubuntu.html" rel="bookmark"
-           title="Permalink to Enabling FastCGI for PHP on Ubuntu">Enabling FastCGI for PHP on Ubuntu</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-05-02T08:44:35-04:00">
-                Published: Sat 02 May 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/ubuntu.html">ubuntu</a> <a href="/tag/sysadmin.html">sysadmin</a> <a href="/tag/php.html">php</a> <a href="/tag/fastcgi.html">fastcgi</a> <a href="/tag/debian.html">debian</a> <a href="/tag/apache.html">apache</a> <a href="/tag/drupal.html">drupal</a> </p>
-</footer><!-- /.post-info -->      <p>I'm setting up a <a href="http://en.wikipedia.org/wiki/Virtual_private_server">virtual private server</a>. If all goes well, I'll be moving all my websites from their current shared-hosting arrangements to this VPS.</p>
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/enabling-fastcgi-php-ubuntu.html" rel="bookmark"
+         title="Permalink to Enabling FastCGI for PHP on Ubuntu">Enabling FastCGI for PHP on Ubuntu</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2009-05-02T08:44:35-04:00">
+      Sat 02 May 2009
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ubuntu.html">ubuntu</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/sysadmin.html">sysadmin</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/php.html">php</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/fastcgi.html">fastcgi</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/debian.html">debian</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/apache.html">apache</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/drupal.html">drupal</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I'm setting up a <a href="http://en.wikipedia.org/wiki/Virtual_private_server">virtual private server</a>. If all goes well, I'll be moving all my websites from their current shared-hosting arrangements to this VPS.</p>
 <p>I started with a minimal Ubuntu 8.10 image and installed all the LAMP stuff. Things went smoothly until I decided to try to enable FastCGI for Drupal. Googling for things like "ubuntu apache php fastcgi" results in zillions of links to suggested methods, all of which were very complicated and required digging through docs.  I figured there had to be a simple way to do it.</p>
 <p>After a few hours of research, I finally did stumble upon what I wanted.  My problem was that I was googling for "ubuntu", when I should have been googling for "debian".</p>
 <p>The info I needed was here: http://michiel.vanbaak.info/docsphp5fcgi.htm.  Thank you, Michiel&nbsp;van&nbsp;Baak!</p>
 <p>(To those of you saying "But you should really be using <a href="http://en.wikipedia.org/wiki/Nginx">nginx</a> instead of Apache," my response is "Yes, I know. Leave me alone.")</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

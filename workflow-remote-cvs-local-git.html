@@ -1,43 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Workflow for Remote CVS, Local Git</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="git" />
+    <meta name="tags" content="cvs" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/workflow-remote-cvs-local-git.html" rel="bookmark"
-           title="Permalink to Workflow for Remote CVS, Local Git">Workflow for Remote CVS, Local Git</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-07-02T13:31:32-04:00">
-                Published: Fri 02 July 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/git.html">git</a> <a href="/tag/cvs.html">cvs</a> </p>
-</footer><!-- /.post-info -->      <p>One of my clients uses a <a href="http://ximbiot.com/cvs/">CVS</a> repository for all its source code. People recognize that there are better options available than CVS, but it's been cranking along fine for 15 years, and they see no compelling reason to change.</p>
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/workflow-remote-cvs-local-git.html" rel="bookmark"
+         title="Permalink to Workflow for Remote CVS, Local Git">Workflow for Remote CVS, Local Git</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2010-07-02T13:31:32-04:00">
+      Fri 02 July 2010
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/git.html">git</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/cvs.html">cvs</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>One of my clients uses a <a href="http://ximbiot.com/cvs/">CVS</a> repository for all its source code. People recognize that there are better options available than CVS, but it's been cranking along fine for 15 years, and they see no compelling reason to change.</p>
 <p>However, I really like being able to commit incremental changes often in my own personal branches, and while not connected to the company network (I work from home). So I've been checking out files from the CVS repository, using <a href="http://git-scm.com/">Git</a> locally to manage modifications, and then periodically committing those changes back to the remote CVS repository.</p>
 <p>I figured I'd write up what I'm doing, in case others want to try the same thing, or others can tell me a better way to do what I'm doing. I'm still a bit of a Git newbie, so if I'm doing something stupid, please let me know.
 <!--break-->
@@ -172,37 +192,41 @@ git rebase master
 
 
 <p>It may seem like a lot of work, but it's saved me a couple of times already. I have some aliases and scripts that automate some of the steps, so my actual workflow is not as verbose as what I've written here.</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

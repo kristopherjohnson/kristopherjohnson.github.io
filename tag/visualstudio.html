@@ -1,105 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - visualstudio</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - visualstudio</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/setting-use-microsoft-symbol-server.html">Setting Up for Use of Microsoft Symbol Server</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-02-23T22:13:30-05:00">
-                Published: Wed 23 February 2011
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/visualstudio.html">visualstudio</a> <a href="/tag/debugging.html">debugging</a> </p>
-</footer><!-- /.post-info --><p>When debugging native Win32 code, it is useful to have the debug symbols for all of Microsoft's DLLs.  The easiest way to set this up is to just set an environment variable before starting Visual Studio (or other Microsoft debugging tools):</p>
-<div class="highlight"><pre><span></span>set _NT_SYMBOL_PATH=srv*c:\symbols*http://msdl.microsoft.com/download/symbols
-</pre></div>
+    <div class="row">
 
+        <div class="nine columns">
+<section id="content">
 
-<p>The first time you run the debugger after setting this, it will take some time to start as it downloads symbol files from the Internet into your local symbol cache, but it will be faster after that.  Whenever you update your system with patches or service packs, the new symbols will automatically be downloaded the next time you debug.</p>
-<p>For more information, see these pages:</p>
-<ul>
-<li>http://support.microsoft.com/kb/311503</li>
-<li><a href="http://msdn.microsoft.com/en-us/library/ee416588(VS.85).aspx">http://msdn.microsoft.com/en-us/library/ee416588(VS.85).aspx</a></li>
-</ul>
-<p>(This post is really for my own benefit. I have trouble finding this information whenever I set up a new development workstation, so I'm putting it somewhere I'll know to look.)</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/setting-use-microsoft-symbol-server.html" rel="bookmark" title="Permalink to Setting Up for Use of Microsoft Symbol Server">Setting Up for Use of Microsoft Symbol Server</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2011-02-23T22:13:30-05:00"> Wed 23 February 2011 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/visualstudio.html">visualstudio</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/debugging.html">debugging</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>When debugging native Win32 code, it is useful to have the debug symbols for all of Microsoft's DLLs.  The easiest way to set this up is to just set an environment variable before starting Visual Studio (or other Microsoft debugging tools):</p>
+<div class="highlight"><pre><span></span>set _NT_SYMBOL_PATH=srv*c:\symbols*http://msdl.microsoft.com …</pre></div> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/visual-studio-2008-code-snippet-inserting-stringformat-call.html" rel="bookmark" title="Permalink to Visual Studio 2008 Code Snippet for Inserting a String.Format() call">Visual Studio 2008 Code Snippet for Inserting a String.Format() call</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2011-02-20T00:57:51-05:00"> Sun 20 February 2011 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/vs2008.html">vs2008</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/visualstudio.html">visualstudio</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Over the past year I've been (re-)learning how to use Visual&nbsp;Studio&nbsp;2008. I did a lot of work in the 90's and early 00's with Visual&nbsp;Studios 5, 6, and 2003, but then I had a few years away from Windows development, and I've had limited experience with …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/visual-studio-2008-code-snippet-inserting-stringformat-call.html" rel="bookmark"
-                           title="Permalink to Visual Studio 2008 Code Snippet for Inserting a String.Format() call">Visual Studio 2008 Code Snippet for Inserting a String.Format() call</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-02-20T00:57:51-05:00">
-                Published: Sun 20 February 2011
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/vs2008.html">vs2008</a> <a href="/tag/visualstudio.html">visualstudio</a> </p>
-</footer><!-- /.post-info -->                <p>Over the past year I've been (re-)learning how to use Visual&nbsp;Studio&nbsp;2008. I did a lot of work in the 90's and early 00's with Visual&nbsp;Studios 5, 6, and 2003, but then I had a few years away from Windows development, and I've had limited experience with …</p>
-                <a class="readmore" href="/visual-studio-2008-code-snippet-inserting-stringformat-call.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

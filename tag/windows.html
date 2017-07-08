@@ -1,142 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - windows</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - windows</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/setting-windows-my-way.html">Setting Up Windows, My Way</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-12-22T19:25:36-05:00">
-                Published: Sun 22 December 2013
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/windows.html">windows</a> </p>
-</footer><!-- /.post-info --><p>This is a companion piece to my <a href="http://undefinedvalue.com/2013/08/30/setting-new-mac-my-way">Setting Up a New Mac, My Way</a> entry. Thankfully, I haven't had to use Windows much in the past couple of years, but when I do have to set up a Windows machine for some task that requires it, I want to have a list of things to do to minimize the pain.</p>
-<p>(This is a work in progress. It will evolve every time I go through the setup process, and every time I have to work around some annoying Windows limitation.)</p>
-<ol>
-<li>Install/reinstall Windows. (The remaining steps assume the version is Windows 8.1 Pro x64, and it is running in VMWare on a Mac.)</li>
-<li>In the Windows 8 start screen, remove everything except Desktop.</li>
-<li>In Desktop, right-click the taskbar, choose Properties, select the Navigation tab, and check the <em>When I sign in or close all apps on a screen, go to the desktop instead of Start</em> box and the <em>Show the Apps view automatically when I go to Start</em> button.</li>
-<li>In Settings (or Control Panel or wherever Microsoft puts these things this year) make these changes:</li>
-<li>Ensure the Location is <em>United States</em> and <em>English (United States)</em> is the preferred language.</li>
-<li>Enable automatic Windows updates.</li>
-<li>Change the desktop background to a solid color.</li>
-<li>Enable these desktop icons:<ul>
-<li>Computer</li>
-<li>Network</li>
-<li>Recycle Bin</li>
-</ul>
-</li>
-<li>Disable the screen saver and <em>Turn off the display</em> power option</li>
-<li>Uncheck <em>Hide extensions for known file types</em></li>
-<li>Turn these Windows features on:<ul>
-<li>Internet Information Services (leave IIS 6 Management Compatibility off)</li>
-<li>Telnet Client</li>
-</ul>
-</li>
-<li>Install these applications:</li>
-<li><a href="http://chrome.google.com/">Google Chrome</a><ul>
-<li>On first run, choose the <em>Relaunch Chrome on the desktop</em> menu item to get it as a window on the desktop</li>
-</ul>
-</li>
-<li><a href="https://www.dropbox.com/install">Dropbox</a></li>
-<li><a href="https://agilebits.com/onepassword/win">1Password</a></li>
-<li><a href="http://www.sublimetext.com/3">Sublime Text 3</a></li>
-<li><a href="http://www.vim.org/download.php">Vim</a></li>
-<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a></li>
-<li><a href="http://git-scm.com/download/win">Git</a></li>
-<li><a href="http://sourcetreeapp.com/">Sourcetree</a></li>
-<li><a href="http://www.scootersoftware.com/download.php">Beyond Compare</a></li>
-<li><a href="http://www.python.org/getit">Python 2.x</a> and <a href="http://sourceforge.net/projects/numpy/files/">NumPy</a><ul>
-<li>Note: Unless you have a good reason, get the 32-bit version, not the 64-bit version. (It can be difficult to get 64-bit versions of third-party modules.)</li>
-</ul>
-</li>
-<li><a href="http://nodejs.org/">Node</a></li>
-<li>Start Powershell</li>
-<li>Pin Powershell to the taskbar</li>
-<li>Type this command to create the profile directory and file:<br><code>new-item -path $profile -type file -force</code></li>
-<li>Type this command to copy my profile to this computer:<br><code>cp ~/Dropbox/windows/powershell_profile.ps1 $profile</code></li>
-<li>Run Powershell as Administrator and run this command:<br><code>set-executionpolicy -executionpolicy remotesigned</code></li>
-<li>Restart Powershell (with the new profile)</li>
-<li>... (to be continued) ...</li>
-</ol>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+    <div class="row">
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/powershell-and-unicode.html" rel="bookmark"
-                           title="Permalink to PowerShell and Unicode">PowerShell and Unicode</a></h1>
-                </header>
+        <div class="nine columns">
+<section id="content">
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-07-21T12:01:58-04:00">
-                Published: Wed 21 July 2010
-        </abbr>
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/setting-windows-my-way.html" rel="bookmark" title="Permalink to Setting Up Windows, My Way">Setting Up Windows, My Way</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2013-12-22T19:25:36-05:00"> Sun 22 December 2013 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/windows.html">windows</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>This is a companion piece to my <a href="http://undefinedvalue.com/2013/08/30/setting-new-mac-my-way">Setting Up a New Mac, My Way</a> entry. Thankfully, I haven't had to use Windows much in the past couple of years, but when I do have to set up a Windows machine for some task that requires it, I want to have …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/powershell-and-unicode.html" rel="bookmark" title="Permalink to PowerShell and Unicode">PowerShell and Unicode</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-07-21T12:01:58-04:00"> Wed 21 July 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/windows.html">windows</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/unicode.html">unicode</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/powershell.html">powershell</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>After being away from the Windows developer world for a few years, I have been pleased to find some of the nice things that Microsoft has given us. Visual Studio has some really nice refactoring capabilities. The Windows 7 user experience rivals OS X. And as an alternative to the …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/windows.html">windows</a> <a href="/tag/unicode.html">unicode</a> <a href="/tag/powershell.html">powershell</a> </p>
-</footer><!-- /.post-info -->                <p>After being away from the Windows developer world for a few years, I have been pleased to find some of the nice things that Microsoft has given us. Visual Studio has some really nice refactoring capabilities. The Windows 7 user experience rivals OS X. And as an alternative to the …</p>
-                <a class="readmore" href="/powershell-and-unicode.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

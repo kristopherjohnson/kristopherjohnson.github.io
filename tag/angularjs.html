@@ -1,86 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - angularjs</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - angularjs</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/web-page-reformatting-json-text-using-angularjs.html">A Web Page for Reformatting JSON Text, using AngularJS</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2014-05-29T03:49:54-04:00">
-                Published: Thu 29 May 2014
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/json.html">json</a> <a href="/tag/angularjs.html">angularjs</a> </p>
-</footer><!-- /.post-info --><p>A little over a year ago, I published <a href="http://undefinedvalue.com/2013/03/02/web-page-reformatting-json-text">A Web Page for Reformatting JSON Text</a>, which is a simple web page for pretty-printing JSON data. I'm now learning <a href="https://angularjs.org">AngularJS</a>, so as an exercise I reimplemented the page using Angular rather than the original's <a href="http://jquery.com">jQuery</a>.</p>
-<p>This version is a little nicer than the original in the following ways:</p>
-<ul>
-<li>You can type or paste text into the top box and the formatted JSON immediately appears in the lower box. There is no longer a need to press a <strong>Format</strong> button because Angular's data-binding mechanism takes care of automatically updating the output whenever the input changes. (This is possible with jQuery too, but takes more work.)</li>
-<li>You can control the indentation width of the formatted JSON.</li>
-<li>When the input is not valid JSON, the output panel changes its background color to red when displaying the error message.</li>
-</ul>
-<p>Here it is: <a href="https://s3.amazonaws.com/undefinedvalue/ng-formatjson.html">JSON Formatter with AngularJS</a></p>
-<p>Short link: <a href="http://bit.ly/formatjson">http://bit.ly/formatjson</a></p>
-<p>You can look at the full source here: <a href="https://gist.github.com/kristopherjohnson/176dc5cc09dfc77cd4a6">Gist</a></p>
-<p>or as a fiddle: <a href="http://jsfiddle.net/oldmankris/qK9LK/">http://jsfiddle.net/oldmankris/qK9LK/</a></p>
-<p>If don't know anything about AngularJS, but are curious about it, look at the source and note the following:</p>
-<ul>
-<li>The magic of Angular comes from the <code>ng-</code> attributes attached to HTML elements. There is no need for a separate template language or explicit DOM manipulation.</li>
-<li>The <a href="https://docs.angularjs.org/api/ng/directive/ngApp">ng-app</a> attribute attached to the <code>html</code> element sets up the <a href="https://docs.angularjs.org/guide/module">module</a> that contains our app's code.</li>
-<li>The <a href="https://docs.angularjs.org/api/ng/directive/ngController">ng-controller</a> attribute attached to the <code>div</code> element defines which controller function to use.</li>
-<li>The <a href="https://docs.angularjs.org/api/ng/directive/ngModel">ng-model</a> attribute attached to the first <code>textarea</code> element binds its content to the <code>inputText</code> variable</li>
-<li>The <a href="https://docs.angularjs.org/api/ng/directive/ngBind">ng-bind</a> attribute attached to the second <code>textarea</code> element binds its content to the value of the <code>outputText</code> variable, and the <a href="https://docs.angularjs.org/api/ng/directive/ngClass">ng-class</a> attribute binds its CSS class to the value of the <code>outputClass</code> variable.</li>
-<li>The  <a href="https://docs.angularjs.org/api/ng/directive/select">ng-options</a> and <a href="https://docs.angularjs.org/api/ng/directive/ngModel">ng-model</a> directives on the <code>select</code> element bind it to the <code>indentOptions</code> and <code>selectedIndentOption</code> variable.</li>
-<li>In the controller code, we set initial values for the <code>inputText</code>, <code>indentOptions</code>, and <code>selectedInputOption</code> variables, and then use <a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope">$scope.$watch()</a> to update the values of <code>outputText</code> and <code>outputClass</code> whenever any of the inputs change.</li>
-</ul>                </article>
-            </aside><!-- /#featured -->
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content">
+
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/web-page-reformatting-json-text-using-angularjs.html" rel="bookmark" title="Permalink to A Web Page for Reformatting JSON Text, using AngularJS">A Web Page for Reformatting JSON Text, using AngularJS</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2014-05-29T03:49:54-04:00"> Thu 29 May 2014 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/json.html">json</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/angularjs.html">angularjs</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>A little over a year ago, I published <a href="http://undefinedvalue.com/2013/03/02/web-page-reformatting-json-text">A Web Page for Reformatting JSON Text</a>, which is a simple web page for pretty-printing JSON data. I'm now learning <a href="https://angularjs.org">AngularJS</a>, so as an exercise I reimplemented the page using Angular rather than the original's <a href="http://jquery.com">jQuery</a>.</p>
+<p>This version is a little nicer …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

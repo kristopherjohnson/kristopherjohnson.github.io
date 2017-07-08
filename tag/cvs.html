@@ -1,200 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - cvs</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - cvs</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/workflow-remote-cvs-local-git.html">Workflow for Remote CVS, Local Git</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2010-07-02T13:31:32-04:00">
-                Published: Fri 02 July 2010
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/git.html">git</a> <a href="/tag/cvs.html">cvs</a> </p>
-</footer><!-- /.post-info --><p>One of my clients uses a <a href="http://ximbiot.com/cvs/">CVS</a> repository for all its source code. People recognize that there are better options available than CVS, but it's been cranking along fine for 15 years, and they see no compelling reason to change.</p>
-<p>However, I really like being able to commit incremental changes often in my own personal branches, and while not connected to the company network (I work from home). So I've been checking out files from the CVS repository, using <a href="http://git-scm.com/">Git</a> locally to manage modifications, and then periodically committing those changes back to the remote CVS repository.</p>
-<p>I figured I'd write up what I'm doing, in case others want to try the same thing, or others can tell me a better way to do what I'm doing. I'm still a bit of a Git newbie, so if I'm doing something stupid, please let me know.
-<!--break-->
-I'm assuming the reader has a basic understanding of CVS and Git. If not, see the <a href="http://ximbiot.com/cvs/manual/">CVS manual</a> and/or the <a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">Git tutorial</a>. I predominantly work on Windows, but I use <a href="http://en.wikipedia.org/wiki/Windows_PowerShell">PowerShell</a>, so there is no difference between the commands I use on Windows and those I use on Mac OS X or Linux.</p>
-<p>In the examples, I'll use a few variables:</p>
-<div class="highlight"><pre><span></span>USER=myusername
-CVSROOT=:pserver:$USER@cvsserver:2401/cvsrepository
-PROJECT=myprojectname
-DROPBOX=mydropboxfolder
-</pre></div>
+    <div class="row">
 
+        <div class="nine columns">
+<section id="content">
 
-<p>($DROPBOX refers to my <a href="https://www.dropbox.com/referrals/NTE0Mzc3MDY5?src=global0">Dropbox</a> directory, where I keep all sorts of little files that I want synched to all my computers.  If you haven't looked at Dropbox, do.)</p>
-<p>First, we need to get the CVS repository.  Git does have a <a href="http://www.kernel.org/pub/software/scm/git/docs/git-cvsimport.html">git-cvsimport</a> command that I could use to suck all the CVS stuff into a local Git repository, but the CVS repository is huge, so that would be very slow, and frankly, I don't really trust <code>git-cvsimport</code>. So I just do what I would normally do to get stuff from CVS:</p>
-<div class="highlight"><pre><span></span>cvs login
-cd ~/work
-cvs checkout $PROJECT
-</pre></div>
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/workflow-remote-cvs-local-git.html" rel="bookmark" title="Permalink to Workflow for Remote CVS, Local Git">Workflow for Remote CVS, Local Git</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-07-02T13:31:32-04:00"> Fri 02 July 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/git.html">git</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/cvs.html">cvs</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>One of my clients uses a <a href="http://ximbiot.com/cvs/">CVS</a> repository for all its source code. People recognize that there are better options available than CVS, but it's been cranking along fine for 15 years, and they see no compelling reason to change.</p>
+<p>However, I really like being able to commit incremental changes …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
 
-
-<p>Next, I set up the local Git repository:</p>
-<div class="highlight"><pre><span></span>cd ~/work/$PROJECT
-git init
-</pre></div>
-
-
-<p>The working directory contains a lot of files that I don't want or need to track with Git, so I've got a standard <code>.gitignore</code> file that looks like this:</p>
-<div class="highlight"><pre><span></span>CVS
-.#*
-
-.hg
-.hgignore
-
-bin
-obj
-Debug
-Release
-TestResults
-*.obj
-*.suo
-*.ncb
-*.user
-*.tli
-*.tlh
-*.idb
-*.pdb
-
-build
-*.pbxuser
-*.perspectivev3
-.DS_Store
-xcuserdata
-
-*.old
-*.log
-*.out
-*.cache
-</pre></div>
-
-
-<p>I just copy it from my Dropbox:</p>
-<div class="highlight"><pre><span></span>cp $DROPBOX/.gitignore .
-</pre></div>
-
-
-<p>Now, I'm ready to import everything into the Git repository:</p>
-<div class="highlight"><pre><span></span>git add .
-git commit -m &quot;Initial commit&quot;
-</pre></div>
-
-
-<p>I keep a local tag <code>cvssync</code> that indicates the last time that the Git and CVS repositories matched.</p>
-<div class="highlight"><pre><span></span>git tag cvssync
-</pre></div>
-
-
-<p>Now I'm ready to do some work.  I always want the <code>master</code> Git branch to match CVS, so I create a topic branch where I do my work:</p>
-<div class="highlight"><pre><span></span>git checkout -b develop
-</pre></div>
-
-
-<p>After very efficiently and productively adding all the error-free code needed to implement whatever I'm implementing, I'm ready to commit on my <code>develop</code> branch.</p>
-<div class="highlight"><pre><span></span>git commit -am &quot;Implemented the whosey-whatsit&quot;
-</pre></div>
-
-
-<p>I tend to commit changes frequently. If I go more than an hour or so without a commit, I get worried.  The great thing about frequent commits is that it is easy to undo things.  The bad thing about frequent commits is that your commit history has lots and lots of entries, but as nobody is going to see that history but me, I don't worry about that.</p>
-<p>Now my boss calls and asks when the thing is going to be ready, and I tell him I'll check it into CVS right away.  </p>
-<p>First, I quit Visual Studio or whatever editor(s) I'm using, because the next few operations will cause the contents of files to change, and IDE's often don't handle that gracefully. This step also ensures that I don't forget to save all my changed files.</p>
-<p>I have to merge the <code>develop</code> branch back into the <code>master</code> branch:</p>
-<div class="highlight"><pre><span></span>git checkout master
-git merge develop
-</pre></div>
-
-
-<p>Then, I pull in whatever changes others have added to CVS</p>
-<div class="highlight"><pre><span></span>cvs update -d
-git commit -am &quot;Sync with CVS&quot;
-</pre></div>
-
-
-<p>(I skip the <code>git commit</code> here if there were no changes from CVS.)</p>
-<p>I check what I've changed since the <code>cvssync</code> tag, to remind myself and to verify it is right:</p>
-<div class="highlight"><pre><span></span>git log cvssync..
-cvs diff
-</pre></div>
-
-
-<p>Finally, I can push my changes to CVS:</p>
-<div class="highlight"><pre><span></span>cvs commit -m &quot;Implemented the whosey-whatsit&quot;
-</pre></div>
-
-
-<p>My employer likes to put the <code>$Id$</code> tag into source files, so after a <code>cvs commit</code>, any committed files are going to have new identifiers, so I need to commit those changes to my <code>master</code> branch</p>
-<div class="highlight"><pre><span></span>git commit -am &quot;Sync with CVS&quot;
-</pre></div>
-
-
-<p>I update my <code>cvssync</code> tag:</p>
-<div class="highlight"><pre><span></span>git tag -f cvssync
-</pre></div>
-
-
-<p>If, while I'm doing my work, others check things into CVS, and I need those changes, here is what I generally do (after quitting Visual Studio):</p>
-<div class="highlight"><pre><span></span>git commit -am &quot;Check in work branch&quot;
-git checkout master
-cvs update -d
-git commit -am &quot;Pull from CVS&quot;
-git checkout develop
-git rebase master
-</pre></div>
-
-
-<p>It may seem like a lot of work, but it's saved me a couple of times already. I have some aliases and scripts that automate some of the steps, so my actual workflow is not as verbose as what I've written here.</p>                </article>
-            </aside><!-- /#featured -->
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

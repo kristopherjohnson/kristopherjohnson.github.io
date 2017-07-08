@@ -1,79 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Authenticating with Google App Engine</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="iphone" />
+    <meta name="tags" content="googleappengine" />
+    <meta name="tags" content="cocoa" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/authenticating-google-app-engine.html" rel="bookmark"
-           title="Permalink to Authenticating with Google App Engine">Authenticating with Google App Engine</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-11-09T01:01:56-05:00">
-                Published: Mon 09 November 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/iphone.html">iphone</a> <a href="/tag/googleappengine.html">googleappengine</a> <a href="/tag/cocoa.html">cocoa</a> </p>
-</footer><!-- /.post-info -->      <p>I've finally got around to doing some work on that iPhone application that I've <a href="http://undefinedvalue.com/2009/11/01/not-quite-nanowrimo">committed to finishing this month</a>.</p>
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/authenticating-google-app-engine.html" rel="bookmark"
+         title="Permalink to Authenticating with Google App Engine">Authenticating with Google App Engine</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2009-11-09T01:01:56-05:00">
+      Mon 09 November 2009
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iphone.html">iphone</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/googleappengine.html">googleappengine</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/cocoa.html">cocoa</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I've finally got around to doing some work on that iPhone application that I've <a href="http://undefinedvalue.com/2009/11/01/not-quite-nanowrimo">committed to finishing this month</a>.</p>
 <p>On days I do a lot of work on the app, I don't feel obligated to work too hard on the blog, but I will post a little something about whatever I worked on. Today, I got my iPhone app to connect to a <a href="http://code.google.com/appengine/docs/whatisgoogleappengine.html">Google App Engine</a>-based web site.</p>
 <p>Without giving away too much, I'll just say that the iPhone app and the web site work together to provide a service to iPhone users.  I put the web site together in a couple of weekends. I decided to use Google Accounts for authentication, meaning that to log into my web site, either via a web browser or via the iPhone app, a user has to provide a Google account ID and password.</p>
 <p>If you do things this way, the server-side authentication stuff is easy. However, writing the client side is not easy, because the mechanism for authenticating with a Google account and connecting to a Google App Engine web site is not well documented. Luckily, I found a <a href="http://stackoverflow.com/questions/471898/google-app-engine-with-clientlogin-interface-for-objective-c">Stack Overflow question and answer</a> that provided all the clues I needed to get my iPhone app working.</p>
 <p>After using Google's API for implementing the web site, I'm growing increasingly frustrated with the Cocoa APIs. What takes two lines of code on the web side takes dozens of lines of code on the client side. Simple operations like connecting to a URL, downloading data, and storing it to a local database requires a lot of boilerplate code on the Cocoa side. It's not difficult, but it's incredibly verbose.</p>
 <p>I should note that I'm using the Python API for Google App Engine. If I was using the Java API, then I'm sure it would be as grotesque as the Objective-C stuff.</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

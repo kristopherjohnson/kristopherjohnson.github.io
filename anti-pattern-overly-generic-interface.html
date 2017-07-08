@@ -1,43 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Anti-pattern: The Overly Generic Interface</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="programming" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/anti-pattern-overly-generic-interface.html" rel="bookmark"
-           title="Permalink to Anti-pattern: The Overly Generic Interface">Anti-pattern: The Overly Generic Interface</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-07-04T14:43:25-04:00">
-                Published: Sat 04 July 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/programming.html">programming</a> </p>
-</footer><!-- /.post-info -->      <p>While learning about <a href="http://en.wikipedia.org/wiki/Core_Animation">Core Animation</a>, I was disappointed to find that it is plagued by the anti-pattern that I call the <em>Overly Generic Interface</em>.
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/anti-pattern-overly-generic-interface.html" rel="bookmark"
+         title="Permalink to Anti-pattern: The Overly Generic Interface">Anti-pattern: The Overly Generic Interface</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2009-07-04T14:43:25-04:00">
+      Sat 04 July 2009
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/programming.html">programming</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>While learning about <a href="http://en.wikipedia.org/wiki/Core_Animation">Core Animation</a>, I was disappointed to find that it is plagued by the anti-pattern that I call the <em>Overly Generic Interface</em>.
 <!--break-->
 The Overly Generic Interface is an interface that provides a very small set of functions, but each function takes parameters that allow one to do a lot of different things.  For example, in C++ an overly generic interface would look like this:</p>
 <div class="highlight"><pre><span></span><span class="c1">// A Value object can hold a string, an integer, a float, an object pointer, etc.</span>
@@ -142,37 +160,41 @@ recorder.recordMarriage(husband, wife);
 <p>A generic interface is often useful (e.g., <a href="http://developer.apple.com/documentation/Cocoa/Reference/CocoaBindingsRef/CocoaBindingsRef.html">Cocoa Bindings</a>). My objection is to those API’s that <em>only</em> provide the generic interface. In Core&nbsp;Animation, practically everything is done by creating <code>NSDictionary</code> objects, populating them with obscure keys and objects, and then passing them to the API. There are a few higher-level interfaces available, but they don't provide access to all of Core&nbsp;Animation's functionality, so using the low-level overly generic interface is a necessity.</p>
 <p>Names are important, and therefore names should be explicitly declared.  Otherwise, they are hidden from the compiler, from the IDE, from the debugger, and from programmers who read class declarations.  Hidden names and magic names cause problems.</p>
 <p>When confronted with an Overly Generic Interface, I almost always end up writing some sort of wrapper around it.  It would be nice if I didn't have to do so.</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

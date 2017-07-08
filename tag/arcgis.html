@@ -1,78 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - arcgis</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - arcgis</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/setting-arcgis-runtime-sdk-ios-xcode-bot.html">Setting Up ArcGIS Runtime SDK for iOS for Xcode Bot</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2014-02-08T16:48:55-05:00">
-                Published: Sat 08 February 2014
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/xcode.html">xcode</a> <a href="/tag/iosdev.html">iosdev</a> <a href="/tag/bot.html">bot</a> <a href="/tag/arcgis.html">arcgis</a> </p>
-</footer><!-- /.post-info --><p>I am working on an iPad app that uses the <a href="https://developers.arcgis.com/ios/">ArcGIS Runtime SDK for iOS</a>. Esri provides an easy-to-use installer and <a href="https://developers.arcgis.com/ios/info/install.htm">instructions</a> for setting up the SDK so that it can be used with Xcode.</p>
-<p>The installer puts the SDK files in the user’s home directory, and the setup guide recommends using paths like <code>$(HOME)/Library/SDKs/ArcGIS/iOS/</code> in Xcode projects to find the framework’s headers and libraries. This works fine as long as one is using Xcode as a user who has installed the SDK. However, it causes problems if one wants to set up an <a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/ConfigureBots/ConfigureBots.html">Xcode bot</a> to automatically build and test the app. The Xcode service that runs bots executes under the <code>_teamsserver</code> user account, and by default that user’s home directory does not exist, and you can’t log in as that user to run the SDK installer. So attempts to create a bot to build the app just result in “ArcGIS.h not found” compilation errors.</p>
-<p>After I bit of Googling and experimentation, I came up with a solution:</p>
-<ol>
-<li>Install the SDK in my user account (or another normal account), following Esri’s installer and instructions.</li>
-<li>Make my <code>~/Library</code> directory world-readable:<br><code>chmod 755 ~/Library</code></li>
-<li>Create the <code>/var/teamsserver</code> home directory for the <code>_teamsserver</code> user:<br><code>sudo mkdir /var/teamsserver</code></li>
-<li>Create the <code>/var/teamsserver/Library</code> directory for the <code>_teamsserver</code> user:<br><code>sudo mkdir /var/teamsserver/Library</code></li>
-<li>Set <code>_teamsserver</code> as the owner of the directories:<br><code>sudo chown -R _teamsserver:_teamsserver /var/teamsserver/</code></li>
-<li>Set permissions on the directories:<br><code>sudo chmod -R 770 /var/teamsserver/</code></li>
-<li>Create a symbolic link to the SDK installation:<br><code>sudo ln -s ~/Library/SDKs /var/teamsserver/Library/SDKs</code></li>
-</ol>
-<p>This works. It could be argued that it would be better to set up the symbolic links in some shared location (<code>/Library</code>, <code>/usr/local</code>, etc.) and then use a full path in the Xcode project to find them, but I prefer this solution because it doesn’t require any extra steps for developers who don’t need to set up a bot.</p>                </article>
-            </aside><!-- /#featured -->
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content">
+
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/setting-arcgis-runtime-sdk-ios-xcode-bot.html" rel="bookmark" title="Permalink to Setting Up ArcGIS Runtime SDK for iOS for Xcode Bot">Setting Up ArcGIS Runtime SDK for iOS for Xcode Bot</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2014-02-08T16:48:55-05:00"> Sat 08 February 2014 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/xcode.html">xcode</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/iosdev.html">iosdev</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/bot.html">bot</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/arcgis.html">arcgis</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>I am working on an iPad app that uses the <a href="https://developers.arcgis.com/ios/">ArcGIS Runtime SDK for iOS</a>. Esri provides an easy-to-use installer and <a href="https://developers.arcgis.com/ios/info/install.htm">instructions</a> for setting up the SDK so that it can be used with Xcode.</p>
+<p>The installer puts the SDK files in the user’s home directory, and the setup …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

@@ -1,150 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - drupal</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - drupal</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/now-running-amazon-ec2.html">Now Running on Amazon EC2</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2010-11-19T23:13:19-05:00">
-                Published: Fri 19 November 2010
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/ubuntu.html">ubuntu</a> <a href="/tag/ec2.html">ec2</a> <a href="/tag/drupal.html">drupal</a> <a href="/tag/admin.html">admin</a> </p>
-</footer><!-- /.post-info --><p>This blog is now running in the <a href="http://aws.amazon.com/ec2/">Amazon Elastic Compute Cloud (EC2)</a>. I hope that nobody notices any difference.
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content">
+
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/now-running-amazon-ec2.html" rel="bookmark" title="Permalink to Now Running on Amazon EC2">Now Running on Amazon EC2</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-11-19T23:13:19-05:00"> Fri 19 November 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ubuntu.html">ubuntu</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ec2.html">ec2</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/drupal.html">drupal</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/admin.html">admin</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>This blog is now running in the <a href="http://aws.amazon.com/ec2/">Amazon Elastic Compute Cloud (EC2)</a>. I hope that nobody notices any difference.
 <!--break-->
-Migrating the blog over to the new server was relatively straightforward, using Drupal's <a href="http://drupal.org/project/backup_migrate">Backup and Migrate</a> module. After <a href="/2010/11/12/setting-drupal-ubuntu-1010-ec2">getting Drupal set up on the new server</a>, I just copied all my themes, modules, and files from the old server to the new and then did a restore of the database.</p>
-<p>I am using a <a href="http://aws.amazon.com/ec2/instance-types/">t1.micro</a> EC2 instance, which is the cheapest and least-powerful EC2 instance. So far, it seems to be handling the load fine, but I'll need to see how it works over the next few weeks. If all goes well, I'm going to try moving all my other web sites to the same server. None of my sites gets more than a few hundred hits per day, so if I can handle them all with one cheap easy-to-manage server, I'll be very happy. But if I have to upgrade to a beefier instance, all it takes is a couple of minutes and a few dollars.</p>
-<p>Time will tell how bad being dependent on Amazon is in comparison to being dependent on the web hosting services I've used. I suspect it will be better.</p>
-<p>I'm switching to <a href="http://www.google.com/apps/intl/en/group/index.html">Google Apps</a> for my e-mail and other such services. Configuring and managing your own e-mail servers these days is a colossal waste of time unless you have some very special requirements.</p>
-<h2>A Few Weeks Later...</h2>
-<p>Amazon AWS charges for November: $2.88.  $2.40 of that was for having an unattached elastic IP address for 240 hours, and $0.17 was for running a Small (rather than Micro) instance for a couple of hours, so I expect my costs going forward to be lower.</p>
-<p>AWS charges for December: $0.52.</p>
-<p>AWS charges for January: $0.52.</p>
-<p>(In contrast, my previous hosting plans cost me a total of $20 per month.) </p>
-<p>Google's webmaster tools indicate that my blog pages are now downloading in about 150 ms, as opposed to around 400 ms with my old provider. So performance seems to have improved quite a bit.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+Migrating the blog over to the new server was relatively straightforward, using Drupal's <a href="http://drupal.org/project/backup_migrate">Backup and Migrate</a> module. After <a href="/2010/11/12/setting-drupal-ubuntu-1010-ec2">getting Drupal set up on the new server</a>, I just copied all my …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/setting-drupal-6-ubuntu-1010-ec2.html" rel="bookmark" title="Permalink to Setting Up Drupal 6 on Ubuntu 10.10 on EC2">Setting Up Drupal 6 on Ubuntu 10.10 on EC2</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2010-11-13T03:14:23-05:00"> Sat 13 November 2010 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ubuntu.html">ubuntu</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ec2.html">ec2</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/drupal.html">drupal</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/admin.html">admin</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>For several years, I've been using pretty-cheap web hosting services for my blog, my <a href="http://capablehands.net">corporate website</a>, and other webby things. However, I'm pretty sure that it would be even cheaper to use <a href="http://aws.amazon.com/ec2/">Amazon EC2</a>, especially as they now offer <a href="http://aws.amazon.com/free/">free usage</a> for a year. I also like the ease with …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/enabling-fastcgi-php-ubuntu.html" rel="bookmark" title="Permalink to Enabling FastCGI for PHP on Ubuntu">Enabling FastCGI for PHP on Ubuntu</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2009-05-02T08:44:35-04:00"> Sat 02 May 2009 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/ubuntu.html">ubuntu</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/sysadmin.html">sysadmin</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/php.html">php</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/fastcgi.html">fastcgi</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/debian.html">debian</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/apache.html">apache</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/drupal.html">drupal</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>I'm setting up a <a href="http://en.wikipedia.org/wiki/Virtual_private_server">virtual private server</a>. If all goes well, I'll be moving all my websites from their current shared-hosting arrangements to this VPS.</p>
+<p>I started with a minimal Ubuntu 8.10 image and installed all the LAMP stuff. Things went smoothly until I decided to try to enable …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/drupal-rocks.html" rel="bookmark" title="Permalink to Drupal Rocks">Drupal Rocks</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2009-04-18T12:51:15-04:00"> Sat 18 April 2009 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/drupal.html">drupal</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>I first dabbled in web development back in the mid 1990's. Back in those dark times, you created web sites by writing raw HTML, or by writing C or Perl CGI scripts. You spent about 1% of your time creating interesting content and behavior, and 99% of your time dinking …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/setting-drupal-6-ubuntu-1010-ec2.html" rel="bookmark"
-                           title="Permalink to Setting Up Drupal 6 on Ubuntu 10.10 on EC2">Setting Up Drupal 6 on Ubuntu 10.10 on EC2</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-11-13T03:14:23-05:00">
-                Published: Sat 13 November 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/ubuntu.html">ubuntu</a> <a href="/tag/ec2.html">ec2</a> <a href="/tag/drupal.html">drupal</a> <a href="/tag/admin.html">admin</a> </p>
-</footer><!-- /.post-info -->                <p>For several years, I've been using pretty-cheap web hosting services for my blog, my <a href="http://capablehands.net">corporate website</a>, and other webby things. However, I'm pretty sure that it would be even cheaper to use <a href="http://aws.amazon.com/ec2/">Amazon EC2</a>, especially as they now offer <a href="http://aws.amazon.com/free/">free usage</a> for a year. I also like the ease with …</p>
-                <a class="readmore" href="/setting-drupal-6-ubuntu-1010-ec2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/enabling-fastcgi-php-ubuntu.html" rel="bookmark"
-                           title="Permalink to Enabling FastCGI for PHP on Ubuntu">Enabling FastCGI for PHP on Ubuntu</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-05-02T08:44:35-04:00">
-                Published: Sat 02 May 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/ubuntu.html">ubuntu</a> <a href="/tag/sysadmin.html">sysadmin</a> <a href="/tag/php.html">php</a> <a href="/tag/fastcgi.html">fastcgi</a> <a href="/tag/debian.html">debian</a> <a href="/tag/apache.html">apache</a> <a href="/tag/drupal.html">drupal</a> </p>
-</footer><!-- /.post-info -->                <p>I'm setting up a <a href="http://en.wikipedia.org/wiki/Virtual_private_server">virtual private server</a>. If all goes well, I'll be moving all my websites from their current shared-hosting arrangements to this VPS.</p>
-<p>I started with a minimal Ubuntu 8.10 image and installed all the LAMP stuff. Things went smoothly until I decided to try to enable …</p>
-                <a class="readmore" href="/enabling-fastcgi-php-ubuntu.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/drupal-rocks.html" rel="bookmark"
-                           title="Permalink to Drupal Rocks">Drupal Rocks</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-04-18T12:51:15-04:00">
-                Published: Sat 18 April 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/drupal.html">drupal</a> </p>
-</footer><!-- /.post-info -->                <p>I first dabbled in web development back in the mid 1990's. Back in those dark times, you created web sites by writing raw HTML, or by writing C or Perl CGI scripts. You spent about 1% of your time creating interesting content and behavior, and 99% of your time dinking …</p>
-                <a class="readmore" href="/drupal-rocks.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

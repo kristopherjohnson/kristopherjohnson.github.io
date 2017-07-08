@@ -1,109 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - vs2008</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - vs2008</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/visual-studio-2008-code-snippet-inserting-stringformat-call.html">Visual Studio 2008 Code Snippet for Inserting a String.Format() call</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-02-20T00:57:51-05:00">
-                Published: Sun 20 February 2011
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/vs2008.html">vs2008</a> <a href="/tag/visualstudio.html">visualstudio</a> </p>
-</footer><!-- /.post-info --><p>Over the past year I've been (re-)learning how to use Visual&nbsp;Studio&nbsp;2008. I did a lot of work in the 90's and early 00's with Visual&nbsp;Studios 5, 6, and 2003, but then I had a few years away from Windows development, and I've had limited experience with .NET development.  So I'm constantly discovering "new things" about Visual&nbsp;Studio that my coworkers already know.</p>
-<p>One nifty feature of Visual&nbsp;Studio is "code snippets", which are basically little bits of code that can be quickly inserted into a source file using Intellisense.  The inserted code includes placeholders that can be replaced with whatever you need.  For example, if you are typing away in a C# source file and type the keyword <code>for</code>, you'll see the Intellsense window pop up with "for" as the selected item, and if you hit the Tab key a couple of times a complete <code>for</code> statement with braces, a loop variable, and everything will be inserted.  You can then hit Tab to move to the loop variable name (in case you don't like <code>i</code>) and again to go into the loop body.</p>
-<p>(Other IDEs have similar features, calling them <em>abbreviations</em>, <em>macros</em>, etc.  You don't need to tell me that Visual&nbsp;Studio isn't magically unique.)</p>
-<p>Visual&nbsp;Studio has a whole bunch of these snippets built in, but you can also define your own by writing an XML file and saving it where Visual&nbsp;Studio can find it.  For example, here is a snippet I wrote to quickly insert <code>String.Format()</code> expressions:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
-<span class="nt">&lt;CodeSnippets</span> <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;CodeSnippet</span> <span class="na">Format=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Header&gt;</span>
-      <span class="nt">&lt;Title&gt;</span>String.Format<span class="nt">&lt;/Title&gt;</span>
-      <span class="nt">&lt;Description&gt;</span>Creates a String.Format() call<span class="nt">&lt;/Description&gt;</span>
-      <span class="nt">&lt;Author&gt;</span>Kristopher Johnson<span class="nt">&lt;/Author&gt;</span>
-      <span class="nt">&lt;SnippetTypes&gt;</span>
-        <span class="nt">&lt;SnippetType&gt;</span>Expansion<span class="nt">&lt;/SnippetType&gt;</span>
-      <span class="nt">&lt;/SnippetTypes&gt;</span>
-      <span class="nt">&lt;Shortcut&gt;</span>sf<span class="nt">&lt;/Shortcut&gt;</span>
-    <span class="nt">&lt;/Header&gt;</span>
-    <span class="nt">&lt;Snippet&gt;</span>
-      <span class="nt">&lt;Declarations&gt;</span>
-        <span class="nt">&lt;Literal&gt;</span>
-          <span class="nt">&lt;ID&gt;</span>format<span class="nt">&lt;/ID&gt;</span>
-          <span class="nt">&lt;ToolTip&gt;</span>Replace with format string<span class="nt">&lt;/ToolTip&gt;</span>
-          <span class="nt">&lt;Default&gt;</span>format<span class="nt">&lt;/Default&gt;</span>
-        <span class="nt">&lt;/Literal&gt;</span>
-        <span class="nt">&lt;Literal&gt;</span>
-          <span class="nt">&lt;ID&gt;</span>arguments<span class="nt">&lt;/ID&gt;</span>
-          <span class="nt">&lt;ToolTip&gt;</span>Replace with arguments<span class="nt">&lt;/ToolTip&gt;</span>
-          <span class="nt">&lt;Default&gt;</span>arguments<span class="nt">&lt;/Default&gt;</span>
-        <span class="nt">&lt;/Literal&gt;</span>
-      <span class="nt">&lt;/Declarations&gt;</span>
-      <span class="nt">&lt;Code</span> <span class="na">Language=</span><span class="s">&quot;CSharp&quot;</span><span class="nt">&gt;</span>
-        <span class="cp">&lt;![CDATA[String.Format(&quot;$format$&quot;, $arguments$)$end$]]&gt;</span>
-      <span class="nt">&lt;/Code&gt;</span>
-    <span class="nt">&lt;/Snippet&gt;</span>
-  <span class="nt">&lt;/CodeSnippet&gt;</span>
-<span class="nt">&lt;/CodeSnippets&gt;</span>
-</pre></div>
+    <div class="row">
 
+        <div class="nine columns">
+<section id="content">
 
-<p>Just save this as a file called <code>StringFormat.snippet</code> in your <code>Documents\Visual Studio 2008\Code Snippets\Visual C#\My Code Snippets</code> folder.  (You can specify another location using the <em>Code Snippets Manager</em> in the <em>Tools</em> menu.)  Then, when editing a C# source file, if you type <code>sf</code> and hit Tab a couple of times, this will magically appear in your code:</p>
-<p><code>String.Format("</code> <em>format</em> <code>",</code> <em>arguments</em> <code>)</code></p>
-<p>The <em>format</em> placeholder will be selected, so you can replace it with your format string, then hit Tab and the <em>arguments</em> placeholder will be selected, so you can replace it.  You can keep hitting Tab to go back and forth between the placeholders.  When finished, hit Return and the cursor will go to the end of the line.</p>
-<p>Alas, snippets only work for C#, Visual&nbsp;Basic, and XML editing. Most of my work is in C++, so I have to keep writing code the old-fashioned way there (or use macros).</p>
-<p>Note that I have been talking about Visual&nbsp;Studio&nbsp;2008.  "Why aren't you using Visual Studio&nbsp;2010?" some will ask.  Shut&nbsp;up.</p>
-<p>For a more comprehensive tutorial on creating code snippets, see <a href="http://www.switchonthecode.com/tutorials/csharp-tutorial-visual-studio-code-snippets">Switch On The Code: C# Tutorial - Visual Studio Code Snippets</a>.</p>                </article>
-            </aside><!-- /#featured -->
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/visual-studio-2008-code-snippet-inserting-stringformat-call.html" rel="bookmark" title="Permalink to Visual Studio 2008 Code Snippet for Inserting a String.Format() call">Visual Studio 2008 Code Snippet for Inserting a String.Format() call</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2011-02-20T00:57:51-05:00"> Sun 20 February 2011 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/vs2008.html">vs2008</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/visualstudio.html">visualstudio</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Over the past year I've been (re-)learning how to use Visual&nbsp;Studio&nbsp;2008. I did a lot of work in the 90's and early 00's with Visual&nbsp;Studios 5, 6, and 2003, but then I had a few years away from Windows development, and I've had limited experience with …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

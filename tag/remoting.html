@@ -1,109 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - remoting</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - remoting</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/creating-net-remoting-ipc-channels.html">Creating .NET Remoting IPC Channels</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-12-14T14:36:55-05:00">
-                Published: Wed 14 December 2011
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/remoting.html">remoting</a> <a href="/tag/net.html">.NET</a> </p>
-</footer><!-- /.post-info --><p>Yet another C# code snippet.  I'm developing a service and an accompanying UI that always run on the same physical box, and it was suggested that I implement the communication between them using .NET Remoting and the <em>IPC</em> channel type, which is a supposedly-easy way to get processes on the same machine to talk to one another.</p>
-<p>Of course, it wasn't easy, because if you simply create and register an <code>IpcChannel</code> with default parameters, you get security-related exceptions when you try to do anything with it.  You have to delve through documentation and online forums to figure out what underdocumented magic is required to get the stuff to actually work.  </p>
-<p>There were two obstacles I had to overcome:</p>
-<ul>
-<li>By default, user-defined types will not be deserialized, to prevent deserialization-based attacks by malicious clients. To disable this "feature", one must set the <code>TypeFilterLevel</code> to <code>Full</code>.</li>
-<li>My service runs as the LocalSystem user, whereas the client application runs in the logged-in user's security context. By default, the user's account would not be able open the IPC port that the service creates. The fix to this is to set the channel's <code>authorizedGroup</code> to the name of a user group that is allowed to open the port.</li>
-</ul>
-<p>So, as usual, the resulting code looks simple, but it took a couple of hours to figure out what had to be written.
-<!--break-->
-Here's the code, which is intended to work on .NET Framework 2.0 and higher on Windows XP and newer operating systems:</p>
-<script src="https://gist.github.com/3047562.js?file=IpcRemotingUtil.cs"></script>
+    <div class="row">
 
-<p>On the server side, I use it like this:</p>
-<div class="highlight"><pre><span></span>var channel = IpcRemotingUtil.CreateIpcChannel(MyServer.IpcPortName);
-ChannelServices.RegisterChannel(channel, true);
+        <div class="nine columns">
+<section id="content">
 
-var entry = new WellKnownServiceTypeEntry(
-    typeof(MyRemoteObject),
-    &quot;MyRemoteObject.rem&quot;,
-    WellKnownObjectMode.Singleton);
-RemotingConfiguration.RegisterWellKnownServiceType(entry);
-</pre></div>
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/creating-net-remoting-ipc-channels.html" rel="bookmark" title="Permalink to Creating .NET Remoting IPC Channels">Creating .NET Remoting IPC Channels</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2011-12-14T14:36:55-05:00"> Wed 14 December 2011 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/remoting.html">remoting</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/net.html">.NET</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Yet another C# code snippet.  I'm developing a service and an accompanying UI that always run on the same physical box, and it was suggested that I implement the communication between them using .NET Remoting and the <em>IPC</em> channel type, which is a supposedly-easy way to get processes on the …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
 
-
-<p>And on the client side, I use it like this:</p>
-<div class="highlight"><pre><span></span>var channel = IpcRemotingUtil.CreateIpcChannelWithUniquePortName();
-ChannelServices.RegisterChannel(channel, true);
-
-var objectUri = String.Format(&quot;ipc://{0}/MyRemoteObject.rem&quot;,
-    MyServer.IpcPortName);
-var remoteObject = (MyRemoteObject)Activator.GetObject(
-    typeof(MyRemoteObject), objectUri);
-try
-{
-    remoteObject.FooBarAndBaz();
-}
-catch (Exception ex)
-{
-    // aaaiiiyyyeee
-}
-</pre></div>
-
-
-<p>Note that both sides use <code>IpcChannel</code> so that the server can invoke callbacks in the client.  If you don't need callbacks, you could use <code>IpcServerChannel</code> and <code>IpcClientChannel</code> instead of <code>IpcChannel</code>.  If you do that, you need to make sure you set the <code>TypeFilterLevel</code> and <code>authorizedGroup</code> on the <code>IpcServerChannel</code> as is done above for the <code>IpcChannel</code>.</p>                </article>
-            </aside><!-- /#featured -->
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Netgear ReadyNAS Duo 2000 Setup and Review</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+    <meta name="tags" content="sysadmin" />
+    <meta name="tags" content="review" />
+    <meta name="tags" content="readynas" />
+    <meta name="tags" content="netgear" />
+    <meta name="tags" content="backups" />
+
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li class="active"><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/netgear-readynas-duo-2000-setup-and-review.html" rel="bookmark"
-           title="Permalink to Netgear ReadyNAS Duo 2000 Setup and Review">Netgear ReadyNAS Duo 2000 Setup and Review</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2009-08-20T00:40:10-04:00">
-                Published: Thu 20 August 2009
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/sysadmin.html">sysadmin</a> <a href="/tag/review.html">review</a> <a href="/tag/readynas.html">readynas</a> <a href="/tag/netgear.html">netgear</a> <a href="/tag/backups.html">backups</a> </p>
-</footer><!-- /.post-info -->      <p>I have previously written about my <a href="http://undefinedvalue.com/2007/10/26/backups">backup strategy</a>. I've never really worried about backups too much. In the 30 years I've been using computers, I've never lost a hard drive.</p>
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/netgear-readynas-duo-2000-setup-and-review.html" rel="bookmark"
+         title="Permalink to Netgear ReadyNAS Duo 2000 Setup and Review">Netgear ReadyNAS Duo 2000 Setup and Review</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2009-08-20T00:40:10-04:00">
+      Thu 20 August 2009
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/sysadmin.html">sysadmin</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/review.html">review</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/readynas.html">readynas</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/netgear.html">netgear</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/backups.html">backups</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I have previously written about my <a href="http://undefinedvalue.com/2007/10/26/backups">backup strategy</a>. I've never really worried about backups too much. In the 30 years I've been using computers, I've never lost a hard drive.</p>
 <p>...until last weekend. My wife's MacBook Air was displaying some funny behavior, so I ran Disk Utility on it. Disk Utility said the drive had problems, so I clicked <em>Repair Disk</em>, and it would not boot thereafter. I called Apple, and their expert told me I'd have to erase the drive and reinstall the operating system. We had no backups for that machine. My wife was not happy to lose everything. And of course, it is <em>my</em> fault she had no backups. (I've told her about Time Machine, but she didn't believe it could really be that easy to set up, so she never did.)</p>
 <p>So, better late than never, I decided to get some network storage and start backing up everything to it. A friend was happy with his Netgear ReadyNAS, so I ordered a Netgear ReadyNAS Duo 2000 from Amazon, along with two 1-TB Western Digital Caviar Green hard drives. Total price came out to about $400.</p>
 <p>The ReadyNAS has two drive bays. Most models come with a drive included, but I bought the "bare" one that has no preinstalled drives, assuming that it would be cheaper to buy my own drives. Upon reading the manuals, I immediately hit a problem: the manuals explain how to add a second hard drive to a ReadyNAS that comes with a single drive, but nothing about what to do if you have an empty ReadyNAS.</p>
@@ -48,37 +74,41 @@
 <p>It was very easy to set up <a href="http://www.readynas.com/?p=1097">Time Machine with the ReadyNAS</a>. (First thing I did was back up my wife's Air, of course.)</p>
 <p>The ReadyNAS has a lot of other features that I am not yet using. $400 for a backup solution seems a little pricey, when one can buy a 1-TB drive and enclosure for about $100, but having storage available on the network means we're more likely to actually do backups. We'll see how things go.</p>
 <p>A complete description of all the features can be found here: http://www.readynas.com/?p=177</p>
-    </div><!-- /.entry-content -->
-
-  </article>
+  </div><!-- /.entry-content -->
 </section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>

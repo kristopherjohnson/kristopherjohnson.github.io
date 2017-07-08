@@ -1,0 +1,97 @@
+body {
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.logo {
+    float: left;
+    margin-left: 0;
+    margin-top: 1rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(16, 74, 145);
+    margin-top: 0;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+}
+
+h2, h3, h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  h2, h3, h4 { font-size: 3.0rem; }
+  h5 { font-size: 2.4rem; }
+  h6 { font-size: 1.5rem; }
+}
+
+a:link, a:visited {
+    color: rgb(16, 74, 145);
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: rgb(192, 96, 80);
+    text-decoration: underline;
+}
+
+#menu {
+    color: white;
+    background-color: rgb(16, 74, 145);
+}
+
+#menu ul {
+    padding: 0;
+}
+
+#menu li {
+    display : inline;
+    padding: 0;
+}
+
+#menu li {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+#menu a {
+    padding: 1rem;
+}
+
+#menu a:link, #menu a:visited, #menu a:hover, #menu a:active {
+    color: white;
+    text-decoration: none;
+}
+
+.active, #menu a:hover, #menu a:active {
+    background-color: rgb(108, 140, 181);
+}
+
+#post-list {
+    margin-bottom: 1rem;
+    list-style-type: none;
+}
+
+.post-info {
+    font-size: smaller;
+}
+
+.entry-content {
+    margin-top: 1.5rem;
+}
+
+ul.tags, .tags li {
+    display: inline;
+    font-weight: bold;
+}
+

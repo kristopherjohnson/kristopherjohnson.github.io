@@ -1,87 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Undefined Value - huawei</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <title>Undefined Value - huawei</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
-
 <body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
         <header id="banner" class="body">
-                <h1><a href="/">Undefined Value </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/blog.html">Blog</a></li>
-                </ul></nav>
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
         </header><!-- /#banner -->
+    </div>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/getting-root-huawei-u8665-fusion-2-phone.html">Getting Root on Huawei U8665 Fusion 2 Phone</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-02-20T00:33:07-05:00">
-                Published: Fri 20 February 2015
-        </abbr>
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/kristopher-johnson.html">Kristopher Johnson</a>
-        </address>
-<p>In <a href="/category/blog.html">Blog</a>.</p>
-<p>tags: <a href="/tag/root.html">root</a> <a href="/tag/huawei.html">huawei</a> <a href="/tag/android.html">android</a> </p>
-</footer><!-- /.post-info --><p>I've had an old <a href="http://undefinedvalue.com/2011/09/11/my-visit-android-land">Samsung Galaxy S Captivate</a> phone, running Android 2.2, that I've used as a test device while developing Android apps. In my new job, I no longer need to support Android 2.2 (hooray!), but I do need to support Android 2.3 (boo!). I tried installing <a href="http://www.cyanogenmod.org">CyanogenMod</a> to update the Captivate to Android 2.3, but I ended up bricking the device.</p>
-<p>Rather than spend more time trying to figure out how to fix that, I looked around for a cheap new Android 2.3 device, and found the <a href="http://www.amazon.com/Unlocked-Android-Touchscreen-Bluetooth-Microsd/dp/B00BGYOO60">Huawei U8865</a>, also known as the "Fusion 2", for $60. That seemed like a reasonable price for a brand-new old phone, so I purchased it and it arrived the next day.</p>
-<p>Unfortunately, when I tried using it for development, I hit a snag. My work requires using <a href="http://developer.android.com/tools/help/adb.html"><code>adb shell</code></a> and related utilities, and whenever I tried those, I just got a "permission denied" response. I couldn't even take a screenshot.</p>
-<p>I looked around for instructions to "root" the phone (that is, get privileged access). They aren't hard to find, but the people who write up these instructions all assume that (a) their readers have no idea what they are doing, and (b) everybody uses Windows. Neither of those are true for me, so I had to translate those instructions into developer-speak.</p>
-<p>So, anyway, if you are running Mac OS X and you already know how to use Terminal and <code>adb</code>, then here are instructions for you:</p>
-<p>(These instructions are based on those at <a href="http://androidforums.com/threads/step-by-step-root-walkthrough-for-huawei-fusion-2.685504/">http://androidforums.com/threads/step-by-step-root-walkthrough-for-huawei-fusion-2.685504/</a>.)</p>
-<ol>
-<li>Download <a href="https://www.dropbox.com/s/qtc37pley0vinj8/Huawei-Fusion-2-Recovery-Root.zip">https://www.dropbox.com/s/qtc37pley0vinj8/Huawei-Fusion-2-Recovery-Root.zip</a> and extract the contents.</li>
-<li>Open Terminal and <code>cd</code> to the extracted <code>Huawei-Fusion-2-Recovery-Root/Huawei-Fusion-2-Recovery-Root</code> directory</li>
-<li>Turn off phone</li>
-<li>Reboot phone into fastboot by holding Volume Down and Power buttons simultaneously for 10-20 seconds. (It will freeze at the AT&amp;T logo.)</li>
-<li>Connect phone to computer.</li>
-<li>Type <code>fastboot devices</code> to verify phone is connected.</li>
-<li>Type <code>fastboot flash recovery recovery.superrecovery.img</code></li>
-<li>After it finishes, unplug phone.</li>
-<li>Remove back of phone, remove battery, wait 15 seconds, then re-insert battery and attach back.</li>
-<li>Hold Volume-Up and Power button simultaneously until it boots into recovery (15-20 seconds of holding both buttons)</li>
-<li>In recovery menu, select the "reboot device" option with the volume buttons (it should already start with reboot highlighted) and press the power button to reboot. </li>
-</ol>
-<p>After that, you will "have root". So if you use <code>adb shell</code> to get a command shell on the device, you can run <code>su</code> to get superuser privileges. There is also a new <a href="https://play.google.com/store/apps/details?id=eu.chainfire.supersu&amp;hl=en">SuperSU</a> app on the phone. </p>
-<p>But that's not really what I wanted. What I want to do is run <code>adb shell &lt;some-command&gt;</code> from the Mac. If you read the <code>adb</code> documentation, you might think you can run <code>adb root</code> to enable that, but you will just get an error message saying "adbd cannot run as root in production builds".</p>
-<p>One needs to install an alternative version of <code>adbd</code>. I downloaded and installed this one from Google Play: <a href="https://play.google.com/store/apps/details?id=eu.chainfire.adbd&amp;hl=en">adbd insecure</a>. There is an option to have it automatically grant superuser access at boot, and I enabled that.</p>                </article>
-            </aside><!-- /#featured -->
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content">
+
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="http://kristopherjohnson.github.io/getting-root-huawei-u8665-fusion-2-phone.html" rel="bookmark" title="Permalink to Getting Root on Huawei U8665 Fusion 2 Phone">Getting Root on Huawei U8665 Fusion 2 Phone</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-02-20T00:33:07-05:00"> Fri 20 February 2015 </time>
+                    <ul class="tags">
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/root.html">root</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/huawei.html">huawei</a></li>
+                        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/android.html">android</a></li>
+                    </ul>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>I've had an old <a href="http://undefinedvalue.com/2011/09/11/my-visit-android-land">Samsung Galaxy S Captivate</a> phone, running Android 2.2, that I've used as a test device while developing Android apps. In my new job, I no longer need to support Android 2.2 (hooray!), but I do need to support Android 2.3 (boo!). I tried …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Other Stuff</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>More of Me</h2>
                         <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
 
+    <div class="row">
         <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+            © 2003-2017 Kristopher Johnson
         </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->
 </body>
 </html>
