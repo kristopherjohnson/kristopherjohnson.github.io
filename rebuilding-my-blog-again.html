@@ -115,6 +115,15 @@
 <p>Hyde didn't support Python 3. (The website says Python 3 support is "in progress".)  I gave it a try anyway, and while I didn't hate it, I really want something that works with Python 3 and doesn't require a lot of configuration.  (For every YAML file I see, I expect at least one hour of messing around with it.)</p>
 <p>Pelican worked pretty well on my first try (except for a CRITICAL error when running <code>pelican generate</code> with a not-well-formed Markdown file) and it seemed to be the most well-documented and well-supported of the generators I tried.  Out-of-the-box, it handled pagination and other desirable features that would have required configuration or additional coding in Cactus or Hyde.</p>
 <p>So I decided to go with Pelican as my site generator.</p>
+<h2>Python 3 Virtual Environment</h2>
+<p>To ensure I'd be able to easily run the Pelican generator on any machine, now or in the future, I set up a Python 3 <a href="https://docs.python.org/3.5/library/venv.html">virtual environment</a> and installed the necessary packages:</p>
+<div class="highlight"><pre><span></span>python3 -m venv-pelican-blog                # create the environment
+source venv-pelican-blog/bin/activate       # activate the environment
+pip install pelican pelican-alias markdown  # install dependencies
+</pre></div>
+
+
+<p>And then before running any Pelican commands, I have to make sure I run the command <code>source venv-pelican-blog/bin/activate</code>.</p>
 <h2>Configuring Pelican</h2>
 <p>To support automatic redirects from old URLs to the new pages, I installed the <a href="https://github.com/Nitron/pelican-alias">pelican-alias</a> plugin, and updated my generator script so that it would include an <code>Alias:</code> item for each old article.  I also gave all my blog posts a Category of "Blog", so that category name appears as a menu option at the top of the page.</p>
 <p>I added an <code>about-me.md</code> file to the <code>content/pages</code> subdirectory, so that would also appear at the top of the page as it does in the Drupal site.</p>
@@ -125,16 +134,18 @@
 <p>Thankfully, it turned out to be easier than I expected to create my own theme.  Basically, I just copied the <code>simple</code> theme files to a new directory, then updated the templates that didn't quite do what I wanted, and added some CSS.  For the basic CSS, I chose <a href="http://getskeleton.com">Skeleton</a>, a simple CSS framework which I had used before in my <a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a> site.  It was easy to set up its grid to provide the basic layout of WhiteJazz.  I then added my own CSS rules and template customizations, borrowing liberally from the WhiteJazz CSS and notmyidea templates, until I had what I wanted.</p>
 <p>One problem I ran into was that the <code>simple</code> framework had an empty (0 bytes) <code>tag.html</code> template, and was missing other files related to tags.  So I copied the missing files from <code>notmyidea</code>.</p>
 <h2>Publishing the New Site</h2>
-<p>I had already set up my personal <code>kristopherjohnson.github.io</code> repo as a GitHub Pages site.  It was a simple index.html that redirected to the Undefined Value home page.  I set up a Makefile rule that would copy the output from Pelican to my local repo, commit the change, and then push it to GitHub.  </p>
+<p>I had already set up my personal <code>kristopherjohnson.github.io</code> repo as a GitHub Pages site.  It was a simple index.html that redirected to the Undefined Value home page.  I set up a Makefile rule that would copy the output from Pelican to my local repo, commit the change, and then push that repo to GitHub.  </p>
 <p>So, all I have to do to regenerate the site and push it to the cloud is this:</p>
-<div class="highlight"><pre><span></span>make github
+<div class="highlight"><pre><span></span>cd ~/work/undefinedvalue-pelican
+source venv-pelican-blog/bin/activate
+make github
 </pre></div>
 
 
-<p>Finally, I went to my domain registrar and updated the undefinedvalue.com address so it would point to GitHub rather than to my EC2 server.</p>
+<p>Finally, I went to my domain registrar and updated the <code>undefinedvalue.com</code> address records so it would point to GitHub rather than to my EC2 server.</p>
 <h2>Conclusion</h2>
-<p>I've wanted to do this for a while, but feared it would take up a few weekends and be full of frustration.  It was actually a lot easier than I expected.  The hardest part for me was getting the CSS right.  But it feels good that I figured out how to do a full conversion with just a few scripts.</p>
-<p>One thing I miss is the simplicity of editing with Drupal.  If I saw a typo on the site, I could just click an Edit button, fix it, and Save.  Now if I see something wrong, I have to find the right input file in my tree of files, edit it, and then republish, and then wait a few minutes to see if it looks right now.  But I am very happy to no longer be dependent upon a MySQL database, an old version of a PHP-based CMS, and an EC2 web server.</p>
+<p>I've wanted to do this migration for over a year, but feared it would take up a few weekends and be full of frustration.  It was actually a lot easier than I expected.  The hardest part for me was getting the CSS right.  But it feels good that I figured out how to do a full conversion by writing a few scripts and modifying some configuration files and templates.</p>
+<p>One thing I miss is the simplicity of editing with Drupal.  If I saw a typo on the site, I could just click an <em>Edit</em> button, fix it, and <em>Save</em>.  Now if I see something wrong, I have to find the right input file in my tree of files, edit it, and then republish, and then wait a few minutes to see if it looks right.  But I am very happy to no longer be dependent upon a MySQL database, an old version of a PHP-based CMS, and an EC2 web server.</p>
 <p>If you want to see my Pelican setup, it's available here for all to see: <a href="https://github.com/kristopherjohnson/undefinedvalue-pelican">https://github.com/kristopherjohnson/undefinedvalue-pelican</a>.</p>
   </div><!-- /.entry-content -->
 </section>
