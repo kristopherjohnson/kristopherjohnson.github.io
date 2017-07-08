@@ -87,6 +87,7 @@ make github
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;It takes about four seconds to run &lt;code&gt;make github&lt;/code&gt;.  After that, it takes a minute or two before the changes are actually visible on the site.&lt;/p&gt;
 &lt;p&gt;Finally, I went to my domain registrar and updated the &lt;code&gt;undefinedvalue.com&lt;/code&gt; address records so it would point to GitHub rather than to my EC2 server.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;I've wanted to do this migration for over a year, but feared it would take up a few weekends and be full of frustration.  It was actually a lot easier than I expected.  The hardest part for me was getting the CSS right.  But it feels good that I figured out how to do a full conversion by writing a few scripts and modifying some configuration files and templates.&lt;/p&gt;
