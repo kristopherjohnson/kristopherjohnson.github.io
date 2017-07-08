@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value</title><link href="http://kristopherjohnson.github.io/" rel="alternate"></link><link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" rel="self"></link><id>http://kristopherjohnson.github.io/</id><updated>2017-04-22T19:07:16-04:00</updated><entry><title>My First Chess Program</title><link href="http://kristopherjohnson.github.io/my-first-chess-program.html" rel="alternate"></link><published>2017-04-22T19:07:16-04:00</published><updated>2017-04-22T19:07:16-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:kristopherjohnson.github.io,2017-04-22:/my-first-chess-program.html</id><summary type="html">&lt;p&gt;When I was a kid, back in the 70's and 80's, I thought chess programs were the most sophisticated computer programs in the world.  That was back when the average personal-computer chess program wasn't very good, and dedicated chess computers cost hundreds or thousands of dollars, so it seemed to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When I was a kid, back in the 70's and 80's, I thought chess programs were the most sophisticated computer programs in the world.  That was back when the average personal-computer chess program wasn't very good, and dedicated chess computers cost hundreds or thousands of dollars, so it seemed to me that chess was something very difficult for computers to do.  At the time, many experts still thought a computer would never be able to beat human grandmasters.  I dreamed that I would one day write The World's Greatest Chess Program, and that would prove I was a great computer programmer.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value</title><link href="http://kristopherjohnson.github.io/" rel="alternate"></link><link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" rel="self"></link><id>http://kristopherjohnson.github.io/</id><updated>2017-07-08T15:00:00-04:00</updated><entry><title>Rebuilding My Blog Again</title><link href="http://kristopherjohnson.github.io/rebuilding-my-blog-again.html" rel="alternate"></link><published>2017-07-08T15:00:00-04:00</published><updated>2017-07-08T15:00:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:kristopherjohnson.github.io,2017-07-08:/rebuilding-my-blog-again.html</id><summary type="html">&lt;p&gt;I've moved this blog from a &lt;a href="https://www.drupal.org"&gt;Drupal&lt;/a&gt; CMS running on an AWS EC2 instance to a statically generated set of pages hosted on &lt;a href="https://pages.github.com"&gt;GitHub Pages&lt;/a&gt;.  If you're curious about the reasons and the process, read on.&lt;/p&gt;
+&lt;p&gt;For several years, my blog has been running on Drupal 6.  Drupal [seemed like …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've moved this blog from a &lt;a href="https://www.drupal.org"&gt;Drupal&lt;/a&gt; CMS running on an AWS EC2 instance to a statically generated set of pages hosted on &lt;a href="https://pages.github.com"&gt;GitHub Pages&lt;/a&gt;.  If you're curious about the reasons and the process, read on.&lt;/p&gt;
+&lt;p&gt;For several years, my blog has been running on Drupal 6.  Drupal [seemed like a good idea when I started][http://undefinedvalue.com/2009/04/18/drupal-rocks], as it was a mature easy-to-use content management system, but I've been wanting to get away from it for a while.  I spend more time maintaining Drupal then I do writing articles for the blog.  When I started I had to do [a lot of work][http://undefinedvalue.com/2010/11/12/setting-drupal-6-ubuntu-1010-ec2] to get Drupal configured and running well.  There are always new versions and security updates to apply, and I really should have upgraded to Drupal 7 and then Drupal 8 somewhere along the way, but I haven't and now I can't update to newer versions of Ubuntu. The care and feeding of Drupal is just too much work for the benefits it provides for my simple blog.&lt;/p&gt;
+&lt;p&gt;I decided to move to a static site generator, as I don't need dynamic features and I want to avoid the pain of setting up any more CMSes or blogging engines on any server.&lt;/p&gt;
+&lt;p&gt;My basic requirements for the new generator were these:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Provide a similar front page layout, with a list of ten "teasers" from most recent entries, a list of archives, an "About" page, and a few links to other stuff.&lt;/li&gt;
+&lt;li&gt;Support existing URLs for existing pages, so people who used my blog before can still find things.&lt;/li&gt;
+&lt;li&gt;Support tags.&lt;/li&gt;
+&lt;li&gt;Be able to run the generator on my laptop and easily upload the generated static pages to my Apache web server, or S3, or GitHub Pages.&lt;/li&gt;
+&lt;li&gt;Let me write posts in &lt;a href="https://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt; format.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;The Drupal 6 Database&lt;/h2&gt;
+&lt;p&gt;My first step was to export the existing articles and metadata from the Drupal database on my blog server, and recreate it on my development machine.  Looking at my Drupal configuration, I was able to find the database name and login information (which I forgot years ago).  I used &lt;code&gt;mysqldump&lt;/code&gt; to export the data.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mysqldump --user=$dbuser --password=$dbpass --tz-utc --databases &amp;quot;drupal6_undefinedvalue&amp;quot; &amp;gt; &amp;quot;drupal6_undefinedvalue.sql&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, after copying the file to my dev machine, I loaded it with the MySQL command &lt;code&gt;source drupal6_undefinedvalue.sql&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Rather than reading Drupal source code or documentation, I just used a lot of MySQL "show tables", "describe", and &lt;code&gt;SELECT&lt;/code&gt; commands to figure out the database schema.  These are the tables and columns that I found useful:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;node&lt;/code&gt;: metadata about all the Drupal "nodes", or pages&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nid&lt;/code&gt;: node ID (primary key)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;type&lt;/code&gt;: &lt;code&gt;book&lt;/code&gt;, &lt;code&gt;page&lt;/code&gt;, or &lt;code&gt;story&lt;/code&gt;.  My blog posts are all of type &lt;code&gt;story&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;title&lt;/code&gt;: the original title of the post&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;status&lt;/code&gt;: 0 for an unpublished post, or 1 for a published post.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;created&lt;/code&gt; and &lt;code&gt;changed&lt;/code&gt;: timestamps&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;node_revisions&lt;/code&gt;: the content of each node&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nid&lt;/code&gt;: node ID&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;title&lt;/code&gt;: current title&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;body&lt;/code&gt;: main content&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;timestamp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;format&lt;/code&gt;: foreign key into the &lt;code&gt;filter_formats&lt;/code&gt; table&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filter_formats&lt;/code&gt;: list of filter formats for posts&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;format&lt;/code&gt;: key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: "Filtered HTML", "Full HTML", "Filtered Markdown", or "Full Markdown"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;term_node&lt;/code&gt;: association of posts with tags&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;term_data&lt;/code&gt;: tags&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;url_alias&lt;/code&gt;: provides mappings from URLs like "node/288" to "2017/04/22/my-first-chess-program"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;body&lt;/code&gt; of a &lt;code&gt;node_revisions&lt;/code&gt; record contains a special token &lt;code&gt;&amp;lt;!--break--&amp;gt;&lt;/code&gt; between the "teaser" portion and the rest.&lt;/p&gt;
+&lt;p&gt;I wrote a Python script that could extract the relevant fields from these tables and print out the attributes I expected to see.  If you are interested in seeing it, check out &lt;a href="https://github.com/kristopherjohnson/drupal6tostatic"&gt;my drupal6tostatic repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Static Site Generators&lt;/h2&gt;
+&lt;p&gt;The next step was to decide on a static site generator to use.&lt;/p&gt;
+&lt;p&gt;A "static site generator" (SSG) is a program that, given a bunch of input files and templates and configuration files and code, will generate a tree of static HTML pages that can be uploaded to a web server.&lt;/p&gt;
+&lt;p&gt;I briefly thought about writing my own SSG, but my goal here is to get my blog moved as quickly and painlessly as possible, so I decided to go with an off-the-shelf solution.  The most popular SSG is currently &lt;a href="https://jekyllrb.com"&gt;Jekyll&lt;/a&gt;, but I don't like Ruby much and would prefer a Python 3-based tool.  After doing a brief survey of the available Python SSGs, I decided to give these a try:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/eudicots/Cactus"&gt;Cactus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://hyde.github.io"&gt;Hyde&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://getpelican.com"&gt;Pelican&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cactus didn't work with Python 3. It almost worked, but the blog plugin wasn't compatible with Python 3, and after I fixed that, it generated an empty index page.  With Python 2, it worked, but its blog plugin didn't support the directory hierarchy I wanted to maintain.  Rather than fix these issues, I moved on to the next candidate.&lt;/p&gt;
+&lt;p&gt;Hyde didn't support Python 3. (The website says Python 3 support is "in progress".)  I gave it a try anyway, and while I didn't hate it, I really want something that works with Python 3 and doesn't require a lot of configuration.  (For every YAML file I see, I expect at least one hour of messing around with it.)&lt;/p&gt;
+&lt;p&gt;Pelican worked pretty well on my first try (except for a CRITICAL error when running &lt;code&gt;pelican generate&lt;/code&gt; with a not-well-formed Markdown file) and it seemed to be the most well-documented and well-supported of the generators I tried.  Out-of-the-box, it handled pagination and other desirable features that would have required configuration or additional coding in Cactus or Hyde.&lt;/p&gt;
+&lt;p&gt;So I decided to go with Pelican as my site generator.&lt;/p&gt;
+&lt;h2&gt;Configuring Pelican&lt;/h2&gt;
+&lt;p&gt;To support automatic redirects from old URLs to the new pages, I installed the &lt;a href="https://github.com/Nitron/pelican-alias"&gt;pelican-alias&lt;/a&gt; plugin, and updated my generator script so that it would include an &lt;code&gt;Alias:&lt;/code&gt; item for each old article.  I also gave all my blog posts a Category of "Blog", so that category name appears as a menu option at the top of the page.&lt;/p&gt;
+&lt;p&gt;I added an &lt;code&gt;about-me.md&lt;/code&gt; file to the &lt;code&gt;content/pages&lt;/code&gt; subdirectory, so that would also appear at the top of the page as it does in the Drupal site.&lt;/p&gt;
+&lt;p&gt;I set the &lt;code&gt;LINKS&lt;/code&gt; and &lt;code&gt;SOCIAL&lt;/code&gt; settings in &lt;code&gt;pelicanconf.py&lt;/code&gt; so that I would get lists of links similar to what was in the Drupal blog's "blocks".&lt;/p&gt;
+&lt;p&gt;I set the &lt;code&gt;YEAR_ARCHIVE_SAVE_AS&lt;/code&gt;, &lt;code&gt;MONTH_ARCHIVE_SAVE_AS&lt;/code&gt;, and &lt;code&gt;DAY_ARCHIVE_SAVE_AS&lt;/code&gt; variables in &lt;code&gt;pelicanconf.py&lt;/code&gt; to generate archive pages with paths identical to what was used in Drupal.&lt;/p&gt;
+&lt;h2&gt;Theme and Styles&lt;/h2&gt;
+&lt;p&gt;Finally, I wanted a theme similar to that of the &lt;a href="https://www.drupal.org/project/whitejazz"&gt;WhiteJazz&lt;/a&gt; theme I had used with Drupal 6.  Pelican comes with two built-in themes: &lt;code&gt;simple&lt;/code&gt;, which is basically just plain text with no styling, and &lt;code&gt;notmyidea&lt;/code&gt;, which is what the &lt;a href="http://getpelican.com"&gt;getpelican.com&lt;/a&gt; website uses.  Rather than perusing all the other themes available for Pelican, I decided to try to replicate WhiteJazz myself, with the expectatation that I would give up in frustruation after a few hours and look for an off-the-shelf theme.&lt;/p&gt;
+&lt;p&gt;Thankfully, it turned out to be easier than I expected to create my own theme.  Basically, I just copied the &lt;code&gt;simple&lt;/code&gt; theme files to a new directory, then updated the templates that didn't quite do what I wanted, and added some CSS.  For the basic CSS, I chose &lt;a href="http://getskeleton.com"&gt;Skeleton&lt;/a&gt;, a simple CSS framework which I had used before in my &lt;a href="http://secretspacelab.com/tcm.html"&gt;What's Good on TCM?&lt;/a&gt; site.  It was easy to set up its grid to provide the basic layout of WhiteJazz.  I then added my own CSS rules and template customizations, borrowing liberally from the WhiteJazz CSS and notmyidea templates, until I had what I wanted.&lt;/p&gt;
+&lt;p&gt;One problem I ran into was that the &lt;code&gt;simple&lt;/code&gt; framework had an empty (0 bytes) &lt;code&gt;tag.html&lt;/code&gt; template, and was missing other files related to tags.  So I copied the missing files from &lt;code&gt;notmyidea&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Publishing the New Site&lt;/h2&gt;
+&lt;p&gt;I had already set up my personal &lt;code&gt;kristopherjohnson.github.io&lt;/code&gt; repo as a GitHub Pages site.  It was a simple index.html that redirected to the Undefined Value home page.  I set up a Makefile rule that would copy the output from Pelican to my local repo, commit the change, and then push it to GitHub.  &lt;/p&gt;
+&lt;p&gt;So, all I have to do to regenerate the site and push it to the cloud is this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make github
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, I went to my domain registrar and updated the undefinedvalue.com address so it would go to GitHub rather than to my EC2 server.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I've wanted to do this for a while, but feared it would take up a few weekends and be full of frustration.  It was actually a lot easier than I expected.  The hardest part for me was getting the CSS right.  But it feels good that I figured out how to do a full conversion with just a few scripts.&lt;/p&gt;
+&lt;p&gt;One thing I miss is the simplicity of editing with Drupal.  If I saw a typo on the site, I could just click an Edit button, fix it, and Save.  Now if I see something wrong, I have to find the right input file in my tree of files, edit it, and then republish, and then wait a few minutes to see if it looks right now.  But I am very happy to no longer be dependent upon a MySQL database, an old version of a PHP-based CMS, and an EC2 web server.&lt;/p&gt;
+&lt;p&gt;If you want to see my Pelican setup, it's here: &lt;a href="https://github.com/kristopherjohnson/undefinedvalue-pelican"&gt;https://github.com/kristopherjohnson/undefinedvalue-pelican&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>My First Chess Program</title><link href="http://kristopherjohnson.github.io/my-first-chess-program.html" rel="alternate"></link><published>2017-04-22T19:07:16-04:00</published><updated>2017-04-22T19:07:16-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:kristopherjohnson.github.io,2017-04-22:/my-first-chess-program.html</id><summary type="html">&lt;p&gt;When I was a kid, back in the 70's and 80's, I thought chess programs were the most sophisticated computer programs in the world.  That was back when the average personal-computer chess program wasn't very good, and dedicated chess computers cost hundreds or thousands of dollars, so it seemed to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When I was a kid, back in the 70's and 80's, I thought chess programs were the most sophisticated computer programs in the world.  That was back when the average personal-computer chess program wasn't very good, and dedicated chess computers cost hundreds or thousands of dollars, so it seemed to me that chess was something very difficult for computers to do.  At the time, many experts still thought a computer would never be able to beat human grandmasters.  I dreamed that I would one day write The World's Greatest Chess Program, and that would prove I was a great computer programmer.&lt;/p&gt;
 &lt;p&gt;But one's priorities change.  I did look into how chess programs worked when I was in college, and while I found the topic interesting, I didn't try writing my own program.  I still thought that writing a chess program was something every Real Computer Programmer should do, but I didn't get around to it.&lt;/p&gt;
 &lt;p&gt;Now, at age 50, I've finally done it.  A few weeks ago I started writing a chess engine in &lt;a href="https://swift.org"&gt;Swift&lt;/a&gt;, and it is now capable of playing a real chess game. I call it "kjchess".
 &lt;!--break--&gt;

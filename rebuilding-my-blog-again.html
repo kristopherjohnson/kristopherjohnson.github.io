@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://kristopherjohnson.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://kristopherjohnson.github.io/theme/css/undefinedvalue.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+
+    <meta name="tags" content="blog" />
+
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://kristopherjohnson.github.io/">
+                <img src="http://kristopherjohnson.github.io/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
+        <header id="banner" class="body">
+            <h1><a href="http://kristopherjohnson.github.io/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="http://kristopherjohnson.github.io/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://kristopherjohnson.github.io/rebuilding-my-blog-again.html" rel="bookmark"
+         title="Permalink to Rebuilding My Blog Again">Rebuilding My Blog Again</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2017-07-08T15:00:00-04:00">
+      Sat 08 July 2017
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/blog.html">blog</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I've moved this blog from a <a href="https://www.drupal.org">Drupal</a> CMS running on an AWS EC2 instance to a statically generated set of pages hosted on <a href="https://pages.github.com">GitHub Pages</a>.  If you're curious about the reasons and the process, read on.</p>
+<p>For several years, my blog has been running on Drupal 6.  Drupal [seemed like a good idea when I started][http://undefinedvalue.com/2009/04/18/drupal-rocks], as it was a mature easy-to-use content management system, but I've been wanting to get away from it for a while.  I spend more time maintaining Drupal then I do writing articles for the blog.  When I started I had to do [a lot of work][http://undefinedvalue.com/2010/11/12/setting-drupal-6-ubuntu-1010-ec2] to get Drupal configured and running well.  There are always new versions and security updates to apply, and I really should have upgraded to Drupal 7 and then Drupal 8 somewhere along the way, but I haven't and now I can't update to newer versions of Ubuntu. The care and feeding of Drupal is just too much work for the benefits it provides for my simple blog.</p>
+<p>I decided to move to a static site generator, as I don't need dynamic features and I want to avoid the pain of setting up any more CMSes or blogging engines on any server.</p>
+<p>My basic requirements for the new generator were these:</p>
+<ul>
+<li>Provide a similar front page layout, with a list of ten "teasers" from most recent entries, a list of archives, an "About" page, and a few links to other stuff.</li>
+<li>Support existing URLs for existing pages, so people who used my blog before can still find things.</li>
+<li>Support tags.</li>
+<li>Be able to run the generator on my laptop and easily upload the generated static pages to my Apache web server, or S3, or GitHub Pages.</li>
+<li>Let me write posts in <a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a> format.</li>
+</ul>
+<h2>The Drupal 6 Database</h2>
+<p>My first step was to export the existing articles and metadata from the Drupal database on my blog server, and recreate it on my development machine.  Looking at my Drupal configuration, I was able to find the database name and login information (which I forgot years ago).  I used <code>mysqldump</code> to export the data.</p>
+<div class="highlight"><pre><span></span>mysqldump --user=$dbuser --password=$dbpass --tz-utc --databases &quot;drupal6_undefinedvalue&quot; &gt; &quot;drupal6_undefinedvalue.sql&quot;
+</pre></div>
+
+
+<p>Then, after copying the file to my dev machine, I loaded it with the MySQL command <code>source drupal6_undefinedvalue.sql</code>.</p>
+<p>Rather than reading Drupal source code or documentation, I just used a lot of MySQL "show tables", "describe", and <code>SELECT</code> commands to figure out the database schema.  These are the tables and columns that I found useful:</p>
+<ul>
+<li><code>node</code>: metadata about all the Drupal "nodes", or pages<ul>
+<li><code>nid</code>: node ID (primary key)</li>
+<li><code>type</code>: <code>book</code>, <code>page</code>, or <code>story</code>.  My blog posts are all of type <code>story</code>.</li>
+<li><code>title</code>: the original title of the post</li>
+<li><code>status</code>: 0 for an unpublished post, or 1 for a published post.</li>
+<li><code>created</code> and <code>changed</code>: timestamps</li>
+</ul>
+</li>
+<li><code>node_revisions</code>: the content of each node<ul>
+<li><code>nid</code>: node ID</li>
+<li><code>title</code>: current title</li>
+<li><code>body</code>: main content</li>
+<li><code>timestamp</code></li>
+<li><code>format</code>: foreign key into the <code>filter_formats</code> table</li>
+</ul>
+</li>
+<li><code>filter_formats</code>: list of filter formats for posts<ul>
+<li><code>format</code>: key</li>
+<li><code>name</code>: "Filtered HTML", "Full HTML", "Filtered Markdown", or "Full Markdown"</li>
+</ul>
+</li>
+<li><code>term_node</code>: association of posts with tags</li>
+<li><code>term_data</code>: tags</li>
+<li><code>url_alias</code>: provides mappings from URLs like "node/288" to "2017/04/22/my-first-chess-program"</li>
+</ul>
+<p>The <code>body</code> of a <code>node_revisions</code> record contains a special token <code>&lt;!--break--&gt;</code> between the "teaser" portion and the rest.</p>
+<p>I wrote a Python script that could extract the relevant fields from these tables and print out the attributes I expected to see.  If you are interested in seeing it, check out <a href="https://github.com/kristopherjohnson/drupal6tostatic">my drupal6tostatic repository</a>.</p>
+<h2>Static Site Generators</h2>
+<p>The next step was to decide on a static site generator to use.</p>
+<p>A "static site generator" (SSG) is a program that, given a bunch of input files and templates and configuration files and code, will generate a tree of static HTML pages that can be uploaded to a web server.</p>
+<p>I briefly thought about writing my own SSG, but my goal here is to get my blog moved as quickly and painlessly as possible, so I decided to go with an off-the-shelf solution.  The most popular SSG is currently <a href="https://jekyllrb.com">Jekyll</a>, but I don't like Ruby much and would prefer a Python 3-based tool.  After doing a brief survey of the available Python SSGs, I decided to give these a try:</p>
+<ul>
+<li><a href="https://github.com/eudicots/Cactus">Cactus</a></li>
+<li><a href="http://hyde.github.io">Hyde</a></li>
+<li><a href="http://getpelican.com">Pelican</a></li>
+</ul>
+<p>Cactus didn't work with Python 3. It almost worked, but the blog plugin wasn't compatible with Python 3, and after I fixed that, it generated an empty index page.  With Python 2, it worked, but its blog plugin didn't support the directory hierarchy I wanted to maintain.  Rather than fix these issues, I moved on to the next candidate.</p>
+<p>Hyde didn't support Python 3. (The website says Python 3 support is "in progress".)  I gave it a try anyway, and while I didn't hate it, I really want something that works with Python 3 and doesn't require a lot of configuration.  (For every YAML file I see, I expect at least one hour of messing around with it.)</p>
+<p>Pelican worked pretty well on my first try (except for a CRITICAL error when running <code>pelican generate</code> with a not-well-formed Markdown file) and it seemed to be the most well-documented and well-supported of the generators I tried.  Out-of-the-box, it handled pagination and other desirable features that would have required configuration or additional coding in Cactus or Hyde.</p>
+<p>So I decided to go with Pelican as my site generator.</p>
+<h2>Configuring Pelican</h2>
+<p>To support automatic redirects from old URLs to the new pages, I installed the <a href="https://github.com/Nitron/pelican-alias">pelican-alias</a> plugin, and updated my generator script so that it would include an <code>Alias:</code> item for each old article.  I also gave all my blog posts a Category of "Blog", so that category name appears as a menu option at the top of the page.</p>
+<p>I added an <code>about-me.md</code> file to the <code>content/pages</code> subdirectory, so that would also appear at the top of the page as it does in the Drupal site.</p>
+<p>I set the <code>LINKS</code> and <code>SOCIAL</code> settings in <code>pelicanconf.py</code> so that I would get lists of links similar to what was in the Drupal blog's "blocks".</p>
+<p>I set the <code>YEAR_ARCHIVE_SAVE_AS</code>, <code>MONTH_ARCHIVE_SAVE_AS</code>, and <code>DAY_ARCHIVE_SAVE_AS</code> variables in <code>pelicanconf.py</code> to generate archive pages with paths identical to what was used in Drupal.</p>
+<h2>Theme and Styles</h2>
+<p>Finally, I wanted a theme similar to that of the <a href="https://www.drupal.org/project/whitejazz">WhiteJazz</a> theme I had used with Drupal 6.  Pelican comes with two built-in themes: <code>simple</code>, which is basically just plain text with no styling, and <code>notmyidea</code>, which is what the <a href="http://getpelican.com">getpelican.com</a> website uses.  Rather than perusing all the other themes available for Pelican, I decided to try to replicate WhiteJazz myself, with the expectatation that I would give up in frustruation after a few hours and look for an off-the-shelf theme.</p>
+<p>Thankfully, it turned out to be easier than I expected to create my own theme.  Basically, I just copied the <code>simple</code> theme files to a new directory, then updated the templates that didn't quite do what I wanted, and added some CSS.  For the basic CSS, I chose <a href="http://getskeleton.com">Skeleton</a>, a simple CSS framework which I had used before in my <a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a> site.  It was easy to set up its grid to provide the basic layout of WhiteJazz.  I then added my own CSS rules and template customizations, borrowing liberally from the WhiteJazz CSS and notmyidea templates, until I had what I wanted.</p>
+<p>One problem I ran into was that the <code>simple</code> framework had an empty (0 bytes) <code>tag.html</code> template, and was missing other files related to tags.  So I copied the missing files from <code>notmyidea</code>.</p>
+<h2>Publishing the New Site</h2>
+<p>I had already set up my personal <code>kristopherjohnson.github.io</code> repo as a GitHub Pages site.  It was a simple index.html that redirected to the Undefined Value home page.  I set up a Makefile rule that would copy the output from Pelican to my local repo, commit the change, and then push it to GitHub.  </p>
+<p>So, all I have to do to regenerate the site and push it to the cloud is this:</p>
+<div class="highlight"><pre><span></span>make github
+</pre></div>
+
+
+<p>Finally, I went to my domain registrar and updated the undefinedvalue.com address so it would go to GitHub rather than to my EC2 server.</p>
+<h2>Conclusion</h2>
+<p>I've wanted to do this for a while, but feared it would take up a few weekends and be full of frustration.  It was actually a lot easier than I expected.  The hardest part for me was getting the CSS right.  But it feels good that I figured out how to do a full conversion with just a few scripts.</p>
+<p>One thing I miss is the simplicity of editing with Drupal.  If I saw a typo on the site, I could just click an Edit button, fix it, and Save.  Now if I see something wrong, I have to find the right input file in my tree of files, edit it, and then republish, and then wait a few minutes to see if it looks right now.  But I am very happy to no longer be dependent upon a MySQL database, an old version of a PHP-based CMS, and an EC2 web server.</p>
+<p>If you want to see my Pelican setup, it's here: <a href="https://github.com/kristopherjohnson/undefinedvalue-pelican">https://github.com/kristopherjohnson/undefinedvalue-pelican</a>.</p>
+  </div><!-- /.entry-content -->
+</section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>Other Stuff</h2>
+                        <ul>
+                            <li><a href="http://undefinedvalue.com/page/kjresume">Kris's Résumé</a></li>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>More of Me</h2>
+                        <ul>
+                            <li><a href="http://kristopherjohnson.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+</body>
+</html>
