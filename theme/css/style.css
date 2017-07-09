@@ -3,12 +3,20 @@ body {
 }
 
 pre, code, tt {
-    font-family: "Source Code Pro", Consolas, monospace;
+    font-family: "Inconsolata", Consolas, monospace;
 }
 
 code {
+    color; #606060;
     background-color: inherit;
+    font-size: inherit;
     border: none;
+    padding: 0;
+    margin: 0;
+}
+
+pre {
+    color: #606060;
 }
 
 .logo {
@@ -22,7 +30,7 @@ code {
 h1, h2, h3, h4, h5, h6 {
     font-family: Oswald;
     font-weight: normal;
-    color: #666;
+    color: #606060;
     margin-top: 0;
 }
 
