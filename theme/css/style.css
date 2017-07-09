@@ -1,5 +1,14 @@
 body {
-    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Lato, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+pre, code, tt {
+    font-family: "Source Code Pro", Consolas, monospace;
+}
+
+code {
+    background-color: inherit;
+    border: none;
 }
 
 .logo {
@@ -11,9 +20,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: Oswald;
+    font-weight: normal;
     color: #666;
     margin-top: 0;
-    font-weight: bold;
 }
 
 h1 {
@@ -61,7 +71,6 @@ a:hover, a:active {
 
 #menu li {
     font-size: 1.8rem;
-    font-weight: bold;
 }
 
 #menu a {
