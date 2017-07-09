@@ -46,18 +46,19 @@ h6         { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 }
 
 a:link, a:visited {
-    color: rgb(16, 74, 145);
+    color: #0c6090;
     text-decoration: none;
 }
 
 a:hover, a:active {
-    color: rgb(192, 96, 80);
+    color: #c06050;
     text-decoration: underline;
 }
 
 #menu {
     color: white;
-    background-color: rgb(16, 74, 145);
+    background-color: #0c6090;
+    font-family: Oswald;
 }
 
 #menu ul {
@@ -74,7 +75,8 @@ a:hover, a:active {
 }
 
 #menu a {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 #menu a:link, #menu a:visited, #menu a:hover, #menu a:active {
@@ -83,7 +85,7 @@ a:hover, a:active {
 }
 
 .active, #menu a:hover, #menu a:active {
-    background-color: rgb(108, 140, 181);
+    background-color: #7090b0;
 }
 
 #post-list {
