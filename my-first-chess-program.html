@@ -14,6 +14,7 @@
 
     <meta name="tags" content="chess" />
     <meta name="tags" content="self-indulgence" />
+    <meta name="tags" content="swift" />
 
 </head>
 <body id="index" class="home">
@@ -58,14 +59,14 @@
     <ul class="tags">
         <li><a class="tag" href="http://kristopherjohnson.github.io/tag/chess.html">chess</a></li>
         <li><a class="tag" href="http://kristopherjohnson.github.io/tag/self-indulgence.html">self-indulgence</a></li>
+        <li><a class="tag" href="http://kristopherjohnson.github.io/tag/swift.html">swift</a></li>
     </ul>
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>When I was a kid, back in the 70's and 80's, I thought chess programs were the most sophisticated computer programs in the world.  That was back when the average personal-computer chess program wasn't very good, and dedicated chess computers cost hundreds or thousands of dollars, so it seemed to me that chess was something very difficult for computers to do.  At the time, many experts still thought a computer would never be able to beat human grandmasters.  I dreamed that I would one day write The World's Greatest Chess Program, and that would prove I was a great computer programmer.</p>
 <p>But one's priorities change.  I did look into how chess programs worked when I was in college, and while I found the topic interesting, I didn't try writing my own program.  I still thought that writing a chess program was something every Real Computer Programmer should do, but I didn't get around to it.</p>
-<p>Now, at age 50, I've finally done it.  A few weeks ago I started writing a chess engine in <a href="https://swift.org">Swift</a>, and it is now capable of playing a real chess game. I call it "kjchess".
-<!--break-->
-It works, but it's slow.  On my 2013 MacBook Pro, my move search function can only search about four half-moves deep to find a move in a reasonable time, even when using all the CPU cores.  That is terrible, considering that it is worse than the 4MHz 8-bit <a href="http://www.spacious-mind.com/html/classic.html">Fidelity "Classic" chess computer</a> I had 25 years ago.</p>
+<p>Now, at age 50, I've finally done it.  A few weeks ago I started writing a chess engine in <a href="https://swift.org">Swift</a>, and it is now capable of playing a real chess game. I call it "kjchess".</p>
+<p>It works, but it's slow.  On my 2013 MacBook Pro, my move search function can only search about four half-moves deep to find a move in a reasonable time, even when using all the CPU cores.  That is terrible, considering that it is worse than the 4MHz 8-bit <a href="http://www.spacious-mind.com/html/classic.html">Fidelity "Classic" chess computer</a> I had 25 years ago.</p>
 <p>Why is my engine so slow?  I initially gave myself a few constraints:</p>
 <ul>
 <li>Write it in "high-level" Swift (that is, it shouldn't look like a C or C++ program).</li>
