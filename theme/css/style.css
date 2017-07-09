@@ -90,6 +90,10 @@ a:hover, a:active {
     margin-top: 1.5rem;
 }
 
+#contentinfo {
+    font-size: smaller;
+}
+
 ul.tags, .tags li {
     display: inline;
 }
