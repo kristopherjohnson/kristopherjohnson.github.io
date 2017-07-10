@@ -127,3 +127,10 @@ ul.tags {
     font-weight: bold;
 }
 
+.social a[type$='atom+xml'], .social a[type$='rss+xml'] {
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 18px;
+    background-image: url('../images/feed-icon-14x14.png');
+}
+
