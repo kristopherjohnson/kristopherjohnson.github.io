@@ -1,5 +1,353 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value - 2004</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/2004.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2004-01-25T14:14:00-05:00</updated><entry><title>C++ Testing Frameworks</title><link href="http://undefinedvalue.com/c-testing-frameworks.html" rel="alternate"></link><published>2004-01-25T14:14:00-05:00</published><updated>2004-01-25T14:14:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-25:/c-testing-frameworks.html</id><summary type="html">&lt;p&gt;I've always rolled my own unit-testing frameworks for C++. I don't like
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value - 2004</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/2004.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2004-03-10T03:53:00-05:00</updated><entry><title>Adaptable Developers</title><link href="http://undefinedvalue.com/adaptable-developers.html" rel="alternate"></link><published>2004-03-10T03:53:00-05:00</published><updated>2004-03-10T03:53:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-03-10:/adaptable-developers.html</id><summary type="html">&lt;p&gt;The MSDN feed indicates that there are several new walkthroughs
+available today:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual Basic .NET and Visual Studio .NET 2003&lt;/li&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual C# .NET and Visual Studio .NET 2003&lt;/li&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual Basic .NET and ASP.NET Web …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;The MSDN feed indicates that there are several new walkthroughs
+available today:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual Basic .NET and Visual Studio .NET 2003&lt;/li&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual C# .NET and Visual Studio .NET 2003&lt;/li&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual Basic .NET and ASP.NET Web Matrix&lt;/li&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual C# .NET and ASP.NET Web Matrix&lt;/li&gt;
+&lt;li&gt;Build a Data-Driven Website Using Visual C# .NET and the .NET Framework SDK&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I haven't looked at these articles, but I assume they contain the same
+information, except some are in C# and some are in VB.NET, and some use
+Visual Studio .NET and the others use different tools. At first I
+wondered why there is not a "Build a Data-Driven Website Using Visual
+Basic .NET and the .NET Framework SDK" (the one missing combination),
+but then I realized that VB .NET developers are assumed to be incapable
+of using command-line tools.&lt;/p&gt;
+&lt;p&gt;At first I was pissed off at the MSDN folks for once again promulgating
+the belief that VB .NET programmers can't read C# (and vice versa), or
+that a Web Matrix programmer won't be able to figure out which menu
+items to use to create an application, having only been led step-by-step
+through the Visual Studio process. But of course, the MSDN folks have to
+do this because &lt;em&gt;there really are&lt;/em&gt; a lot of developers who are unable or
+unwilling to make sense out of code that is not in the one language they
+know, or who don't know their tools well enough to use them after being
+shown a demonstration with a similar tool.&lt;/p&gt;
+&lt;p&gt;I have some sympathy when a C programmer has trouble reading Haskell, or
+a Fortran programmer has trouble reading Prolog. But C# and VB.NET are
+essentially the same language, with some minor syntactical differences.
+If you know one of those languages, you should have no problem reading
+the other unless you are either incredibly stupid or incredibly
+closed-minded. If you can't figure out that a "project" in one IDE is
+like a "solution" in another IDE, then please find another career so I
+won't risk running into you someday.&lt;/p&gt;
+&lt;p&gt;If you are learning .NET, you should be able to read C#, VB.NET, and
+JScript.NET with equal facility. C programmers and C++ programmers
+should have no trouble reading one anothers' code, nor should Lisp and
+Scheme programmers, or Smalltalk and Ruby programmers. If you are
+unwilling to learn even a little about things at the boundaries of your
+existing knowledge, you have no business calling yourself a professional
+or being proud of your skills, no matter what field you are in.&lt;/p&gt;
+&lt;p&gt;I look forward to the day when MSDN could publish an article called
+"Build a Data-Driven Website Using .NET", without the need to focus on
+specific languages or specific tools. I know that day will never come,
+so I'll have to settle for finding colleagues who would be capable of
+understanding such an article.&lt;/p&gt;</content><category term="msdn"></category><category term="dotnet"></category><category term="csharp"></category><category term="programming"></category></entry><entry><title>Helicopter vs. Lamp: No Winner</title><link href="http://undefinedvalue.com/helicopter-vs-lamp-no-winner.html" rel="alternate"></link><published>2004-03-06T22:44:00-05:00</published><updated>2004-03-06T22:44:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-03-06:/helicopter-vs-lamp-no-winner.html</id><summary type="html">&lt;p&gt;I've reached the point where I can "hover out" a battery pack. That is,
+I can hover the helicopter without crashing until the battery runs out.
+This is much harder than it might sound. Hovering a micro-helicopter is
+much like riding a unicycle, with an extra dimension. Keeping the thing …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've reached the point where I can "hover out" a battery pack. That is,
+I can hover the helicopter without crashing until the battery runs out.
+This is much harder than it might sound. Hovering a micro-helicopter is
+much like riding a unicycle, with an extra dimension. Keeping the thing
+steady for a few minutes takes a lot of concentration, and is mentally
+exhausting. It's taken several weeks of practice, but I can do it.&lt;/p&gt;
+&lt;p&gt;So I decided to try something more interesting: take off from the dining
+room floor and land on the living room coffee table. I've got a small
+apartment, so this is a flight of only twelve or fifteen feet, but it
+was my first attempt to travel from a point A to a different point B.
+This also tests my altitude control, as I need to pass over some
+furniture to get to the coffee table. The coffee table is pretty big, so
+landing shouldn't be too difficult.&lt;/p&gt;
+&lt;p&gt;I took off smoothly. The helicopter kept drifting to the left. I should
+have landed and adjusted the trim, but decided to just keep going. I
+made it about halfway to the destination, but the leftward drift took
+the helicopter into a tabletop lamp. The crash was pretty spectacular,
+as parts flew in all directions.&lt;/p&gt;
+&lt;p&gt;The lamp shade looked bad, but was easy to fix. It is covered with
+frilly fabric, and I was able to adjust it so that the frills looked
+fine.&lt;/p&gt;
+&lt;p&gt;The chopper needs a little work. I broke the tail rotor into two pieces,
+but I already have a replacement part. The landing gear broke as well,
+but that gear has been breaking continuously. It's a common problem with
+the Ikarus Piccolo landing gear: after it breaks once, it will break on
+any hard landing.&lt;/p&gt;
+&lt;p&gt;So I need to balance a new tail rotor and wait for the glue on the
+landing gear to dry. I'll be flying again later tonight. I may move the
+lamp before I try.&lt;/p&gt;</content><category term="helicopter"></category></entry><entry><title>Installing QNX 4</title><link href="http://undefinedvalue.com/installing-qnx-4.html" rel="alternate"></link><published>2004-03-03T05:38:00-05:00</published><updated>2004-03-03T05:38:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-03-03:/installing-qnx-4.html</id><summary type="html">&lt;p&gt;I installed &lt;a href="http://www.qnx.com"&gt;QNX&lt;/a&gt; 4 on a machine today, for some
+upcoming embedded systems work. This is not the first time I've
+installed it, but of course I didn't take any notes the last time I did
+it, so it was almost a new experience.&lt;/p&gt;
+&lt;p&gt;My first hurdle was figuring out …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I installed &lt;a href="http://www.qnx.com"&gt;QNX&lt;/a&gt; 4 on a machine today, for some
+upcoming embedded systems work. This is not the first time I've
+installed it, but of course I didn't take any notes the last time I did
+it, so it was almost a new experience.&lt;/p&gt;
+&lt;p&gt;My first hurdle was figuring out how to run the installer. The
+installation program runs on Windows, but the machine where I wanted to
+install only had Linux.&lt;/p&gt;
+&lt;p&gt;"No problem," I thought, "it's a bootable CD, so I can just boot from
+that". My next hurdle was the discovery that while the machine had a
+CD-ROM drive inside it, there were no power or data cables connected to
+it. And there was a good reason for that: the drive didn't have an IDE
+interface, but something with a whole lot more pins than any ribbon
+cable I could find. So I scrounged up another CD-ROM drive and plugged
+it in. Then it took several minutes of rebooting and cursing before I
+had to conclude that the ancient BIOS on that 300 MHz Pentium II machine
+wouldn't let one boot from the CD.&lt;/p&gt;
+&lt;p&gt;I was starting to think I'd have to install Windows on that machine just
+so I could run the installer for QNX. This would have been a problem,
+because this was a CD-ROM drive, and we only have DVDs for installing
+Windows. But poking through the contents of the CD, I found a .BAT file
+that would create a bootable floppy for installing a demo version of
+QNX. I didn't want a demo version, but a few more minutes of poking
+around (and guessing) led me to discover how to create a bootable floppy
+for installing the full QNX.&lt;/p&gt;
+&lt;p&gt;So, finally I booted the floppy and went through the QNX installation. I
+actually had to do this twice, because the first time I couldn't figure
+out how to delete all the Linux partitions to make the entire hard drive
+a QNX partition. But I eventually had a bootable QNX box.&lt;/p&gt;
+&lt;p&gt;The last problem was getting a working network interface. The machine
+(which I inherited from a recently departed colleague) had both built-in
+Ethernet on the motherboard and a PCI Ethernet card. I tried configuring
+both interfaces for DHCP and plugging both into my switch, but neither
+card was able to retrieve an IP address. I won't bore anyone with the
+details (assuming they are not thoroughly bored already), but I
+eventually figured out that there was no driver for the card, and
+removing it let the built-in Ethernet port start working. I had to give
+it a static IP address at first, but eventually got it doing DHCP by
+ignoring the nice network-configuration GUI and instead using
+"dhcp.client -h mymachine -i en0 &amp;amp;".&lt;/p&gt;
+&lt;p&gt;So it wasn't impossible, but this illustrates one of the reasons Windows
+is going to remain popular. I've heard people with horror stories about
+Windows installs, but every one I've done has been basically (a) boot
+with the CD, (b) follow the onscreen instructions, (c) OK, everything
+works. Sure, QNX is not a "consumer" operating system, and a lot of my
+problems were related to having ancient hardware, but still, I think it
+should have been easier.&lt;/p&gt;</content><category term="qnx"></category></entry><entry><title>My Evil Web Site</title><link href="http://undefinedvalue.com/my-evil-web-site.html" rel="alternate"></link><published>2004-02-28T20:26:00-05:00</published><updated>2004-02-28T20:26:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-28:/my-evil-web-site.html</id><summary type="html">&lt;p&gt;Using the &lt;a href="http://homokaasu.org/gematriculator/"&gt;Gematriculator&lt;/a&gt;, I am
+shocked to discover that my web site &lt;a href="http://kristopherjohnson.net/"&gt;http://kristopherjohnson.net/&lt;/a&gt; is
+60% evil.&lt;/p&gt;
+&lt;p&gt;Luckily, my blog is currently 69% good, and my
+&lt;a href="http://kristopherjohnson.net/kjresume.html"&gt;resumé&lt;/a&gt; is only 34% evil,
+so I may have hope for salvation.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href="http://homokaasu.org/gematriculator/?referer"&gt;&lt;img alt="This site is certified 33% EVIL by the
+Gematriculator" src="http://homokaasu.org/pics/g/e33.jpg"&gt;&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Using the &lt;a href="http://homokaasu.org/gematriculator/"&gt;Gematriculator&lt;/a&gt;, I am
+shocked to discover that my web site &lt;a href="http://kristopherjohnson.net/"&gt;http://kristopherjohnson.net/&lt;/a&gt; is
+60% evil.&lt;/p&gt;
+&lt;p&gt;Luckily, my blog is currently 69% good, and my
+&lt;a href="http://kristopherjohnson.net/kjresume.html"&gt;resumé&lt;/a&gt; is only 34% evil,
+so I may have hope for salvation.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href="http://homokaasu.org/gematriculator/?referer"&gt;&lt;img alt="This site is certified 33% EVIL by the
+Gematriculator" src="http://homokaasu.org/pics/g/e33.jpg"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="funny"></category><category term="evil"></category></entry><entry><title>NYC Crosswalk Buttons Don't Do Anything</title><link href="http://undefinedvalue.com/nyc-crosswalk-buttons-dont-do-anything.html" rel="alternate"></link><published>2004-02-28T20:25:00-05:00</published><updated>2004-02-28T20:25:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-28:/nyc-crosswalk-buttons-dont-do-anything.html</id><summary type="html">&lt;p&gt;Years ago, I worked on the New York City Vehicular Traffic Control
+System (VTCS), the system that controls several thousand computerized
+traffic signal throughout the five boroughs. Slashdot had an article
+today about a NY Times
+&lt;a href="http://www.nytimes.com/2004/02/27/nyregion/27BUTT.html?ex=1078462800&amp;amp;en=39bb50fe4af084ea&amp;amp;ei=5062&amp;amp;partner=GOOGLE"&gt;article&lt;/a&gt;
+that says few of the crosswalk buttons actually work.&lt;/p&gt;
+&lt;p&gt;It's not the first …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Years ago, I worked on the New York City Vehicular Traffic Control
+System (VTCS), the system that controls several thousand computerized
+traffic signal throughout the five boroughs. Slashdot had an article
+today about a NY Times
+&lt;a href="http://www.nytimes.com/2004/02/27/nyregion/27BUTT.html?ex=1078462800&amp;amp;en=39bb50fe4af084ea&amp;amp;ei=5062&amp;amp;partner=GOOGLE"&gt;article&lt;/a&gt;
+that says few of the crosswalk buttons actually work.&lt;/p&gt;
+&lt;p&gt;It's not the first time I've read a Times article related in some way to
+that system. We made the paper a few times during system deployment,
+when traffic got snarled throughout the city. What proud feelings we
+had, knowing what an effect our work had on the lives of millions of
+people.&lt;/p&gt;
+&lt;p&gt;If I was malicious and uncaring, I could tell everyone about a lot of
+other aspects of the traffic system that may not work as some people
+would expect, or about some of the politics surrounding design and
+deployment (hint: the traffic system exists primarily as a source of
+unionized jobs; helping people move around the City is just a
+side-effect). But that would eliminate work for Times reporters, so I'll
+just leave them guessing.&lt;/p&gt;</content><category term="traffic"></category></entry><entry><title>Branching and Merging</title><link href="http://undefinedvalue.com/branching-and-merging.html" rel="alternate"></link><published>2004-02-28T16:45:00-05:00</published><updated>2004-02-28T16:45:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-28:/branching-and-merging.html</id><summary type="html">&lt;p&gt;A few months ago, we started developing a new product that was a major
+extension of an existing product. While we may have been able to keep
+one codeline that supported both the old product and the new product,
+many factors led us to decide to branch the codeline. I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A few months ago, we started developing a new product that was a major
+extension of an existing product. While we may have been able to keep
+one codeline that supported both the old product and the new product,
+many factors led us to decide to branch the codeline. I have continued
+to maintain the old codeline for existing deployments, while I and a
+group of others have worked on the new codeline.&lt;/p&gt;
+&lt;p&gt;In the new codeline, we have tried to correct many of our past sins. The
+original product was developed under a tight deadline with vague
+requirements and insufficient testing, and the codeline reflects that.
+The new codeline has some significant architectural changes in addition
+to having the new features.&lt;/p&gt;
+&lt;p&gt;I have been trying to keep things in sync between old and new. When we
+find and fix a bug in one codeline, or when a feature change is made
+that is desirable for both codelines, I merge that change into the
+other. This was easy at first, but as the underlying architectures
+diverge, it has become more difficult.&lt;/p&gt;
+&lt;p&gt;One problem is that we are using SourceSafe, and I can't find any good
+features for assisting in analyzing the differences between branches to
+intelligently decide what needs to be merged and what does not. At the
+level of individual files, branches can be merged, but I can't find an
+easy way to get a report of all changed for all files in both codelines
+and to merge individual sets of changes. (Maybe SS has better features,
+but I can't find them.) So we have had an informal manual process, which
+relies on other people telling me about things that have to be merged,
+and on my having time to do the merge.&lt;/p&gt;
+&lt;p&gt;This situation sucks, so what I decided to do about it was to write some
+Python scripts to help me. The first script I've written just compares
+the files in two directories, and writes diff files to a third
+directory. My hope was that this would give me a list of a dozen or so
+non-matching files, and I could spend the weekend getting everything
+back in shape. I'd then just run the script every few days to find new
+changes.&lt;/p&gt;
+&lt;p&gt;Unfortunately, when I ran the script, I found that the number of
+non-matching files was 135. Each codeline also has a few dozen files
+that are unique (that is, not corresponding to a file in the other
+project). Clearly, this is going to take more than a weekend.&lt;/p&gt;
+&lt;p&gt;I'm not sure exactly what I should have done to prevent things from
+getting so bad. Obviously, having one person (myself) be the only person
+working on synchronization between the codelines was a problem. Not
+having automated unit tests is another factor, because without such
+tests, it is dangerous to have changes merged back and forth without a
+lot of analysis. A better version-control tool would have helped,
+particularly one that supports merging an identifiable set of related
+changes to multiple files rather than forcing an all-or-nothing merge of
+all changes on a file-by-file basis.&lt;/p&gt;
+&lt;p&gt;Ultimately the core problem is that our original codeline had to be
+thrown together hastily, leading to code that is difficult to adapt to
+our new requirements while still meeting the old requirements. So I can
+blame management for not giving us sufficient time. Unfortunately,
+management isn't going to fix my problem for me, so I'll be working this
+weekend.&lt;/p&gt;
+&lt;p&gt;(For another story about branching/merging issues, I recommend the story
+of &lt;a href="http://weblogs.asp.net/Rick_Schaut/archive/2004/02/26/80193.aspx"&gt;Mac Word 6.0&lt;/a&gt;.)&lt;/p&gt;</content><category term="versioncontrol"></category><category term="programming"></category><category term="sourcesafe"></category></entry><entry><title>What Can One Person Do?</title><link href="http://undefinedvalue.com/what-can-one-person-do.html" rel="alternate"></link><published>2004-02-28T16:43:00-05:00</published><updated>2004-02-28T16:43:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-28:/what-can-one-person-do.html</id><summary type="html">&lt;p&gt;I'm all in favor of teamwork. I like the sharing of ideas, the
+leveraging of individuals' skills, and the camraderie that comes from
+working with other people. However, I notice that a lot of my work
+habits are focused on insulating myself from others.&lt;/p&gt;
+&lt;p&gt;It's not that I avoid other …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm all in favor of teamwork. I like the sharing of ideas, the
+leveraging of individuals' skills, and the camraderie that comes from
+working with other people. However, I notice that a lot of my work
+habits are focused on insulating myself from others.&lt;/p&gt;
+&lt;p&gt;It's not that I avoid other people, or that I try to keep them away from
+me. Rather, a lot of my habits are focused on eliminating any dependence
+upon others. I keep everything I can on my own machine, in case the
+network goes down. I keep my own backups of important files. I know how
+to set up the server software on my own machine in case the real
+development server goes down or gets funky. When something breaks, I
+tend to fix it myself and then notify others later, rather than
+co-ordinating with them first.&lt;/p&gt;
+&lt;p&gt;While this self-reliance and initiative keeps me out of a lot of jams, I
+wonder if it interferes with teamwork. Would we work more closely
+together if we were more dependent on one another? Are we each doing a
+lot of redundant work to keep ourselves self-reliant?&lt;/p&gt;
+&lt;p&gt;Being dependent upon others is a little scary, as is having others
+depend upon you. You never know how they might unintentionally mess you
+up, and there may even be a few who will do with it intentional malice.
+But I have learned that I can trust others. If I ever think I can't
+trust my co-workers, it will be time to find another job.&lt;/p&gt;
+&lt;p&gt;Even with that trust in others, I am going to continue my self-reliant
+habits. Groups don't really accomplish things; individuals do, and I
+want to be an effective individual.&lt;/p&gt;</content><category term="programming"></category></entry><entry><title>Considering an MBA Program</title><link href="http://undefinedvalue.com/considering-an-mba-program.html" rel="alternate"></link><published>2004-02-24T15:14:00-05:00</published><updated>2004-02-24T15:14:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-24:/considering-an-mba-program.html</id><summary type="html">&lt;p&gt;Lately, I've been thinking a lot about going for an MBA. A few years
+ago, I would never have considered such a thing, but now it seems like a
+solution to several "forces" in my life:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I'd like to go back to school.&lt;/strong&gt; I think I'd like being in an …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Lately, I've been thinking a lot about going for an MBA. A few years
+ago, I would never have considered such a thing, but now it seems like a
+solution to several "forces" in my life:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I'd like to go back to school.&lt;/strong&gt; I think I'd like being in an environment where I am learning things and interacting with other students. I think I wasted my time in undergraduate studies, being so shy that I never talked to other students or to my professors, and would like to try a different tack this time around.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I have an entrepreneurial bent.&lt;/strong&gt; Whenever I read books or articles that describe what makes a good entrepreneur, I see myself.  I am tired of working for other people. I am independent. I want to choose what I work on. Of course, I also lack some of the good entrepreneurial skills, which is why I'd like to learn more about business.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;My career has reached a dead end.&lt;/strong&gt; All anyone wants to pay me to do is to write C++ GUI applications. That was interesting the first few dozen times I did it, but now there is no joy in it. And when I look around the IT industry, I don't see anything that I want to get into. I need a change, and I don't know exactly what I want to do, so learning more about business seems like something that could help me find a new direction. Even if I don't figure out what I want, having an MBA and a technical background will probably keep me hireable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;People are trying to make me into a manager anyway.&lt;/strong&gt; I keep getting pushed into management jobs, and into situations where I am doing business planning, marketing, etc. My primary objection to this is that I have no idea what I'm doing when thrust into those roles. Some formal education in the subject would ease my concerns.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The University of Georgia has an evening MBA program at a location close
+to me. So I figure it can't hurt to sign up for a semester's worth of
+classes and see whether this is for me. If not, it's just a couple grand
+down the drain.&lt;/p&gt;</content><category term="education"></category><category term="mba"></category></entry><entry><title>My R/C Helicopter</title><link href="http://undefinedvalue.com/my-rc-helicopter.html" rel="alternate"></link><published>2004-02-07T17:39:00-05:00</published><updated>2004-02-07T17:39:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-07:/my-rc-helicopter.html</id><summary type="html">&lt;p&gt;I've had my &lt;a href="http://www.pgoelz.com/piccolo1.html"&gt;Piccolo R/C model helicopter&lt;/a&gt; for a couple of weeks
+now. I've had a total flying time of about 60 seconds. The average
+flight lasts two or three seconds, and many of them end in a "crash",
+which I define as "a landing that makes me wait …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've had my &lt;a href="http://www.pgoelz.com/piccolo1.html"&gt;Piccolo R/C model helicopter&lt;/a&gt; for a couple of weeks
+now. I've had a total flying time of about 60 seconds. The average
+flight lasts two or three seconds, and many of them end in a "crash",
+which I define as "a landing that makes me wait for glue to dry before I
+can fly again". But they say any landing you can walk away from is a
+good one, and I've walked away from them all.&lt;/p&gt;
+&lt;p&gt;I've spent about $50 for replacement parts over these two weeks (I've
+broken the swashplate, the tail rotor, the main rotor and one of the
+push rods). I've also preemptively purchased $50 worth of additional
+parts that I expect to need in the coming weeks. I was grounded for four
+days waiting for parts to arrive, so I'm planning ahead.&lt;/p&gt;
+&lt;p&gt;It's been a lot of fun. I haven't built any models since I was a
+teenager, so putting this thing together was almost a new experience.
+The instructions were clear enough to follow, but also cryptic enough
+that I had to figure out many things for myself. I had to develop my own
+assembly techniques for manipulating small parts; I never thought I'd be
+able to get the 1.5-mm-long bolts screwed into the right places with my
+normal-sized hands and tools, but I did it.&lt;/p&gt;
+&lt;p&gt;The one thing I haven't quite figured out is the Piccoboard, a little
+printed-circuit board that handles the mixing of main rotor and tail
+rotor throttles. It has a couple of potentiometers to be adjusted, and
+I'm not sure I'm doing it right. It seems that any adjustment either has
+no effect or has a disasterous effect. More experimentation is needed.&lt;/p&gt;
+&lt;p&gt;Most of my flying has been inside my apartment, which is really too
+small for a beginning helicopter pilot (hence the frequent crashes). The
+chopper hasn't done much damage to my walls or furniture. There is a
+nice open area in the parking lot where I have flown a few times, but it
+has been pretty windy lately.&lt;/p&gt;
+&lt;p&gt;I don't quite have the hang of stable hovering yet, but I'm pretty sure
+I'll be able to do it pretty soon. Using the computer simulator has
+helped me get accustomed to the controls, but controlling a real
+helicopter in front of me is a lot different from controlling an
+onscreen copter. I never have to worry about flying the helicopter into
+my own body with the simulator, whereas that is a constant concern with
+the real one. But the real one is actually a little easier, because I
+can use binocular vision and my ears to get a better sense of what the
+heli is doing and where it is heading.&lt;/p&gt;
+&lt;p&gt;Having a little helicopter is really cool. I've found that I get a lot
+less frustrated at work these days, because I'm always thinking about
+that next flight.&lt;/p&gt;</content><category term="helicopter"></category></entry><entry><title>Stick with the Defaults</title><link href="http://undefinedvalue.com/stick-with-the-defaults.html" rel="alternate"></link><published>2004-01-31T05:42:00-05:00</published><updated>2004-01-31T05:42:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-31:/stick-with-the-defaults.html</id><summary type="html">&lt;p&gt;"It crashes in the call to bpGetStatus()."&lt;/p&gt;
+&lt;p&gt;"Do you have structure-packing set to 1?"&lt;/p&gt;
+&lt;p&gt;"Uh, no. Let me try that..."&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Five minutes later:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;"OK, now it crashes the output routine."&lt;/p&gt;
+&lt;p&gt;"Are you using the standard library?"&lt;/p&gt;
+&lt;p&gt;"Yes. Why?"&lt;/p&gt;
+&lt;p&gt;"You need to use the Gee-Cool-Whizzy port of the STL. I'll e-mail …&lt;/p&gt;</summary><content type="html">&lt;p&gt;"It crashes in the call to bpGetStatus()."&lt;/p&gt;
+&lt;p&gt;"Do you have structure-packing set to 1?"&lt;/p&gt;
+&lt;p&gt;"Uh, no. Let me try that..."&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Five minutes later:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;"OK, now it crashes the output routine."&lt;/p&gt;
+&lt;p&gt;"Are you using the standard library?"&lt;/p&gt;
+&lt;p&gt;"Yes. Why?"&lt;/p&gt;
+&lt;p&gt;"You need to use the Gee-Cool-Whizzy port of the STL. I'll e-mail you
+the URL."&lt;/p&gt;
+&lt;p&gt;"OK, I'll try that..."&lt;/p&gt;
+&lt;p&gt;Don't do this to people. The default settings for many compilers and
+IDEs are perfectly reasonable. If you are going to use some bizarre
+settings, write up a document or something to explain what other have to
+do (and explain &lt;em&gt;why&lt;/em&gt; while you're at it). The rest of us will
+appreciate it.&lt;/p&gt;
+&lt;p&gt;But even better, don't use bizarre settings. I've never understood why
+some people go to such lengths to find what they consider to be the
+perfect set of compiler flags for their particular application. If
+proper operation of the program depends upon some strange set of
+compiler options, then it is almost certain that the programmer is doing
+something (a) non-standard, (b) tricky, (c) incompatible with other
+people's code, and (d) that is going to break when moved to another
+platform or another compiler. If proper operation doesn't depend on a
+strange set of compiler options, then why use them at all?&lt;/p&gt;
+&lt;p&gt;There are exceptions to this rule. For example, Visual C++'s default
+settings are to statically link to a single-threaded version of the C++
+runtime. For real work, almost everyone uses dynamic linking to the
+multithreaded DLL. But this is not really an exception: if &lt;em&gt;everyone&lt;/em&gt;
+uses the same non-default setting, then you can consider it to be a
+standard.&lt;/p&gt;
+&lt;p&gt;Whenever you are doing something that nobody else does, and which makes
+life more difficult for everyone else, you really need to ask yourself
+whether you are doing the right thing. Usually, the answer will be &lt;em&gt;No&lt;/em&gt;.
+Sometimes following the herd is best for everyone.&lt;/p&gt;</content><category term="rant"></category><category term="programming"></category></entry><entry><title>C++ Testing Frameworks</title><link href="http://undefinedvalue.com/c-testing-frameworks.html" rel="alternate"></link><published>2004-01-25T14:14:00-05:00</published><updated>2004-01-25T14:14:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-25:/c-testing-frameworks.html</id><summary type="html">&lt;p&gt;I've always rolled my own unit-testing frameworks for C++. I don't like
 CppUnit, because it is too Java-like and not C++-like. It has always
 been easier to throw together what I need than to try to figure out
 someone else's framework. I can throw together the basics in ten …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've always rolled my own unit-testing frameworks for C++. I don't like

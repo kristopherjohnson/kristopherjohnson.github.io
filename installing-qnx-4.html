@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Installing QNX 4 | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/2004.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+
+    <meta name="tags" content="qnx" />
+
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://undefinedvalue.com/">
+                <img src="http://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
+        <header id="banner" class="body">
+            <h1><a href="http://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="http://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="http://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://undefinedvalue.com/installing-qnx-4.html" rel="bookmark"
+         title="Permalink to Installing QNX 4">Installing QNX 4</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2004-03-03T05:38:00-05:00">
+      Wed 03 March 2004
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://undefinedvalue.com/tag/qnx.html">qnx</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I installed <a href="http://www.qnx.com">QNX</a> 4 on a machine today, for some
+upcoming embedded systems work. This is not the first time I've
+installed it, but of course I didn't take any notes the last time I did
+it, so it was almost a new experience.</p>
+<p>My first hurdle was figuring out how to run the installer. The
+installation program runs on Windows, but the machine where I wanted to
+install only had Linux.</p>
+<p>"No problem," I thought, "it's a bootable CD, so I can just boot from
+that". My next hurdle was the discovery that while the machine had a
+CD-ROM drive inside it, there were no power or data cables connected to
+it. And there was a good reason for that: the drive didn't have an IDE
+interface, but something with a whole lot more pins than any ribbon
+cable I could find. So I scrounged up another CD-ROM drive and plugged
+it in. Then it took several minutes of rebooting and cursing before I
+had to conclude that the ancient BIOS on that 300 MHz Pentium II machine
+wouldn't let one boot from the CD.</p>
+<p>I was starting to think I'd have to install Windows on that machine just
+so I could run the installer for QNX. This would have been a problem,
+because this was a CD-ROM drive, and we only have DVDs for installing
+Windows. But poking through the contents of the CD, I found a .BAT file
+that would create a bootable floppy for installing a demo version of
+QNX. I didn't want a demo version, but a few more minutes of poking
+around (and guessing) led me to discover how to create a bootable floppy
+for installing the full QNX.</p>
+<p>So, finally I booted the floppy and went through the QNX installation. I
+actually had to do this twice, because the first time I couldn't figure
+out how to delete all the Linux partitions to make the entire hard drive
+a QNX partition. But I eventually had a bootable QNX box.</p>
+<p>The last problem was getting a working network interface. The machine
+(which I inherited from a recently departed colleague) had both built-in
+Ethernet on the motherboard and a PCI Ethernet card. I tried configuring
+both interfaces for DHCP and plugging both into my switch, but neither
+card was able to retrieve an IP address. I won't bore anyone with the
+details (assuming they are not thoroughly bored already), but I
+eventually figured out that there was no driver for the card, and
+removing it let the built-in Ethernet port start working. I had to give
+it a static IP address at first, but eventually got it doing DHCP by
+ignoring the nice network-configuration GUI and instead using
+"dhcp.client -h mymachine -i en0 &amp;".</p>
+<p>So it wasn't impossible, but this illustrates one of the reasons Windows
+is going to remain popular. I've heard people with horror stories about
+Windows installs, but every one I've done has been basically (a) boot
+with the CD, (b) follow the onscreen instructions, (c) OK, everything
+works. Sure, QNX is not a "consumer" operating system, and a lot of my
+problems were related to having ancient hardware, but still, I think it
+should have been easier.</p>
+  </div><!-- /.entry-content -->
+</section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>Other Stuff</h2>
+                        <ul>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>Follow</h2>
+                        <ul>
+                            <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+</body>
+</html>
