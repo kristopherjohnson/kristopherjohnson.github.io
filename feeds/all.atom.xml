@@ -7106,7 +7106,451 @@ One last thing: Atari rules, Commodore sucks. &lt;/p&gt;</content><category term
 &lt;p&gt;&lt;em&gt;No. Maybe.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Can you roll back to the previous release?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;No. We blew away the old data after converting it to the new format.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Well, Kris, can you tell us how to fix it?&lt;/em&gt;&lt;/p&gt;</content><category term="rant"></category><category term="programming"></category></entry><entry><title>My Failed Contracting Career</title><link href="http://undefinedvalue.com/my-failed-contracting-career.html" rel="alternate"></link><published>2003-12-31T03:59:00-05:00</published><updated>2003-12-31T03:59:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2003-12-31:/my-failed-contracting-career.html</id><summary type="html">&lt;p&gt;After my last permanent position, I took a few months off from work, and
+&lt;p&gt;&lt;em&gt;Well, Kris, can you tell us how to fix it?&lt;/em&gt;&lt;/p&gt;</content><category term="rant"></category><category term="programming"></category></entry><entry><title>C++ Testing Frameworks</title><link href="http://undefinedvalue.com/c-testing-frameworks.html" rel="alternate"></link><published>2004-01-25T14:14:00-05:00</published><updated>2004-01-25T14:14:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-25:/c-testing-frameworks.html</id><summary type="html">&lt;p&gt;I've always rolled my own unit-testing frameworks for C++. I don't like
+CppUnit, because it is too Java-like and not C++-like. It has always
+been easier to throw together what I need than to try to figure out
+someone else's framework. I can throw together the basics in ten …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've always rolled my own unit-testing frameworks for C++. I don't like
+CppUnit, because it is too Java-like and not C++-like. It has always
+been easier to throw together what I need than to try to figure out
+someone else's framework. I can throw together the basics in ten
+minutes, and then evolve the test rig as necessary.&lt;/p&gt;
+&lt;p&gt;So I'm not really sure why I decided to re-examine off-the-shelf
+frameworks for my current testing needs. I guess it comes down to a
+desire to learn something new, and to make sure nobody else is doing
+something smarter than I am.&lt;/p&gt;
+&lt;p&gt;After looking around, I settled on the &lt;a href="http://www.boost.org/libs/test/doc/index.htm"&gt;Boost Test Library&lt;/a&gt;. What I like most
+about this library is that it can be used by simply #include-ing a
+header file; there is no need to build a library and link to it. The
+Boost Test Library worked out-of-the-box. The only special thing I did
+was to use a &lt;a href="http://www.codeproject.com/debug/debugout.asp"&gt;debug output stream&lt;/a&gt; so that the
+output shows up in the Visual C++ output window. The output format makes
+it possible to double-click a line in the output window and VC++ will
+open the source file and go to the source line. There is no need for a
+TestRunner-style GUI.&lt;/p&gt;
+&lt;p&gt;I also ran across Michael Feathers's &lt;a href="http://c2.com/cgi/wiki?CppUnitLite"&gt;CppUnitLite&lt;/a&gt;. He created this as a
+reaction to the bloat of CppUnit. CppUnitLite is intended to be just a
+simple example of a testing framework, which should be modified and
+extended as necessary by its users. While I like the idea of using a
+simple barebones framework and modifying it as needed, CppUnitLite still
+seems too complex to me.&lt;/p&gt;
+&lt;p&gt;I think that C++ unit testing is one of those things where an
+off-the-shelf framework never seems right. I've come to believe that
+small off-the-shelf frameworks are a bad idea. The smaller the
+framework, the less it does for you and the easier it would be to roll
+your own that does the job better. Only really big frameworks (MFC,
+etc.) provide enough value to justify spending the time to learn them.
+C++ unit testing is just too easy to justify learning a framework.&lt;/p&gt;
+&lt;p&gt;But I'll keep using the Boost Test Library for now. I hope I'll learn
+something in the process. Using an off-the-shelf library might help me
+to "test-infect" my co-workers.&lt;/p&gt;</content><category term="cplusplus"></category></entry><entry><title>Reinventing Wheels</title><link href="http://undefinedvalue.com/reinventing-wheels.html" rel="alternate"></link><published>2004-01-23T14:16:00-05:00</published><updated>2004-01-23T14:16:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-23:/reinventing-wheels.html</id><summary type="html">&lt;p&gt;I have a sudden need for a store-and-forward mechanism for a C++
+application I'm working on. I'm sure countless others have done this,
+and there is probably an off-the-shelf solution somewhere I could use,
+but I have decided to implement one from scratch.&lt;/p&gt;
+&lt;p&gt;I did spend some time on Google …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have a sudden need for a store-and-forward mechanism for a C++
+application I'm working on. I'm sure countless others have done this,
+and there is probably an off-the-shelf solution somewhere I could use,
+but I have decided to implement one from scratch.&lt;/p&gt;
+&lt;p&gt;I did spend some time on Google trying to find something that would suit
+my needs, but none of the hits gave me a good feeling that I would
+actually save any time or effort by using an off-the-shelf product. I
+have to have this feature implemented in a couple of days, or the world
+is going to end (or so customer believes), so I don't have a lot of time
+to figure out someone else's product, and I definitely don't have time
+to wait for a bug fix. So I've satisfied myself that I am not
+reinventing the wheel without good reason.&lt;/p&gt;
+&lt;p&gt;The buy-vs.-build question is one that comes up often, and I am never
+satisfied with my decision. I was once strongly in favor of "buy", but
+after being stung by many low-quality products over the years, I now
+tend to believe I can usually do better by myself.&lt;/p&gt;
+&lt;p&gt;The best thing about doing it myself is that the solution will be
+specifically designed for my use. I don't have to learn how to manage
+all the various configuration parameters that a generic off-the-shelf
+"solution" would have. I don't have to worry about whether it will be
+compatible with my compiler, my OS, and the other libraries I am using.
+I don't have to figure out whether it is thread-safe, or how it manages
+memory, or how to properly initialize and terminate it.&lt;/p&gt;
+&lt;p&gt;And of course, doing it myself is a lot more fun.&lt;/p&gt;</content><category term="programming"></category></entry><entry><title>Pay Me What I'm Worth</title><link href="http://undefinedvalue.com/pay-me-what-im-worth.html" rel="alternate"></link><published>2004-01-18T18:54:00-05:00</published><updated>2004-01-18T18:54:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-18:/pay-me-what-im-worth.html</id><summary type="html">&lt;p&gt;Recently receiving a nice raise got me thinking about the relationship
+between work and financial compensation.&lt;/p&gt;
+&lt;p&gt;Some people claim that high salaries encourage hard work. Maybe it does
+for some people, but it doesn't work that way for me. My work ethic has
+little to do with how much I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently receiving a nice raise got me thinking about the relationship
+between work and financial compensation.&lt;/p&gt;
+&lt;p&gt;Some people claim that high salaries encourage hard work. Maybe it does
+for some people, but it doesn't work that way for me. My work ethic has
+little to do with how much I am being paid, or how high my taxes are.
+I've always felt that if one has accepted a job, one does it as well as
+possible. I expect to be paid well because I do a good job; I don't do a
+good job because I want a raise. If I'm not being paid enough, I may
+quit, but I won't slack off.&lt;/p&gt;
+&lt;p&gt;I know people who obsess over exactly what percentage their raise was,
+and how that compares to others' raises.&lt;/p&gt;
+&lt;p&gt;During the 90's, I was getting raises of 20%, 25%, or more per year for
+a while. Those raises were so ridiculously high that I will probably
+never be able see any raise as being indicative of my abilities; they
+are more a reflection of how well my employer is doing, and how much
+clout my manager has.&lt;/p&gt;
+&lt;p&gt;I have never chased after maximizing my income, but have been fortunate
+to receive nice salaries. Making lots of money has provided a counter to
+&lt;a href="http://fecolumnists.expressindia.com/full_column.php?content_id=32033"&gt;Imposter Syndrome&lt;/a&gt;.
+My work must be providing some sort of value, although I've never
+figured out exactly what it is. So for me, salary is symbolic of
+approval and respect.&lt;/p&gt;
+&lt;p&gt;As long as I'm being paid "enough", I don't worry too much about salary.
+I just want to feel that I am being paid what I am worth, and right now,
+I think I'm being paid a lot more than I'm worth. (But please don't tell
+my boss.)&lt;/p&gt;</content><category term="self-indulgence"></category><category term="impostorsyndrome"></category><category term="money"></category></entry><entry><title>Software and Hardware</title><link href="http://undefinedvalue.com/software-and-hardware.html" rel="alternate"></link><published>2004-01-14T03:04:00-05:00</published><updated>2004-01-14T03:04:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-14:/software-and-hardware.html</id><summary type="html">&lt;p&gt;Charles Miller had an &lt;a href="http://fishbowl.pastiche.org/2004/01/14/blood_sacrifice"&gt;amusing blog entry&lt;/a&gt; about
+the hazards of computers. I am currently working with development of
+embedded systems software, so I spend a lot of my day plugging and
+unplugging PCI cards, comm ports, etc. My hands are covered with little
+scratches, cuts, and punctures.&lt;/p&gt;
+&lt;p&gt;Computer programming …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Charles Miller had an &lt;a href="http://fishbowl.pastiche.org/2004/01/14/blood_sacrifice"&gt;amusing blog entry&lt;/a&gt; about
+the hazards of computers. I am currently working with development of
+embedded systems software, so I spend a lot of my day plugging and
+unplugging PCI cards, comm ports, etc. My hands are covered with little
+scratches, cuts, and punctures.&lt;/p&gt;
+&lt;p&gt;Computer programming is supposed to be a cushy intellectual job, but
+it's amazing how much physical labor and torment programmers go through.
+RSI and sore backs are common. Electric shocks are common as well. We
+have to crawl around on floors to figure out which cable is connected to
+what. We've all over-strained ourselves carrying around big CRTs and
+servers. Many of us have had equipment racks fall on top of us.
+Incidents like these stress the importance of the first syllable of
+&lt;em&gt;hardware&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I've heard that there are some programmers who never have to deal with
+hardware. The computer is off in some other room somewhere, and it is
+someone else's job to keep it running. Somebody else installs the device
+drivers, and configures the networks, and connects the keyboards and the
+monitors. I've always felt that these programmers are somewhat like the
+ivory-tower academics who never have to deal with the reality of
+computers. Without playing with the hardware, how can one really
+appreciate what the software does?&lt;/p&gt;</content><category term="programming"></category><category term="hardware"></category></entry><entry><title>Helicopters and Simulations</title><link href="http://undefinedvalue.com/helicopters-and-simulations.html" rel="alternate"></link><published>2004-01-11T19:55:00-05:00</published><updated>2004-01-11T19:55:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-11:/helicopters-and-simulations.html</id><summary type="html">&lt;p&gt;I've always been fascinated by helicopters. The way they float in the
+air, and the throbbing "chop-chop-chop" provide a Zen-like experience
+for me, where I can stop thinking and just &lt;em&gt;experience&lt;/em&gt; the helicopter
+overhead.&lt;/p&gt;
+&lt;p&gt;Actually learning to fly a helicopter would be nice, but I'm not willing
+to devote the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've always been fascinated by helicopters. The way they float in the
+air, and the throbbing "chop-chop-chop" provide a Zen-like experience
+for me, where I can stop thinking and just &lt;em&gt;experience&lt;/em&gt; the helicopter
+overhead.&lt;/p&gt;
+&lt;p&gt;Actually learning to fly a helicopter would be nice, but I'm not willing
+to devote the time and money required to do so. But I like models. When
+I was a kid, I spent many hours/days with the Mattel
+&lt;a href="http://www.whirlybirdcentral.com/downloads/7604.pdf"&gt;VertiBird&lt;/a&gt; toy
+helicopter. I looked into RC helicopters a few years ago, but at the
+time they were very expensive and lacking in capabilities.&lt;/p&gt;
+&lt;p&gt;A couple of months ago, my interest was re-kindled when I ran across
+some small electric RC helicopters designed to fly indoors. This is
+perfect for me; I am an apartment dweller, and I don't have wide open
+spaces available for larger RC aircraft. The thought of flying a small
+chopper from room to room intrigued me. I put in on my Christmas list,
+but I guess my friends and family didn't want to spend several hundred
+dollars on my gift (cheap buggers). So I guess I'm going to have to buy
+it myself.&lt;/p&gt;
+&lt;p&gt;While reading various online pages about the mini-helicopters, I noticed
+many recommendations to "use the simulator" when learning to fly. At
+first I was amused to find out that there are flight simulators for
+model aircraft, but it does make sense. A crash of a model can require
+expensive repairs (both to the craft and to whatever it hit), so a safe
+simulation is important. So I've bought the
+&lt;a href="http://www.rc-soar.com/tech/piccofly.htm"&gt;simulator&lt;/a&gt;. I hope to have
+several hours of simulated flight time under my belt before flying the
+real model helicopter.&lt;/p&gt;
+&lt;p&gt;So, my interest in real helicopters led to an interest in model
+helicopters, and that in turn led to an interest in simulated model
+helicopters. I'm definitely moving between meta-levels here. My only
+regret is that neither the model nor the simulation is going to provide
+a satisfyingly thunderous "chop-chop-chop". I guess I'll need a
+simulated digitized synthesized sound effect for that.&lt;/p&gt;</content><category term="helicopter"></category></entry><entry><title>Reading Beginners' Books</title><link href="http://undefinedvalue.com/reading-beginners-books.html" rel="alternate"></link><published>2004-01-10T00:54:00-05:00</published><updated>2004-01-10T00:54:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-10:/reading-beginners-books.html</id><summary type="html">&lt;p&gt;I am reading the Pragmatic Programmers' new "Starter Pack" books. Most
+of the content is nothing new to me, but I always enjoy reading good
+books about the basics.&lt;/p&gt;
+&lt;p&gt;I like seeing things put simply. The real world is rarely simple, and we
+forget how following a few easy-to-understand principles …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading the Pragmatic Programmers' new "Starter Pack" books. Most
+of the content is nothing new to me, but I always enjoy reading good
+books about the basics.&lt;/p&gt;
+&lt;p&gt;I like seeing things put simply. The real world is rarely simple, and we
+forget how following a few easy-to-understand principles can help
+de-complexify things. Reading beginners' books reminds me that while
+software development can be chaotic, it can be kept under control.&lt;/p&gt;
+&lt;p&gt;Reading well-written books for beginners gives me pointers on how to
+better explain the concepts to beginners (or to non-beginners who shoud
+know better). Sometimes I even learn something new myself.&lt;/p&gt;
+&lt;p&gt;Reading beginners' books reminds me of my youth. I remember where and
+when I first learned these things. I try to remember what I did before I
+learned the lessons. I remember how I learned the lessons - generally,
+the hard way. I remember my teachers, mentors, and fellow students. I
+remember the time when writing a linked-list was the most challenging
+thing I had to do.&lt;/p&gt;
+&lt;p&gt;The danger of reading a book for beginners is that it sometimes gives me
+a false sense of mastery. "I already know everything in this book, so I
+am no longer a beginner," I think, or "See, it really is just that
+easy." But those false feelings don't last for long, so I don't think
+that indulging in them once in a while causes any harm.&lt;/p&gt;
+&lt;p&gt;Of course, the best thing about a well-written beginners' book is that
+it is a well-written book. Such books are so rare that they should be
+celebrated whenever they are found, no matter what the subject matter or
+level of expertise required to understand them.&lt;/p&gt;</content><category term="reading"></category></entry><entry><title>Measuring "Simplest"</title><link href="http://undefinedvalue.com/measuring-simplest.html" rel="alternate"></link><published>2004-01-09T18:16:00-05:00</published><updated>2004-01-09T18:16:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-09:/measuring-simplest.html</id><summary type="html">&lt;p&gt;&lt;a href="http://www.metaprog.com/blogs/index.php?p=63&amp;amp;more=1&amp;amp;c=1&amp;amp;tb=1&amp;amp;pb=1"&gt;Joseph Pelrine&lt;/a&gt;
+notes that "as Alistair Cockburn rightly states, 'simplest' has no
+metric. It is not a quantifiable amount." While it is true that one
+cannot put a number on it, there is an obvious test: you have the
+simplest solution if nobody can think of anything simpler.&lt;/p&gt;
+&lt;p&gt;Of course …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://www.metaprog.com/blogs/index.php?p=63&amp;amp;more=1&amp;amp;c=1&amp;amp;tb=1&amp;amp;pb=1"&gt;Joseph Pelrine&lt;/a&gt;
+notes that "as Alistair Cockburn rightly states, 'simplest' has no
+metric. It is not a quantifiable amount." While it is true that one
+cannot put a number on it, there is an obvious test: you have the
+simplest solution if nobody can think of anything simpler.&lt;/p&gt;
+&lt;p&gt;Of course, different people have different ideas of what simple is. For
+example, C++ templates provide simple solutions to many C++ problems,
+but many C++ programmers will consider any use of templates to be
+"complicated". (And some would say that C++ provides no simple solutions
+for any problem!) Similarly, some prefer break up a class into many
+small classes to make things simpler, whereas others think that a small
+number of big classes is simpler. Who's right?&lt;/p&gt;
+&lt;p&gt;Ward Cunningham wrote somewhere that his definition of &lt;em&gt;simple&lt;/em&gt; is
+whatever is easiest to reason about. I would add that it is also
+whatever is easiest to communicate to others. If you are trying to
+explain your "simple" solution to others, and they don't get it, that is
+a good sign that you haven't really found a simple solution. The reason
+that XP advocates simplicity is that simple code is easier for somebody
+else to understand and to modify in the future.&lt;/p&gt;
+&lt;p&gt;So, when judging the simplicity of a solution, it is important to
+remember that you are writing code for an audience. You have to make
+some assumptions about that audience. Do they understand the language
+features that you are using? Are they going to understand the idioms?
+Does the code you are writing fit in with the rest of the project's code
+in a way that will make sense to them?&lt;/p&gt;
+&lt;p&gt;Always remember that the value of simplicity is that it makes future
+change easier. The simplest solution is the one that will be easiest to
+replace.&lt;/p&gt;</content><category term="programming"></category></entry><entry><title>Why Bother with .NET?</title><link href="http://undefinedvalue.com/why-bother-with-net.html" rel="alternate"></link><published>2004-01-07T14:39:00-05:00</published><updated>2004-01-07T14:39:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-07:/why-bother-with-net.html</id><summary type="html">&lt;p&gt;Someone asked me "What's the big deal about .NET? Besides the fact that
+the Microsoft world is steering that way and so knowing it is probably a
+good career move. Is there a specific problem that it solves that I
+couldn't solve as easily with, say, Ruby or Perl?"&lt;/p&gt;
+&lt;p&gt;This …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Someone asked me "What's the big deal about .NET? Besides the fact that
+the Microsoft world is steering that way and so knowing it is probably a
+good career move. Is there a specific problem that it solves that I
+couldn't solve as easily with, say, Ruby or Perl?"&lt;/p&gt;
+&lt;p&gt;This is a question I asked myself a lot while &lt;a href="http://kristopherjohnson.blogspot.com/2004_01_01_kristopherjohnson_archive.html#107336832099080752"&gt;studying for the MCSD
+exams&lt;/a&gt;.
+The conclusion I came to was that the primary value of .NET is that it
+provides a better way to write Windows programs than C++ or Visual
+Basic.&lt;/p&gt;
+&lt;p&gt;Over the years, I've learned that the best thing to do when developing
+for Windows is to do it Microsoft's way. Third-party libraries and
+development tools always end up "breaking" at some point because
+Microsoft changes an API or doesn't provide sufficient information to
+other vendors. When using non-Microsoft tools, it always seems like I
+spend more time working around incompatibilities than getting my job
+done. So I try to stick with Visual C++, MFC, COM, ODBC, etc., and
+nobody gets hurt too badly.&lt;/p&gt;
+&lt;p&gt;So, now Microsoft provides a Java-like development platform, and is
+going to be integrating it more tightly with the OS as Longhorn comes
+together. What I've read in the Microsofties' blogs leads me to think
+that things are generally going in the right direction. This is good in
+that C++ is no longer the best way to write Windows software. Knowing
+.NET lets me write better Windows software.&lt;/p&gt;
+&lt;p&gt;But aside from its ties to Windows, is .NET "better" than alternatives?
+No. It has some very nice features, but I'd rather be using Python (or
+Ruby, or Scheme, or Squeak, or ...).&lt;/p&gt;
+&lt;p&gt;It's not that those other things are "better" than .NET. A lot of people
+knock .NET because it is not innovative, and that it is just a
+collection of features that have been better implemented elsewhere. I
+actually find the non-innovativeness of .NET to be comforting. The fact
+that Microsoft is "stealing" a lot of good ideas from other places and
+isn't trying anything too radical suggests to me that .NET is going to
+be a pretty usable framework. I don't want innovation; I want something
+that works.&lt;/p&gt;
+&lt;p&gt;The big drawback to .NET is that it will always be a Microsoft-specific
+technology. Despite the efforts of open-source developers, I don't think
+there will ever be an industrial-strength non-Microsoft implementation.
+I'm not going to be able to run my .NET code on Linux, or Solaris, or
+QNX Neutrino, or Palm OS, or another of the other operating systems I
+develop software for.&lt;/p&gt;
+&lt;p&gt;Is it worthwhile to learn about .NET? If you develop Windows
+applications, then I would definitely recommend it. If you don't develop
+Windows apps, then you may want to study .NET to see how the approached
+issues differently from other platforms' designers. But I can't find
+anything in .NET that makes me say "Wow! This is exactly what I've been
+waiting for!"&lt;/p&gt;</content><category term="dotnet"></category></entry><entry><title>Confessional</title><link href="http://undefinedvalue.com/confessional.html" rel="alternate"></link><published>2004-01-07T03:23:00-05:00</published><updated>2004-01-07T03:23:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-07:/confessional.html</id><summary type="html">&lt;p&gt;I committed several developer sins today. (Actually, I only committed a
+couple today; the others were committed in the past but came to light
+today.)&lt;/p&gt;
+&lt;p&gt;First, I assumed that the bug was in the other guy's code. I was sure
+there could be nothing wrong in my simple straightforward
+object-oriented …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I committed several developer sins today. (Actually, I only committed a
+couple today; the others were committed in the past but came to light
+today.)&lt;/p&gt;
+&lt;p&gt;First, I assumed that the bug was in the other guy's code. I was sure
+there could be nothing wrong in my simple straightforward
+object-oriented code, so it must have been in his quagmire of
+multi-threaded straight ANSI C. So I spent most of my time trying to
+read his code instead of examining my own more carefully. I cursed him
+for not providing documentation or unit tests.&lt;/p&gt;
+&lt;p&gt;Second, I put off as long as possible the arduous task of reading
+through the voluminous logging information his code generated. After
+all, if he is a bad programmer it stands to reason that his log will
+hold only useless information. When I finally did read through the log,
+it became clear that the code I had copied-and-pasted from another
+program was doing bad things.&lt;/p&gt;
+&lt;p&gt;Yes, that was the original sin: I copied-and-pasted code from another
+program without reviewing it sufficiently. I know it's wrong. I scream
+at people when I see them do this. But it was the easiest thing to do at
+the time.&lt;/p&gt;
+&lt;p&gt;And when i discovered the copied-and-pasted bug, my first instinct was
+to curse the name of the writer of that code I had copied. But of
+course, he does not deserve my ire. The real culprit is my boss, who
+suggested that copying and pasting was the fastest way to get the
+feature implemented! No, that isn't right either. I committed the act;
+it is my responsibility.&lt;/p&gt;
+&lt;p&gt;I keep thinking I am getting better at this stuff. I think I have better
+habits than others. I only break my own rules when I think it really
+won't hurt anything.&lt;/p&gt;
+&lt;p&gt;I am ashamed. I ask forgiveness.&lt;/p&gt;</content><category term="self-indulgence"></category><category term="programming"></category></entry><entry><title>On Being a Microsoft Certified Solution Developer</title><link href="http://undefinedvalue.com/on-being-a-microsoft-certified-solution-developer.html" rel="alternate"></link><published>2004-01-06T06:40:00-05:00</published><updated>2004-01-06T06:40:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-06:/on-being-a-microsoft-certified-solution-developer.html</id><summary type="html">&lt;p&gt;I earned the Microsoft Certified Solution Developer for .NET
+certification last year. My resumé is mired in C++ and CORBA, and I
+wanted something that would indicate to potential employers that I could
+do something else. I missed out on the Java bandwagon, and couldn't
+compete with the junior Java …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I earned the Microsoft Certified Solution Developer for .NET
+certification last year. My resumé is mired in C++ and CORBA, and I
+wanted something that would indicate to potential employers that I could
+do something else. I missed out on the Java bandwagon, and couldn't
+compete with the junior Java developers with 3+ years experience who
+would work for $25/hour. So I thought being an MCSD might get me in
+early on .NET development.&lt;/p&gt;
+&lt;p&gt;The tests weren't the cakewalk that I had been led to believe by the
+detractors of Microsoft's certification program. I agree that the tests
+don't provide a good indication of whether a candidate would be a good
+developer, but they do indicate that the candidate has an encyclopedic
+knowledge of the .NET API and the features of Visual Studio .NET.&lt;/p&gt;
+&lt;p&gt;The architecture exam, usually considered to be the toughest of the MCSD
+exams, was the easiest one for me. It was the one exam where careful
+reading and common sense would get you through, rather than a lot of
+rote memorization.&lt;/p&gt;
+&lt;p&gt;Getting the MCSD didn't help me much in getting a job. I suspect it is
+actually considered a black mark by those who believe anyone taking
+Microsoft's tests must be a clueless, mindless drone.&lt;/p&gt;
+&lt;p&gt;I think that studying for the exams did help me to learn some things
+about .NET that I would not have learned otherwise. The exam guides gave
+me a plan for learning .NET, rather than just stumbling around randomly.
+So that is what is of most value to me: the learning, not the piece of
+paper.&lt;/p&gt;</content><category term="microsoft"></category><category term="mcsd"></category><category term="certification"></category></entry><entry><title>Assertiveness</title><link href="http://undefinedvalue.com/assertiveness.html" rel="alternate"></link><published>2004-01-03T18:58:00-05:00</published><updated>2004-01-03T18:58:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-03:/assertiveness.html</id><summary type="html">&lt;p&gt;The most significant personal change I've gone through in the past few
+years is an increase in my assertiveness. I am a very different person
+from who I used to be, due to this change.&lt;/p&gt;
+&lt;p&gt;I am a stutterer. That, coupled with natural introversion, caused me to
+grow up avoiding …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The most significant personal change I've gone through in the past few
+years is an increase in my assertiveness. I am a very different person
+from who I used to be, due to this change.&lt;/p&gt;
+&lt;p&gt;I am a stutterer. That, coupled with natural introversion, caused me to
+grow up avoiding any situation where I had to talk to anyone. Many
+people fear speaking because they think they will sound stupid, but a
+stutterer &lt;em&gt;knows&lt;/em&gt; he will sound stupid no matter what he is saying. All
+through childhood and college, I avoided any role or situation that
+required me to speak up.&lt;/p&gt;
+&lt;p&gt;I was able to keep my mouth mostly shut for several years when I started
+working. I only had to talk to my boss and a few co-workers. So I was
+able to get things done, but I shied away from any roles or situations
+where I would have to speak my mind to people outside that circle. I
+also avoided looking for better jobs, because I dreaded the interview
+process.&lt;/p&gt;
+&lt;p&gt;Then, I got promoted. I was put in charge of development of an important
+project. I faced a crisis: my job now required me to speak to clients
+and higher level managers, and to tell other people what to do, but I
+didn't think I could do that. I considered all sorts of ways to avoid
+those responsibilities, but none made sense. So, I just decided I would
+just do it, because it was my job.&lt;/p&gt;
+&lt;p&gt;And a funny thing happened: it learned it was surprisingly easy. I asked
+people to do things, and they did it. I explained technical issues to
+clients, and they understood and believed what I was saying. I talked to
+those scary upper-level managers, and they turned out to be pretty cool
+guys who trusted my judgment. All my fears had been unfounded.&lt;/p&gt;
+&lt;p&gt;It makes me a little sad to think about all the missed opportunities I
+had before learning this simple lesson at age 35. I wish I had gone out
+and played with other kids instead of sitting in my room reading books.
+I wish I had taken advantage of everything that was available in
+college, instead of just sitting in the back row, keeping my mouth shut,
+and passing the tests. I wish I had talked to more girls when I was in
+my teens and twenties. I know there's no going back, so I just have to
+console myself by realizing that I won't have to miss future
+opportunites. I think I've finally grown up.&lt;/p&gt;
+&lt;p&gt;After my epiphany, I now have little sympathy for programmers who
+complain that their managers don't let them do what they want. Managers
+aren't stupid; if you think you have a good idea, then tell them about
+it and fight for it. If you don't like your job, then go get a better
+one.&lt;/p&gt;
+&lt;p&gt;Having become assertive myself, I have a greater respect for other
+assertive people. I once thought people like that were just arrogant
+jerks, but now I understand that they are just fighting for their
+beliefs and ideas the same way that I am. I would much rather argue with
+another intelligent assertive person than to try to talk to someone who
+just agrees with everything rather than presenting their own opinions.&lt;/p&gt;
+&lt;p&gt;I hate to sound like a motivational speaker, but this is the one lesson
+I've learned that I want to share with the world. If there is something
+you want to say, then say it. If there is something you want to do, then
+do it. Nobody else is going to say and do these things for you. The
+course of your life is up to you.&lt;/p&gt;</content><category term="self-indulgence"></category><category term="stuttering"></category></entry><entry><title>The Making of ...</title><link href="http://undefinedvalue.com/the-making-of.html" rel="alternate"></link><published>2004-01-03T05:22:00-05:00</published><updated>2004-01-03T05:22:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-03:/the-making-of.html</id><summary type="html">&lt;p&gt;When I was a kid, I really liked the "Making of Star Wars" and similar
+documentaries that gave behind-the-scenes looks at the production of
+movies. These days, the "Making of ..." pieces are really just ads for
+the movies, usually being released before the movie itself.&lt;/p&gt;
+&lt;p&gt;But we have DVD commentary …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When I was a kid, I really liked the "Making of Star Wars" and similar
+documentaries that gave behind-the-scenes looks at the production of
+movies. These days, the "Making of ..." pieces are really just ads for
+the movies, usually being released before the movie itself.&lt;/p&gt;
+&lt;p&gt;But we have DVD commentary tracks. That's my favorite part of owning a
+DVD player: being able to hear commentary from the directors, producers,
+writers, and actors in movies. A lot of what they say reminds me of
+software development. My favorite parts are when they discuss what they
+would have done if they had more time and money, and make their
+complaints about stuff that wound up in the movie but they really don't
+like.&lt;/p&gt;
+&lt;p&gt;(By the way, if you liked the movie &lt;em&gt;Fight Club&lt;/em&gt;, then you've got to
+listen to the commentary tracks on the DVD. Best commentary I've heard.)&lt;/p&gt;
+&lt;p&gt;I also enjoy "Inside the Actor's Studio" on the Bravo channel. Hearing
+actors talk about their craft, how they learned it, and how they
+continue to study it inspires me to continue improving my knowledge of
+my craft.&lt;/p&gt;
+&lt;p&gt;Commentary from software developers about their projects would not be as
+entertaining, but I wish we had such a thing. "The Making of Windows",
+as told by its developers, would certainly have some interesting bits.&lt;/p&gt;</content><category term="movies"></category></entry><entry><title>Giving The Lord of the Rings Another Chance</title><link href="http://undefinedvalue.com/giving-the-lord-of-the-rings-another-chance.html" rel="alternate"></link><published>2004-01-02T05:10:00-05:00</published><updated>2004-01-02T05:10:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-02:/giving-the-lord-of-the-rings-another-chance.html</id><summary type="html">&lt;p&gt;I didn't like &lt;em&gt;The Lord of the Rings&lt;/em&gt; when I read it as a teenager. I
+loved &lt;em&gt;The Hobbit&lt;/em&gt;, but &lt;em&gt;Rings&lt;/em&gt; just bored me. It had too much singing
+and story-telling, and was just too long. I lost interest before
+finishing the first volume, so the other two volumes were …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I didn't like &lt;em&gt;The Lord of the Rings&lt;/em&gt; when I read it as a teenager. I
+loved &lt;em&gt;The Hobbit&lt;/em&gt;, but &lt;em&gt;Rings&lt;/em&gt; just bored me. It had too much singing
+and story-telling, and was just too long. I lost interest before
+finishing the first volume, so the other two volumes were a long slog. I
+had to read it because of peer pressure (I got tired of hearing "What,
+you haven't read the &lt;em&gt;Rings&lt;/em&gt; trilogy?"), but it was a lot like reading
+books my teachers assigned.&lt;/p&gt;
+&lt;p&gt;After seeing the three &lt;em&gt;Rings&lt;/em&gt; films, I am ready to give the books
+another chance. The films were entertaining, and have given me enough
+knowledge of the story and characters that I can read the books without
+losing interest. I hope to enjoy all the stuff that didn't make it into
+the movies, and to be able to say something intelligent when I get
+trapped in one of those stupid "The movie wasn't like the book"
+conversations.&lt;/p&gt;
+&lt;p&gt;Who knows? If this works out, maybe I'll give that horrible &lt;em&gt;Dune&lt;/em&gt;
+series another chance as well.&lt;/p&gt;</content><category term="reading"></category></entry><entry><title>Self-Reflection</title><link href="http://undefinedvalue.com/self-reflection.html" rel="alternate"></link><published>2004-01-01T04:54:00-05:00</published><updated>2004-01-01T04:54:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-01-01:/self-reflection.html</id><summary type="html">&lt;p&gt;I spend a lot of time in front of reflective surfaces (computer monitors
+and my TV), and so I occasionally catch a glimpse of myself when I don't
+mean to look at myself. Before I realize who I am looking at, my first
+impression is often that the guy looks …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I spend a lot of time in front of reflective surfaces (computer monitors
+and my TV), and so I occasionally catch a glimpse of myself when I don't
+mean to look at myself. Before I realize who I am looking at, my first
+impression is often that the guy looks pretty dull-witted, tired, and
+unhappy. I hope that's not how others see me.&lt;/p&gt;
+&lt;p&gt;There have been occasions when I am reading the &lt;a href="http://c2.com/cgi/wiki"&gt;C2
+wiki&lt;/a&gt;, and suddenly realize I am reading
+something that I wrote myself long ago. Thankfully, the impressions I
+get from reading my own writing are more positive than those I get from
+looking at my face. Sometimes I cringe a little, and many of my opinions
+have changed dramatically, but that guy usually seems to be pretty smart
+and reasonable.&lt;/p&gt;
+&lt;p&gt;Who am I? What do other people think of me? Of those two questions, the
+first is more important, but I'm not too proud to admit that I care a
+lot about the second also. Self-knowledge and self-confidence are great,
+but if other people think I'm a ninny, maybe they're right. I don't know
+how to get an honest, objective assessment of myself, but the occasional
+unknowing glances in the mirror may be the truest view I can get of
+myself.&lt;/p&gt;
+&lt;p&gt;Ultimately, that's what this blog is all about: trying to get a look at
+myself and what I am doing, with a detached view. The writing itself
+clarifies my thoughts for me, and when I re-read these entries in the
+future, I hope to gain additional insights about who I was when I wrote,
+and how I am changing.&lt;/p&gt;</content><category term="self-indulgence"></category></entry><entry><title>My Failed Contracting Career</title><link href="http://undefinedvalue.com/my-failed-contracting-career.html" rel="alternate"></link><published>2003-12-31T03:59:00-05:00</published><updated>2003-12-31T03:59:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2003-12-31:/my-failed-contracting-career.html</id><summary type="html">&lt;p&gt;After my last permanent position, I took a few months off from work, and
 then tried to start a career as an independent consultant/contractor.
 After many years of hearing about the freedom enjoyed by consultants,
 and the exhorbitant fees they charged, I wanted to get my piece of the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;After my last permanent position, I took a few months off from work, and

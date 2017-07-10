@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>C++ Testing Frameworks | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/2004.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+
+    <meta name="tags" content="cplusplus" />
+
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://undefinedvalue.com/">
+                <img src="http://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
+        <header id="banner" class="body">
+            <h1><a href="http://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="http://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="http://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://undefinedvalue.com/c-testing-frameworks.html" rel="bookmark"
+         title="Permalink to C++ Testing Frameworks">C++ Testing Frameworks</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2004-01-25T14:14:00-05:00">
+      Sun 25 January 2004
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://undefinedvalue.com/tag/cplusplus.html">cplusplus</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I've always rolled my own unit-testing frameworks for C++. I don't like
+CppUnit, because it is too Java-like and not C++-like. It has always
+been easier to throw together what I need than to try to figure out
+someone else's framework. I can throw together the basics in ten
+minutes, and then evolve the test rig as necessary.</p>
+<p>So I'm not really sure why I decided to re-examine off-the-shelf
+frameworks for my current testing needs. I guess it comes down to a
+desire to learn something new, and to make sure nobody else is doing
+something smarter than I am.</p>
+<p>After looking around, I settled on the <a href="http://www.boost.org/libs/test/doc/index.htm">Boost Test Library</a>. What I like most
+about this library is that it can be used by simply #include-ing a
+header file; there is no need to build a library and link to it. The
+Boost Test Library worked out-of-the-box. The only special thing I did
+was to use a <a href="http://www.codeproject.com/debug/debugout.asp">debug output stream</a> so that the
+output shows up in the Visual C++ output window. The output format makes
+it possible to double-click a line in the output window and VC++ will
+open the source file and go to the source line. There is no need for a
+TestRunner-style GUI.</p>
+<p>I also ran across Michael Feathers's <a href="http://c2.com/cgi/wiki?CppUnitLite">CppUnitLite</a>. He created this as a
+reaction to the bloat of CppUnit. CppUnitLite is intended to be just a
+simple example of a testing framework, which should be modified and
+extended as necessary by its users. While I like the idea of using a
+simple barebones framework and modifying it as needed, CppUnitLite still
+seems too complex to me.</p>
+<p>I think that C++ unit testing is one of those things where an
+off-the-shelf framework never seems right. I've come to believe that
+small off-the-shelf frameworks are a bad idea. The smaller the
+framework, the less it does for you and the easier it would be to roll
+your own that does the job better. Only really big frameworks (MFC,
+etc.) provide enough value to justify spending the time to learn them.
+C++ unit testing is just too easy to justify learning a framework.</p>
+<p>But I'll keep using the Boost Test Library for now. I hope I'll learn
+something in the process. Using an off-the-shelf library might help me
+to "test-infect" my co-workers.</p>
+  </div><!-- /.entry-content -->
+</section>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>Other Stuff</h2>
+                        <ul>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>More of Me</h2>
+                        <ul>
+                            <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+</body>
+</html>
