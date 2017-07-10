@@ -4421,7 +4421,94 @@ echo "The selection contains &amp;#96;wc -w&amp;#96; words."&lt;/pre&gt;&lt;/li&
 &lt;p&gt;Despite its small size and tiny engine, it feels more like a mid-size car. It's very stable, and takes corners well. The automatic transmission works pretty well in most circumstances, and switching into the semi-automatic mode is great when driving on twisty mountain roads like the one that goes up to my house.&lt;/p&gt;
 &lt;p&gt;And it has this magical aura that makes people smile. People come up to me in parking lots and ask about it. Other MINI drivers wave at me on the road. &lt;/p&gt;
 &lt;p&gt;So, if you just want practical inexpensive transportation, stay away from the MINI. But if you want to be happy when you're driving, give it a try.&lt;/p&gt;
-&lt;p&gt;P.S. Don't buy a MINI or any other car from Global Imports BMW in Atlanta. &lt;a href="http://kristopherjohnson.blogspot.com/2008/12/letter-to-global-imports-bmw.html"&gt;Those guys suck.&lt;/a&gt;&lt;/p&gt;</content><category term="review"></category></entry><entry><title>Changing Background Color and Section Header Text Color in a Grouped-style UITableView</title><link href="http://undefinedvalue.com/changing-background-color-and-section-header-text-color-grouped-style-uitableview.html" rel="alternate"></link><published>2009-08-26T00:10:40-04:00</published><updated>2009-08-26T00:10:40-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2009-08-26:/changing-background-color-and-section-header-text-color-grouped-style-uitableview.html</id><summary type="html">&lt;p&gt;While working on an iPhone application, I decided I wanted to change the colors of the background and section headers of a &lt;code&gt;UITableView&lt;/code&gt; with the &lt;code&gt;UITableViewStyleGrouped&lt;/code&gt; style. It took a lot more work than I expected, so I'm sharing what I learned with anyone else who needs to do this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While working on an iPhone application, I decided I wanted to change the colors of the background and section headers of a &lt;code&gt;UITableView&lt;/code&gt; with the &lt;code&gt;UITableViewStyleGrouped&lt;/code&gt; style. It took a lot more work than I expected, so I'm sharing what I learned with anyone else who needs to do this.
+&lt;p&gt;P.S. Don't buy a MINI or any other car from Global Imports BMW in Atlanta. &lt;a href="http://kristopherjohnson.blogspot.com/2008/12/letter-to-global-imports-bmw.html"&gt;Those guys suck.&lt;/a&gt;&lt;/p&gt;</content><category term="review"></category></entry><entry><title>Remoting.Corba</title><link href="http://undefinedvalue.com/remotingcorba.html" rel="alternate"></link><published>2009-08-26T10:04:00-04:00</published><updated>2009-08-26T10:04:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2009-08-26:/remotingcorba.html</id><summary type="html">&lt;p&gt;[Note: The Remoting.Corba project is "dead", and has not been active for several years.  If you need .NET-CORBA interoperability, I recommend checking out &lt;a href="http://iiop-net.sourceforge.net"&gt;IIOP.NET&lt;/a&gt;.  Archived Remoting.Corba documentation is still available via &lt;a href="http://tinyurl.com/remoting-corba"&gt;The Wayback Machine&lt;/a&gt;.]&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://remoting-corba.sourceforge.net"&gt;Remoting.Corba&lt;/a&gt; is an open-source .NET library that provides interoperability between the .NET …&lt;/p&gt;</summary><content type="html">&lt;p&gt;[Note: The Remoting.Corba project is "dead", and has not been active for several years.  If you need .NET-CORBA interoperability, I recommend checking out &lt;a href="http://iiop-net.sourceforge.net"&gt;IIOP.NET&lt;/a&gt;.  Archived Remoting.Corba documentation is still available via &lt;a href="http://tinyurl.com/remoting-corba"&gt;The Wayback Machine&lt;/a&gt;.]&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://remoting-corba.sourceforge.net"&gt;Remoting.Corba&lt;/a&gt; is an open-source .NET library that provides interoperability between the .NET Framework and CORBA servers/clients, using the .NET Remoting architecture.
+&lt;p&gt;
+I started this project to learn more about .NET Remoting and to apply my knowledge of CORBA. My basic goal was to be able to write .NET programs that interacted with CORBA-based applications using typical .NET Remoting code.  For example, if a CORBA server supported this IDL:
+&lt;p&gt;
+&lt;pre&gt;
+// CORBA IDL
+interface Adder {
+    long add_longs(in long arg1, in long arg2);
+    double add_doubles(in double arg1, in double arg2);
+};&lt;/pre&gt;
+&lt;p&gt;
+then one could write a C# program that invoked the server, without need for an ORB, using code something like this:
+&lt;p&gt;
+&lt;pre&gt;
+// standard .NET Remoting stuff
+using System;
+using System.IO;
+using System.Runtime.Remoting.Channels;
+using System.Runtime.Remoting.Messaging;
+
+// Remoting.Corba
+using Remoting.Corba.Channels.Iiop;
+
+namespace MyExample
+{
+    // define .NET interface mapping for IDL interface
+    interface Adder {
+        int add_longs(int arg1, int arg2);
+        double add_doubles(double arg1, double arg2);
+    };
+
+    class App {
+        // entry point
+        static void Main(string[] args)
+        {
+            try
+            {
+                // register IIOP channel with Remoting
+                ChannelServices.RegisterChannel(new IiopClientChannel());
+
+                // Use a standard CORBA stringified object reference for the server
+                string ior = "corbaloc:iiop:localhost:9999/Adder";
+
+                // create the proxy to the server object
+                Adder server = (Adder) Activator.GetObject(typeof(Adder), ior);
+
+                // execute some methods on the remote object
+                Console.Out.WriteLine("1 + 2 = {0}", server.add_longs(1, 2));
+                Console.Out.WriteLine("1.0 + 2.0 = {0}", server.add_doubles(1.0, 2.0));
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Exception: " + ex.ToString());
+            }
+        }
+    }
+}&lt;/pre&gt;
+&lt;p&gt;
+The IiopClientChannel class from the R.C library takes care of generating and interpreting the CORBA IIOP (Internet Inter-ORB Protocol) messages and pumping them through the .NET runtime. There is also an IiopServerChannel class that can be used to implement CORBA servers using .NET Remoting.
+&lt;p&gt;
+It was pretty cool when it worked.  The .NET Framework's Remoting architecture is very open, allowing programmers to plug in their own network protocols and messaging formats.  I used some custom attributes to provide information needed by the CORBA engine that could not be gleaned via data types and reflection mechanisms.
+&lt;p&gt;
+Unfortunately, while the .NET Remoting architecture is open, it is not well documented.  If all you want to do is send a SOAP message via some protocol other than HTTP (for example, via UDP, via message queues, via e-mail, etc.), then it is pretty easy to plug your own stuff in.  But if you are doing anything more complicated, then you will quickly discover that the only way to figure out what's going on inside .NET is to look at the &lt;a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=3A1C93FA-7462-47D0-8E56-8DD34C6292F0&amp;displaylang=en"&gt;Rotor&lt;/a&gt; source code.
+&lt;p&gt;
+The project was valuable to me in that I learned a lot about .NET and C#. It was also gratifying to see other people using it and expressing interest in it. I was especially excited when it was mentioned in Don Box's Spoutlet, and when Miguel Icaza started playing around with it in Mono. It even got a few pages devoted to it in a &lt;a href="http://www.amazon.com/exec/obidos/tg/detail/-/0735619220/qid=1069133497/sr=1-1/ref=sr_1_1/104-4292430-8931121?v=glance&amp;s=books"&gt;Microsoft Press book&lt;/a&gt;!
+&lt;p&gt;
+I wrote this code during a period when I was not working any paying jobs, so I was always hoping I would find somebody willing to pay me to add features.  There were a few nibbles, but users were generally able to add features themselves instead of hiring me to do so.  I talked to some people at Microsoft and Inprise about potential deals, but nothing came of it.
+&lt;p&gt;
+I have put a few projects on SourceForge, but this was the first one where I got any significant contributions from other developers. Michael Sawczyn created an IDL compiler.  Other developers did some bug fixing, refactoring, and feature additions.  It never reached the "critical mass" needed to keep it going after I lost interest, but I think it was close.
+&lt;p&gt;
+I worked on R.C for a few months. I lost interest in it due to several factors:
+&lt;ul&gt;
+&lt;li&gt;No paying customers.&lt;/li&gt;
+&lt;li&gt;No real need to use it myself.&lt;/li&gt;
+&lt;li&gt;All the low-hanging fruit was gone; further development would have involved a lot of very technical work with little tangible benefit.&lt;/li&gt;
+&lt;li&gt;The appearance of commercial CORBA ORBs for .NET from Borland and others.&lt;/li&gt;
+&lt;li&gt;Limitations of the .NET framework&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+We hit limitations of the .NET framework when trying to figure out how to map remote object references back to objects in the same process. The only way to do it was to use reflection to invoke private methods of internal .NET classes.  That prospect triggered enough of an "Ewww!" response that I decided further work was only going to make me feel worse.
+&lt;p&gt;
+I used a &lt;a href="http://web.archive.org/web/20041213054715/kristopherjohnson.net/cgi-bin/rc/wiki.pl?Remoting.Corba_Wiki"&gt;wiki&lt;/a&gt; to distribute the "documentation" for the project.  I liked how the wiki turned out, but there were few contributions to it from anyone except myself.
+&lt;p&gt;
+So what did I get out of Remoting.Corba? Obviously, I learned about .NET Remoting and some more about the internals of CORBA. I got practice writing C# networking code. I made some contacts in the industry. I wish I could have used R.C on a real project, but that might have taken the fun out of it.</content><category term="dotnet"></category><category term="corba"></category></entry><entry><title>Changing Background Color and Section Header Text Color in a Grouped-style UITableView</title><link href="http://undefinedvalue.com/changing-background-color-and-section-header-text-color-grouped-style-uitableview.html" rel="alternate"></link><published>2009-08-26T00:10:40-04:00</published><updated>2009-08-26T00:10:40-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2009-08-26:/changing-background-color-and-section-header-text-color-grouped-style-uitableview.html</id><summary type="html">&lt;p&gt;While working on an iPhone application, I decided I wanted to change the colors of the background and section headers of a &lt;code&gt;UITableView&lt;/code&gt; with the &lt;code&gt;UITableViewStyleGrouped&lt;/code&gt; style. It took a lot more work than I expected, so I'm sharing what I learned with anyone else who needs to do this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While working on an iPhone application, I decided I wanted to change the colors of the background and section headers of a &lt;code&gt;UITableView&lt;/code&gt; with the &lt;code&gt;UITableViewStyleGrouped&lt;/code&gt; style. It took a lot more work than I expected, so I'm sharing what I learned with anyone else who needs to do this.
 &lt;!--break--&gt;
 To review: when you create a table view with the grouped style, each section of the table shows up as a rounded rectangle, section titles are displayed as dark gray text between the rectangles, and the background is gray. I wanted the background to be a pale pastel color, so I looked into how to change that.&lt;/p&gt;
 &lt;p&gt;Of course, I first looked at the options in Interface Builder.  A table view has a background color that can be set in IB, but setting that didn't accomplish anything.&lt;/p&gt;
@@ -7019,91 +7106,125 @@ One last thing: Atari rules, Commodore sucks. &lt;/p&gt;</content><category term
 &lt;p&gt;&lt;em&gt;No. Maybe.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Can you roll back to the previous release?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;No. We blew away the old data after converting it to the new format.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Well, Kris, can you tell us how to fix it?&lt;/em&gt;&lt;/p&gt;</content><category term="rant"></category><category term="programming"></category></entry><entry><title>Remoting.Corba</title><link href="http://undefinedvalue.com/remotingcorba.html" rel="alternate"></link><published>2003-12-30T00:00:00-05:00</published><updated>2003-12-30T00:00:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2003-12-30:/remotingcorba.html</id><summary type="html">&lt;p&gt;[Note: The Remoting.Corba project is "dead", and has not been active for several years.  If you need .NET-CORBA interoperability, I recommend checking out &lt;a href="http://iiop-net.sourceforge.net"&gt;IIOP.NET&lt;/a&gt;.  Archived Remoting.Corba documentation is still available via &lt;a href="http://tinyurl.com/remoting-corba"&gt;The Wayback Machine&lt;/a&gt;.]&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://remoting-corba.sourceforge.net"&gt;Remoting.Corba&lt;/a&gt; is an open-source .NET library that provides interoperability between the .NET …&lt;/p&gt;</summary><content type="html">&lt;p&gt;[Note: The Remoting.Corba project is "dead", and has not been active for several years.  If you need .NET-CORBA interoperability, I recommend checking out &lt;a href="http://iiop-net.sourceforge.net"&gt;IIOP.NET&lt;/a&gt;.  Archived Remoting.Corba documentation is still available via &lt;a href="http://tinyurl.com/remoting-corba"&gt;The Wayback Machine&lt;/a&gt;.]&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://remoting-corba.sourceforge.net"&gt;Remoting.Corba&lt;/a&gt; is an open-source .NET library that provides interoperability between the .NET Framework and CORBA servers/clients, using the .NET Remoting architecture.
-&lt;p&gt;
-I started this project to learn more about .NET Remoting and to apply my knowledge of CORBA. My basic goal was to be able to write .NET programs that interacted with CORBA-based applications using typical .NET Remoting code.  For example, if a CORBA server supported this IDL:
-&lt;p&gt;
-&lt;pre&gt;
-// CORBA IDL
-interface Adder {
-    long add_longs(in long arg1, in long arg2);
-    double add_doubles(in double arg1, in double arg2);
-};&lt;/pre&gt;
-&lt;p&gt;
-then one could write a C# program that invoked the server, without need for an ORB, using code something like this:
-&lt;p&gt;
-&lt;pre&gt;
-// standard .NET Remoting stuff
-using System;
-using System.IO;
-using System.Runtime.Remoting.Channels;
-using System.Runtime.Remoting.Messaging;
-
-// Remoting.Corba
-using Remoting.Corba.Channels.Iiop;
-
-namespace MyExample
-{
-    // define .NET interface mapping for IDL interface
-    interface Adder {
-        int add_longs(int arg1, int arg2);
-        double add_doubles(double arg1, double arg2);
-    };
-
-    class App {
-        // entry point
-        static void Main(string[] args)
-        {
-            try
-            {
-                // register IIOP channel with Remoting
-                ChannelServices.RegisterChannel(new IiopClientChannel());
-
-                // Use a standard CORBA stringified object reference for the server
-                string ior = "corbaloc:iiop:localhost:9999/Adder";
-
-                // create the proxy to the server object
-                Adder server = (Adder) Activator.GetObject(typeof(Adder), ior);
-
-                // execute some methods on the remote object
-                Console.Out.WriteLine("1 + 2 = {0}", server.add_longs(1, 2));
-                Console.Out.WriteLine("1.0 + 2.0 = {0}", server.add_doubles(1.0, 2.0));
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Exception: " + ex.ToString());
-            }
-        }
-    }
-}&lt;/pre&gt;
-&lt;p&gt;
-The IiopClientChannel class from the R.C library takes care of generating and interpreting the CORBA IIOP (Internet Inter-ORB Protocol) messages and pumping them through the .NET runtime. There is also an IiopServerChannel class that can be used to implement CORBA servers using .NET Remoting.
-&lt;p&gt;
-It was pretty cool when it worked.  The .NET Framework's Remoting architecture is very open, allowing programmers to plug in their own network protocols and messaging formats.  I used some custom attributes to provide information needed by the CORBA engine that could not be gleaned via data types and reflection mechanisms.
-&lt;p&gt;
-Unfortunately, while the .NET Remoting architecture is open, it is not well documented.  If all you want to do is send a SOAP message via some protocol other than HTTP (for example, via UDP, via message queues, via e-mail, etc.), then it is pretty easy to plug your own stuff in.  But if you are doing anything more complicated, then you will quickly discover that the only way to figure out what's going on inside .NET is to look at the &lt;a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=3A1C93FA-7462-47D0-8E56-8DD34C6292F0&amp;displaylang=en"&gt;Rotor&lt;/a&gt; source code.
-&lt;p&gt;
-The project was valuable to me in that I learned a lot about .NET and C#. It was also gratifying to see other people using it and expressing interest in it. I was especially excited when it was mentioned in Don Box's Spoutlet, and when Miguel Icaza started playing around with it in Mono. It even got a few pages devoted to it in a &lt;a href="http://www.amazon.com/exec/obidos/tg/detail/-/0735619220/qid=1069133497/sr=1-1/ref=sr_1_1/104-4292430-8931121?v=glance&amp;s=books"&gt;Microsoft Press book&lt;/a&gt;!
-&lt;p&gt;
-I wrote this code during a period when I was not working any paying jobs, so I was always hoping I would find somebody willing to pay me to add features.  There were a few nibbles, but users were generally able to add features themselves instead of hiring me to do so.  I talked to some people at Microsoft and Inprise about potential deals, but nothing came of it.
-&lt;p&gt;
-I have put a few projects on SourceForge, but this was the first one where I got any significant contributions from other developers. Michael Sawczyn created an IDL compiler.  Other developers did some bug fixing, refactoring, and feature additions.  It never reached the "critical mass" needed to keep it going after I lost interest, but I think it was close.
-&lt;p&gt;
-I worked on R.C for a few months. I lost interest in it due to several factors:
-&lt;ul&gt;
-&lt;li&gt;No paying customers.&lt;/li&gt;
-&lt;li&gt;No real need to use it myself.&lt;/li&gt;
-&lt;li&gt;All the low-hanging fruit was gone; further development would have involved a lot of very technical work with little tangible benefit.&lt;/li&gt;
-&lt;li&gt;The appearance of commercial CORBA ORBs for .NET from Borland and others.&lt;/li&gt;
-&lt;li&gt;Limitations of the .NET framework&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;
-We hit limitations of the .NET framework when trying to figure out how to map remote object references back to objects in the same process. The only way to do it was to use reflection to invoke private methods of internal .NET classes.  That prospect triggered enough of an "Ewww!" response that I decided further work was only going to make me feel worse.
-&lt;p&gt;
-I used a &lt;a href="http://web.archive.org/web/20041213054715/kristopherjohnson.net/cgi-bin/rc/wiki.pl?Remoting.Corba_Wiki"&gt;wiki&lt;/a&gt; to distribute the "documentation" for the project.  I liked how the wiki turned out, but there were few contributions to it from anyone except myself.
-&lt;p&gt;
-So what did I get out of Remoting.Corba? Obviously, I learned about .NET Remoting and some more about the internals of CORBA. I got practice writing C# networking code. I made some contacts in the industry. I wish I could have used R.C on a real project, but that might have taken the fun out of it.</content><category term=".NET"></category><category term="CORBA"></category></entry></feed>
+&lt;p&gt;&lt;em&gt;Well, Kris, can you tell us how to fix it?&lt;/em&gt;&lt;/p&gt;</content><category term="rant"></category><category term="programming"></category></entry><entry><title>My Failed Contracting Career</title><link href="http://undefinedvalue.com/my-failed-contracting-career.html" rel="alternate"></link><published>2003-12-31T03:59:00-05:00</published><updated>2003-12-31T03:59:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2003-12-31:/my-failed-contracting-career.html</id><summary type="html">&lt;p&gt;After my last permanent position, I took a few months off from work, and
+then tried to start a career as an independent consultant/contractor.
+After many years of hearing about the freedom enjoyed by consultants,
+and the exhorbitant fees they charged, I wanted to get my piece of the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;After my last permanent position, I took a few months off from work, and
+then tried to start a career as an independent consultant/contractor.
+After many years of hearing about the freedom enjoyed by consultants,
+and the exhorbitant fees they charged, I wanted to get my piece of the
+action. People encouraged me to give it a try, because I had many of the
+traits associated with independents: desire for variety, lots of
+knowledge, no trouble voicing my opinions, and no dependents who would
+go hungry if I couldn't find work.&lt;/p&gt;
+&lt;p&gt;My primary motivation was the desire to be independent. I wanted that
+whole be-you-own-boss thing. I wanted to be able to work less than 40
+hours a week when I felt like it. I wanted to be able to choose which
+assignments to take. I wanted to be able to decide what new computer to
+buy and which development tools to use.&lt;/p&gt;
+&lt;p&gt;Unfortunately, this was mid 2002, and as all you people more clued into
+reality than me know, that was a bad time to try to start a contracting
+career. Established contractors were having trouble finding work. Those
+who were finding work had to charge fractions of what they used to
+charge.&lt;/p&gt;
+&lt;p&gt;The biggest reason I failed as a contractor was that I didn't have the
+business sense for it. I didn't know anything about marketing. I didn't
+know what my market niche would be. I didn't have a lot of contacts in
+the industry. I hoped I could just post my resumé on my web site, and
+jobs would start rolling in.&lt;/p&gt;
+&lt;p&gt;I did get a few calls, but most of them were for things that I wasn't
+really prepared to do. For example, my resume lists Oracle and OpenVMS.
+I was contacted by someone who needed me to provide training for
+employees who would be administering Oracle on an OpenVMS system. Ten
+years ago, when Oracle on OpenVMS was what I was doing, I may have been
+able to do it, but it had been so long that I didn't think I could do a
+reasonable job, so I had to pass. There were several other similar
+opportunities that I passed on as well.&lt;/p&gt;
+&lt;p&gt;In hindsight, I wonder if I should have taken a few of those jobs. I
+wouldn't have known what I was doing, but it would have been work and it
+could have led to something I knew better. I have never been comfortable
+claiming to be able to do things that I don't really know I can do.
+Other consultants don't have that problem.&lt;/p&gt;
+&lt;p&gt;I did manage to land a contract with a former employer. They did pay me
+well, but unfortunately only had a few hours of work per month for me to
+do.&lt;/p&gt;
+&lt;p&gt;Eventually, I gave up on the idea of being completely independent, and
+signed up with one of those organizations that hires people out as
+contractors. I got a good gig with them, but for no more money than I
+would have received as a permanent employee, and without security or
+benefits.&lt;/p&gt;
+&lt;p&gt;So, I gave up on contracting, and got a permanent job.&lt;/p&gt;
+&lt;p&gt;Will I ever go independent or start my own business again? Maybe. I
+think I do have a strong entrepreneurial streak, and a disdain for
+working at the direction of others. But I'm not going to try it again
+until I have a better idea about what products or services I will
+provide, and who will pay for them.&lt;/p&gt;</content><category term="contracting"></category><category term="self-indulgence"></category></entry><entry><title>New is Good?</title><link href="http://undefinedvalue.com/new-is-good.html" rel="alternate"></link><published>2003-12-31T03:59:00-05:00</published><updated>2003-12-31T03:59:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2003-12-31:/new-is-good.html</id><summary type="html">&lt;p&gt;Python is the coolest language ever.&lt;/p&gt;
+&lt;p&gt;I've never written a real Python program. But after reading the language
+spec and a few tutorials, and writing a few simple programs, I am
+fascinated with it.&lt;/p&gt;
+&lt;p&gt;Like many other programmers, I love to play with new things. Learning is
+fun. New challenges …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python is the coolest language ever.&lt;/p&gt;
+&lt;p&gt;I've never written a real Python program. But after reading the language
+spec and a few tutorials, and writing a few simple programs, I am
+fascinated with it.&lt;/p&gt;
+&lt;p&gt;Like many other programmers, I love to play with new things. Learning is
+fun. New challenges are fun. Unfortunately, we often confuse enthusiasm
+with evaluation. If we &lt;em&gt;want&lt;/em&gt; to use something, it must be superior to
+all that junk we don't want to use anymore.&lt;/p&gt;
+&lt;p&gt;C++ is a horrible language. (Only Perl is uglier.) But when I am writing
+important code, I use C++ instead of the "new" languages. I hate it, but
+I know it well. It's limitations infuriate me, but I never get
+surprised. Other developers deride me for using MFC and the Visual C++
+wizards, but I am more productive and less error-prone with those tools
+I've used for years than I would be with the "better" tools that I don't
+know.&lt;/p&gt;
+&lt;p&gt;Am I missing out by using old bad tools instead of new cool tools?
+Maybe, I don't know.&lt;/p&gt;
+&lt;p&gt;The distinction between "new" and "old" is not necessarily
+chronological. For the past few years, I have been writing Palm OS
+programs using &lt;a href="http://www.quartus.net/products/forth/"&gt;Forth&lt;/a&gt;. Forth is
+certainly not a new language, having been around for decades, but it was
+new to me. I loved the way I could create programs with a relatively
+small amount of code. It was interesting to do all my programming and
+debugging on the handheld device, without benefit of a desktop-based
+cross-compiler and debugger. I remember the experience fondly, but I
+can't kid myself into thinking I was more productive with Forth than I
+would have been with a C compiler.&lt;/p&gt;
+&lt;p&gt;I once felt differently. In college and in my early professional years,
+I was constantly learning about new programming languages and other
+development tools. I'm sure that the study of all those things made me a
+better programmer. However, I also believe that concentrating on a
+couple of languages for many years has made me a better programmer than
+I would be if I flitted between languages constantly.&lt;/p&gt;
+&lt;p&gt;Ultimately, all development tools and technologies suck, and the new
+ones don't make things that much better. The hard part of software
+development is figuring out exactly what the program needs to do. The
+level of effort required to do that is independent of the programming
+language used. Being able to pick the right tool for the job is
+important, but usually the right tool is the one I know how to use most
+proficiently.&lt;/p&gt;
+&lt;p&gt;Python is the coolest language ever. I'll continue to believe that until
+I actualy have to use it.&lt;/p&gt;</content><category term="python"></category><category term="rant"></category></entry><entry><title>Welcome to My Blog</title><link href="http://undefinedvalue.com/welcome-to-my-blog.html" rel="alternate"></link><published>2003-12-31T03:59:00-05:00</published><updated>2003-12-31T03:59:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2003-12-31:/welcome-to-my-blog.html</id><summary type="html">&lt;p&gt;My name is Kris Johnson. For eleven years, I have been a computer
+programmer. For the first few years, I enjoyed it. Now, I've grown tired
+of it, but I don't have any other marketable skills and I don't want to
+move into management. So, I do what I can …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My name is Kris Johnson. For eleven years, I have been a computer
+programmer. For the first few years, I enjoyed it. Now, I've grown tired
+of it, but I don't have any other marketable skills and I don't want to
+move into management. So, I do what I can to improve my programming
+skills in the hope that I can work less hard. I also like to exchange
+ideas with others about how to make the programmer's life easier.&lt;/p&gt;
+&lt;p&gt;Writing is a great outlet for me. It helps me focus my thinking, and
+gives me a way to vent my frustrations. I also like to think that others
+benefit from reading what I write (although I've seen no evidence of
+that). For a while, I interacted with the community at the &lt;a href="http://c2.com/cgi/wiki"&gt;C2
+wiki&lt;/a&gt; (a.k.a., "Ward's Wiki"). I learned quite a
+bit there. But that community has changed, and I don't think my writings
+will fit there anymore, so from now on I'll write here.&lt;/p&gt;
+&lt;p&gt;To avoid trouble, I'm going to refrain from writing about my current
+job. If I do write about my job, it will be disguised so much that
+nobody will know. However, most if not all of what I write will be about
+what I've learned about software development, and about what I still
+hope to learn.&lt;/p&gt;
+&lt;p&gt;I may also occasionally post an "off-topic" item such as a movie or book
+review, or just some odd thought I had while eating breakfast. But don't
+worry; I don't have that many thoughts.&lt;/p&gt;</content><category term="blog"></category><category term="self-indulgence"></category></entry></feed>
