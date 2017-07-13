@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Rouser | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/2004.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+
+    <meta name="tags" content="menubarcountdown" />
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43697246-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://undefinedvalue.com/">
+                <img src="http://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
+        <header id="banner" class="body">
+            <h1><a href="http://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="http://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="http://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://undefinedvalue.com/rouser.html" rel="bookmark"
+         title="Permalink to Rouser">Rouser</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2004-10-29T12:40:00-04:00">
+      Fri 29 October 2004
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://undefinedvalue.com/tag/menubarcountdown.html">menubarcountdown</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>My "Rouser" alarm clock application for Mac OS X is coming along nicely.
+It is basically functional now, allowing me to turn the alarm on and off
+and set the alarm time. When it is on, it displays a countdown (e.g.
+"Alarm will ring in 2 hours, 13 minutes, 12 seconds") that updates once
+per second. When the alarm goes off, it repeatedly speaks the current
+time ("The time is 12:49 PM.") for a minute or until the alarm is turned
+off.</p>
+<p>I am using the "Bells" voice to speak the time. This sounds like a
+grandfather clock's chimes, emphasizing the clockiness of the
+application. I couldn't find anything in Apple's current documentation
+about the special delimiters one can use to control the voice (for
+example, "[[slnc 1000]]" to pause for a second, or "[[rate -10]]" to
+slow it down), but I was able to find plenty of unofficial information
+around the web. Interestingly, the most informative sites were by Newton
+enthusiasts. Once I knew what to look for, I did find some info on
+<a href="http://developer.apple.com/documentation/mac/Sound/Sound-200.html">embedded speech commands</a>
+in Apple's online <em>Inside Macintosh: Sound</em>.</p>
+<p>There are just a few little things I want to add to Rouser before I can
+call it "finished":</p>
+<ul>
+<li>an Options panel allowing the user to change the voice, to change what it says, or to play a sound instead of a voice</li>
+<li>saving the state of the alarm clock to a plist file</li>
+<li>displaying an "Are you sure you want to quit?" panel if user tries to quit while the alarm is on and counting down</li>
+<li>a nifty application icon that does cool things in the Dock</li>
+</ul>
+<p>I currently have three pop-up menus to choose the time: the first has
+the numbers 1-12, the second has the numbers 00, 05, 10, ... 55, and the
+last has "AM" and "PM". This allows me to set the time fairly quickly,
+without using the keyboard. If I still feel ambitious after "finishing"
+the application, I'd like to implement pie-like menus for the numeric
+fields.</p>
+<p>So far, I'm pretty impressed with Interface Builder and the Cocoa API.
+Everything I've wanted to do has been pretty simple to implement. If I
+wasn't learning OS X programming while implementing Rouser, I think I
+could have put the whole thing together in less than an hour.</p>
+<p>The only gripe I have about Cocoa is that the date/time classes don't
+seem to provide any easy way to extract the current hour, minute, and
+second. So I had to fall back on the standard C <code>time()</code> and
+<code>localtime()</code> functions, which aren't described in Xcode's
+documentation. Apple clearly wasn't considering the needs of alarm-clock
+developers - this is more undeniable evidence of Apple's irrational
+anti-alarm-clock bias.</p>
+  </div><!-- /.entry-content -->
+</section>
+<ul>
+    <li>Previous article: 
+        <a href="http://undefinedvalue.com/living-in-squalor.html">
+            Living in Squalor
+        </a>
+    </li>
+    <li>Next article:
+        <a href="http://undefinedvalue.com/screwed-by-filemerge.html">
+            Screwed by FileMerge
+        </a>
+    </li>
+</ul>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>Other Stuff</h2>
+                        <ul>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>Follow</h2>
+                        <ul>
+                            <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+</body>
+</html>

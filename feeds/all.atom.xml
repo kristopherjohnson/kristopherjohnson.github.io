@@ -7106,7 +7106,658 @@ One last thing: Atari rules, Commodore sucks. &lt;/p&gt;</content><category term
 &lt;p&gt;&lt;em&gt;No. Maybe.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Can you roll back to the previous release?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;No. We blew away the old data after converting it to the new format.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Well, Kris, can you tell us how to fix it?&lt;/em&gt;&lt;/p&gt;</content><category term="rant"></category><category term="programming"></category></entry><entry><title>Hobbies</title><link href="http://undefinedvalue.com/hobbies.html" rel="alternate"></link><published>2004-09-05T22:25:00-04:00</published><updated>2004-09-05T22:25:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-09-05:/hobbies.html</id><summary type="html">&lt;p&gt;For most of my adult life, I didn't really have any "hobbies". I spent
+&lt;p&gt;&lt;em&gt;Well, Kris, can you tell us how to fix it?&lt;/em&gt;&lt;/p&gt;</content><category term="rant"></category><category term="programming"></category></entry><entry><title>Virtual PC 7 for Mac</title><link href="http://undefinedvalue.com/virtual-pc-7-for-mac.html" rel="alternate"></link><published>2004-10-30T19:25:00-04:00</published><updated>2004-10-30T19:25:00-04:00</updated><author><name>Kristoper Johnson</name></author><id>tag:undefinedvalue.com,2004-10-30:/virtual-pc-7-for-mac.html</id><summary type="html">&lt;p&gt;I received Office 2004 Professional for Mac a couple of days ago. I
+haven't felt like searching around for my Office 98 CDs (which I assume
+will be needed for installation of this upgrade version), so I haven't
+tried Office on the Mac yet. I was entertained by the packaging …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I received Office 2004 Professional for Mac a couple of days ago. I
+haven't felt like searching around for my Office 98 CDs (which I assume
+will be needed for installation of this upgrade version), so I haven't
+tried Office on the Mac yet. I was entertained by the packaging, which
+was designed to appeal to the dreamy stupid hippie-geeks that Microsoft
+believes Mac owners to be.&lt;/p&gt;
+&lt;p&gt;I did install Virtual PC 7, which is in a separate package from the rest
+of the Office install. Installation was easy, including automatic set up
+of a Windows XP Service Pack 2 virtual machine. This was a nice
+surprise: at work I've had to set up a few Virtual PC virtual machines
+on Windows boxes, and I've found that doing a full installation of an
+operating system on a virtual machine takes a very long time and can be
+problematic when the OS installer doesn't automatically recognize the
+virtual devices.&lt;/p&gt;
+&lt;p&gt;The first things I did after getting VPC installed were to try Windows
+Update, and to try to activate Windows over the Internet. Neither
+operation worked due to connection errors. I tried disabling the
+firewalls, but that didn't help. (BTW, when VPC is running, you no
+longer have access to the built-in Apple firewall.) What finally worked
+was to change the VPC network settings from "Shared Networking" to
+"Virtual Switch", which gives the virtual machine its own IP address.
+There were warnings that Virtual Switch might not work with a wireless
+network connection, but it is working fine for me and my AirPort
+connection.&lt;/p&gt;
+&lt;p&gt;VPC seems to be well behaved. When it is idle (that is, when I'm not
+"doing something" with the virtual machine), it uses between 2% and 12%
+of my Mac's CPU. Even when it is busy, it doesn't bog down my other
+running Mac apps.&lt;/p&gt;
+&lt;p&gt;There is a lot of integration between the virtual machine and the rest
+of the Mac. For example, you can drag files between the Mac desktop and
+the Windows desktop. Windows processes show up in the Mac's Activity
+Monitor process list, and you can Quit or Force Quit the Windows
+processes from the Mac. Windows things show up in the Dock. I'm not sure
+whether I like these features. I supposed they are helpful for people
+who need to use both Windows and Mac OS X to get things done, but I
+worry that VPC might be making my Mac less stable and secure.&lt;/p&gt;
+&lt;p&gt;Unfortunately, Virtual PC is really, really slow on my iMac G5. I didn't
+expect it to be speedy, but it is too slow to be useful for anything. So
+when I want to run Windows apps from my Mac, I'll use Remote Desktop
+Connection to access the real Windows PC that is in the other room. When
+I have some free time, I'll try installing Fedora, Gentoo, or one of the
+other Linux distros to see what kind of performance I can get from a
+less-bloated OS.&lt;/p&gt;</content><category term="virtualpc"></category><category term="mac"></category><category term="microsoft"></category></entry><entry><title>Screwed by FileMerge</title><link href="http://undefinedvalue.com/screwed-by-filemerge.html" rel="alternate"></link><published>2004-10-30T06:48:00-04:00</published><updated>2004-10-30T06:48:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-30:/screwed-by-filemerge.html</id><summary type="html">&lt;p&gt;While adding support for stored preferences to Rouser, I realized I
+needed to add another outlet to my controller class so that it could
+restore the setting of the on/off radio buttons. So I went into
+Interface Builder, added the outlet, and told it to regenerate the class
+files …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While adding support for stored preferences to Rouser, I realized I
+needed to add another outlet to my controller class so that it could
+restore the setting of the on/off radio buttons. So I went into
+Interface Builder, added the outlet, and told it to regenerate the class
+files. When prompted, I clicked the "Merge" button to indicate that I
+wanted the new code merged into the existing files, instead of
+overwriting the files.&lt;/p&gt;
+&lt;p&gt;The FileMerge application started, and the windows opened. As I've done
+before, I just looked for "0 conflicts" and then did a Save of the
+files. (I ignore all the shaded curvy lines and arrows on the FileMerge
+display, because I don't understand what they mean.)&lt;/p&gt;
+&lt;p&gt;BZZZT! It didn't merge. It just overwrote my class files with a bunch of
+empty declarations. Intuitive, forgiving interface, hah!&lt;/p&gt;
+&lt;p&gt;I commit to CVS pretty often, so this wasn't a disaster. I suppose I
+really ought to read the docs for FileMerge one of these days. But why
+doesn't this do the right thing by default? You know, like a Macintosh
+would.&lt;/p&gt;</content><category term="menubarcountdown"></category><category term="versioncontrol"></category><category term="filemerge"></category></entry><entry><title>Rouser</title><link href="http://undefinedvalue.com/rouser.html" rel="alternate"></link><published>2004-10-29T12:40:00-04:00</published><updated>2004-10-29T12:40:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-29:/rouser.html</id><summary type="html">&lt;p&gt;My "Rouser" alarm clock application for Mac OS X is coming along nicely.
+It is basically functional now, allowing me to turn the alarm on and off
+and set the alarm time. When it is on, it displays a countdown (e.g.
+"Alarm will ring in 2 hours, 13 minutes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My "Rouser" alarm clock application for Mac OS X is coming along nicely.
+It is basically functional now, allowing me to turn the alarm on and off
+and set the alarm time. When it is on, it displays a countdown (e.g.
+"Alarm will ring in 2 hours, 13 minutes, 12 seconds") that updates once
+per second. When the alarm goes off, it repeatedly speaks the current
+time ("The time is 12:49 PM.") for a minute or until the alarm is turned
+off.&lt;/p&gt;
+&lt;p&gt;I am using the "Bells" voice to speak the time. This sounds like a
+grandfather clock's chimes, emphasizing the clockiness of the
+application. I couldn't find anything in Apple's current documentation
+about the special delimiters one can use to control the voice (for
+example, "[[slnc 1000]]" to pause for a second, or "[[rate -10]]" to
+slow it down), but I was able to find plenty of unofficial information
+around the web. Interestingly, the most informative sites were by Newton
+enthusiasts. Once I knew what to look for, I did find some info on
+&lt;a href="http://developer.apple.com/documentation/mac/Sound/Sound-200.html"&gt;embedded speech commands&lt;/a&gt;
+in Apple's online &lt;em&gt;Inside Macintosh: Sound&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;There are just a few little things I want to add to Rouser before I can
+call it "finished":&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;an Options panel allowing the user to change the voice, to change what it says, or to play a sound instead of a voice&lt;/li&gt;
+&lt;li&gt;saving the state of the alarm clock to a plist file&lt;/li&gt;
+&lt;li&gt;displaying an "Are you sure you want to quit?" panel if user tries to quit while the alarm is on and counting down&lt;/li&gt;
+&lt;li&gt;a nifty application icon that does cool things in the Dock&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I currently have three pop-up menus to choose the time: the first has
+the numbers 1-12, the second has the numbers 00, 05, 10, ... 55, and the
+last has "AM" and "PM". This allows me to set the time fairly quickly,
+without using the keyboard. If I still feel ambitious after "finishing"
+the application, I'd like to implement pie-like menus for the numeric
+fields.&lt;/p&gt;
+&lt;p&gt;So far, I'm pretty impressed with Interface Builder and the Cocoa API.
+Everything I've wanted to do has been pretty simple to implement. If I
+wasn't learning OS X programming while implementing Rouser, I think I
+could have put the whole thing together in less than an hour.&lt;/p&gt;
+&lt;p&gt;The only gripe I have about Cocoa is that the date/time classes don't
+seem to provide any easy way to extract the current hour, minute, and
+second. So I had to fall back on the standard C &lt;code&gt;time()&lt;/code&gt; and
+&lt;code&gt;localtime()&lt;/code&gt; functions, which aren't described in Xcode's
+documentation. Apple clearly wasn't considering the needs of alarm-clock
+developers - this is more undeniable evidence of Apple's irrational
+anti-alarm-clock bias.&lt;/p&gt;</content><category term="menubarcountdown"></category></entry><entry><title>Living in Squalor</title><link href="http://undefinedvalue.com/living-in-squalor.html" rel="alternate"></link><published>2004-10-28T11:41:00-04:00</published><updated>2004-10-28T11:41:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-28:/living-in-squalor.html</id><summary type="html">&lt;p&gt;A few weeks ago, after watching the film &lt;em&gt;Supersize Me!&lt;/em&gt;, I stopped
+eating fast food. I was preparing my own meals, using fresh ingredients.
+I felt better, lost some excess weight, and had more energy.
+Unfortunately, with the long hours and stress at work recently, I've
+returned to the old …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A few weeks ago, after watching the film &lt;em&gt;Supersize Me!&lt;/em&gt;, I stopped
+eating fast food. I was preparing my own meals, using fresh ingredients.
+I felt better, lost some excess weight, and had more energy.
+Unfortunately, with the long hours and stress at work recently, I've
+returned to the old two-value-meals-a-day diet. I don't have time to
+shop or cook, and that fast food tastes really, really good.&lt;/p&gt;
+&lt;p&gt;This means I now bring home a couple of fast-food bags per day, along
+with all the excess packaging. My trash can at home is pretty small, so
+I developed the habit of stacking the fast food bags neatly next to it.
+Every few days (when I remember) I put all the trash in a bag and haul
+it out to the dumpster.&lt;/p&gt;
+&lt;p&gt;It seemed like typical bachelor behavior. But this morning, while going
+into the kitchen to make coffee (another habit I thought I'd broken), it
+hit me: I've got &lt;em&gt;garbage piled up in my home&lt;/em&gt;!&lt;/p&gt;
+&lt;p&gt;Ewww.&lt;/p&gt;</content><category term="rant"></category></entry><entry><title>Two Weeks In</title><link href="http://undefinedvalue.com/two-weeks-in.html" rel="alternate"></link><published>2004-10-26T14:12:00-04:00</published><updated>2004-10-26T14:12:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-26:/two-weeks-in.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;  &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;46&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;averages&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.56&lt;/span&gt; &lt;span class="mf"&gt;1.41&lt;/span&gt; &lt;span class="mf"&gt;1.14&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The iMac has been pretty stable, after the first few days of
+instability. I haven't had many application crashes (only OmniWeb is
+prone to die) and haven't needed to reboot.&lt;/p&gt;
+&lt;p&gt;While the iMac …&lt;/p&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;  &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;46&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;averages&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.56&lt;/span&gt; &lt;span class="mf"&gt;1.41&lt;/span&gt; &lt;span class="mf"&gt;1.14&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The iMac has been pretty stable, after the first few days of
+instability. I haven't had many application crashes (only OmniWeb is
+prone to die) and haven't needed to reboot.&lt;/p&gt;
+&lt;p&gt;While the iMac experience is generally good, I do have a few minor
+complaints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is not as quiet as I was led to believe. It's more quiet than a PC, but not so silent that I don't notice it.&lt;/li&gt;
+&lt;li&gt;I am disappointed with the smoothness of window resizing and other common operations. When resizing a window, a frame only updates itself a few times a second, leading to significant lag between where the mouse is and where the window corner is.&lt;/li&gt;
+&lt;li&gt;Xcode doesn't include any reference documentation for the standard C and C++ libraries. I find myself going to MSDN to look things up. I know Apple would prefer that I use the Core Framework and Cocoa APIs, but it would be nice to have better support for plain-old standard C/C++ programming.&lt;/li&gt;
+&lt;li&gt;Xcode's integrated CVS support sucks. It doesn't handle nib files.  That's ridiculous. So I'm using the Terminal for CVS operations.&lt;/li&gt;
+&lt;li&gt;Many of Apple's applications don't follow the &lt;em&gt;Human Interface Guidelines&lt;/em&gt;. This is nothing new, but it always bugs me to see applications that ignore the HIG without any reason other than "It looks cool this way". It bugs me when other software developers ignore the HIG, but Apple is the company with the most responsibility for promoting adherence, and is also the worst offender.&lt;/li&gt;
+&lt;li&gt;I'm surprised at how many things are "unfinished". Apple goes to great lengths to create cool stuff (like Exposé), but then they don't get little things working (like FTP support in the Finder).  Until they get the little things right, I can't tell anyone that the Mac is better than Windows; it just looks prettier.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="imac"></category><category term="mac"></category></entry><entry><title>Little Victories and Little Celebration</title><link href="http://undefinedvalue.com/little-victories-and-little-celebration.html" rel="alternate"></link><published>2004-10-26T04:56:00-04:00</published><updated>2004-10-26T04:56:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-26:/little-victories-and-little-celebration.html</id><summary type="html">&lt;p&gt;We passed a significant milestone today at work: we finally got all the
+hardware together and loaded the current software on it. And whadya
+know: the damn thing actually works!&lt;/p&gt;
+&lt;p&gt;This should have made me feel good, but it really didn't. For one thing,
+I was tired: it was after …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We passed a significant milestone today at work: we finally got all the
+hardware together and loaded the current software on it. And whadya
+know: the damn thing actually works!&lt;/p&gt;
+&lt;p&gt;This should have made me feel good, but it really didn't. For one thing,
+I was tired: it was after 9PM when I finally got it all working. For
+another, I was alone: everyone else had been gone for hours, so I
+couldn't share the victory with anyone. I just sent the project manager
+an e-mail, packed my bag, went home, and fell asleep on the couch like
+any other evening.&lt;/p&gt;
+&lt;p&gt;Seeing it all put together and working, I wondered "so it took five
+months to do &lt;em&gt;this&lt;/em&gt;?" The system is conceptually very simple. What it
+does, when it works, is almost trivial. What took a lot of time was
+designing and implementing all the error handling for the situations
+when it doesn't work. You can't see any of that complexity from the
+outside; it's just a black box that does almost nothing, and that's
+exactly how I saw it tonight.&lt;/p&gt;
+&lt;p&gt;Is there something wrong with me? I'm rarely proud of my work. I never
+feel a sense of accomplishment. I focus more on what I didn't do, or did
+poorly, than on what I did well. So work is just a series of
+disappointments.&lt;/p&gt;
+&lt;p&gt;How can I turn this around? Is it the nature of the work, or just my own
+nature? If it's my own nature, can I and should I change it?&lt;/p&gt;</content><category term="managing"></category></entry><entry><title>Application Naming</title><link href="http://undefinedvalue.com/application-naming.html" rel="alternate"></link><published>2004-10-25T14:03:00-04:00</published><updated>2004-10-25T14:03:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-25:/application-naming.html</id><summary type="html">&lt;p&gt;I've read a few chapters of some Cocoa programming books and
+documentation, so I'm ready to start work on a simple Mac OS X alarm clock
+application. The first step, which often takes me longer than the actual
+implementation, is to come up with a cool name for it.&lt;/p&gt;
+&lt;p&gt;I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've read a few chapters of some Cocoa programming books and
+documentation, so I'm ready to start work on a simple Mac OS X alarm clock
+application. The first step, which often takes me longer than the actual
+implementation, is to come up with a cool name for it.&lt;/p&gt;
+&lt;p&gt;I could just call it "Alarm Clock", but that would show a lack of
+imagination. I did Google searches of some synonyms and related words,
+like "Alarm Time", "Wake Up", "Alarmist", but all were already used by
+someone else's alarm clock application. I also looked into some
+alternate spellings, like "Alarm Clok", but again, somebody else had the
+same idea.&lt;/p&gt;
+&lt;p&gt;I considered some platform-specific names, like "Cocoalarm", "Aqualarm",
+and "Alarm X", but all those were already in use or they put me at risk
+of legal action from Apple. (If those %\$#@ers at Apple hadn't removed
+the good-old Alarm Clock desk accessory from Mac OS in the first place,
+none of this would be necessary.)&lt;/p&gt;
+&lt;p&gt;"Strawberry Alarm Clock" is a cool name. But I think it's taken.&lt;/p&gt;
+&lt;p&gt;I've released some freeware under the fictitious business name
+"Sleepless-Night Software". "Sleepless-Night Alarm Clock" does have a
+certain ring to it, but would be too big for the application menu title.&lt;/p&gt;
+&lt;p&gt;So I'll keep thinking about names. I can't start the work until I've got
+a good one.&lt;/p&gt;
+&lt;p&gt;[UPDATE: I've settled on the name "Rouser". Until I think of something
+better.]&lt;/p&gt;</content><category term="alarmclock"></category><category term="menubarcountdown"></category></entry><entry><title>Sprinting to the Finish</title><link href="http://undefinedvalue.com/sprinting-to-the-finish.html" rel="alternate"></link><published>2004-10-20T05:05:00-04:00</published><updated>2004-10-20T05:05:00-04:00</updated><author><name>Kristopher Johnson (noreply@blogger.com)</name></author><id>tag:undefinedvalue.com,2004-10-20:/sprinting-to-the-finish.html</id><summary type="html">&lt;p&gt;I haven't written much in my blog about what I'm doing at work. This is
+because I've wanted to avoid writing anything that could get me into
+trouble with my managers, coworkers, or customers. However, I do want to
+write a little about what's going on at work, because that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I haven't written much in my blog about what I'm doing at work. This is
+because I've wanted to avoid writing anything that could get me into
+trouble with my managers, coworkers, or customers. However, I do want to
+write a little about what's going on at work, because that is what I'm
+spending most of my time thinking about. So I'll write, but I'll have to
+leave a lot of the details out.&lt;/p&gt;
+&lt;p&gt;We're approaching the deadline (Nov. 15) for getting our system
+installed and operational at the customer site. This is a hard deadline;
+it absolutely cannot slip beyond that date. Software-wise, I think we're
+OK. The problem is that we don't have many of the the custom hardware
+components that will make up the production system. The software works
+great with mock objects taking the place of the hardware, but until we
+test the system with the actual hardware, we won't really know if
+everything works.&lt;/p&gt;
+&lt;p&gt;Integration testing is starting tomorrow, so I'll be in the office this
+evening putting the final touches on the test environment. Hardware
+components will be showing up during the week, so I expect many long
+hours of hooking new things up and figuring out why they aren't working.&lt;/p&gt;
+&lt;p&gt;It is too early to really know what we did right and what we should do
+differently next time, but I've already started my lists:&lt;/p&gt;
+&lt;p&gt;What we did right:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;developed simulators for the non-existent hardware and host server&lt;/li&gt;
+&lt;li&gt;designed an architecture that made it easy to enable/disable various
+    features and to use simulators just like they are the real things&lt;/li&gt;
+&lt;li&gt;refactored and redesigned as we went along&lt;/li&gt;
+&lt;li&gt;as the deadline approaches, the managers have been willing to reduce
+    the scope&lt;/li&gt;
+&lt;li&gt;we haven't had to work overtime very much (although that may change
+    in the coming weeks)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What we didn't do right:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;few automated tests&lt;/li&gt;
+&lt;li&gt;didn't find time for code reviews&lt;/li&gt;
+&lt;li&gt;haven't had any non-developers use the system&lt;/li&gt;
+&lt;li&gt;I couldn't figure out how to spend less time managing and more time
+    working with the code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The code that we have developed for this project is supposed to become a
+new framework to be used for developing similar systems. I already
+expect a lot of resistance. We have a lot of decoupling between
+different subsystems, which leads to more flexibility but also makes
+things look very complicated in comparison to the older codebase. There
+are some things that could be made simpler, so I hope to have some time
+to clean those things up before presenting the new framework to others
+in the software development group. I know they are going to hate it, but
+I'm not going to worry about that.&lt;/p&gt;
+&lt;p&gt;There were a few weeks in the middle of the project when I got a little
+depressed and burned out. We weren't getting the information we needed
+on hardware, our project manager was re-assigned to another project, and
+I felt that it was up to me to fix every problem myself. Thankfully, I
+got past that by allowing myself to focus just on what I could do and to
+stop worrying about what I couldn't do. Now, we've got a month to go,
+and I am pretty optimistic about how things will turn out.&lt;/p&gt;
+&lt;p&gt;When it's over, I'll allow myself to finally take a vacation. I haven't
+had any time off since I joined the company 15 months ago. Not taking
+any vacation has probably been my biggest mistake.&lt;/p&gt;
+&lt;p&gt;After some time off, I'll have to do some heavy thinking about what I
+want to do with my career. This recent project experience has given me
+more insight into how the company works and how its management does
+things. I have more data to consider as I decide whether this is where I
+want to stay for a while, or whether it is time to move on to something
+else. At the moment, "something else" is very attractive, but I don't
+know how I'll feel after the project is behind me.&lt;/p&gt;</content><category term="managing"></category></entry><entry><title>I Bought Microsoft Office for Mac</title><link href="http://undefinedvalue.com/i-bought-microsoft-office-for-mac.html" rel="alternate"></link><published>2004-10-19T13:03:00-04:00</published><updated>2004-10-19T13:03:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-19:/i-bought-microsoft-office-for-mac.html</id><summary type="html">&lt;p&gt;I just ordered Microsoft Office Professional for the Mac. I feel a
+little dirty.&lt;/p&gt;
+&lt;p&gt;I was hoping that the Mac could be a Microsoft-free haven for me. Then I
+found that I needed Windows Media Player, so I got that. Then I needed
+Microsoft Remote Desktop Connection, so I got …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I just ordered Microsoft Office Professional for the Mac. I feel a
+little dirty.&lt;/p&gt;
+&lt;p&gt;I was hoping that the Mac could be a Microsoft-free haven for me. Then I
+found that I needed Windows Media Player, so I got that. Then I needed
+Microsoft Remote Desktop Connection, so I got that. Then I needed MSN
+Messenger. But those were "free", so I consoled myself by thinking that
+at least I wasn't giving any more money to Microsoft.&lt;/p&gt;
+&lt;p&gt;Unfortunately, I can't find a good substitute for Microsoft Office.
+OpenOffice for Mac is uglier than any Windows application I've ever
+seen. AppleWorks feels like a toy, and can't read Office file formats.
+When I brought work home, I wanted to use the Mac, but couldn't.&lt;/p&gt;
+&lt;p&gt;What finally drew me in was the announcement that Virtual PC 7 would be
+included in MS Office Pro. I don't really need to run Windows on my Mac,
+but I would like to try out Linux distros and other operating systems.&lt;/p&gt;
+&lt;p&gt;The last Office version I bought was Office 98 for Windows. That
+qualifies me for the upgrade price, so I'm getting Virtual PC and the
+rest of Office for a little under $300. That's a pretty good deal in
+the Windows world. And maybe it won't suck quite as much on a Mac.&lt;/p&gt;</content><category term="mac"></category><category term="microsoft"></category><category term="office"></category></entry><entry><title>The Brushed Metal Look</title><link href="http://undefinedvalue.com/the-brushed-metal-look.html" rel="alternate"></link><published>2004-10-17T17:07:00-04:00</published><updated>2004-10-17T17:07:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-17:/the-brushed-metal-look.html</id><summary type="html">&lt;p&gt;I was going to blog about what I think about the mixture of the "brushed
+metal" look and the more traditional Apple look in Mac OS X, but someone
+else already wrote everything I wanted to say:
+&lt;a href="http://daringfireball.net/2004/10/brushedmetal"&gt;http://daringfireball.net/2004/10/brushedmetal&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Finder is especially annoying in that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was going to blog about what I think about the mixture of the "brushed
+metal" look and the more traditional Apple look in Mac OS X, but someone
+else already wrote everything I wanted to say:
+&lt;a href="http://daringfireball.net/2004/10/brushedmetal"&gt;http://daringfireball.net/2004/10/brushedmetal&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Finder is especially annoying in that it switches itself between
+brushed metal and plain-old-window depending on whether you show or hide
+the toolbar. With the Apple Human Interface Guidelines encouraging
+developers to look to the Finder as an example of correct UI design,
+it's not surprising that people can't agree on the appropriateness of
+the brushed-metal look or on many other aspects of how a "real Macintosh
+application" should work.&lt;/p&gt;
+&lt;p&gt;I don't understand why Apple wants its applications to look like a bunch
+of overpriced components for audiophiles.&lt;/p&gt;</content><category term="mac"></category></entry><entry><title>Sleepless-Night Wiki Moved to Quartus</title><link href="http://undefinedvalue.com/sleepless-night-wiki-moved-to-quartus.html" rel="alternate"></link><published>2004-10-17T06:00:00-04:00</published><updated>2004-10-17T06:00:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-17:/sleepless-night-wiki-moved-to-quartus.html</id><summary type="html">&lt;p&gt;A few years ago, I created the &lt;a href="http://kristopherjohnson.net/wiki"&gt;Sleepless-Night Wiki&lt;/a&gt; as a forum where &lt;a href="http://www.quartus.net/products/forth/"&gt;Quartus
+Forth&lt;/a&gt; users could exchange information and code. I considered it to be pretty successful, as it
+attracted several talented people who contributed code, tips, and
+advice. It also attracted some people interested in related matters,
+such …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A few years ago, I created the &lt;a href="http://kristopherjohnson.net/wiki"&gt;Sleepless-Night Wiki&lt;/a&gt; as a forum where &lt;a href="http://www.quartus.net/products/forth/"&gt;Quartus
+Forth&lt;/a&gt; users could exchange information and code. I considered it to be pretty successful, as it
+attracted several talented people who contributed code, tips, and
+advice. It also attracted some people interested in related matters,
+such as general Forth topics and Palm OS issues. Sleepless-Night was
+based on the &lt;a href="http://twiki.org"&gt;TWiki&lt;/a&gt; software.&lt;/p&gt;
+&lt;p&gt;Earlier this year, the wiki went down when my evil hosting provider
+moved all my files to a new differently-configured server. It stayed
+down for several months, as I couldn't get FTP to work and every attempt
+to use the "web control panel" provided by the hosting company made me
+give up in frustration.&lt;/p&gt;
+&lt;p&gt;Getting the Mac prompted me to approach the problem again. This gave me
+a chance to try out different Mac web browsers, FTP clients, and
+Internet utilities. I got the wiki mostly working again, although I
+didn't get around to re-implementing the authentication mechanism.&lt;/p&gt;
+&lt;p&gt;As most of the wiki content is related to Quartus Forth, and I don't do
+anything with that tool anymore, I've transferred all the wiki content
+over to Neal Bridges at Quartus. The new Quartus Wiki can be accessed at
+&lt;a href="http://quartus.net/wiki/"&gt;http://quartus.net/wiki/&lt;/a&gt;. Everyone's old passwords should still work.&lt;/p&gt;
+&lt;p&gt;The wiki contains a lot of info on personal projects of mine. I'll
+probably set up a Sleepless-Night Wiki Mark II as a repository for those
+things. &lt;a href="http://www.usemod.com/cgi-bin/wiki.pl"&gt;UseModWiki&lt;/a&gt; is the wiki
+software I like now; I used it to set up the &lt;a href="http://kristopherjohnson.net/cgi-bin/rc/wiki.pl?Remoting.Corba_Wiki"&gt;Remoting.Corba Wiki&lt;/a&gt;
+and a few other private wikis. TWiki has a lot of features, but it was
+always a little too complicated for users to figure out.&lt;/p&gt;
+&lt;p&gt;Unfortunately, there are bots out there that add wiki-spam to UseMod
+wikis, so I'll probably have to make my wiki read-only for everyone but
+myself.&lt;/p&gt;</content><category term="forth"></category><category term="quartusforth"></category><category term="palmos"></category><category term="twiki"></category><category term="wiki"></category></entry><entry><title>iMac Memory Upgrade</title><link href="http://undefinedvalue.com/imac-memory-upgrade.html" rel="alternate"></link><published>2004-10-17T05:39:00-04:00</published><updated>2004-10-17T05:39:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-17:/imac-memory-upgrade.html</id><summary type="html">&lt;p&gt;I added 1 GB of RAM to my iMac, bringing the total up to 1.5 GB. It is
+much more responsive now. Applications launch faster; the Dock pops out
+instantly when I put the mouse in the right place; windows resize
+without all the jerking around; Exposé is smoother …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I added 1 GB of RAM to my iMac, bringing the total up to 1.5 GB. It is
+much more responsive now. Applications launch faster; the Dock pops out
+instantly when I put the mouse in the right place; windows resize
+without all the jerking around; Exposé is smoother.&lt;/p&gt;
+&lt;p&gt;If I had it to do over again, I would have ordered the iMac with the
+minimum RAM (256 MB), then bought 2 GB of RAM from someplace else.
+Crucial will sell 2 GB of Mac RAM for $505. In contrast, Apple adds
+$1,225 to the price tag if you want 2 GB out of the box.&lt;/p&gt;
+&lt;p&gt;Performing the upgrade was easy. I did some bad things to the screws
+when opening up the Mac. I was expecting them to come out when I
+unscrewed, but they are captive screws that stay in place when you turn
+them. So I ended up unscrewing too far, and turned the Philips slot into
+a conical pit. Don't make this mistake if you do this yourself.&lt;/p&gt;</content><category term="imac"></category><category term="mac"></category></entry><entry><title>The One-Button Mouse and Where to Put My Fingers</title><link href="http://undefinedvalue.com/the-one-button-mouse-and-where-to-put-my-fingers.html" rel="alternate"></link><published>2004-10-16T06:42:00-04:00</published><updated>2004-10-16T06:42:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-16:/the-one-button-mouse-and-where-to-put-my-fingers.html</id><summary type="html">&lt;p&gt;The Mac still ships with a one-button mouse. This made sense to me back
+in the System-6-and-earlier days. Other operating systems had confusing
+and inconsistent uses for their multiple mouse buttons, and Apple's
+solution seemed to be the simple and elegant one. Apple's one-button
+mouse was easier to use, and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Mac still ships with a one-button mouse. This made sense to me back
+in the System-6-and-earlier days. Other operating systems had confusing
+and inconsistent uses for their multiple mouse buttons, and Apple's
+solution seemed to be the simple and elegant one. Apple's one-button
+mouse was easier to use, and also of much better quality than the cheap
+multi-button mice that were shipped with PCs back then.&lt;/p&gt;
+&lt;p&gt;Things are different now. Other operating systems introduced the
+right-click context menu; Apple responded by using a Control-click. This
+has become clumsy. The context menus have become the primary means of
+controlling a lot of on-screen objects, yet Apple insists on this
+two-handed method. It's too bad, because I really like the look and feel
+of the Apple Bluetooth mouse; I just want another button (and maybe a
+scroll wheel).&lt;/p&gt;
+&lt;p&gt;I know I could just take the easy way out and buy a third-party
+multi-button mouse, but as an experiment I am going to stick with the
+one-button mouse. Maybe I'll get used to it. Maybe I'll develop carpal
+tunnel syndrome. I just want to see if maybe Apple's UI designers are on
+to something. (Although I wouldn't be surprised if all Apple's UI gurus
+have multi-button mice.)&lt;/p&gt;
+&lt;p&gt;All this use of the Command, Option, Control, and Shift keys along with
+the mouse, as well as my increasing use of keyboard shortcuts to avoid
+the mouse, has made me start thinking about exactly where I should put
+my fingers on those keys. When I took typing class back in high school,
+I learned to use my right thumb on the spacebar and my pinky on the
+Shift key, but they didn't have these extra keys back then. I've been
+sloppy, just hitting keys with whatever finger happened to be closest,
+but I think I may be more efficient and less likely to suffer from RSI
+if I can touch-type the modifiers like I do the rest of the keyboard.&lt;/p&gt;
+&lt;p&gt;Should I press Command with my thumb, my index finger, or my middle
+finger? Should I press Control with my pinky, or with my ring finger?
+When I use a shortcut like Command-Q, should hit both Command and Q with
+my left thumb and middle finger (which is the habit I've developed), or
+should I hit Command with my right hand and Q with my left (thus
+avoiding a weird stretch of the hand)?&lt;/p&gt;
+&lt;p&gt;I've decided, for now, to try to consistently use my thumbs on the
+Command keys, index finger on Option, and ring finger on Control or
+Shift (and if I have to hit both Control and Shift, use index on Control
+and ring on Shift). I am used to using my thumb for Command, so I think
+this will be an easy habit to develop.&lt;/p&gt;
+&lt;p&gt;The harder challenge will be to break my habit of one-handed
+"chording"for Cmd-Q, Cmd-Tab, Cmd-S, and other common shortcuts that are
+possible with the left hand. When I use the Shift key, I have no problem
+using two hands, so I hope I can develop the same habit for Command.&lt;/p&gt;
+&lt;p&gt;Maybe I &lt;em&gt;should&lt;/em&gt; just buy a new mouse.&lt;/p&gt;</content><category term="imac"></category><category term="mac"></category><category term="mouse"></category><category term="apple"></category></entry><entry><title>Emacs for OS X</title><link href="http://undefinedvalue.com/emacs-for-os-x.html" rel="alternate"></link><published>2004-10-13T22:58:00-04:00</published><updated>2004-10-13T22:58:00-04:00</updated><author><name>Kristopher Johnson (noreply@blogger.com)</name></author><id>tag:undefinedvalue.com,2004-10-13:/emacs-for-os-x.html</id><summary type="html">&lt;p&gt;One of the first things I wanted for my Mac was a good text editor.
+TextEdit is okay for simple tasks, and I can use vi in a pinch, but I
+really wanted something like Emacs.&lt;/p&gt;
+&lt;p&gt;So I started searching for Emacs/XEmacs for OS X. I found about a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the first things I wanted for my Mac was a good text editor.
+TextEdit is okay for simple tasks, and I can use vi in a pinch, but I
+really wanted something like Emacs.&lt;/p&gt;
+&lt;p&gt;So I started searching for Emacs/XEmacs for OS X. I found about a dozen
+different builds from different sources. Some ran on X11, some ran only
+in the Terminal. Some were relatively new (Emacs 21); some were pretty
+old (Emacs 19).&lt;/p&gt;
+&lt;p&gt;The best one I found is a Japanese-built &lt;a href="http://home.att.ne.jp/alpha/z123/emacs-mac-e.html"&gt;Carbon Emacs
+Package&lt;/a&gt;. This one is
+built from the current sources in the Emacs CVS repository, and doesn't
+require an X11 server.&lt;/p&gt;
+&lt;p&gt;One problem with this version is that font support is bad. The default
+font is a big Monaco font. I tried changing font faces, but always ended
+up with something worse than the default (which is ugly). This package
+is apparently designed for Japanese users, and the Roman font support
+just isn't there. Every attempt to use the Set Font/Fontset command
+results in a "Font not found" error, and attempts to use the
+Customization screens result in something uglier than the default. I
+decided that I can live with the default font.&lt;/p&gt;
+&lt;p&gt;There are some non-Japanese builds of Emacs with Carbon floating around,
+so I'll give those a try. Eventually, I'll overcome my natural laziness
+and figure out how to build it myself.&lt;/p&gt;
+&lt;p&gt;By default, the Command key is used as the Emacs Meta key. I prefer
+using the Alt/Option key, so I added this to my .emacs file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  (setq mac-command-key-is-meta nil)
+&lt;/pre&gt;&lt;/div&gt;</content><category term="mac"></category><category term="emacs"></category></entry><entry><title>AirPort Card Freak-Out</title><link href="http://undefinedvalue.com/airport-card-freak-out.html" rel="alternate"></link><published>2004-10-13T00:18:00-04:00</published><updated>2004-10-13T00:18:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-13:/airport-card-freak-out.html</id><summary type="html">&lt;p&gt;Last night, for no apparent reason, I suddenly lost the WiFi connection
+on the iMac. I was unable to access the Internet or the other machines
+on my home network. Every attempt to reconnect to the network gave me an
+error message. My other laptop with WiFi was working fine …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last night, for no apparent reason, I suddenly lost the WiFi connection
+on the iMac. I was unable to access the Internet or the other machines
+on my home network. Every attempt to reconnect to the network gave me an
+error message. My other laptop with WiFi was working fine, so I assumed
+it must be an iMac problem, but I tried re-booting the wireless router
+anyway. No help.&lt;/p&gt;
+&lt;p&gt;So I re-booted the Mac, hoping that would fix it. Nope: still unable to
+connect.&lt;/p&gt;
+&lt;p&gt;I tried re-booting a couple more times, along with various other acts of
+desperation. What finally fixed it was a full shutdown and restart.
+After that, everything was fine.&lt;/p&gt;
+&lt;p&gt;I'm finding that I have to reboot or shutdown-and-restart my iMac a lot
+more often than I do with my Windows box. I'm hoping that trend will
+change once I get through the initial shakedown period.&lt;/p&gt;</content><category term="imac"></category><category term="apple"></category><category term="mac"></category></entry><entry><title>Alarm Clock</title><link href="http://undefinedvalue.com/alarm-clock.html" rel="alternate"></link><published>2004-10-12T18:07:00-04:00</published><updated>2004-10-12T18:07:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-12:/alarm-clock.html</id><summary type="html">&lt;p&gt;One of my favorite desk accessories on the old Mac was the Alarm Clock.
+Mac OS X doesn't have one. Neither does Windows. I miss it.&lt;/p&gt;
+&lt;p&gt;I don't know why it disappeared. I guess they figure the
+appointment-setting features of iCal, Outlook, or Entourage eliminate
+the need for a simple …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of my favorite desk accessories on the old Mac was the Alarm Clock.
+Mac OS X doesn't have one. Neither does Windows. I miss it.&lt;/p&gt;
+&lt;p&gt;I don't know why it disappeared. I guess they figure the
+appointment-setting features of iCal, Outlook, or Entourage eliminate
+the need for a simple alarm clock. But they don't: I often want my
+computer to remind me when a TV show is coming on, or to check the oven
+in ten minutes, or for other impromptu events, and I don't want to go
+through the whole process of creating an appointment (specifying date,
+time, length, location, who's attending, etc.).&lt;/p&gt;
+&lt;p&gt;I found a few alarm-clock utilities for OS X, but none of them do
+exactly what I want, and the more useful ones are not free. So I may
+need to write my own alarm clock application. This will be my chance to
+learn to write a Cocoa app.&lt;/p&gt;
+&lt;p&gt;In the meantime, I'm just going to use the UNIX 'at' command from the
+Terminal to trigger the speech synthesizer. I can use it like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;localhost:~ kdj$ at 13:50say -v Vicki &amp;#39;Kris, it is time to go back to work!&amp;#39;^D
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and then a soothing female voice will gently wake me from my afternoon
+nap.&lt;/p&gt;
+&lt;p&gt;If you decide to use 'at' yourself, be sure to read the man page for at.
+It is necessary to enable the 'atrun' command in /etc/crontab before it
+will work.&lt;/p&gt;</content><category term="mac"></category><category term="apple"></category></entry><entry><title>iMac First Impressions</title><link href="http://undefinedvalue.com/imac-first-impressions.html" rel="alternate"></link><published>2004-10-10T21:26:00-04:00</published><updated>2004-10-10T21:26:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-10:/imac-first-impressions.html</id><summary type="html">&lt;p&gt;My iMac arrived a few days ago. I took it out of the box, put batteries
+into the Bluetooth keyboard and mouse, plugged the power cable in, and
+turned it on. I was pleased to hear the good old Mac startup sound,
+although it was startlingly loud.&lt;/p&gt;
+&lt;p&gt;Going through the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My iMac arrived a few days ago. I took it out of the box, put batteries
+into the Bluetooth keyboard and mouse, plugged the power cable in, and
+turned it on. I was pleased to hear the good old Mac startup sound,
+although it was startlingly loud.&lt;/p&gt;
+&lt;p&gt;Going through the initial startup screens was pretty easy. The only snag
+was that I couldn't figure out how to enter the WEP key needed for the
+AirPort card to connect to my wireless network. So I went without
+network access at first, then I just disabled WEP on my router so that I
+could test Internet access and download updates. Later, I found out that
+it was necessary to enter a '$' in the AirPort password field before
+typing the WEP key. Once I discovered this little tidbit, I was able to
+restore WEP.&lt;/p&gt;
+&lt;p&gt;I last used a Mac in the System 7.5 days. It is interesting to note what
+has changed, and what is the same. OS X has much more support for
+keyboard navigation than the old Mac OS had. The top-of-screen menu bar
+looks familiar, yet has standard menu items in different standard
+locations.&lt;/p&gt;
+&lt;p&gt;The new Finder is very annoying in comparison to my memories of the
+System 6 and 7.5 Finders. The windows and icons are too big to see
+everything I'd like to see at one time. Too much valuable screen space
+is used by the brushed-metal title bar and toolbars, and it seems to be
+too difficult to do simple things. Is there a good reason that the
+Finder will let you use Edit-&amp;gt;Copy to copy files from place to place,
+but won't let you use Cut and Paste to move them? The Finder's handling
+of FTP servers and Windows shares really sucks. I've had the Finder lock
+up, and it was unable to restart when I used Force Quit on it, so I had
+to reboot. All in all, I think the Mac OS X Finder is the most
+Microsoft-like of all the Mac's features.&lt;/p&gt;
+&lt;p&gt;I am getting used to the Dock. I found it a little confusing at first,
+but now I prefer it to the Windows status bar mechanism. After playing
+with a few configurations, I settled on auto-hide on the right side of
+the screen: it is easier for me to flick the mouse to the right than
+down to the bottom, and this puts the Trash down in the lower left
+corner of the screen (as God intended). I would like to have a menu of
+all open applications on the system menu, like 7.5 had, instead of
+needing to use the Dock or Command-Tab to get to other apps.&lt;/p&gt;
+&lt;p&gt;Exposé is the coolest new feature. For those of you who haven't seen it,
+it shrinks all your windows and tiles them so that you can see them all
+at once and select the one you want to see. It is not just a
+thumbnail-like mechanism: while shrunk, the windows are still updating
+(you can see web animations, or terminal windows scrolling). I predict
+Microsoft and other OS vendors will be providing similar mechanisms
+soon.&lt;/p&gt;
+&lt;p&gt;None of the Mac web browsers are as nice as Internet Explorer on Windows
+XP. OmniWeb and Safari are both OK, albeit a little less "snappy" than I
+would like. Firefox is slow to render, and doesn't have a lot of the
+standard file associations built in. I'm sticking with OmniWeb for now.&lt;/p&gt;
+&lt;p&gt;Here are some other applications that I've settled on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adium X instant messenger client. (I also tried Fire and iChat, but
+    Adium's duck icon won me over.)&lt;/li&gt;
+&lt;li&gt;Transmit FTP client&lt;/li&gt;
+&lt;li&gt;Shrook RSS newsreader (Also tried NetNewsWire and Pulp Fiction, but
+    I found I prefer Shrook's column-based iTunes-like interface for the
+    wide iMac screen)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As I have a couple of Windows machines at home, I spent a lot of time
+with Mac OS X's support for Windows file and printer sharing. I am not
+impressed. It works well when everything is set up correctly, but if I
+reboot my Windows box while the iMac has a share open, or at other
+random times, the Finder will completely lock up. I have since given up
+on file sharing, and I now use FTP to transfer files between Mac and
+Windows.&lt;/p&gt;
+&lt;p&gt;I was eventually able to get my iMac connected to my HP DeskJet 5550
+printer that connected to my the Windows XP box, but fumbled around for
+a while because the huge list of HP drivers in the Printer Setup dialog
+doesn't include the 5550. I eventually decided to use the "dj450" driver
+(which I vaguely remember from setting up CUPS on a Linux machine),
+which seems to work although I get edges cut off on some printed pages.&lt;/p&gt;
+&lt;p&gt;I downloaded Microsoft's Remote Desktop Connection software for Mac. It
+works very well. As my Windows box is in a different room from my iMac,
+it is nice to be able to remotely control Windows when I need to find a
+file to be transferred, or check what my password is for some web site,
+and so on.&lt;/p&gt;
+&lt;p&gt;I keep hearing about how the new iMacs are completely silent. Mine is
+not. It's not loud, and it's not annoying, but it is not silent. I
+assume the sound is a fan, a disk drive, or both.&lt;/p&gt;
+&lt;p&gt;Despite the minor annoyances listed above, the iMac has quickly become
+my primary machine. I only turn on the Windows box if I need to move an
+old file over or to use the RC helicopter simulator (for which there is
+no Mac equivalent). It's not that the Mac is better than Windows XP;
+it's just different, and being able to escape from Microsoft when I
+leave work is a nice thing.&lt;/p&gt;</content><category term="imac"></category><category term="apple"></category><category term="mac"></category></entry><entry><title>Electronics and PIC Microcontrollers</title><link href="http://undefinedvalue.com/electronics-and-pic-microcontrollers.html" rel="alternate"></link><published>2004-10-10T21:22:00-04:00</published><updated>2004-10-10T21:22:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-10:/electronics-and-pic-microcontrollers.html</id><summary type="html">&lt;p&gt;Over the past few months, I've been trying to learn more about
+electronics. My job involves a lot of devices and embedded software,
+which piqued my interest. As with everything else I do, I want to
+understand how it all works.&lt;/p&gt;
+&lt;p&gt;I had a couple of digital electronics courses in …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Over the past few months, I've been trying to learn more about
+electronics. My job involves a lot of devices and embedded software,
+which piqued my interest. As with everything else I do, I want to
+understand how it all works.&lt;/p&gt;
+&lt;p&gt;I had a couple of digital electronics courses in college, so I know how
+to design circuits with NAND gates, inverters, flip-flops, and so on.
+But I've never known much about capacitors, coils, transistors,
+amplifiers, oscillators, or other "analog" stuff, other than the
+formulas needed to pass physics tests.&lt;/p&gt;
+&lt;p&gt;So I bought a couple of books on electronics, and bought one of those
+Radio Shack "Electronics Learning Lab" thingees. I read the electronics
+books, but they didn't do much for me. The first few chapters were just
+refreshers of things I remembered from physics classes (V=IR and all
+that stuff), and the later chapters were a little incomprehensible (too
+many formulas, not much explanation of what the circuits actually do).&lt;/p&gt;
+&lt;p&gt;The Learning Lab has sat on the shelf. Going through its experiments
+would have helped, but I never had time when I had interest, and never
+had interest when I had time.&lt;/p&gt;
+&lt;p&gt;A couple of weeks ago I got into PIC microcontroller programming. My
+current project involves some PIC firmware development, and while I
+won't be directly involved in that, I wanted to learn enough about the
+process that I could make some intelligent decisions about it. (I'm
+supposedly directing this effort.)&lt;/p&gt;
+&lt;p&gt;I bought the "PICkit 1 Flash Starter Kit" from
+&lt;a href="http://www.microchip.com/"&gt;Microchip&lt;/a&gt;. It includes a programmer/testing
+board, a couple of PIC microcontrollers (a PIC12f675 and a PIC16F684),
+and some tutorials and documentation. I also bought &lt;em&gt;Programming and
+Customizing PICmicro Microcontollers&lt;/em&gt; by Myke Predko. Using these and a
+few little tidbits from the web, I've written the traditional "flashing
+LED" program, and also a 7-segment LED controller program.&lt;/p&gt;
+&lt;p&gt;So far, I've written PIC code in assembly language. The PIC's
+instruction set is very small, with only 35 instructions, so I picked it
+up pretty quick. There are some differences between programming for PICs
+and for other microprocessors, mostly related to lack of RAM, register
+bank switching, and the separate code/data spaces, but it's not too hard
+once you learn the techniques. It's nice to get back into this kind of
+low-level programming.&lt;/p&gt;
+&lt;p&gt;When my programs get too complex for assembly, I'll probably give
+&lt;a href="http://www.rfc1149.net/devel/picforth"&gt;PicForth&lt;/a&gt; a try. There are C
+compilers and other languages for the PIC, but I'd prefer to stay as
+low-level as I can. I notice that PicForth doesn't support the
+controllers that I have, so I may have to play around with its code
+generator a bit.&lt;/p&gt;
+&lt;p&gt;Wiring the PIC into circuits on the Learning Lab breadboard is helping
+me get back into the electronics study. It's easier for me to write code
+than to figure out how to wire together a bunch of resistors,
+capacitors, and transistors, but once I've got the circuit working I can
+play with replacing some of the PIC functions with electronic
+components, and vice versa.&lt;/p&gt;
+&lt;p&gt;So now I have something to do while my helicopter batteries are
+recharging.&lt;/p&gt;</content><category term="electronics"></category><category term="pic"></category><category term="microcontroller"></category></entry><entry><title>Milestones Reached</title><link href="http://undefinedvalue.com/milestones-reached.html" rel="alternate"></link><published>2004-09-11T16:58:00-04:00</published><updated>2004-09-11T16:58:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-09-11:/milestones-reached.html</id><summary type="html">&lt;p&gt;We've reached our deadline, and spent our entire budget. So I'd like to
+congratulate everyone on the successful completion of the project.&lt;/p&gt;
+&lt;p&gt;Unfortunately, we aren't finished. I estimate that we have another 4-6
+weeks of work to do, which means we really probably have 8-12 weeks of
+work to do …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We've reached our deadline, and spent our entire budget. So I'd like to
+congratulate everyone on the successful completion of the project.&lt;/p&gt;
+&lt;p&gt;Unfortunately, we aren't finished. I estimate that we have another 4-6
+weeks of work to do, which means we really probably have 8-12 weeks of
+work to do.&lt;/p&gt;
+&lt;p&gt;Let the recriminations begin!&lt;/p&gt;</content><category term="managing"></category></entry><entry><title>I Bought an iMac</title><link href="http://undefinedvalue.com/i-bought-an-imac.html" rel="alternate"></link><published>2004-09-09T01:46:00-04:00</published><updated>2004-09-09T01:46:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-09-09:/i-bought-an-imac.html</id><summary type="html">&lt;p&gt;I was an early Macintosh user. I bought my first Mac in college
+(actually, my parents bought it), around 1987. It was a Mac SE, with 1MB
+of RAM and a 20 MB hard drive. A few years later, I got a IIsi, and a
+few years after that, I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was an early Macintosh user. I bought my first Mac in college
+(actually, my parents bought it), around 1987. It was a Mac SE, with 1MB
+of RAM and a 20 MB hard drive. A few years later, I got a IIsi, and a
+few years after that, I bought one of the initial PowerMacs.&lt;/p&gt;
+&lt;p&gt;Like the average Mac user, I couldn't understand why anyone would settle
+for an MS-DOS-based PC. The Mac was clearly superior, in every way.&lt;/p&gt;
+&lt;p&gt;For me, that attitude started changing soon after Windows 95 appeared.
+Flawed as it was, Windows 95 was an operating system with pre-emptive
+multi-threading and protected memory spaces. Mac OS 7, while sporting a
+better user interface, had an obsolete kernel, and Apple wasn't doing
+anything about it. I stuck with the Mac for a while, but was no longer
+sure of its superiority. When I started using NT 4 heavily at work, my
+disenchantment with Mac OS grew. I finally gave up on the Mac in the
+late 90's, buying a PC and putting Windows 98 on it.&lt;/p&gt;
+&lt;p&gt;So, for the past few years, I've been a Windows guy. I've watched
+Apple's ups and downs. I was glad when they ditched their old OS in
+favor of the NeXT-derived stuff, but by that time I had amassed enough
+Windows software and experience that there was no strong reason to
+switch back. I had lost all the emotional attachment that the original
+Mac had engendered.&lt;/p&gt;
+&lt;p&gt;But last week, I saw the new iMac, and was immediately interested. It is
+so simple and elegant. So I ordered one of the 20" models. It should be
+here in early October.&lt;/p&gt;
+&lt;p&gt;This is the first time a computer has been an "impulse buy". I bought it
+because it was cool, not because I have any real need for it. I'm still
+not sure what I'll do with it. I don't plan to write software for it. I
+probably won't play any games on it. I plan to just stick it on a small
+desk in my living room, and use it to read e-mail or browse the web, and
+maybe do some digital photo or music editing.&lt;/p&gt;
+&lt;p&gt;My iMac will just be a little computing sanctuary where Microsoft can't
+touch me.&lt;/p&gt;</content><category term="imac"></category><category term="mac"></category><category term="apple"></category></entry><entry><title>Hobbies</title><link href="http://undefinedvalue.com/hobbies.html" rel="alternate"></link><published>2004-09-05T22:25:00-04:00</published><updated>2004-09-05T22:25:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-09-05:/hobbies.html</id><summary type="html">&lt;p&gt;For most of my adult life, I didn't really have any "hobbies". I spent
 most of my free time watching TV, reading books, hanging out with
 friends, or improving my programming skills. I didn't consider any of
 these activities to be hobbies, and always wondered if I was missing out …&lt;/p&gt;</summary><content type="html">&lt;p&gt;For most of my adult life, I didn't really have any "hobbies". I spent

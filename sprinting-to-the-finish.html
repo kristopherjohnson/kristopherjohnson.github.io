@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Sprinting to the Finish | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/2004.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+
+    <meta name="tags" content="managing" />
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43697246-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://undefinedvalue.com/">
+                <img src="http://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
+        <header id="banner" class="body">
+            <h1><a href="http://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="http://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="http://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://undefinedvalue.com/sprinting-to-the-finish.html" rel="bookmark"
+         title="Permalink to Sprinting to the Finish">Sprinting to the Finish</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2004-10-20T05:05:00-04:00">
+      Wed 20 October 2004
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://undefinedvalue.com/tag/managing.html">managing</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I haven't written much in my blog about what I'm doing at work. This is
+because I've wanted to avoid writing anything that could get me into
+trouble with my managers, coworkers, or customers. However, I do want to
+write a little about what's going on at work, because that is what I'm
+spending most of my time thinking about. So I'll write, but I'll have to
+leave a lot of the details out.</p>
+<p>We're approaching the deadline (Nov. 15) for getting our system
+installed and operational at the customer site. This is a hard deadline;
+it absolutely cannot slip beyond that date. Software-wise, I think we're
+OK. The problem is that we don't have many of the the custom hardware
+components that will make up the production system. The software works
+great with mock objects taking the place of the hardware, but until we
+test the system with the actual hardware, we won't really know if
+everything works.</p>
+<p>Integration testing is starting tomorrow, so I'll be in the office this
+evening putting the final touches on the test environment. Hardware
+components will be showing up during the week, so I expect many long
+hours of hooking new things up and figuring out why they aren't working.</p>
+<p>It is too early to really know what we did right and what we should do
+differently next time, but I've already started my lists:</p>
+<p>What we did right:</p>
+<ul>
+<li>developed simulators for the non-existent hardware and host server</li>
+<li>designed an architecture that made it easy to enable/disable various
+    features and to use simulators just like they are the real things</li>
+<li>refactored and redesigned as we went along</li>
+<li>as the deadline approaches, the managers have been willing to reduce
+    the scope</li>
+<li>we haven't had to work overtime very much (although that may change
+    in the coming weeks)</li>
+</ul>
+<p>What we didn't do right:</p>
+<ul>
+<li>few automated tests</li>
+<li>didn't find time for code reviews</li>
+<li>haven't had any non-developers use the system</li>
+<li>I couldn't figure out how to spend less time managing and more time
+    working with the code</li>
+</ul>
+<p>The code that we have developed for this project is supposed to become a
+new framework to be used for developing similar systems. I already
+expect a lot of resistance. We have a lot of decoupling between
+different subsystems, which leads to more flexibility but also makes
+things look very complicated in comparison to the older codebase. There
+are some things that could be made simpler, so I hope to have some time
+to clean those things up before presenting the new framework to others
+in the software development group. I know they are going to hate it, but
+I'm not going to worry about that.</p>
+<p>There were a few weeks in the middle of the project when I got a little
+depressed and burned out. We weren't getting the information we needed
+on hardware, our project manager was re-assigned to another project, and
+I felt that it was up to me to fix every problem myself. Thankfully, I
+got past that by allowing myself to focus just on what I could do and to
+stop worrying about what I couldn't do. Now, we've got a month to go,
+and I am pretty optimistic about how things will turn out.</p>
+<p>When it's over, I'll allow myself to finally take a vacation. I haven't
+had any time off since I joined the company 15 months ago. Not taking
+any vacation has probably been my biggest mistake.</p>
+<p>After some time off, I'll have to do some heavy thinking about what I
+want to do with my career. This recent project experience has given me
+more insight into how the company works and how its management does
+things. I have more data to consider as I decide whether this is where I
+want to stay for a while, or whether it is time to move on to something
+else. At the moment, "something else" is very attractive, but I don't
+know how I'll feel after the project is behind me.</p>
+  </div><!-- /.entry-content -->
+</section>
+<ul>
+    <li>Previous article: 
+        <a href="http://undefinedvalue.com/i-bought-microsoft-office-for-mac.html">
+            I Bought Microsoft Office for Mac
+        </a>
+    </li>
+    <li>Next article:
+        <a href="http://undefinedvalue.com/application-naming.html">
+            Application Naming
+        </a>
+    </li>
+</ul>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>Other Stuff</h2>
+                        <ul>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>Follow</h2>
+                        <ul>
+                            <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+</body>
+</html>

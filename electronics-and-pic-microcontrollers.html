@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Electronics and PIC Microcontrollers | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/2004.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+
+    <meta name="tags" content="electronics" />
+    <meta name="tags" content="pic" />
+    <meta name="tags" content="microcontroller" />
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43697246-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://undefinedvalue.com/">
+                <img src="http://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
+        <header id="banner" class="body">
+            <h1><a href="http://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="http://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="http://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://undefinedvalue.com/electronics-and-pic-microcontrollers.html" rel="bookmark"
+         title="Permalink to Electronics and PIC Microcontrollers">Electronics and PIC Microcontrollers</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2004-10-10T21:22:00-04:00">
+      Sun 10 October 2004
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://undefinedvalue.com/tag/electronics.html">electronics</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/pic.html">pic</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/microcontroller.html">microcontroller</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Over the past few months, I've been trying to learn more about
+electronics. My job involves a lot of devices and embedded software,
+which piqued my interest. As with everything else I do, I want to
+understand how it all works.</p>
+<p>I had a couple of digital electronics courses in college, so I know how
+to design circuits with NAND gates, inverters, flip-flops, and so on.
+But I've never known much about capacitors, coils, transistors,
+amplifiers, oscillators, or other "analog" stuff, other than the
+formulas needed to pass physics tests.</p>
+<p>So I bought a couple of books on electronics, and bought one of those
+Radio Shack "Electronics Learning Lab" thingees. I read the electronics
+books, but they didn't do much for me. The first few chapters were just
+refreshers of things I remembered from physics classes (V=IR and all
+that stuff), and the later chapters were a little incomprehensible (too
+many formulas, not much explanation of what the circuits actually do).</p>
+<p>The Learning Lab has sat on the shelf. Going through its experiments
+would have helped, but I never had time when I had interest, and never
+had interest when I had time.</p>
+<p>A couple of weeks ago I got into PIC microcontroller programming. My
+current project involves some PIC firmware development, and while I
+won't be directly involved in that, I wanted to learn enough about the
+process that I could make some intelligent decisions about it. (I'm
+supposedly directing this effort.)</p>
+<p>I bought the "PICkit 1 Flash Starter Kit" from
+<a href="http://www.microchip.com/">Microchip</a>. It includes a programmer/testing
+board, a couple of PIC microcontrollers (a PIC12f675 and a PIC16F684),
+and some tutorials and documentation. I also bought <em>Programming and
+Customizing PICmicro Microcontollers</em> by Myke Predko. Using these and a
+few little tidbits from the web, I've written the traditional "flashing
+LED" program, and also a 7-segment LED controller program.</p>
+<p>So far, I've written PIC code in assembly language. The PIC's
+instruction set is very small, with only 35 instructions, so I picked it
+up pretty quick. There are some differences between programming for PICs
+and for other microprocessors, mostly related to lack of RAM, register
+bank switching, and the separate code/data spaces, but it's not too hard
+once you learn the techniques. It's nice to get back into this kind of
+low-level programming.</p>
+<p>When my programs get too complex for assembly, I'll probably give
+<a href="http://www.rfc1149.net/devel/picforth">PicForth</a> a try. There are C
+compilers and other languages for the PIC, but I'd prefer to stay as
+low-level as I can. I notice that PicForth doesn't support the
+controllers that I have, so I may have to play around with its code
+generator a bit.</p>
+<p>Wiring the PIC into circuits on the Learning Lab breadboard is helping
+me get back into the electronics study. It's easier for me to write code
+than to figure out how to wire together a bunch of resistors,
+capacitors, and transistors, but once I've got the circuit working I can
+play with replacing some of the PIC functions with electronic
+components, and vice versa.</p>
+<p>So now I have something to do while my helicopter batteries are
+recharging.</p>
+  </div><!-- /.entry-content -->
+</section>
+<ul>
+    <li>Previous article: 
+        <a href="http://undefinedvalue.com/milestones-reached.html">
+            Milestones Reached
+        </a>
+    </li>
+    <li>Next article:
+        <a href="http://undefinedvalue.com/imac-first-impressions.html">
+            iMac First Impressions
+        </a>
+    </li>
+</ul>
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>Other Stuff</h2>
+                        <ul>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>Follow</h2>
+                        <ul>
+                            <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+</body>
+</html>
