@@ -80,10 +80,10 @@
     </ul>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>With my <a href="/rebuilding-my-blog-again.html">blog rebuild</a> out of the way, my next task was to replace my old 2010-era EC2 t1.micro instance with a new less-expensive <a href="https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/">t2.nano</a> instance.  Without the blog, my EC2 needs are minimal, and the nano instances are really cheap.</p>
+    <p>With my <a href="/rebuilding-my-blog-again.html">blog rebuild</a> out of the way, my next task was to replace my old 2010-era <a href="https://en.wikipedia.org/wiki/Amazon_Elastic_Compute_Cloud">Amazon EC2</a> t1.micro instance with a new less-expensive <a href="https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/">t2.nano</a> instance.  Without the blog, my EC2 needs are minimal, and the nano instances are really cheap.</p>
 <p>My plan was to poke around the old micro instance, make a list of what was worth saving, spin up the new nano instance in the same AWS availability zone, copy things over, then terminate the old instance.</p>
 <p>That was a solid plan.</p>
-<p>Unfortunately, I couldn't resist the desire to play around with upgrading the micro instance to newest Ubuntu release (just to see what the process was like), and the result was that my micro instance would no longer boot.  I tried attaching a volume created from an EBS volume snapshot to that instance, but that didn't work.  I tried creating a new AMI and instance from the old snapshot, but that didn't work either.</p>
+<p>Unfortunately, I couldn't resist the desire to play around with upgrading the micro instance to newest Ubuntu release (just to see what the process was like).  The result was that my micro instance would no longer boot.  I tried attaching a volume created from an EBS volume snapshot to that instance, but that didn't work.  I tried creating a new AMI and instance from the old snapshot, but that didn't work either.  I'd completely lost all access to my instance.</p>
 <p>(Note to self: Test your restore-from-backup plan once in a while, dumbass.)</p>
 <p>So, fine, new plan: Create the new nano instance, then attach the old volume to it, then copy whatever is needed from that volume.</p>
 <p>I also wanted my new setup to meet these requirements:</p>
@@ -91,7 +91,7 @@
 <li>Ensure the blog is no longer dependent on anything on the server</li>
 <li>Require minimal configuration of the server (so this will be easier next time)</li>
 <li>Ensure everything I want on my server is easily available from external sources (GitHub, etc.)</li>
-<li>Ensure I can easily restore from an EBS snapshot</li>
+<li>Ensure I can easily restore from an EBS snapshot if this ever happens again</li>
 </ul>
 <p>My longer-term plan is to experiment with Docker containers and other mechanisms for deploying and managing stuff in the cloud, but for now I just want a new server to fill the roles of my old server.</p>
 <h2>Creating the New Instance</h2>
@@ -110,27 +110,27 @@ sudo mount /dev/xvdf /olddata
 </pre></div>
 
 
-<p>then a quick <code>ls /olddata/home/ubuntu</code> and <code>ls /olddata/usr/share/drupal6</code> verified that all my stuff from the old instance was indeed present.</p>
-<p>So then I created a compressed archive of the volume's contents so I could download it to my laptop for easy browsing and permanent backup:</p>
+<p>then a quick <code>ls /olddata/home/ubuntu</code> and <code>ls /olddata/usr/share/drupal6</code> verified that all my stuff from the old instance was indeed present. (Phew!)</p>
+<p>I created a compressed archive of the volume's contents so I could download it to my laptop for easy browsing and permanent backup:</p>
 <div class="highlight"><pre><span></span>sudo tar -zcvf olddata.tar.gz /olddata
 </pre></div>
 
 
 <p>The archive was 2.7 GB, and full of lots of stuff I'll never need, but it's good to be thorough.</p>
 <h2>Migrating SSH Keys</h2>
-<p>I copied my SSH keys from the old instance so that I could use GitHub and other resources that rely on those keys:</p>
+<p>I copied my SSH keys from the old instance so that I could use GitHub and other resources without generating and uploading new keys:</p>
 <div class="highlight"><pre><span></span>cp /olddata/home/ubuntu/.ssh/id_rsa* ~/.ssh
 </pre></div>
 
 
 <h2>Setting Up Git</h2>
-<p>Git was already included in the Ubuntu install.  But I did need to configure the username and email that would be used for any local commits;</p>
+<p>Git was already included in the Ubuntu install, but I needed to configure the username and email that would be used for any local commits;</p>
 <div class="highlight"><pre><span></span>git config --global user.name &quot;Kristopher Johnson&quot;
 git config --global user.email &quot;kris@kristopherjohnson.net&quot;
 </pre></div>
 
 
-<p>I also added the setting to squelch an annoying Git warning message:</p>
+<p>I also added this setting to squelch an annoying Git warning message:</p>
 <div class="highlight"><pre><span></span>git config --global push.default simple
 </pre></div>
 
