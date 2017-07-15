@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value - Blog</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/blog.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2017-07-14T16:44:26-04:00</updated><entry><title>Achievement Unlocked: Colonoscopy</title><link href="http://undefinedvalue.com/achievement-unlocked-colonoscopy.html" rel="alternate"></link><published>2017-07-14T16:44:26-04:00</published><updated>2017-07-14T16:44:26-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2017-07-14:/achievement-unlocked-colonoscopy.html</id><summary type="html">&lt;p&gt;When you turn 50, they make you get a &lt;a href="https://en.wikipedia.org/wiki/Colonoscopy"&gt;colonoscopy&lt;/a&gt;. That doesn't seem fair.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value - Blog</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/blog.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2017-07-15T08:00:00-04:00</updated><entry><title>Re-Cloudifying</title><link href="http://undefinedvalue.com/re-cloudifying.html" rel="alternate"></link><published>2017-07-15T08:00:00-04:00</published><updated>2017-07-15T08:00:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2017-07-15:/re-cloudifying.html</id><summary type="html">&lt;p&gt;With my &lt;a href="/rebuilding-my-blog-again.html"&gt;blog rebuild&lt;/a&gt; out of the way, my next task was to replace my old 2010-era EC2 t1.micro instance with a new less-expensive &lt;a href="https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/"&gt;t2.nano&lt;/a&gt; instance.  Without the blog, my EC2 needs are minimal, and the nano instances are really cheap.&lt;/p&gt;
+&lt;p&gt;My plan was to poke around the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;With my &lt;a href="/rebuilding-my-blog-again.html"&gt;blog rebuild&lt;/a&gt; out of the way, my next task was to replace my old 2010-era EC2 t1.micro instance with a new less-expensive &lt;a href="https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/"&gt;t2.nano&lt;/a&gt; instance.  Without the blog, my EC2 needs are minimal, and the nano instances are really cheap.&lt;/p&gt;
+&lt;p&gt;My plan was to poke around the old micro instance, make a list of what was worth saving, spin up the new nano instance in the same AWS availability zone, copy things over, then terminate the old instance.&lt;/p&gt;
+&lt;p&gt;That was a solid plan.&lt;/p&gt;
+&lt;p&gt;Unfortunately, I couldn't resist the desire to play around with upgrading the micro instance to newest Ubuntu release (just to see what the process was like), and the result was that my micro instance would no longer boot.  I tried attaching a volume created from an EBS volume snapshot to that instance, but that didn't work.  I tried creating a new AMI and instance from the old snapshot, but that didn't work either.&lt;/p&gt;
+&lt;p&gt;(Note to self: Test your restore-from-backup plan once in a while, dumbass.)&lt;/p&gt;
+&lt;p&gt;So, fine, new plan: Create the new nano instance, then attach the old volume to it, then copy whatever is needed from that volume.&lt;/p&gt;
+&lt;p&gt;I also wanted my new setup to meet these requirements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure the blog is no longer dependent on anything on the server&lt;/li&gt;
+&lt;li&gt;Require minimal configuration of the server (so this will be easier next time)&lt;/li&gt;
+&lt;li&gt;Ensure everything I want on my server is easily available from external sources (GitHub, etc.)&lt;/li&gt;
+&lt;li&gt;Ensure I can easily restore from an EBS snapshot&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My longer-term plan is to experiment with Docker containers and other mechanisms for deploying and managing stuff in the cloud, but for now I just want a new server to fill the roles of my old server.&lt;/p&gt;
+&lt;h2&gt;Creating the New Instance&lt;/h2&gt;
+&lt;p&gt;I referred to my original &lt;a href="http://undefinedvalue.com/setting-drupal-6-ubuntu-1010-ec2.html"&gt;Drupal-on-EC2&lt;/a&gt; post while setting up the new nano instance.  I did basically the same thing, except that I started with Amazon's "Ubuntu Server 16.04 LTS (HVM)" AMI, and chose "t2.nano" and once I got it running I only installed the &lt;code&gt;apache2&lt;/code&gt; package, without Drupal, memcached, or any of their dependencies.&lt;/p&gt;
+&lt;p&gt;I set up the a new security group that allows SSH and HTTP/HTTPS from outside.&lt;/p&gt;
+&lt;p&gt;I wanted to assign my existing Elastic IP to the new nano instance, but the EC2 console wouldn't let me do that.  After some head-scratching and Googling, I learned that elastic IPs for the old "Classic EC2" and new "VPC" environments are in separate pools, so I couldn't reuse the old one for the new instance.  So I created a new Elastic IP and assigned it to my new instance, then I deallocated the old one, and updated my DNS records.&lt;/p&gt;
+&lt;h2&gt;Mounting the Volume from the Old Instance&lt;/h2&gt;
+&lt;p&gt;Now I wanted to get my old stuff.  I created a new EBS volume from a snapshot from the old instance's boot volume, in the same availability zone as my new instance.  Then I attached that volume to my new instance as &lt;code&gt;/dev/sdf&lt;/code&gt;.  To figure out how Ubuntu saw that new device, I ran this command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lsblk
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;which indicated that the available devices were named &lt;code&gt;xvda&lt;/code&gt; (mounted as &lt;code&gt;/&lt;/code&gt;) and &lt;code&gt;xvdf&lt;/code&gt;.  I mounted the volume as &lt;code&gt;/olddata&lt;/code&gt; using these commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mkdir /olddata
+sudo mount /dev/xvdf /olddata
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;then a quick &lt;code&gt;ls /olddata/home/ubuntu&lt;/code&gt; and &lt;code&gt;ls /olddata/usr/share/drupal6&lt;/code&gt; verified that all my stuff from the old instance was indeed present.&lt;/p&gt;
+&lt;p&gt;So then I created a compressed archive of the volume's contents so I could download it to my laptop for easy browsing and permanent backup:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo tar -zcvf olddata.tar.gz /olddata
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The archive was 2.7 GB, and full of lots of stuff I'll never need, but it's good to be thorough.&lt;/p&gt;
+&lt;h2&gt;Migrating SSH Keys&lt;/h2&gt;
+&lt;p&gt;I copied my SSH keys from the old instance so that I could use GitHub and other resources that rely on those keys:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cp /olddata/home/ubuntu/.ssh/id_rsa* ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Setting Up Git&lt;/h2&gt;
+&lt;p&gt;Git was already included in the Ubuntu install.  But I did need to configure the username and email that would be used for any local commits;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global user.name &amp;quot;Kristopher Johnson&amp;quot;
+git config --global user.email &amp;quot;kris@kristopherjohnson.net&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I also added the setting to squelch an annoying Git warning message:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default simple
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;What's Good on TCM?&lt;/h2&gt;
+&lt;p&gt;My &lt;a href="http://secretspacelab.com/tcm.html"&gt;What's Good on TCM?&lt;/a&gt; page is static HTML that is generated by a &lt;a href="https://en.wikipedia.org/wiki/Cron"&gt;cron&lt;/a&gt; job at 11:00 AM every morning.  All the code &lt;a href="https://github.com/kristopherjohnson/kjtcmws"&gt;is on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My plan is to eventually move the generated page to a GitHub Project Page, so that it is not served by this server anymore, but for the sake of expediency I just set up the same cron job on the new server and configured Apache as needed to serve the generated page at that URL.&lt;/p&gt;
+&lt;p&gt;I had to install Node, npm, and Make to be able to run my generator:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install nodejs npm make
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;My scripts expect to be able to run an executable named "node", but Ubuntu installs &lt;code&gt;/usr/bin/nodejs&lt;/code&gt;, so I set up a symlink in &lt;code&gt;/usr/local/bin&lt;/code&gt; to allow "node" to work:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ln -s /usr/bin/nodejs /usr/local/bin/node
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I had to change my script so that it would copy the generated &lt;code&gt;tcm.html&lt;/code&gt; file to &lt;code&gt;/var/www/html&lt;/code&gt;, rather than to &lt;code&gt;/var/www&lt;/code&gt; (which was the correct location for Ubuntu 12.04).&lt;/p&gt;
+&lt;p&gt;To give the ubuntu account write access to the &lt;code&gt;/var/www/html&lt;/code&gt; directory, I ran these commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo usermod -a -G www-data ubuntu
+sudo chgrp www-data /var/www/html
+sudo chmod g+x /var/www/html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Eliminating Blog Dependencies&lt;/h2&gt;
+&lt;p&gt;My blog is now hosted at GitHub.  However, some articles contain links to images and other files that were served by Drupal on the old server, so I needed to extract those from the old Drupal site directories, put them on GitHub, and update all the links in all the blog entries that refer to them.&lt;/p&gt;
+&lt;p&gt;(I haven't actually finished this activity.  It will be an ongoing task.)&lt;/p&gt;
+&lt;h2&gt;All for Now&lt;/h2&gt;
+&lt;p&gt;So, the result is I have a reasonably-up-to-date Ubuntu server, and my blog is no longer dependent on it.  I can reproduce this configuration easily by following the instructions above.&lt;/p&gt;
+&lt;p&gt;I have an archive of everything that was on the old server, so at my leisure I can poke around and find anything worth saving.&lt;/p&gt;
+&lt;p&gt;(Note to self: Make a backup.)&lt;/p&gt;</content><category term="ec2"></category><category term="aws"></category><category term="apache"></category><category term="ebs"></category><category term="git"></category><category term="ssh"></category></entry><entry><title>Achievement Unlocked: Colonoscopy</title><link href="http://undefinedvalue.com/achievement-unlocked-colonoscopy.html" rel="alternate"></link><published>2017-07-14T16:44:26-04:00</published><updated>2017-07-14T16:44:26-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2017-07-14:/achievement-unlocked-colonoscopy.html</id><summary type="html">&lt;p&gt;When you turn 50, they make you get a &lt;a href="https://en.wikipedia.org/wiki/Colonoscopy"&gt;colonoscopy&lt;/a&gt;. That doesn't seem fair.&lt;/p&gt;
 &lt;p&gt;But it really isn't too bad.  The worst part is the "prep", which is a euphemistic way of saying "Spend a day on a clear-liquid diet, take a bunch of laxatives, then spend a few hours …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When you turn 50, they make you get a &lt;a href="https://en.wikipedia.org/wiki/Colonoscopy"&gt;colonoscopy&lt;/a&gt;. That doesn't seem fair.&lt;/p&gt;
 &lt;p&gt;But it really isn't too bad.  The worst part is the "prep", which is a euphemistic way of saying "Spend a day on a clear-liquid diet, take a bunch of laxatives, then spend a few hours in or near the restroom."&lt;/p&gt;
 &lt;p&gt;One is anesthetized for the procedure.  I remember the anesthesiologist asking the doctor "Should I put him to sleep now?" and the next thing I remember is waking up in the recovery room.  After a meal and a long nap at home, it's like nothing ever happened.&lt;/p&gt;

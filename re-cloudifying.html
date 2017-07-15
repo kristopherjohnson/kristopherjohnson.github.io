@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Re-Cloudifying | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+
+    <meta name="tags" content="ec2" />
+    <meta name="tags" content="aws" />
+    <meta name="tags" content="apache" />
+    <meta name="tags" content="ebs" />
+    <meta name="tags" content="git" />
+    <meta name="tags" content="ssh" />
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43697246-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://undefinedvalue.com/">
+                <img src="http://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div>
+        <header id="banner" class="body">
+            <h1><a href="http://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div>
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="http://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="http://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://undefinedvalue.com/re-cloudifying.html" rel="bookmark"
+         title="Permalink to Re-Cloudifying">Re-Cloudifying</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2017-07-15T08:00:00-04:00">
+      Sat 15 July 2017
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://undefinedvalue.com/tag/ec2.html">ec2</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/aws.html">aws</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/apache.html">apache</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/ebs.html">ebs</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/git.html">git</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/ssh.html">ssh</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>With my <a href="/rebuilding-my-blog-again.html">blog rebuild</a> out of the way, my next task was to replace my old 2010-era EC2 t1.micro instance with a new less-expensive <a href="https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/">t2.nano</a> instance.  Without the blog, my EC2 needs are minimal, and the nano instances are really cheap.</p>
+<p>My plan was to poke around the old micro instance, make a list of what was worth saving, spin up the new nano instance in the same AWS availability zone, copy things over, then terminate the old instance.</p>
+<p>That was a solid plan.</p>
+<p>Unfortunately, I couldn't resist the desire to play around with upgrading the micro instance to newest Ubuntu release (just to see what the process was like), and the result was that my micro instance would no longer boot.  I tried attaching a volume created from an EBS volume snapshot to that instance, but that didn't work.  I tried creating a new AMI and instance from the old snapshot, but that didn't work either.</p>
+<p>(Note to self: Test your restore-from-backup plan once in a while, dumbass.)</p>
+<p>So, fine, new plan: Create the new nano instance, then attach the old volume to it, then copy whatever is needed from that volume.</p>
+<p>I also wanted my new setup to meet these requirements:</p>
+<ul>
+<li>Ensure the blog is no longer dependent on anything on the server</li>
+<li>Require minimal configuration of the server (so this will be easier next time)</li>
+<li>Ensure everything I want on my server is easily available from external sources (GitHub, etc.)</li>
+<li>Ensure I can easily restore from an EBS snapshot</li>
+</ul>
+<p>My longer-term plan is to experiment with Docker containers and other mechanisms for deploying and managing stuff in the cloud, but for now I just want a new server to fill the roles of my old server.</p>
+<h2>Creating the New Instance</h2>
+<p>I referred to my original <a href="http://undefinedvalue.com/setting-drupal-6-ubuntu-1010-ec2.html">Drupal-on-EC2</a> post while setting up the new nano instance.  I did basically the same thing, except that I started with Amazon's "Ubuntu Server 16.04 LTS (HVM)" AMI, and chose "t2.nano" and once I got it running I only installed the <code>apache2</code> package, without Drupal, memcached, or any of their dependencies.</p>
+<p>I set up the a new security group that allows SSH and HTTP/HTTPS from outside.</p>
+<p>I wanted to assign my existing Elastic IP to the new nano instance, but the EC2 console wouldn't let me do that.  After some head-scratching and Googling, I learned that elastic IPs for the old "Classic EC2" and new "VPC" environments are in separate pools, so I couldn't reuse the old one for the new instance.  So I created a new Elastic IP and assigned it to my new instance, then I deallocated the old one, and updated my DNS records.</p>
+<h2>Mounting the Volume from the Old Instance</h2>
+<p>Now I wanted to get my old stuff.  I created a new EBS volume from a snapshot from the old instance's boot volume, in the same availability zone as my new instance.  Then I attached that volume to my new instance as <code>/dev/sdf</code>.  To figure out how Ubuntu saw that new device, I ran this command:</p>
+<div class="highlight"><pre><span></span>lsblk
+</pre></div>
+
+
+<p>which indicated that the available devices were named <code>xvda</code> (mounted as <code>/</code>) and <code>xvdf</code>.  I mounted the volume as <code>/olddata</code> using these commands:</p>
+<div class="highlight"><pre><span></span>sudo mkdir /olddata
+sudo mount /dev/xvdf /olddata
+</pre></div>
+
+
+<p>then a quick <code>ls /olddata/home/ubuntu</code> and <code>ls /olddata/usr/share/drupal6</code> verified that all my stuff from the old instance was indeed present.</p>
+<p>So then I created a compressed archive of the volume's contents so I could download it to my laptop for easy browsing and permanent backup:</p>
+<div class="highlight"><pre><span></span>sudo tar -zcvf olddata.tar.gz /olddata
+</pre></div>
+
+
+<p>The archive was 2.7 GB, and full of lots of stuff I'll never need, but it's good to be thorough.</p>
+<h2>Migrating SSH Keys</h2>
+<p>I copied my SSH keys from the old instance so that I could use GitHub and other resources that rely on those keys:</p>
+<div class="highlight"><pre><span></span>cp /olddata/home/ubuntu/.ssh/id_rsa* ~/.ssh
+</pre></div>
+
+
+<h2>Setting Up Git</h2>
+<p>Git was already included in the Ubuntu install.  But I did need to configure the username and email that would be used for any local commits;</p>
+<div class="highlight"><pre><span></span>git config --global user.name &quot;Kristopher Johnson&quot;
+git config --global user.email &quot;kris@kristopherjohnson.net&quot;
+</pre></div>
+
+
+<p>I also added the setting to squelch an annoying Git warning message:</p>
+<div class="highlight"><pre><span></span>git config --global push.default simple
+</pre></div>
+
+
+<h2>What's Good on TCM?</h2>
+<p>My <a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a> page is static HTML that is generated by a <a href="https://en.wikipedia.org/wiki/Cron">cron</a> job at 11:00 AM every morning.  All the code <a href="https://github.com/kristopherjohnson/kjtcmws">is on GitHub</a>.</p>
+<p>My plan is to eventually move the generated page to a GitHub Project Page, so that it is not served by this server anymore, but for the sake of expediency I just set up the same cron job on the new server and configured Apache as needed to serve the generated page at that URL.</p>
+<p>I had to install Node, npm, and Make to be able to run my generator:</p>
+<div class="highlight"><pre><span></span>sudo apt-get install nodejs npm make
+</pre></div>
+
+
+<p>My scripts expect to be able to run an executable named "node", but Ubuntu installs <code>/usr/bin/nodejs</code>, so I set up a symlink in <code>/usr/local/bin</code> to allow "node" to work:</p>
+<div class="highlight"><pre><span></span>sudo ln -s /usr/bin/nodejs /usr/local/bin/node
+</pre></div>
+
+
+<p>I had to change my script so that it would copy the generated <code>tcm.html</code> file to <code>/var/www/html</code>, rather than to <code>/var/www</code> (which was the correct location for Ubuntu 12.04).</p>
+<p>To give the ubuntu account write access to the <code>/var/www/html</code> directory, I ran these commands:</p>
+<div class="highlight"><pre><span></span>sudo usermod -a -G www-data ubuntu
+sudo chgrp www-data /var/www/html
+sudo chmod g+x /var/www/html
+</pre></div>
+
+
+<h2>Eliminating Blog Dependencies</h2>
+<p>My blog is now hosted at GitHub.  However, some articles contain links to images and other files that were served by Drupal on the old server, so I needed to extract those from the old Drupal site directories, put them on GitHub, and update all the links in all the blog entries that refer to them.</p>
+<p>(I haven't actually finished this activity.  It will be an ongoing task.)</p>
+<h2>All for Now</h2>
+<p>So, the result is I have a reasonably-up-to-date Ubuntu server, and my blog is no longer dependent on it.  I can reproduce this configuration easily by following the instructions above.</p>
+<p>I have an archive of everything that was on the old server, so at my leisure I can poke around and find anything worth saving.</p>
+<p>(Note to self: Make a backup.)</p>
+  </div><!-- /.entry-content -->
+</section>
+<ul>
+    <li>Previous article: 
+        <a href="http://undefinedvalue.com/achievement-unlocked-colonoscopy.html">
+            Achievement Unlocked: Colonoscopy
+        </a>
+    </li>
+</ul>
+
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>Other Stuff</h2>
+                        <ul>
+                            <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                            <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                            <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>Follow</h2>
+                        <ul>
+                            <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+
+                            <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                            <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                            <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                            <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                            <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+</body>
+</html>
