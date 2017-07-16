@@ -63,6 +63,18 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
+ul {
+    list-style: circle outside;
+}
+
+ol {
+    list-style: decimal outside;
+}
+
+ol, ul {
+    padding-left: 1.25em;
+}
+
 #menu {
     color: white;
     background-color: #0c6090;
