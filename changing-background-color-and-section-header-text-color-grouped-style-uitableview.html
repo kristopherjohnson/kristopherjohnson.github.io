@@ -83,9 +83,8 @@
     </ul>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>While working on an iPhone application, I decided I wanted to change the colors of the background and section headers of a <code>UITableView</code> with the <code>UITableViewStyleGrouped</code> style. It took a lot more work than I expected, so I'm sharing what I learned with anyone else who needs to do this.
-<!--break-->
-To review: when you create a table view with the grouped style, each section of the table shows up as a rounded rectangle, section titles are displayed as dark gray text between the rectangles, and the background is gray. I wanted the background to be a pale pastel color, so I looked into how to change that.</p>
+    <p>While working on an iPhone application, I decided I wanted to change the colors of the background and section headers of a <code>UITableView</code> with the <code>UITableViewStyleGrouped</code> style. It took a lot more work than I expected, so I'm sharing what I learned with anyone else who needs to do this.</p>
+<p>To review: when you create a table view with the grouped style, each section of the table shows up as a rounded rectangle, section titles are displayed as dark gray text between the rectangles, and the background is gray. I wanted the background to be a pale pastel color, so I looked into how to change that.</p>
 <p>Of course, I first looked at the options in Interface Builder.  A table view has a background color that can be set in IB, but setting that didn't accomplish anything.</p>
 <p>With a bit of Googling, I learned that the way to give a table view a background color is to set the background color to <code>[UIColor clearColor]</code>, and let the color (or image) of whatever is behind the table view show through. So, I set my window's <code>backgroundColor</code> to the color I wanted, and then added this to my table view's controller class:</p>
 <div class="highlight"><pre><span></span><span class="cp">#define TableViewTag 8888</span>
@@ -162,6 +161,19 @@ To review: when you create a table view with the grouped style, each section of 
         </a>
     </li>
 </ul>
+<pre>
+{'category': <Category 'Blog'>, 'reader': 'markdown', 'title': 'Changing Background Color and Section Header Text Color in a Grouped-style UITableView', 'date': SafeDatetime(2009, 8, 26, 0, 10, 40), 'slug': 'changing-background-color-and-section-header-text-color-grouped-style-uitableview', 'alias': '2009/08/25/changing-background-color-and-section-header-text-color-grouped-style-uitableview/', 'tags': [<Tag 'samplecode'>, <Tag 'programming'>, <Tag 'iphone'>, <Tag 'code'>, <Tag 'cocoa'>, <Tag 'iosdev'>], 'adsense': 'yes'}
+</pre>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-format="fluid"
+     data-ad-layout="in-article"
+     data-ad-client="ca-pub-2819149266595616"
+     data-ad-slot="4700820083"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
         </div><!-- /.nine columns -->
 
