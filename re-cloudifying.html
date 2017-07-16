@@ -9,6 +9,7 @@
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/highlight.css" />
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
 
@@ -125,8 +126,8 @@ sudo mount /dev/xvdf /olddata
 
 <h2>Setting Up Git</h2>
 <p>Git was already included in the Ubuntu install, but I needed to configure the username and email that would be used for any local commits;</p>
-<div class="highlight"><pre><span></span>git config --global user.name &quot;Kristopher Johnson&quot;
-git config --global user.email &quot;kris@kristopherjohnson.net&quot;
+<div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;Kristopher Johnson&quot;</span>
+git config --global user.email <span class="s2">&quot;kris@kristopherjohnson.net&quot;</span>
 </pre></div>
 
 
@@ -153,6 +154,17 @@ git config --global user.email &quot;kris@kristopherjohnson.net&quot;
 <div class="highlight"><pre><span></span>sudo usermod -a -G www-data ubuntu
 sudo chgrp www-data /var/www/html
 sudo chmod g+x /var/www/html
+</pre></div>
+
+
+<h2>Enabling cgi-bin</h2>
+<p>I have some Perl CGI scripts that people depend on.  Here is what I did to enable the <code>/cgi-bin/</code> paths:</p>
+<div class="highlight"><pre><span></span>sudo apt-get install libcgi-pm-perl libapache2-mod-perl2
+sudo a2enmod cgi
+sudo chgrp www-data /usr/lib/cgi-bin
+sudo chmod g+w /usr/lib/cgi-bin
+<span class="c1"># ... Move my scripts into /usr/lib/cgi-bin ...</span>
+sudo service apache2 restart
 </pre></div>
 
 

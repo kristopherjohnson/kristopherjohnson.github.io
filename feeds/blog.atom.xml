@@ -45,8 +45,8 @@ sudo mount /dev/xvdf /olddata
 
 &lt;h2&gt;Setting Up Git&lt;/h2&gt;
 &lt;p&gt;Git was already included in the Ubuntu install, but I needed to configure the username and email that would be used for any local commits;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global user.name &amp;quot;Kristopher Johnson&amp;quot;
-git config --global user.email &amp;quot;kris@kristopherjohnson.net&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global user.name &lt;span class="s2"&gt;&amp;quot;Kristopher Johnson&amp;quot;&lt;/span&gt;
+git config --global user.email &lt;span class="s2"&gt;&amp;quot;kris@kristopherjohnson.net&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -73,6 +73,17 @@ git config --global user.email &amp;quot;kris@kristopherjohnson.net&amp;quot;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo usermod -a -G www-data ubuntu
 sudo chgrp www-data /var/www/html
 sudo chmod g+x /var/www/html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Enabling cgi-bin&lt;/h2&gt;
+&lt;p&gt;I have some Perl CGI scripts that people depend on.  Here is what I did to enable the &lt;code&gt;/cgi-bin/&lt;/code&gt; paths:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libcgi-pm-perl libapache2-mod-perl2
+sudo a2enmod cgi
+sudo chgrp www-data /usr/lib/cgi-bin
+sudo chmod g+w /usr/lib/cgi-bin
+&lt;span class="c1"&gt;# ... Move my scripts into /usr/lib/cgi-bin ...&lt;/span&gt;
+sudo service apache2 restart
 &lt;/pre&gt;&lt;/div&gt;
 
 
