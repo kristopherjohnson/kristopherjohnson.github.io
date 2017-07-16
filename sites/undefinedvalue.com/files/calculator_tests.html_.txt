@@ -1,0 +1,30 @@
+<html>
+<head>
+
+<!-- Load jQuery and QUnit -->
+<script src="jquery.js"></script>
+<script src="qunit.js"></script>
+<link rel="stylesheet" href="qunit.css" type="text/css" media="screen" />
+
+<!-- Load modules to be tested -->
+<script src="calculator.js"></script>
+<script src="calculator_tests.js"></script>
+
+<!-- This jQuery fragment calls Calculator.runTests() after the document loads -->
+<script>
+$(document).ready(function(){
+    Calculator.runTests();    
+});
+</script>
+  
+</head>
+
+<body>
+<!-- QUnit will fill these elements with the results -->
+<h1 id="qunit-header">Calculator Tests</h1>
+<h2 id="qunit-banner"></h2>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+</body>
+
+</html>
