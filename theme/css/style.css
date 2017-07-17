@@ -111,6 +111,7 @@ ol, ul {
 #post-list {
     margin-bottom: 1rem;
     list-style-type: none;
+    padding-left: 0;
 }
 
 .post-info {
