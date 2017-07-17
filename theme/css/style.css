@@ -135,6 +135,22 @@ ul.tags {
     font-weight: bold;
 }
 
+#tags {
+    padding-left: 0;
+}
+
+#tags li {
+    display: inline;
+    padding-left: 0;
+    padding-right: 1rem;
+    white-space: nowrap;
+    line-height: 2;
+}
+
+#tags li .count {
+    font-size: smaller;
+}
+
 .read-more {
     margin-top: -1.5rem;
     font-weight: bold;
