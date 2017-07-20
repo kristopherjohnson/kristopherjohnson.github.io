@@ -80,19 +80,19 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>I've moved this blog from a <a href="https://www.drupal.org">Drupal</a> CMS running on an AWS EC2 instance to a statically generated set of pages hosted on <a href="https://pages.github.com">GitHub Pages</a>.  If you're curious about the reasons and the process, read on.</p>
-<p>For several years, my blog has been running on Drupal 6.  Drupal <a href="http://undefinedvalue.com/2009/04/18/drupal-rocks">seemed like a good idea when I started</a>, as it was a mature easy-to-use content management system, but I've been wanting to get away from it for a while.  I spend more time maintaining Drupal then I do writing articles for the blog.  When I started I had to do <a href="http://undefinedvalue.com/2010/11/12/setting-drupal-6-ubuntu-1010-ec2">a lot of work</a> to get Drupal configured and running well.  There are always new versions and security updates to apply, and I really should have upgraded to Drupal 7 and then Drupal 8 somewhere along the way, but I haven't and now I can't update to newer versions of Ubuntu. The care and feeding of Drupal is just too much work for the benefits it provides for my simple blog.</p>
+<p>For several years, my blog has been running on Drupal 6.  Drupal <a href="http://undefinedvalue.com/2009/04/18/drupal-rocks">seemed like a good idea when I started</a>, as it was a mature easy-to-use content management system, but I've been wanting to get away from it for a while.  I spend more time maintaining Drupal then I do writing articles for the blog.  When I started I had to do <a href="http://undefinedvalue.com/2010/11/12/setting-drupal-6-ubuntu-1010-ec2">a lot of work</a> to get Drupal configured and running well.  There are always new versions and security updates to apply, and I really should have upgraded to Drupal 7 and then Drupal 8 somewhere along the way, but I haven't and now I can't update to newer versions of Ubuntu. The care and feeding of Drupal is too much work for the benefits it provides for my simple blog.</p>
 <p>I decided to move to a static site generator, as I don't need dynamic features and I want to avoid the pain of setting up any more CMSes or blogging engines on any server.</p>
 <p>My basic requirements for the new generator were these:</p>
 <ul>
 <li>Provide a similar front page layout, with a list of ten "teasers" from most recent entries, a list of archives, an "About" page, and a few links to other stuff.</li>
-<li>Support existing URLs for existing pages, so people who used my blog before can still find things.</li>
+<li>Support existing URLs for existing pages (so old links will work).</li>
 <li>Support tags.</li>
 <li>Be able to run the generator on my laptop and easily upload the generated static pages to my Apache web server, or S3, or GitHub Pages.</li>
 <li>Let me write posts in <a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a> format.</li>
 </ul>
 <h2>The Drupal 6 Database</h2>
 <p>My first step was to export the existing articles and metadata from the Drupal database on my blog server, and recreate it on my development machine.  Looking at my Drupal configuration, I was able to find the database name and login information (which I forgot years ago).  I used <code>mysqldump</code> to export the data.</p>
-<div class="highlight"><pre><span></span>mysqldump --user=$dbuser --password=$dbpass --tz-utc --databases &quot;drupal6_undefinedvalue&quot; &gt; &quot;drupal6_undefinedvalue.sql&quot;
+<div class="highlight"><pre><span></span>mysqldump --user<span class="o">=</span><span class="nv">$dbuser</span> --password<span class="o">=</span><span class="nv">$dbpass</span> --tz-utc --databases <span class="s2">&quot;drupal6_undefinedvalue&quot;</span> &gt; <span class="s2">&quot;drupal6_undefinedvalue.sql&quot;</span>
 </pre></div>
 
 
@@ -125,22 +125,22 @@
 <li><code>url_alias</code>: provides mappings from URLs like "node/288" to "2017/04/22/my-first-chess-program"</li>
 </ul>
 <p>The <code>body</code> of a <code>node_revisions</code> record contains a special token <code>&lt;!--break--&gt;</code> between the "teaser" portion and the rest.</p>
-<p>I wrote a Python script that could extract the relevant fields from these tables and print out the attributes I expected to see.  If you are interested in seeing it, check out <a href="https://github.com/kristopherjohnson/drupal6tostatic">my drupal6tostatic repository</a>.</p>
+<p>I wrote a Python script that could extract the relevant fields from these tables and print out the attributes I expected to see.  If you want to see it, check out <a href="https://github.com/kristopherjohnson/drupal6tostatic">my drupal6tostatic repository</a>.</p>
 <h2>Static Site Generators</h2>
-<p>The next step was to decide on a static site generator to use.</p>
+<p>The next step was to decide on a static site generator.</p>
 <p>A "static site generator" (SSG) is a program that, given a bunch of input files and templates and configuration files and code, will generate a tree of static HTML pages that can be uploaded to a web server.</p>
-<p>I briefly thought about writing my own SSG, but my goal here is to get my blog moved as quickly and painlessly as possible, so I decided to go with an off-the-shelf solution.  The most popular SSG is currently <a href="https://jekyllrb.com">Jekyll</a>, but I don't like Ruby much and would prefer a Python 3-based tool.  After doing a brief survey of the available Python SSGs, I decided to give these a try:</p>
+<p>I briefly thought about writing my own SSG, but my goal here was to get my blog moved as quickly and painlessly as possible, so I decided to go with an off-the-shelf solution.  The most popular SSG is currently <a href="https://jekyllrb.com">Jekyll</a>, but I don't like Ruby much and would prefer a Python&nbsp;3-based tool.  After a brief survey of the available Python SSGs, I decided to give these a try:</p>
 <ul>
 <li><a href="https://github.com/eudicots/Cactus">Cactus</a></li>
 <li><a href="http://hyde.github.io">Hyde</a></li>
 <li><a href="http://getpelican.com">Pelican</a></li>
 </ul>
-<p>Cactus didn't work with Python 3. It almost worked, but the blog plugin wasn't compatible with Python 3, and after I fixed that, it generated an empty index page.  With Python 2, it worked, but its blog plugin didn't support the directory hierarchy I wanted to maintain.  Rather than fix these issues, I moved on to the next candidate.</p>
-<p>Hyde didn't support Python 3. (The website says Python 3 support is "in progress".)  I gave it a try anyway, and while I didn't hate it, I really want something that works with Python 3 and doesn't require a lot of configuration.  (For every YAML file I see, I expect at least one hour of messing around with it.)</p>
+<p>Cactus didn't work with Python&nbsp;3. It almost worked, but the blog plugin wasn't compatible with Python&nbsp;3, and after I fixed that, it generated an empty index page.  With Python 2, it worked, but its blog plugin didn't support the directory hierarchy I wanted to maintain.  Rather than fix these issues, I moved on to the next candidate.</p>
+<p>Hyde didn't support Python&nbsp;3. (The website says Python&nbsp;3 support is "in progress".)  I gave it a try anyway, and while I didn't hate it, I really want something that works with Python&nbsp;3 and doesn't require a lot of configuration.  (For every YAML file I see, I expect at least one hour of messing around with it.)</p>
 <p>Pelican worked pretty well on my first try (except for a CRITICAL error when running <code>pelican generate</code> with a not-well-formed Markdown file) and it seemed to be the most well-documented and well-supported of the generators I tried.  Out-of-the-box, it handled pagination and other desirable features that would have required configuration or additional coding in Cactus or Hyde.</p>
-<p>So I decided to go with Pelican as my site generator.</p>
+<p>So I decided to use Pelican as my site generator.</p>
 <h2>Python 3 Virtual Environment</h2>
-<p>To ensure I'd be able to easily run the Pelican generator on any machine, now or in the future, I set up a Python 3 <a href="https://docs.python.org/3.5/library/venv.html">virtual environment</a> and installed the necessary packages:</p>
+<p>To ensure I'd be able to easily run the Pelican generator on any machine, now or in the future, I set up a Python&nbsp;3 <a href="https://docs.python.org/3.5/library/venv.html">virtual environment</a> and installed the necessary packages:</p>
 <div class="highlight"><pre><span></span>python3 -m venv-pelican-blog                # create the environment
 source venv-pelican-blog/bin/activate       # activate the environment
 pip install pelican pelican-alias markdown  # install dependencies
@@ -149,16 +149,16 @@ pip install pelican pelican-alias markdown  # install dependencies
 
 <p>And then before running any Pelican commands, I have to make sure I run the command <code>source venv-pelican-blog/bin/activate</code>.</p>
 <h2>Configuring Pelican</h2>
-<p>To support automatic redirects from old URLs to the new pages, I installed the <a href="https://github.com/Nitron/pelican-alias">pelican-alias</a> plugin, and updated my generator script so that it would include an <code>Alias:</code> item for each old article.  I also gave all my blog posts a Category of "Blog", so that category name appears as a menu option at the top of the page.</p>
+<p>To support automatic redirects from old URLs to the new pages, I installed the <a href="https://github.com/Nitron/pelican-alias">pelican-alias</a> plugin, and updated my generator script so that it would include an <code>Alias:</code> item for each old article.</p>
 <p>I added an <code>about-me.md</code> file to the <code>content/pages</code> subdirectory, so that would also appear at the top of the page as it does in the Drupal site.</p>
 <p>I set the <code>LINKS</code> and <code>SOCIAL</code> settings in <code>pelicanconf.py</code> so that I would get lists of links similar to what was in the Drupal blog's "blocks".</p>
 <p>I set the <code>YEAR_ARCHIVE_SAVE_AS</code>, <code>MONTH_ARCHIVE_SAVE_AS</code>, and <code>DAY_ARCHIVE_SAVE_AS</code> variables in <code>pelicanconf.py</code> to generate archive pages with paths identical to what was used in Drupal.</p>
 <h2>Theme and Styles</h2>
-<p>Finally, I wanted a theme similar to that of the <a href="https://www.drupal.org/project/whitejazz">WhiteJazz</a> theme I had used with Drupal 6.  Pelican comes with two built-in themes: <code>simple</code>, which is basically just plain text with no styling, and <code>notmyidea</code>, which is what the <a href="http://getpelican.com">getpelican.com</a> website uses.  Rather than perusing all the other themes available for Pelican, I decided to try to replicate WhiteJazz myself, with the expectatation that I would give up in frustruation after a few hours and look for an off-the-shelf theme.</p>
-<p>Thankfully, it turned out to be easier than I expected to create my own theme.  Basically, I just copied the <code>simple</code> theme files to a new directory, then updated the templates that didn't quite do what I wanted, and added some CSS.  For the basic CSS, I chose <a href="http://getskeleton.com">Skeleton</a>, a simple CSS framework which I had used before in my <a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a> site.  It was easy to set up its grid to provide the basic layout of WhiteJazz.  I then added my own CSS rules and template customizations, borrowing liberally from the WhiteJazz CSS and notmyidea templates, until I had what I wanted.</p>
+<p>Finally, I wanted a theme similar to that of the <a href="https://www.drupal.org/project/whitejazz">WhiteJazz</a> theme I had used with Drupal 6.  Pelican comes with two built-in themes: <code>simple</code>, which is just plain text with no styling, and <code>notmyidea</code>, which is what the <a href="http://getpelican.com">getpelican.com</a> website uses.  Rather than perusing all the other themes available for Pelican, I decided to try to replicate WhiteJazz myself, with the expectatation that I would give up in frustruation after a few hours and look for an off-the-shelf theme.</p>
+<p>Thankfully, it turned out to be easier than I expected to create my own theme.  I started by copying the <code>simple</code> theme files to a new directory, then updated the templates that didn't quite do what I wanted, and added some CSS.  For the basic CSS, I chose <a href="http://getskeleton.com">Skeleton</a>, a simple CSS framework which I had used before in my <a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a> site.  It was easy to set up its grid to provide the basic layout of WhiteJazz.  I then added my own CSS rules and template customizations, borrowing liberally from the WhiteJazz CSS and notmyidea templates, until I had what I wanted.</p>
 <p>One problem I ran into was that the <code>simple</code> framework had an empty (0 bytes) <code>tag.html</code> template, and was missing other files related to tags.  So I copied the missing files from <code>notmyidea</code>.</p>
 <h2>Publishing the New Site</h2>
-<p>I had already set up my personal <code>kristopherjohnson.github.io</code> repo as a GitHub Pages site.  It was a simple index.html that redirected to the Undefined Value home page.  I set up a Makefile rule that would copy the output from Pelican to my local repo, commit the change, and then push that repo to GitHub.  </p>
+<p>I had already set up my personal <code>kristopherjohnson.github.io</code> repo as a GitHub Pages site.  I set up a Makefile rule that would copy the output from Pelican to that local repo, commit the change, and then push that repo to GitHub.  </p>
 <p>So, all I have to do to regenerate the site and push it to the cloud is this:</p>
 <div class="highlight"><pre><span></span>cd ~/work/undefinedvalue-pelican
 source venv-pelican-blog/bin/activate
@@ -166,15 +166,15 @@ make github
 </pre></div>
 
 
-<p>It takes about four seconds to run <code>make github</code>.  After that, it takes a minute or two before the changes are actually visible on the site.</p>
+<p>It takes about four seconds to run <code>make github</code>.  After that, it takes a minute or so before the changes are actually visible on the site.</p>
 <p>Finally, I went to my domain registrar and updated the <code>undefinedvalue.com</code> address records so it now points to GitHub rather than to my old server, following the instructions on these pages:</p>
 <ul>
 <li><a href="https://help.github.com/articles/quick-start-setting-up-a-custom-domain/">Quick start: Setting up a custom domain</a></li>
 <li><a href="https://help.github.com/articles/setting-up-an-apex-domain/">Setting up an apex domain</a></li>
 </ul>
 <h2>Conclusion</h2>
-<p>I've wanted to do this migration for over a year, but feared it would take up a few weekends and be full of frustration.  It was actually a lot easier than I expected.  The hardest part for me was getting the CSS right.  But it feels good that I figured out how to do a full conversion by writing a few scripts and modifying some configuration files and templates.</p>
-<p>One thing I miss is the simplicity of editing with Drupal.  If I saw a typo on the site, I could just click an <em>Edit</em> button, fix it, and <em>Save</em>.  Now if I see something wrong, I have to find the right input file in my tree of files, edit it, and then republish, and then wait a few minutes to see if it looks right.  But I am very happy to no longer be dependent upon a MySQL database, an old version of a PHP-based CMS, and an EC2 web server.</p>
+<p>I've wanted to do this migration for over a year, but feared it would take up a few weekends and be full of frustration.  It was actually a lot easier than I expected.  The hardest part for me was getting the CSS right.  It feels good that I figured out how to do a full conversion by writing a few scripts and modifying some configuration files and templates.</p>
+<p>One thing I miss is the simplicity of editing with Drupal.  If I saw a typo on the site, I could just click an <em>Edit</em> button, fix it, and <em>Save</em>.  Now if I see something wrong, I have to find the right input file in my tree of files, edit it, and then republish, and then wait a minute to see if it looks right.  But I am very happy to no longer be dependent upon a MySQL database, an old version of a PHP-based CMS, and an EC2 web server.</p>
 <p>If you want to see my Pelican setup, it's available here for all to see: <a href="https://github.com/kristopherjohnson/undefinedvalue-pelican">https://github.com/kristopherjohnson/undefinedvalue-pelican</a>.</p>
   </div><!-- /.entry-content -->
 </section>

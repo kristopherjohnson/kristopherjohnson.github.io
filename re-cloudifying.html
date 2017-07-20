@@ -86,7 +86,7 @@
 <p>That was a solid plan.</p>
 <p>Unfortunately, I couldn't resist the desire to play around with upgrading the micro instance to newest Ubuntu release (just to see what the process was like).  The result was that my micro instance would no longer boot.  I tried attaching a volume created from an EBS volume snapshot to that instance, but that didn't work.  I tried creating a new AMI and instance from the old snapshot, but that didn't work either.  I'd completely lost all access to my instance.</p>
 <p>(Note to self: Test your restore-from-backup plan once in a while, dumbass.)</p>
-<p>So, fine, new plan: Create the new nano instance, then attach the old volume to it, then copy whatever is needed from that volume.</p>
+<p>So, fine, new plan: Create the new nano instance, attach the old volume to it, then copy whatever is needed from that volume.</p>
 <p>I also wanted my new setup to meet these requirements:</p>
 <ul>
 <li>Ensure the blog is no longer dependent on anything on the server</li>
@@ -169,8 +169,7 @@ sudo service apache2 restart
 
 
 <h2>Eliminating Blog Dependencies</h2>
-<p>My blog is now hosted at GitHub.  However, some articles contain links to images and other files that were served by Drupal on the old server, so I needed to extract those from the old Drupal site directories, put them on GitHub, and update all the links in all the blog entries that refer to them.</p>
-<p>(I haven't actually finished this activity.  It will be an ongoing task.)</p>
+<p>My blog is now hosted at GitHub.  However, some articles contain links to images and other files that were served by Drupal on the old server, so I needed to extract those from the old Drupal site directories and copy them to my blog repo.  I was able to use Pelican's <a href="http://docs.getpelican.com/en/stable/settings.html#metadata">EXTRA_PATH_METDATA</a> settings to give these static files the same URL path that they had in Drupal, so I didn't have to update any links in the blog posts that referred to them.</p>
 <h2>All for Now</h2>
 <p>So, the result is I have a reasonably-up-to-date Ubuntu server, and my blog is no longer dependent on it.  I can reproduce this configuration easily by following the instructions above.</p>
 <p>I have an archive of everything that was on the old server, so at my leisure I can poke around and find anything worth saving.</p>
