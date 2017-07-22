@@ -20,4 +20,5 @@ Disallow: /2014/
 Disallow: /2015/
 Disallow: /2016/
 Disallow: /2017/
+Sitemap: http://undefinedvalue.com/sitemap.xml
 
