@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Adding a Jinja2 Filter with a Pelican Plugin | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
+    <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
+    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/highlight.css" />
+    <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <meta name="tags" content="blog" />
+    <meta name="tags" content="pelican" />
+    <meta name="tags" content="jinja" />
+    <meta name="tags" content="python" />
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43697246-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body id="index" class="home">
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="http://undefinedvalue.com/">
+                <img src="http://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div><!-- /.logo -->
+        <header id="banner" class="body">
+            <h1><a href="http://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="http://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="http://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://undefinedvalue.com/adding-a-jinja2-filter-with-a-pelican-plugin.html" rel="bookmark"
+         title="Permalink to Adding a Jinja2 Filter with a Pelican Plugin">Adding a Jinja2 Filter with a Pelican Plugin</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2017-07-22T10:58:00-04:00">
+      Sat 22 July 2017
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="http://undefinedvalue.com/tag/blog.html">blog</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/pelican.html">pelican</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/jinja.html">jinja</a></li>
+        <li><a class="tag" href="http://undefinedvalue.com/tag/python.html">python</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>With my <a href="http://undefinedvalue.com/rebuilding-my-blog-again.html">new blog setup</a>, I decided to give <a href="https://en.wikipedia.org/wiki/AdSense">Google AdSense</a> a try.  I don't have many regular readers, but I do have a few pages that attract search-engine traffic.  So, to monetize those older pages without shoving ads in my regular readers' faces, I decided to show ads on posts that were over a month old.  That should be easy enough to do in the <code>article.html</code> template:</p>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">article.date</span><span class="o">|</span><span class="nf">age_in_days</span> <span class="o">&gt;</span> <span class="m">30</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;!-- ... Include AdSense code ... --&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+
+
+<p>Only one problem: there is no <code>age_in_days</code> filter provided by Pelican or Jinja.  I'd have to write a custom filter myself.</p>
+<p>A Jinja <a href="http://jinja.pocoo.org/docs/2.9/api/#custom-filters">custom filter</a> is just a Python function that takes an argument and produces a result.  My filter function is pretty simple:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">def</span> <span class="nf">age_in_days</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a number of days between now and a specified datetime.&quot;&quot;&quot;</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">dt</span>
+    <span class="k">return</span> <span class="n">delta</span><span class="o">.</span><span class="n">days</span>
+</pre></div>
+
+
+<p>I had to figure out how to add that to Pelican's Jinja2 template-rendering environment.  I found a <a href="https://linkpeek.com/blog/how-to-add-a-custom-jinja-filter-to-pelican.html">How to add a custom Jinja filter to Pelican post</a> that showed how to import a function and set the Pelican's <code>JINJA_FILTERS</code> variable in <code>pelicanconf.py</code>, but I didn't like the idea of adding imports and functions to a configuration file.  I decided it would be cleaner (and more fun) to figure out how to make a <a href="http://docs.getpelican.com/en/3.7.1/plugins.html">Pelican plugin</a> that provided my filter.</p>
+<p>It wasn't hard to figure this out, because I found a <a href="https://github.com/MinchinWeb/minchin.pelican.jinja_filters">Jinja Filters plugin</a> that provides a set of filters, so I could just copy the little bits I needed from that for registering my filter. A Pelican plugin must <a href="http://docs.getpelican.com/en/3.7.1/plugins.html#how-to-create-plugins">provide a <code>register()</code> function</a> that sets up a mapping of Pelican "signals" to functions that are to be called.  My plugin handles the <code>generator_init</code> signal by adding the <code>age_in_days</code> filter to Pelican's Jinja environment:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">signals</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">ageindays</span>
+
+<span class="k">def</span> <span class="nf">add_filter</span><span class="p">(</span><span class="n">pelican</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add age_in_days filter to Pelican.&quot;&quot;&quot;</span>
+    <span class="n">pelican</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;age_in_days&#39;</span><span class="p">:</span> <span class="n">ageindays</span><span class="o">.</span><span class="n">age_in_days</span><span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Plugin registration.&quot;&quot;&quot;</span>
+    <span class="n">signals</span><span class="o">.</span><span class="n">generator_init</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">add_filter</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Then I had to update my <code>pelicanconf.py</code> to load this plugin in addition to the other plugins I use:</p>
+<div class="highlight"><pre><span></span><span class="n">PLUGIN_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../plugins&#39;</span><span class="p">,</span> <span class="s1">&#39;../pelican-plugins&#39;</span><span class="p">]</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age_in_days&#39;</span><span class="p">,</span> <span class="s1">&#39;pelican_alias&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;sitemap&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>And that's it.</p>
+<p>You can see the whole plugin here: <a href="https://github.com/kristopherjohnson/undefinedvalue-pelican/tree/master/plugins/age_in_days">https://github.com/kristopherjohnson/undefinedvalue-pelican/tree/master/plugins/age_in_days</a></p>
+  </div><!-- /.entry-content -->
+</section>
+<ul>
+    <li>Previous article: 
+        <a href="http://undefinedvalue.com/re-cloudifying.html">
+            Re-Cloudifying
+        </a>
+    </li>
+</ul>
+
+
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+            <div class="recent">
+                <h2>Recent Posts</h2>
+                <ul>
+                    <li><a href="http://undefinedvalue.com/adding-a-jinja2-filter-with-a-pelican-plugin.html">Adding a Jinja2 Filter with a Pelican Plugin</a></li>
+                    <li><a href="http://undefinedvalue.com/re-cloudifying.html">Re-Cloudifying</a></li>
+                    <li><a href="http://undefinedvalue.com/achievement-unlocked-colonoscopy.html">Achievement Unlocked: Colonoscopy</a></li>
+                    <li><a href="http://undefinedvalue.com/simple-nsmachport-example.html">Simple NSMachPort Example</a></li>
+                    <li><a href="http://undefinedvalue.com/rebuilding-my-blog-again.html">Rebuilding My Blog Again, with Pelican</a></li>
+                    <li><a href="http://undefinedvalue.com/my-first-chess-program.html">My First Chess Program</a></li>
+                </ul>
+            </div><!-- ./recent -->
+            <div class="blogroll">
+                    <h2>Other Stuff</h2>
+                    <ul>
+                        <li><a href="https://cse.google.com/cse/publicurl?cx=007851071617878239069:9_ti50l6w7s">Search This Blog</a></li>
+                        <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                        <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                        <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                    </ul>
+            </div><!-- /.blogroll -->
+            <div class="social">
+                    <h2>Follow</h2>
+                    <ul>
+                        <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+
+                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a href="https://pinboard.in/u:OldManKris">Pinboard</a></li>
+                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                    </ul>
+            </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2017 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+
+</body>
+</html>
