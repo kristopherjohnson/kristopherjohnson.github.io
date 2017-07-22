@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /archive/
-Disallow: /tag/
 Disallow: /page/
 Disallow: /author/
 Disallow: /category/
