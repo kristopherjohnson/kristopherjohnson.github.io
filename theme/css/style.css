@@ -167,3 +167,35 @@ ul.tags {
     margin-top: 3rem;
 }
 
+/* These div.customsearch rules undo the styling that skeleton.css
+ * applies to elements that are used in the Google Custom Search
+ * widgets.
+ */
+
+div.customsearch {
+    font-size: initial;
+    line-height: initial;
+}
+
+div.customsearch input {
+    margin: 0;
+}
+
+div.customsearch td {
+    padding: unset;
+    border-bottom: 0;
+}
+
+div.customsearch input[type="text"] {
+    font-size: 13px;
+}
+
+/* .gsib_a is a Google Custom Search class.
+ * Padding is needed to line up the search text box.
+ * We should be able to select this without
+ * explicitly naming this class isn't needed, but
+ * I'm not smart enough.
+ */
+div.customsearch td.gsib_a {
+    padding: 4px 6px 0;
+}
