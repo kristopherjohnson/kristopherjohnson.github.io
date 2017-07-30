@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /archives/
 Disallow: /author/
 Disallow: /category/
 Disallow: /index2.html
