@@ -7270,7 +7270,10 @@ finally came up with a script that would let me copy the MP3 URL to the
 clipboard, and then select "Open Clipboard Location in iTunes" from my
 Script Menu. Here's the script, which I saved as "Open Clipboard
 Location in iTunes.scpt" in &lt;code&gt;~/Library/Scripts&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;tell&lt;/span&gt; &lt;span class="nb"&gt;application&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;iTunes&amp;quot;&lt;/span&gt;  &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;theLocation&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;the clipboard&lt;/span&gt; &lt;span class="k"&gt;as &lt;/span&gt;&lt;span class="nc"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="nb"&gt;open location&lt;/span&gt; &lt;span class="nv"&gt;theLocationend&lt;/span&gt; &lt;span class="k"&gt;tell&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;tell&lt;/span&gt; &lt;span class="nb"&gt;application&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;iTunes&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;theLocation&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;the clipboard&lt;/span&gt; &lt;span class="k"&gt;as &lt;/span&gt;&lt;span class="nc"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;open location&lt;/span&gt; &lt;span class="nv"&gt;theLocation&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;tell&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
