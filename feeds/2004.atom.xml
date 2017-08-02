@@ -1,5 +1,416 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value - 2004</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/2004.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2004-10-30T19:25:00-04:00</updated><entry><title>Virtual PC 7 for Mac</title><link href="http://undefinedvalue.com/virtual-pc-7-for-mac.html" rel="alternate"></link><published>2004-10-30T19:25:00-04:00</published><updated>2004-10-30T19:25:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-30:/virtual-pc-7-for-mac.html</id><summary type="html">&lt;p&gt;I received Office 2004 Professional for Mac a couple of days ago. I
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value - 2004</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/2004.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2004-11-11T06:07:00-05:00</updated><entry><title>My First AppleScripts</title><link href="http://undefinedvalue.com/my-first-applescripts.html" rel="alternate"></link><published>2004-11-11T06:07:00-05:00</published><updated>2004-11-11T06:07:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-11:/my-first-applescripts.html</id><summary type="html">&lt;p&gt;OK, they aren't really my first AppleScripts. I used AppleScript a lot
+back in the Mac OS 7 days, but unfortunately most of the applications I
+used back then didn't support it very well. I was hoping things would be
+better now, but they really aren't. Apple's applications have reasonable …&lt;/p&gt;</summary><content type="html">&lt;p&gt;OK, they aren't really my first AppleScripts. I used AppleScript a lot
+back in the Mac OS 7 days, but unfortunately most of the applications I
+used back then didn't support it very well. I was hoping things would be
+better now, but they really aren't. Apple's applications have reasonable
+support, but many third parties' applications do not.&lt;/p&gt;
+&lt;p&gt;Case in point: Mozilla Firefox 1.0. Released this week, I read several
+Mac users' comments that we finally have a good browser for Mac OS. On
+Windows, I prefer Firefox to IE, but on Mac, it is not as good as
+OmniWeb, and is not better than Safari. What really bugs me about
+Firefox is the lack of support for basic Mac features, especially
+AppleScript.&lt;/p&gt;
+&lt;p&gt;But anyway, I found a need for a simple AppleScript today. I use
+&lt;a href="http://www.shrook.com"&gt;Shrook&lt;/a&gt; as my RSS reader. Shrook is nice, but is
+still not very polished. I was trying to download Adam Curry's &lt;a href="http://www.dailysourcecode.com"&gt;Daily Source Code&lt;/a&gt; MP3 from the Shrook window,
+but the "Download Linked File" item on the context menu had no effect.
+So I opened the page in OmniWeb, but OmniWeb wanted to download the
+whole file and then play it in an ugly embedded QuickTime viewer. What I
+really wanted to do was get iTunes to stream it, but didn't want to go
+through all the hoo-hah of opening the URL in iTunes.&lt;/p&gt;
+&lt;p&gt;I haven't used AppleScript for years, so I spent a long while looking at
+various examples on the web and experimenting with different concepts. I
+finally came up with a script that would let me copy the MP3 URL to the
+clipboard, and then select "Open Clipboard Location in iTunes" from my
+Script Menu. Here's the script, which I saved as "Open Clipboard
+Location in iTunes.scpt" in &lt;code&gt;~/Library/Scripts&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;tell&lt;/span&gt; &lt;span class="nb"&gt;application&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;iTunes&amp;quot;&lt;/span&gt;  &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;theLocation&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;the clipboard&lt;/span&gt; &lt;span class="k"&gt;as &lt;/span&gt;&lt;span class="nc"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="nb"&gt;open location&lt;/span&gt; &lt;span class="nv"&gt;theLocationend&lt;/span&gt; &lt;span class="k"&gt;tell&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Very simple, like it should be.&lt;/p&gt;
+&lt;p&gt;After that little exercise, I decided I'd like a similar script that
+would open a URL from the clipboard in a new tab in OmniWeb. OmniWeb has
+the richest AppleScript support of all the Mac browsers I've seen.
+Here's the script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;tell&lt;/span&gt; &lt;span class="nb"&gt;application&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;OmniWeb&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;activate&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;count&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="nb"&gt;make&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;browser&lt;/span&gt; &lt;span class="nb"&gt;at&lt;/span&gt; &lt;span class="nb"&gt;front of&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;
+    &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;theUrl&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;the clipboard&lt;/span&gt; &lt;span class="k"&gt;as &lt;/span&gt;&lt;span class="nc"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;tell&lt;/span&gt; &lt;span class="nb"&gt;front&lt;/span&gt; &lt;span class="nb"&gt;browser&lt;/span&gt;
+        &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;theNewTab&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="no"&gt;tab&lt;/span&gt; &lt;span class="nb"&gt;at&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nv"&gt;tabs&lt;/span&gt; &lt;span class="nv"&gt;with&lt;/span&gt; &lt;span class="na"&gt;properties&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;theUrl&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+        &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="na"&gt;active&lt;/span&gt; &lt;span class="no"&gt;tab&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nv"&gt;theNewTab&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;tell&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;tell&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="applescript"></category></entry><entry><title>Name Taken</title><link href="http://undefinedvalue.com/name-taken.html" rel="alternate"></link><published>2004-11-10T05:21:00-05:00</published><updated>2004-11-10T05:21:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-10:/name-taken.html</id><summary type="html">&lt;p&gt;It turns out that there is already an alarm clock utility named
+"Rouser": &lt;a href="http://www.pcmag.com/article2/0,1759,1654716,00.asp"&gt;http://www.pcmag.com/article2/0,1759,1654716,00.asp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So the search for a name for my alarm clock has to continue.&lt;/p&gt;</summary><content type="html">&lt;p&gt;It turns out that there is already an alarm clock utility named
+"Rouser": &lt;a href="http://www.pcmag.com/article2/0,1759,1654716,00.asp"&gt;http://www.pcmag.com/article2/0,1759,1654716,00.asp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So the search for a name for my alarm clock has to continue.&lt;/p&gt;</content><category term="rouser"></category><category term="menubarcountdown"></category></entry><entry><title>Looping a Helicopter</title><link href="http://undefinedvalue.com/looping-a-helicopter.html" rel="alternate"></link><published>2004-11-07T23:50:00-05:00</published><updated>2004-11-07T23:50:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-07:/looping-a-helicopter.html</id><summary type="html">&lt;p&gt;In the movie &lt;em&gt;Blue Thunder&lt;/em&gt;, one of the plot devices used to build up
+the mystique of Roy Scheider's character is his claim to have looped a
+helicopter, which everyone else says is impossible. For years, I
+believed looping a helicopter must be impossible (movies are all true,
+aren't they …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the movie &lt;em&gt;Blue Thunder&lt;/em&gt;, one of the plot devices used to build up
+the mystique of Roy Scheider's character is his claim to have looped a
+helicopter, which everyone else says is impossible. For years, I
+believed looping a helicopter must be impossible (movies are all true,
+aren't they?), but it's not. When I got involved in RC helicopters, I
+was amazed to see model helicopters doing loops, rolls, inverted flight,
+and all sorts of other "impossible" maneuvers.&lt;/p&gt;
+&lt;p&gt;For an example, see &lt;a href="http://www.augustoheli.com/videostuff/videoarchive/AlanSzabo/alan_vegasfunflydemo_2004.zip"&gt;this video&lt;/a&gt;.
+If you've never seen something like this before, you'll think you're
+watching a special effects demo reel. Laws of physics are seemingly
+violated, but it's all real. Full-size helicopters are capable of these
+feats too, if they are rigged the right way. I suspect that when people
+report seeing aircraft doing 90-degree turns over Area 51, they're not
+seeing alien spacecraft: they're watching experimental helicopters.
+Helicopter aerobatics make the most sophisticated airplane aerobatics
+look boring.&lt;/p&gt;
+&lt;p&gt;Of course, I've wanted to do these maneuvers with my own RC helicopter.
+The first helicopter I bought, the Ikarus Piccolo, was incapable of such
+maneuvers. My current helicopter, the Hornet II, is capable. The
+difference is that the Hornet features &lt;em&gt;collective pitch control&lt;/em&gt;. The
+thrust produced by a helicopter's rotor blades is dependent on two
+things: the speed at which the rotor is turning, known as the &lt;em&gt;head
+speed&lt;/em&gt; and controlled by the throttle, and the angle of attack of the
+blades with the air, known as the &lt;em&gt;blade pitch&lt;/em&gt;. These throttle and
+blade-pitch controls are known as the &lt;em&gt;collective&lt;/em&gt;. As the head speed
+increases, the lift produced by the blades increases, just like an
+airplane's wing increases lift as its speed increases. Increasing the
+angle of attack also increases lift. The Piccolo has fixed-pitch rotor
+blades, meaning that the angle of attack never changes, so lift is
+determined solely by the throttle. However, the Hornet can control both
+the throttle and the pitch, providing for a greater degree of control
+over lift. Collective pitch also provides quicker response, as changing
+the pitch of blades can happen almost instantaneously, but speeding up
+or slowing down the head speed takes some time.&lt;/p&gt;
+&lt;p&gt;To fly inverted (upside down), a helicopter pilot adjusts the blade
+pitch so that it is opposite of normal blade pitch. This is called
+&lt;em&gt;negative pitch&lt;/em&gt;. Most real-world helicopters provide some degree of
+negative pitch, which is needed for certain high-performance maneuvers
+and for landing in high winds. However, real-world helicopters do not
+provide enough negative pitch to hover or fly inverted. They could be
+rigged for more negative pitch, but manufacturers do not want the
+liability associated with certifying their helicopters for aerobatic
+flight. In contrast, RC helicopters with collective pitch usually are
+capable of inverted flight.&lt;/p&gt;
+&lt;p&gt;I first tried loops and rolls a few months ago, without much success. I
+was able to roll successfully a few times, but I also crashed a few
+times. My attempts to loop never worked out: I would end up with a messy
+flip and recovery, or I would end up walking across the field to pick up
+the pieces. The problem was that I didn't have enough &lt;em&gt;cyclic&lt;/em&gt; power,
+which is what controls left-right rolling and forward-backward pitch.
+The helicopter just wouldn't turn over fast enough to get back to level
+flight before hitting the ground.&lt;/p&gt;
+&lt;p&gt;I read of two potential fixes to this problem. The first fix was a
+higher head speed. Higher head speeds increase the responsiveness of the
+helicopter, but also make it more jumpy and difficult to control. The
+second fix was addition of a Bell-Hiller mixer, which increases the
+power of the cyclic, but also makes the helicopter more jumpy and
+difficult to control. To smooth out the additional jumpiness, I added
+weighted rotor blades, which stabilize the helicopter by increasing the
+gyroscopic effect of the rotor.&lt;/p&gt;
+&lt;p&gt;I made these changes two months ago, but hadn't been able to try them
+out. We had a few hurricanes blow through, which really screwed up our
+weather for a few weeks. Then work ate up all my free time. Last week, I
+finally tried it out. I was rusty, so I just did some simple hovering
+and a few figure-eights. It was definitely a lot more responsive to the
+controls, so much so that I had difficulty keeping it under control. i
+did manage to keep it in the air for thirty minutes, and take it home
+intact.&lt;/p&gt;
+&lt;p&gt;During the week, a made a few adjustments to my transmitter. I made the
+cyclic control less sensitive and increased rudder sensitivity (I had
+noticed difficulty getting the heli to turn sharply). I also did a lot
+of practicing with the Reflex XTR simulator.&lt;/p&gt;
+&lt;p&gt;Today, I gave it another try. The air was calm when I packed up and got
+in my car, but by the time I arrived at the flying site, there was a 10
+MPH wind. Undeterred, I lifted off and did some easy flying for a while.
+The wind was strong, but steady, so I figured I could try some crazy
+stuff. I flew into the wind, went into a climb, applied negative pitch
+as it went over the top of the loop, then leveled out. It wasn't pretty,
+but it was a loop. I did a few more. None of them were pretty, and the
+wind was too strong for me to know how they would look in steady wind,
+but it was a lot easier than I expected. To tempt fate, I also did a
+couple of rolls, and they were without incident.&lt;/p&gt;
+&lt;p&gt;So now I officially classify myself as an "intermediate" RC helicopter
+pilot. Whenever we have a calm day, I'll try some inverted hovering,
+which is what the Real Men do.&lt;/p&gt;
+&lt;p&gt;[UPDATE: Later in the day, I did my inverted hovering and a few more
+loops and rolls. Unfortunately, I crashed during a simple right-side-up
+hovering maneuver. I'm now waiting for $85 worth of replacement parts
+before I can try again.]&lt;/p&gt;</content><category term="helicopter"></category></entry><entry><title>Work, Stress, and Goofing Off</title><link href="http://undefinedvalue.com/work-stress-and-goofing-off.html" rel="alternate"></link><published>2004-11-07T05:09:00-05:00</published><updated>2004-11-07T05:09:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-07:/work-stress-and-goofing-off.html</id><summary type="html">&lt;p&gt;Well, we have our software "finished", and it's a full week ahead of the
+deadline. I expect smooth sailing for the next week or so, which will
+finally give me some time to get back into a normal work schedule and to
+focus on some longer-term goals instead of the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well, we have our software "finished", and it's a full week ahead of the
+deadline. I expect smooth sailing for the next week or so, which will
+finally give me some time to get back into a normal work schedule and to
+focus on some longer-term goals instead of the crisis-of-the-hour.&lt;/p&gt;
+&lt;p&gt;The last couple of weeks have been very stressful and tiring. I've been
+working long hours, and I've been working to solve many last-minute
+problems. I haven't taken it all in stride: I've lost my temper a couple
+of times, and I'm constantly thinking about just quitting without
+notice. However, I haven't fallen apart, and I have been detached enough
+to reflect a bit on how I react to stress.&lt;/p&gt;
+&lt;p&gt;I think I prefer to handle stress in a different way from most people.
+Most people, it seems to me, try to handle stressful situations through
+escapism. That is, they try to psychologically distance themselves from
+the stress by distracting themselves with unrelated activities. They
+play ping-pong, they go for a run during lunch, they watch DVDs, they do
+anything they can to temporarily forget about the source of stress. This
+is popularly known as "blowing off steam", and most people think it
+works for them.&lt;/p&gt;
+&lt;p&gt;I am different. When confronted with a stressful situation, my reaction
+is to focus intensely on whatever the problem is until it is solved.
+Instead of distracting myself with other things, I want no distractions
+whatsoever. By focusing on one particular problem, I can temporarily
+forget about every other problem in my life.&lt;/p&gt;
+&lt;p&gt;Because of my intense desire to eliminate the problem, I see "blowing
+off steam" as a waste of time. Every minute I spend doing something
+other than my work is another minute that I have to worry about the
+problem. I'm sure many people would see this as an unhealthy outlook,
+but I just can't make myself ignore a serious problem.&lt;/p&gt;
+&lt;p&gt;I don't think there is anything wrong with my way of dealing with
+stress, but it does seem to be incompatible with everybody else's way.
+When things get rough, I want to eliminate every distraction. I want to
+close my door. I want people to leave me alone. I don't want to talk to
+anyone about matters not related to work. I want to go into work very
+early and leave very late because I value the quiet of the early morning
+and late evening hours. When I need to leave my office, I walk very
+quickly and avoid eye contact with people because I have something to do
+and I don't want anyone to interrupt me. I don't want to commiserate
+with others in the same situation; I just want us all to do our jobs.&lt;/p&gt;
+&lt;p&gt;My desire for focus is so strong that it bothers me when people just
+want to say "Hi, Kris". It's even worse when people start asking "What's
+wrong?", "Why are you working so hard?", "Do you need any help?", or
+suggesting that I need to chill out, go home early, or take a few days
+off. They don't understand that locking myself in my office and working
+actually makes me feel much better than I would if I was trying to blow
+off steam the way that they do. They just think I'm wound up really
+tight and that I'm about to snap.&lt;/p&gt;
+&lt;p&gt;Unfortunately, I don't know a polite way to ask people to let me do my
+work in peace. Avoiding idle chit-chat is considered to be rude.
+Responding with "no, I'm busy" every time I'm asked whether I want to go
+to lunch, play a game, or go to an after-work party is leading my
+friends and colleagues to think I don't like them anymore. Keeping my
+office door shut seems to be the only socially acceptable way to prevent
+people from interrupting me, but that makes me physically uncomfortable
+due to the heat generated by all the equipment in my office.&lt;/p&gt;
+&lt;p&gt;A benefit of my way of handling stress is that I really don't have to
+work very long hours. I have a couple of intense two-or-three-hour work
+sessions a day (early morning and after hours), with some milder hours
+in the middle of the day while other people are in the office and need
+my attention. There is no sense in working really late, because my
+intense focus causes my mind to turn to mush by the end of the day and
+so I go home at 8 or 9 o'clock at the latest. In contrast, I see other
+people working 12- or 14-hour days, with lots of ping-pong, video games,
+and pizza breaks to keep them from losing their minds. For the same
+reason, I never work more than a few hours over the weekend, no matter
+how much work I think I have to have done by Monday morning. In
+contrast, I know a few "relaxed" people who work seven days a week.&lt;/p&gt;
+&lt;p&gt;A took a year off from work a little while ago. During that time, I was
+much happier, and I thought I had learned how to relax under any
+circumstances. I now understand that when I have work to do, I just
+can't relax. The best way for me to deal with stress is to work hard and
+then go home when I'm done.&lt;/p&gt;
+&lt;p&gt;Some managers pride themselves on the fact that they've made their
+offices "fun" places. That is, they let people goof off as much as they
+want, as long as the work eventually gets done. For people unlike me, I
+guess that's a good thing. But for me, a "fun" place to work would be
+one where everybody focuses on work all the time at the office, but then
+everybody goes home at 5 o'clock and never has to work on Saturday or
+Sunday. Some people think work can be fun, but I think having one's work
+finished is a lot more fun.&lt;/p&gt;</content><category term="self-indulgence"></category></entry><entry><title>More of the Same</title><link href="http://undefinedvalue.com/more-of-the-same.html" rel="alternate"></link><published>2004-11-03T13:41:00-05:00</published><updated>2004-11-03T13:41:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-03:/more-of-the-same.html</id><summary type="html">&lt;p&gt;In &lt;em&gt;Citizen Kane&lt;/em&gt;, there is a scene where Kane's newspaper staff is
+deciding what headline to run on election day after Kane's run for the
+governorship. Had Kane won, the headline would have been "KANE WINS!".
+However, he didn't win, so the headline they use is "FRAUD AT POLLS!".&lt;/p&gt;
+&lt;p&gt;I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In &lt;em&gt;Citizen Kane&lt;/em&gt;, there is a scene where Kane's newspaper staff is
+deciding what headline to run on election day after Kane's run for the
+governorship. Had Kane won, the headline would have been "KANE WINS!".
+However, he didn't win, so the headline they use is "FRAUD AT POLLS!".&lt;/p&gt;
+&lt;p&gt;I spent most of my time watching PBS's &lt;em&gt;NewsHour&lt;/em&gt; coverage of the
+election returns, but I jumped around to the other networks. When Ohio
+was called for Bush by NBC, apparently sewing things up for Bush, the
+commentators started admitting that they were surprised. Early exit
+polls had shown a likely Kerry win. Most of the journalists thought it
+they'd be projecting a Kerry win early in the evening. They told us none
+of this until after Bush had apparently won. I suppose it's a good thing
+that they didn't report on the what they thought the outcome would be
+while it was going on, but it makes me wonder what else journalists know
+that they won't tell us.&lt;/p&gt;
+&lt;p&gt;C-SPAN's &lt;a href="http://network.ap.org/dynamic/files/specials/election_night_2004/us_map_govsenhouse/index.html?SITE=CSPANELN&amp;amp;SECTION=POLITICS&amp;amp;reload=true"&gt;election map&lt;/a&gt; is pretty cool. I heard that on CNN.com, one can find the data on
+election returns for each precinct/county. I'm not sure how "useful" any
+of this data is, but political information junkies must be thrilled with
+what they can get on the Internet these days.&lt;/p&gt;
+&lt;p&gt;My favorite election news story of the day was &lt;a href="http://www.netcrucible.com/blog/PermaLink.aspx?guid=600db7be-39a9-4163-ac0c-0e8a8139dc3b"&gt;this one&lt;/a&gt;.&lt;/p&gt;</content><category term="voting"></category><category term="politics"></category><category term="journalism"></category></entry><entry><title>Rouser 1.0 Release</title><link href="http://undefinedvalue.com/rouser-10-release.html" rel="alternate"></link><published>2004-11-03T04:58:00-05:00</published><updated>2004-11-03T04:58:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-03:/rouser-10-release.html</id><summary type="html">&lt;p&gt;I don't know if anyone is interested, but my simple Rouser alarm clock
+application is available for download from here:
+&lt;a href="http://kristopherjohnson.net/download/Rouser-1.0.dmg"&gt;http://kristopherjohnson.net/download/Rouser-1.0.dmg&lt;/a&gt;. Source code is
+included, and it's all free under an MIT-style license.&lt;/p&gt;
+&lt;p&gt;It mostly works. The Print and Help commands don't work. OS …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I don't know if anyone is interested, but my simple Rouser alarm clock
+application is available for download from here:
+&lt;a href="http://kristopherjohnson.net/download/Rouser-1.0.dmg"&gt;http://kristopherjohnson.net/download/Rouser-1.0.dmg&lt;/a&gt;. Source code is
+included, and it's all free under an MIT-style license.&lt;/p&gt;
+&lt;p&gt;It mostly works. The Print and Help commands don't work. OS X 10.3
+(Panther) is required; I don't know what it will do (if anything) under
+older OS X versions.&lt;/p&gt;
+&lt;p&gt;For the next version, I plan to provide the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a better application icon&lt;/li&gt;
+&lt;li&gt;a help file&lt;/li&gt;
+&lt;li&gt;preferences/options settings&lt;/li&gt;
+&lt;li&gt;AppleScript support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you try it out, please let me know what you think.&lt;/p&gt;</content><category term="rouser"></category></entry><entry><title>My Voting Experience</title><link href="http://undefinedvalue.com/my-voting-experience.html" rel="alternate"></link><published>2004-11-03T00:57:00-05:00</published><updated>2004-11-03T00:57:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-03:/my-voting-experience.html</id><summary type="html">&lt;p&gt;Happy Voting Day, everyone!&lt;/p&gt;
+&lt;p&gt;I first went to my local polling place at 10:30 AM. The line was wrapped
+around the parking lot, it looked like at least a two-hour wait, and
+rain was likely. I was, in one sense, pleased to see such a huge
+turnout, but I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Happy Voting Day, everyone!&lt;/p&gt;
+&lt;p&gt;I first went to my local polling place at 10:30 AM. The line was wrapped
+around the parking lot, it looked like at least a two-hour wait, and
+rain was likely. I was, in one sense, pleased to see such a huge
+turnout, but I also wondered why our local election officials hadn't
+made better arrangements. I didn't want to wait for two hours in the
+rain, and couldn't find a place to park, so I decided to return later.&lt;/p&gt;
+&lt;p&gt;At 2:30 PM, things were better, so I got into line. The polling location
+was an elementary school cafetorium. As I walked through the line, I
+looked at the decorations and other items on the walls. The theme was
+"Rock and Roll", with paper cutouts of acoustic guitars and record
+albums (how many elementary school kids have ever seen a vinyl record?).
+The menu for the previous day's lunch included a "chix sandwich", which
+made me wonder if the meat came from the same animal that is the source
+of McNuggets.&lt;/p&gt;
+&lt;p&gt;During my 45 minutes or so in line, I thought a lot about the voting
+process. My thoughts drifted toward cynicism. I thought about the
+futility of voting in a state that will probably go 60% Bush. I thought
+about the fact that in most of the local races, the incumbent was
+running unopposed.&lt;/p&gt;
+&lt;p&gt;I did have a pleasant Democracy Moment: as I neared the end of the line,
+the woman behind me said "Excuse me, this is my first time voting in
+this country. Can you tell me where I go?" I suddenly felt very proud to
+be welcoming a newcomer to the wonderful world of freedom and democracy.
+(For all I know, she may have come from a country that is more free and
+democratic than the USA, but I took my duties as Ambassador of American
+Glory very seriously.) I wasn't sure exactly what we had to do, so I
+explained that the procedures were different in every location, and if
+we'd just go to the first table and do what the election workers said,
+they would tell us what to do next. She thanked me as we walked forward
+to the table to fill out our voter forms, and my cynicism was gone.&lt;/p&gt;
+&lt;p&gt;It returned when I was handed my "voting card", a smart card for the
+paper-free touch-screen voting machines. The machines were easy to use,
+and I have no reason to believe they are any less secure than the punch
+cards we had in previous elections, but I left with the feeling that my
+vote hadn't really been registered by the machine. Maybe it's just a
+side effect of being a computer programmer, but I have absolutely no
+trust in these things.&lt;/p&gt;
+&lt;p&gt;So now we'll have to sit back and see who wins the first vote count.
+Then who wins the second vote count. Then the first lawsuit, and so on.
+Several bloggers I read seem to think that things are leaning toward
+Kerry, but they're pro-Kerry so I can't believe them.&lt;/p&gt;
+&lt;p&gt;I am left with good feelings about the day. Even with my cynicism, I was
+impressed with the cheerfulness and courtesy of the other people in
+line. There were no loudmouth idiots expounding simplistic views, or
+people who have nothing to do but belittle the views of others. I think
+there's hope for civility in America.&lt;/p&gt;</content><category term="voting"></category></entry><entry><title>On Writing</title><link href="http://undefinedvalue.com/on-writing.html" rel="alternate"></link><published>2004-11-01T15:35:00-05:00</published><updated>2004-11-01T15:35:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-01:/on-writing.html</id><summary type="html">&lt;p&gt;I like writing code. I like writing documentation. I like writing specs.
+I like writing e-mail and letters. I like wikis. I like writing in my
+blog. I like writing.&lt;/p&gt;
+&lt;p&gt;What do I like about writing? I like the process of organizing my
+thoughts and seeing them on paper/screen …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like writing code. I like writing documentation. I like writing specs.
+I like writing e-mail and letters. I like wikis. I like writing in my
+blog. I like writing.&lt;/p&gt;
+&lt;p&gt;What do I like about writing? I like the process of organizing my
+thoughts and seeing them on paper/screen. I like continually revising
+what I write; I can never make it perfect, but I can always make it
+better. It's nice when other people read and comment on what I write,
+but what I like about writing is personal and internal.&lt;/p&gt;
+&lt;p&gt;I've toyed with the idea of becoming a professional writer. In a way, I
+already am, as a programmer is really a writer of a very specialized
+kind of writing. However, I'd like to be a "real" writer: one who gets
+articles and books published and spends most of his time writing English
+prose rather than a mishmash of math and symbolic logic.&lt;/p&gt;
+&lt;p&gt;Unfortunately, I don't know how I can make a living at writing. I don't
+know what I could write that I could get paid for. There have been times
+in my career when I could have written really good technical books about
+implementing ActiveX controls and containers with MFC and ATL, or about
+developing CORBA applications. I never had the time to write those
+books, and now those subjects are no longer interesting to anyone.&lt;/p&gt;
+&lt;p&gt;When I was developing
+&lt;a href="http://remoting-corba.sourceforge.net"&gt;Remoting.Corba&lt;/a&gt;, one of my
+dreams was that it would become popular enough to warrant publication of
+a book. The content of the &lt;a href="http://kristopherjohnson.net/cgi-bin/rc/wiki.pl?Remoting.Corba_Wiki"&gt;Remoting.Corba wiki&lt;/a&gt;,
+bulked up with a bunch of screenshots and appendices, would have made a
+book that is at least as good as most of the books in the Computers
+section of the bookstore. The project died, but that wiki still stands
+as the most book-like thing I've written. I submitted a R.C article at
+the request of a Microsoft employee for publication on the MSDN web
+site, but interest in R.C waned before it was published.&lt;/p&gt;
+&lt;p&gt;I don't have the depth of knowledge to write good technical books about
+current subjects, because I am now a primarily a manager and I don't get
+to spend enough time delving into new stuff. Maybe there could be a .NET
+book or a Cocoa book in my future, but right now I really don't have
+anything to teach anyone about programming.&lt;/p&gt;
+&lt;p&gt;I've been told that I have a gift for explaining things to non-techies
+without dumbing it down too much, so I've considered writing books or
+articles targeted at people who have to deal with technology but don't
+understand it. A subject area that I've considered is the interaction
+between software developers, customers, and managers. My working title
+is &lt;em&gt;Talking to Techies&lt;/em&gt;. The work would be an attempt to explain to
+non-techies how they can best get what they want when they need
+assistance from software developers, network administrators, and
+technical support personnel. Too often, I see communication between
+these groups break down, as the non-techies don't accurately or
+completely specify what they need, and the techies provide a useless
+solution or no solution because they don't understand the needs or think
+they are being asked to perform impossible tasks. A companion book could
+be targeted at the techie audience who doesn't know how to explain
+issues to non-techies.&lt;/p&gt;
+&lt;p&gt;I signed up for the &lt;a href="http://www.nanowrimo.org"&gt;National Novel Writing Month&lt;/a&gt; (NaNoWriMo) event. This is a "contest"
+where participants must write a 50,000-word novel during the month of
+November. Entries are not judged; anyone who writes a novel with 50,000
+words is a winner. I wanted to do this, but now I don't think I will: I
+don't have time, and I don't have a story in mind. Instead of trying to
+write a novel, I'm currently reading Robert McKee's &lt;em&gt;Story&lt;/em&gt; in the hope
+that maybe I can develop an interesting story for next year's NaNoWriMo.&lt;/p&gt;
+&lt;p&gt;While I'm ruminating about all the books I'd like to write, I'll just
+keep scribbling in this blog, sending too many e-mails to my co-workers,
+and contributing to wikis. I hope that if I just keep writing, I'll
+eventually find a book in there somewhere.&lt;/p&gt;</content><category term="writing"></category></entry><entry><title>Microsoft Wireless IntelliMouse Explorer</title><link href="http://undefinedvalue.com/microsoft-wireless-intellimouse-explorer.html" rel="alternate"></link><published>2004-10-31T16:21:00-05:00</published><updated>2004-10-31T16:21:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-31:/microsoft-wireless-intellimouse-explorer.html</id><summary type="html">&lt;p&gt;After using with the single-button mouse for a almost a month, I've
+switched to the Microsoft Wireless IntelliMouse Explorer. I've concluded
+that the single-button mouse is obsolete, and it is just arrogance and
+stubbornness that cause Apple to stick with it.&lt;/p&gt;
+&lt;p&gt;I've used the Microsoft mice on Windows machines for …&lt;/p&gt;</summary><content type="html">&lt;p&gt;After using with the single-button mouse for a almost a month, I've
+switched to the Microsoft Wireless IntelliMouse Explorer. I've concluded
+that the single-button mouse is obsolete, and it is just arrogance and
+stubbornness that cause Apple to stick with it.&lt;/p&gt;
+&lt;p&gt;I've used the Microsoft mice on Windows machines for a while. Logitech
+and Kensington have some acceptable models, but the various Microsoft
+mouse products always feel best in my hand.&lt;/p&gt;
+&lt;p&gt;I initially looked at the Microsoft Bluetooth mouse, but it was \$80 and
+it wasn't clear whether it would work with my iMac's built-in Bluetooth
+transceiver. I found the Wireless IntelliMouse Explorer marked down to
+$30, so I snapped it up.&lt;/p&gt;
+&lt;p&gt;I have immediately noticed a difference in how easy the Mac is to use.
+This is not simply a matter of familiarity with a two-button mouse. With
+the new Macs' large screens and increasingly complex user interfaces,
+selecting menu items from the pull-down menu at the top of the screen or
+Control-clicking something is much more cumbersome than simply
+right-clicking something. Similarly, it is much easier to scroll with a
+wheel than it is to move the mouse all the way over to the scroll
+arrows.&lt;/p&gt;
+&lt;p&gt;The IntelliMouse control panel allows a wider range of mouse tracking
+speeds. I find Apple's mouse to be too slow, even at the highest
+setting. Neither Microsoft nor Apple provides good acceleration
+behavior, allowing fine control when the mouse is moving slowly but also
+allowing quick movements across the screen. This was once a feature that
+made the Mac more usable than Windows, but Apple forgot to include it in
+Mac OS X.&lt;/p&gt;
+&lt;p&gt;Apple once had the best mouse for any platform. This is no longer true.
+My Christmas wish is that Apple will develop a two-button scroll-wheel
+Bluetooth mouse. Until that happens, Microsoft will keep yet another
+foothold on my Mac.&lt;/p&gt;</content><category term="http://schemas.google.com/blogger/2008/kind#post"></category></entry><entry><title>Virtual PC 7 for Mac</title><link href="http://undefinedvalue.com/virtual-pc-7-for-mac.html" rel="alternate"></link><published>2004-10-30T19:25:00-04:00</published><updated>2004-10-30T19:25:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-30:/virtual-pc-7-for-mac.html</id><summary type="html">&lt;p&gt;I received Office 2004 Professional for Mac a couple of days ago. I
 haven't felt like searching around for my Office 98 CDs (which I assume
 will be needed for installation of this upgrade version), so I haven't
 tried Office on the Mac yet. I was entertained by the packaging …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I received Office 2004 Professional for Mac a couple of days ago. I
