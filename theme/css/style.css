@@ -171,6 +171,10 @@ ul.tags {
     margin-top: 3rem;
 }
 
+.content-ad {
+    margin-bottom: 1rem;
+}
+
 /* These div.customsearch rules undo the styling that skeleton.css
  * applies to elements that are used in the Google Custom Search
  * widgets.
