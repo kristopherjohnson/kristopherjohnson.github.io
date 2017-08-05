@@ -163,6 +163,10 @@ ul.tags {
     background-image: url('../images/feed-icon-14x14.png');
 }
 
+.header-ad {
+    margin-bottom: 1rem;
+}
+
 .footer-ad {
     margin-top: 3rem;
 }
