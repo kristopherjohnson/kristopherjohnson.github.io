@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/</loc>
-<lastmod>2017-08-18T19:35:00-00:00</lastmod>
+<lastmod>2017-09-22T19:19:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/archives.html</loc>
-<lastmod>2017-08-18T19:35:00-00:00</lastmod>
+<lastmod>2017-09-22T19:19:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/tags.html</loc>
-<lastmod>2017-08-18T19:35:00-00:00</lastmod>
+<lastmod>2017-09-22T19:19:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/categories.html</loc>
-<lastmod>2017-08-18T19:35:00-00:00</lastmod>
+<lastmod>2017-09-22T19:19:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://undefinedvalue.com/pages/kjresume.html</loc>
 <lastmod>2017-07-22T14:26:00-04:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/everything-on-the-internet-is-not-directed-at-you.html</loc>
+<lastmod>2017-09-22T18:59:49-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2329,7 +2336,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/category/blog.html</loc>
-<lastmod>2017-08-18T18:30:00-04:56</lastmod>
+<lastmod>2017-09-22T18:59:49-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/rant.html</loc>
+<lastmod>2017-09-22T18:59:49-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2645,13 +2659,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://undefinedvalue.com/tag/colortheme.html</loc>
 <lastmod>2015-02-01T15:38:05-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://undefinedvalue.com/tag/rant.html</loc>
-<lastmod>2014-12-29T03:17:16-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -4261,7 +4268,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/author/kristopher-johnson.html</loc>
-<lastmod>2017-08-18T18:30:00-04:56</lastmod>
+<lastmod>2017-09-22T18:59:49-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
