@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/</loc>
-<lastmod>2018-02-18T17:43:07-00:00</lastmod>
+<lastmod>2018-03-25T16:14:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/archives.html</loc>
-<lastmod>2018-02-18T17:43:07-00:00</lastmod>
+<lastmod>2018-03-25T16:14:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/tags.html</loc>
-<lastmod>2018-02-18T17:43:07-00:00</lastmod>
+<lastmod>2018-03-25T16:14:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/categories.html</loc>
-<lastmod>2018-02-18T17:43:07-00:00</lastmod>
+<lastmod>2018-03-25T16:14:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://undefinedvalue.com/pages/kjresume.html</loc>
 <lastmod>2017-07-22T14:26:00-04:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html</loc>
+<lastmod>2018-03-25T12:58:42-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2336,7 +2343,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/category/blog.html</loc>
-<lastmod>2017-09-22T18:59:49-04:56</lastmod>
+<lastmod>2018-03-25T12:58:42-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/datascience.html</loc>
+<lastmod>2018-03-25T12:58:42-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/machinelearning.html</loc>
+<lastmod>2018-03-25T12:58:42-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/coursera.html</loc>
+<lastmod>2018-03-25T12:58:42-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/mooc.html</loc>
+<lastmod>2018-03-25T12:58:42-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -4268,7 +4303,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/author/kristopher-johnson.html</loc>
-<lastmod>2017-09-22T18:59:49-04:56</lastmod>
+<lastmod>2018-03-25T12:58:42-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
