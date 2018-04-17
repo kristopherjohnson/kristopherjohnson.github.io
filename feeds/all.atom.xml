@@ -4,7 +4,7 @@
 &lt;p&gt;This specialization is a series of five courses, each of which focuses on some aspect of using Python for data-science applications.  Each course is focused on use of one or more free Python libraries. The courses and the libraries covered by each are&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Introduction to Data Science in Python: &lt;a href="http://www.numpy.org"&gt;NumPy&lt;/a&gt;, &lt;a href="https://www.scipy.org"&gt;SciPy&lt;/a&gt;, and &lt;a href="https://pandas.pydata.org"&gt;Pandas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Applied Plotting, Charting, &amp;amp; Data Representation in Python: &lt;a href="https://matplotlib.org"&gt;Matplotlib&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Applied Plotting, Charting, &amp;amp; Data Representation in Python: &lt;a href="https://matplotlib.org"&gt;Matplotlib&lt;/a&gt; and &lt;a href="https://seaborn.pydata.org"&gt;Seaborn&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Applied Machine Learning in Python: &lt;a href="http://scikit-learn.org/"&gt;scikit-learn&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Applied Text Mining in Python: &lt;a href="https://www.nltk.org"&gt;NLTK&lt;/a&gt; and &lt;a href="https://radimrehurek.com/gensim/"&gt;Gensim&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Applied Social Network Analysis in Python: &lt;a href="https://networkx.github.io"&gt;NetworkX&lt;/a&gt;&lt;/li&gt;
