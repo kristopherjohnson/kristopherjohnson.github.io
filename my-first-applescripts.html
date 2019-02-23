@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/2004.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -113,7 +113,7 @@ the richest AppleScript support of all the Mac browsers I've seen.
 Here's the script:</p>
 <div class="highlight"><pre><span></span><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;OmniWeb&quot;</span>
     <span class="nb">activate</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">count</span> <span class="nb">browsers</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">count</span> <span class="nb">browsers</span><span class="p">)</span> <span class="o">&amp;</span><span class="nv">lt</span><span class="err">;</span> <span class="mi">1</span> <span class="k">then</span>
         <span class="nb">make</span> <span class="nb">new</span> <span class="nb">browser</span> <span class="nb">at</span> <span class="nb">front of</span> <span class="nb">browsers</span>
     <span class="k">end</span> <span class="k">if</span>
     <span class="k">set</span> <span class="nv">theUrl</span> <span class="k">to</span> <span class="p">(</span><span class="nb">the clipboard</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>

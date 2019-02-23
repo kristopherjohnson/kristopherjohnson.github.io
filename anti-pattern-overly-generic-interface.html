@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -85,18 +85,18 @@ The Overly Generic Interface is an interface that provides a very small set of f
 <span class="kr">class</span> <span class="nb">Object</span> <span class="p">{</span>
 <span class="kr">public</span><span class="o">:</span>
     <span class="c1">// Return the value of a named property</span>
-    <span class="nx">Value</span> <span class="nx">getProperty</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">propertyName</span><span class="p">);</span>
+    <span class="nx">Value</span> <span class="nx">getProperty</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">propertyName</span><span class="p">);</span>
 
     <span class="c1">// Set the value of a named property</span>
-    <span class="k">void</span> <span class="nx">setProperty</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">propertyName</span><span class="p">,</span>
-                     <span class="kr">const</span> <span class="nx">Value</span><span class="o">&amp;</span> <span class="nx">newValue</span><span class="p">);</span>
+    <span class="k">void</span> <span class="nx">setProperty</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">propertyName</span><span class="p">,</span>
+                     <span class="kr">const</span> <span class="nx">Value</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">newValue</span><span class="p">);</span>
 
     <span class="c1">// Set the values of multiple named properties with one call</span>
-    <span class="k">void</span> <span class="nx">setProperties</span><span class="p">(</span><span class="kr">const</span> <span class="nx">map</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&gt;</span> <span class="nx">properties</span><span class="p">);</span>
+    <span class="k">void</span> <span class="nx">setProperties</span><span class="p">(</span><span class="kr">const</span> <span class="nx">map</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="nx">properties</span><span class="p">);</span>
 
     <span class="c1">// Invoke a named operation with a parameter list</span>
-    <span class="k">void</span> <span class="nx">performOperation</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">operationName</span><span class="p">,</span>
-                          <span class="kr">const</span> <span class="nx">list</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;&amp;</span> <span class="nx">parameters</span><span class="p">);</span>
+    <span class="k">void</span> <span class="nx">performOperation</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">operationName</span><span class="p">,</span>
+                          <span class="kr">const</span> <span class="nx">list</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">Value</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">parameters</span><span class="p">);</span>
 <span class="p">};</span>
 </pre></div>
 
@@ -114,7 +114,7 @@ The Overly Generic Interface is an interface that provides a very small set of f
 
 <span class="c1">// Initialize wife, using the set-all-properties-in-one-operation interface</span>
 <span class="nx">Person</span> <span class="nx">wife</span><span class="p">;</span>
-<span class="nx">map</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&gt;</span> <span class="nx">wifeProperties</span>
+<span class="nx">map</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="nx">wifeProperties</span>
 <span class="nx">wifeProperties</span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ValueFromString</span><span class="p">(</span><span class="s2">&quot;Pebble&quot;</span><span class="p">);</span>
 <span class="nx">wifeProperties</span><span class="p">[</span><span class="s2">&quot;lastName&quot;</span><span class="p">]</span>  <span class="o">=</span> <span class="nx">ValueFromString</span><span class="p">(</span><span class="s2">&quot;Johnson&quot;</span><span class="p">);</span>
 <span class="nx">wifeProperties</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">]</span>    <span class="o">=</span> <span class="nx">ValueFromInt</span><span class="p">(</span><span class="nx">Female</span><span class="p">);</span>
@@ -122,8 +122,8 @@ The Overly Generic Interface is an interface that provides a very small set of f
 
 <span class="c1">// Invoke the recordMarriage operation</span>
 <span class="nx">list</span> <span class="nx">params</span><span class="p">;</span>
-<span class="nx">params</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">ValueFromPointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">husband</span><span class="p">));</span>
-<span class="nx">params</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">ValueFromPointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">wife</span><span class="p">));</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">ValueFromPointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">husband</span><span class="p">));</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">ValueFromPointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">wife</span><span class="p">));</span>
 <span class="nx">recorder</span><span class="p">.</span><span class="nx">performOperation</span><span class="p">(</span><span class="s2">&quot;recordMarriage&quot;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
 </pre></div>
 
@@ -165,10 +165,10 @@ recorder.recordMarriage(husband, wife);
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span>: <span class="kt">public</span> <span class="nb">Object</span> <span class="p">{</span>
 <span class="kr">public</span><span class="o">:</span>
     <span class="kt">string</span> <span class="nx">getFirstName</span><span class="p">();</span>
-    <span class="k">void</span> <span class="nx">setFirstName</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">newValue</span><span class="p">);</span>
+    <span class="k">void</span> <span class="nx">setFirstName</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">newValue</span><span class="p">);</span>
 
     <span class="kt">string</span> <span class="nx">getLastName</span><span class="p">();</span>
-    <span class="k">void</span> <span class="nx">setLastName</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span> <span class="nx">newValue</span><span class="p">);</span>
+    <span class="k">void</span> <span class="nx">setLastName</span><span class="p">(</span><span class="kr">const</span> <span class="kt">string</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">newValue</span><span class="p">);</span>
 
     <span class="c1">// and so on, for all properties</span>
 <span class="p">};</span>

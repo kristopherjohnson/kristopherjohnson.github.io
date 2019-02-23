@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -80,32 +80,32 @@
   <div class="entry-content">
     <p>I ran across a question on Quora: <a href="http://www.quora.com/Programming-Languages/Whats-the-easiest-programming-bug-you-spent-way-too-much-time-trying-to-solve">What's the easiest programming bug you spent way too much time trying to solve?</a>.</p>
 <p>Here is my answer to that question. Some time during my first few years of programming, I wrote code similar to this little snippet and expected it to print "FOO", but instead it prints "None of the above". It is written in C, but should be comprehensible to anyone who knows a language with similar syntax (C++, Java, JavaScript, C#, etc.). It took me about a half day of staring and single-stepping in a debugger to figure out what was wrong. When I looked at the disassembly listing, I was convinced I'd found a bug in the C compiler. Maybe you can figure it out faster than I could.</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span>#include &amp;lt;stdio.h&amp;gt;
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">FOO</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">BAR</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+int main(int argc, char *argv[])
+{
+    const int FOO = 1;
+    const int BAR = 2;
 
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">FOO</span><span class="p">;</span>
+    int n = FOO;
 
-    <span class="k">switch</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nl">FOO</span><span class="p">:</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">);</span>
-            <span class="k">break</span><span class="p">;</span>
+    switch (n)
+    {
+        FOO:
+            printf(&quot;FOO&quot;);
+            break;
 
-        <span class="nl">BAR</span><span class="p">:</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;BAR&quot;</span><span class="p">);</span>
-            <span class="k">break</span><span class="p">;</span>
+        BAR:
+            printf(&quot;BAR&quot;);
+            break;
 
-        <span class="k">default</span><span class="o">:</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;None of the above&quot;</span><span class="p">);</span>
-            <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
+        default:
+            printf(&quot;None of the above&quot;);
+            break;
+    }
 
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+    return 0;
+}
 </pre></div>
   </div><!-- /.entry-content -->
 </section>

@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -100,7 +100,7 @@ First, I wrote a <a href="http://nodejs.org">Node.js</a> script to do the reform
 <p><img src="https://s3.amazonaws.com/undefinedvalue/ReformatJSONTextService.png" height="413" width="600" alt="Automator screenshot"/></p>
 <p>Now, whenever I want to reformat some JSON in a text editor, I just select it, right-click, and choose <strong>Services&nbsp;&gt;&nbsp;Reformat&nbsp;JSON&nbsp;Text</strong>.</p>
 <p>And when I want to reformat things from the command line, this works:</p>
-<div class="highlight"><pre><span></span>formatjson &lt;ugly.json &gt;pretty.json
+<div class="highlight"><pre><span></span>formatjson &amp;lt;ugly.json &amp;gt;pretty.json
 </pre></div>
 
 

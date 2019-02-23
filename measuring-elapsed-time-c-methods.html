@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -84,13 +84,13 @@
 Here is the class:</p>
 <div class="highlight"><pre><span></span>public static class Timed
 {
-    /// <span class="nt">&lt;summary&gt;</span>
+    /// &amp;lt;summary&amp;gt;
     /// Execute action then invoke reporting action with elapsed time
-    /// <span class="nt">&lt;/summary&gt;</span>
-    /// <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;timedAction&quot;</span><span class="nt">&gt;</span>action to be executed and elapsed time measured<span class="nt">&lt;/param&gt;</span>
-    /// <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;reportAction&quot;</span><span class="nt">&gt;</span>action to be executed with the elapsed number of milliseconds passed as a parameter<span class="nt">&lt;/param&gt;</span>
-    /// <span class="nt">&lt;returns&gt;</span>number of milliseconds elapsed during timedAction<span class="nt">&lt;/returns&gt;</span>
-    public static long Execute(Action timedAction, Action<span class="nt">&lt;long&gt;</span> reportAction)
+    /// &amp;lt;/summary&amp;gt;
+    /// &amp;lt;param name=&quot;timedAction&quot;&amp;gt;action to be executed and elapsed time measured&amp;lt;/param&amp;gt;
+    /// &amp;lt;param name=&quot;reportAction&quot;&amp;gt;action to be executed with the elapsed number of milliseconds passed as a parameter&amp;lt;/param&amp;gt;
+    /// &amp;lt;returns&amp;gt;number of milliseconds elapsed during timedAction&amp;lt;/returns&amp;gt;
+    public static long Execute(Action timedAction, Action&amp;lt;long&amp;gt; reportAction)
     {
         var stopwatch = new System.Diagnostics.Stopwatch();
 
@@ -108,11 +108,11 @@ Here is the class:</p>
         return elapsedMilliseconds;
     }
 
-    /// <span class="nt">&lt;summary&gt;</span>
+    /// &amp;lt;summary&amp;gt;
     /// Invoke specified action and return number of milliseconds elapsed
-    /// <span class="nt">&lt;/summary&gt;</span>
-    /// <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;timedAction&quot;</span><span class="nt">&gt;</span>timed action to be executed<span class="nt">&lt;/param&gt;</span>
-    /// <span class="nt">&lt;returns&gt;</span>number of milliseconds elapsed<span class="nt">&lt;/returns&gt;</span>
+    /// &amp;lt;/summary&amp;gt;
+    /// &amp;lt;param name=&quot;timedAction&quot;&amp;gt;timed action to be executed&amp;lt;/param&amp;gt;
+    /// &amp;lt;returns&amp;gt;number of milliseconds elapsed&amp;lt;/returns&amp;gt;
     public static long Execute(Action timedAction)
     {
         return Timed.Execute(timedAction, null);
@@ -133,12 +133,12 @@ Here is the class:</p>
 <p>one could do this:</p>
 <div class="highlight"><pre><span></span>public void BlurpAllFrables()
 {
-    Timed.Execute(() =&gt;
+    Timed.Execute(() =&amp;gt;
     {
         foreach (var frable in GetFrables())
             frable.Blurp();
     },
-    (long millis) =&gt;
+    (long millis) =&amp;gt;
     {
         Trace.WriteLine(String.Format(&quot;Blurping frables took {0} ms&quot;, millis.ToString()));
     });
@@ -149,7 +149,7 @@ Here is the class:</p>
 <p>or one could do this:</p>
 <div class="highlight"><pre><span></span>public void BlurpAllFrables()
 {
-    var millis = Timed.Execute(() =&gt;
+    var millis = Timed.Execute(() =&amp;gt;
     {
         foreach (var frable in GetFrables())
             frable.Blurp();

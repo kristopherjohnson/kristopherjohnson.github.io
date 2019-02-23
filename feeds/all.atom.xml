@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/all.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2018-03-25T12:58:42-04:00</updated><entry><title>Review: Coursera's "Applied Data Science with Python" Specialization</title><link href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html" rel="alternate"></link><published>2018-03-25T12:58:42-04:00</published><updated>2018-03-25T12:58:42-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2018-03-25:/coursera-applied-data-science-with-python-specialization-review.html</id><summary type="html">&lt;p&gt;I recently completed Coursera's &lt;a href="https://www.coursera.org/specializations/data-science-python"&gt;Applied Data Science with Python&lt;/a&gt; specialization, and received the &lt;a href="https://www.coursera.org/account/accomplishments/specialization/certificate/HFVQHV6Q3B4B"&gt;accompanying certificate&lt;/a&gt;. This is a review of my experience with the online courses.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/feeds/all.atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2018-03-25T12:58:42-04:00</updated><subtitle>Kris Johnson's Blog</subtitle><entry><title>Review: Coursera's "Applied Data Science with Python" Specialization</title><link href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html" rel="alternate"></link><published>2018-03-25T12:58:42-04:00</published><updated>2018-03-25T12:58:42-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2018-03-25:/coursera-applied-data-science-with-python-specialization-review.html</id><summary type="html">&lt;p&gt;I recently completed Coursera's &lt;a href="https://www.coursera.org/specializations/data-science-python"&gt;Applied Data Science with Python&lt;/a&gt; specialization, and received the &lt;a href="https://www.coursera.org/account/accomplishments/specialization/certificate/HFVQHV6Q3B4B"&gt;accompanying certificate&lt;/a&gt;. This is a review of my experience with the online courses.&lt;/p&gt;
 &lt;p&gt;This specialization is a series of five courses, each of which focuses on some aspect of using Python for data-science applications.  Each course is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently completed Coursera's &lt;a href="https://www.coursera.org/specializations/data-science-python"&gt;Applied Data Science with Python&lt;/a&gt; specialization, and received the &lt;a href="https://www.coursera.org/account/accomplishments/specialization/certificate/HFVQHV6Q3B4B"&gt;accompanying certificate&lt;/a&gt;. This is a review of my experience with the online courses.&lt;/p&gt;
 &lt;p&gt;This specialization is a series of five courses, each of which focuses on some aspect of using Python for data-science applications.  Each course is focused on use of one or more free Python libraries. The courses and the libraries covered by each are&lt;/p&gt;
 &lt;ol&gt;
@@ -51,8 +51,8 @@
 &lt;p&gt;We live in an unfair and unjust society.  It is broken, and we should all want to fix it.  We all have work to do.  Pointing fingers at "racists" accomplishes nothing.&lt;/p&gt;
 &lt;p&gt;Make fun of the tiki-torch terrorists in Virginia if you want, but if you really care about justice, work to tear down white supremacy where you can.  Stop treating racism as somebody else's problem.  Stop claiming white males face oppression.  Stop laughing at racist jokes.  Stop spreading lies about affirmative action.  Stop excusing police brutality against minorities.  Stop romanticizing the Lost Cause of the Confederacy.  Confront your friends and relatives when they say awful things in private.  Ask employers why they don't hire and promote more black people.  Ask politicians what they are doing, and demand that they do more.  March alongside people who should be treated as equals.  Speak up.&lt;/p&gt;
 &lt;p&gt;As Martin Luther King, Jr. said in "Letter from Birmingham Jail", the real roadblock to progress is not the avowed racist; it is the "white moderate" who claims to want justice but wants change to be easy and gradual.  We owe it to our fellow citizens to make things better now, without regard for how hard it might be for us.&lt;/p&gt;</content><category term="whitesupremacy"></category></entry><entry><title>Adding a Jinja2 Filter with a Pelican Plugin</title><link href="http://undefinedvalue.com/adding-a-jinja2-filter-with-a-pelican-plugin.html" rel="alternate"></link><published>2017-07-22T10:58:00-04:00</published><updated>2017-07-22T10:58:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2017-07-22:/adding-a-jinja2-filter-with-a-pelican-plugin.html</id><summary type="html">&lt;p&gt;With my &lt;a href="http://undefinedvalue.com/rebuilding-my-blog-again.html"&gt;new blog setup&lt;/a&gt;, I decided to give &lt;a href="https://en.wikipedia.org/wiki/AdSense"&gt;Google AdSense&lt;/a&gt; a try.  I don't have many regular readers, but I do have a few pages that attract search-engine traffic.  So, to monetize those older pages without shoving ads in my regular readers' faces, I decided to show ads on …&lt;/p&gt;</summary><content type="html">&lt;p&gt;With my &lt;a href="http://undefinedvalue.com/rebuilding-my-blog-again.html"&gt;new blog setup&lt;/a&gt;, I decided to give &lt;a href="https://en.wikipedia.org/wiki/AdSense"&gt;Google AdSense&lt;/a&gt; a try.  I don't have many regular readers, but I do have a few pages that attract search-engine traffic.  So, to monetize those older pages without shoving ads in my regular readers' faces, I decided to show ads on posts that were over a month old.  That should be easy enough to add to the &lt;a href="https://github.com/kristopherjohnson/undefinedvalue-pelican/blob/master/themes/undefinedvalue/templates/article.html"&gt;article.html&lt;/a&gt; template:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;article.date&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nf"&gt;age_in_days&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;    &amp;lt;!-- ... Include AdSense code ... --&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;article.date&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nf"&gt;age_in_days&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nv"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &amp;amp;lt;!-- ... Include AdSense code ... --&amp;amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -205,7 +205,7 @@ sudo service apache2 restart
 &lt;/ul&gt;
 &lt;h2&gt;The Drupal 6 Database&lt;/h2&gt;
 &lt;p&gt;My first step was to export the existing articles and metadata from the Drupal database on my blog server, and recreate it on my development machine.  Looking at my Drupal configuration, I was able to find the database name and login information (which I forgot years ago).  I used &lt;code&gt;mysqldump&lt;/code&gt; to export the data.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mysqldump --user&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$dbuser&lt;/span&gt; --password&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$dbpass&lt;/span&gt; --tz-utc --databases &lt;span class="s2"&gt;&amp;quot;drupal6_undefinedvalue&amp;quot;&lt;/span&gt; &amp;gt; &lt;span class="s2"&gt;&amp;quot;drupal6_undefinedvalue.sql&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mysqldump --user&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$dbuser&lt;/span&gt; --password&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$dbpass&lt;/span&gt; --tz-utc --databases &lt;span class="s2"&gt;&amp;quot;drupal6_undefinedvalue&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;drupal6_undefinedvalue.sql&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -447,35 +447,35 @@ I skipped my last &lt;a href="http://undefinedvalue.com/category/tags/birthday"&
 &lt;h2&gt;Starting the Server Automatically When You Log In&lt;/h2&gt;
 &lt;p&gt;It would get annoying to have to type "&lt;code&gt;tiddlywiki /Users/kdj/Dropbox/tw --server 19671&lt;/code&gt;" every time you wanted to use your personal wiki. Let's create a &lt;a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man5/launchd.plist.5.html#//apple_ref/doc/man/5/launchd.plist"&gt;launchd configuration file&lt;/a&gt; in the &lt;code&gt;~/Library/LaunchAgents&lt;/code&gt; directory that will cause it to be automatically started every time we log in.&lt;/p&gt;
 &lt;p&gt;Go to your  &lt;code&gt;~/Library/LaunchAgents&lt;/code&gt; directory and create a file named &lt;code&gt;com.tiddlywiki.plist&lt;/code&gt; with the following contents, substituting the appropriate path for your data directory and the paths to the &lt;code&gt;node&lt;/code&gt; and &lt;code&gt;tiddlywiki&lt;/code&gt; executables. (Run &lt;code&gt;which node&lt;/code&gt; and &lt;code&gt;which tiddlywiki&lt;/code&gt; if you don't know what those paths are.)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
-&lt;span class="cp"&gt;&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;plist&lt;/span&gt; &lt;span class="na"&gt;version=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;Label&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;com.tiddlywiki&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;ProgramArguments&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;/usr/local/bin/node&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;/usr/local/bin/tiddlywiki&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;/Users/kdj/Dropbox/tw&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;--server&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;19671&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;EnvironmentVariables&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;PATH&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;RunAtLoad&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;true/&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;WorkingDirectory&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;/Users/kdj/Dropbox/tw&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;StandardErrorPath&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;error.log&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;key&amp;gt;&lt;/span&gt;StandardOutputPath&lt;span class="nt"&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;output.log&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/plist&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;?&lt;/span&gt;&lt;span class="nt"&gt;xml&lt;/span&gt; &lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;?&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;!&lt;/span&gt;&lt;span class="nt"&gt;DOCTYPE&lt;/span&gt; &lt;span class="nt"&gt;plist&lt;/span&gt; &lt;span class="nt"&gt;PUBLIC&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;plist&lt;/span&gt; &lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;dict&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Label&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;tiddlywiki&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;ProgramArguments&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;array&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;node&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;tiddlywiki&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Users&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;kdj&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;Dropbox&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;tw&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;--server&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;19671&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;array&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;EnvironmentVariables&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;dict&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="nt"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="nt"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="nt"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="nt"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;dict&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;RunAtLoad&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;true&lt;/span&gt;&lt;span class="o"&gt;/&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;WorkingDirectory&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Users&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;kdj&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;Dropbox&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;tw&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;StandardErrorPath&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;error&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;log&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;StandardOutputPath&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;output&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;log&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;dict&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;plist&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -487,7 +487,7 @@ I skipped my last &lt;a href="http://undefinedvalue.com/category/tags/birthday"&
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export TWPLIST=~/Library/LaunchAgents/com.tiddlywiki.plist
 alias twstart=&amp;quot;launchctl load $TWPLIST&amp;quot;
 alias twstop=&amp;quot;launchctl unload $TWPLIST&amp;quot;
-alias twreload=&amp;quot;twstop &amp;amp;&amp;amp; sleep 1 &amp;amp;&amp;amp; twstart &amp;amp;&amp;amp; echo &amp;#39;TiddlyWiki restarted&amp;#39;&amp;quot;
+alias twreload=&amp;quot;twstop &amp;amp;amp;&amp;amp;amp; sleep 1 &amp;amp;amp;&amp;amp;amp; twstart &amp;amp;amp;&amp;amp;amp; echo &amp;#39;TiddlyWiki restarted&amp;#39;&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -653,7 +653,7 @@ Repository: &lt;a href="https://github.com/kristopherjohnson/Markingbird"&gt;htt
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let numbers = [67, 83, 4, 99, 22, 18, 21, 24, 23, 2, 86]
 
 let result = &amp;quot;, &amp;quot;.join(numbers.filter { $0 % 2 == 0 }
-                              .sorted { $1 &amp;lt; $0 }
+                              .sorted { $1 &amp;amp;lt; $0 }
                               .map { $0.description })
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -665,7 +665,7 @@ let result = &amp;quot;, &amp;quot;.join(numbers.filter { $0 % 2 == 0 }
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;let seq = SequenceOf(numbers)&lt;/span&gt;
 
 &lt;span class="x"&gt;let seqResult =&lt;/span&gt;
-&lt;span class="x"&gt;    &amp;quot;, &amp;quot;.join(map(sorted(filter(seq)&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0.d&lt;/span&gt;&lt;span class="na"&gt;escription&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
+&lt;span class="x"&gt;    &amp;quot;, &amp;quot;.join(map(sorted(filter(seq)&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="na"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0.d&lt;/span&gt;&lt;span class="na"&gt;escription&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -675,16 +675,16 @@ let result = &amp;quot;, &amp;quot;.join(numbers.filter { $0 % 2 == 0 }
         map(
             sorted(
                 filter(seq) { $0 % 2 == 0 }
-            ) { $1 &amp;lt; $0 }
+            ) { $1 &amp;amp;lt; $0 }
         ) { $0.description })
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;That's not very readable, is it? We can see at a glance that &lt;code&gt;filter&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;sorted&lt;/code&gt;, and &lt;code&gt;join&lt;/code&gt; are being used, but we have to read it inside-out and backwards to follow the order of evaluation and figure out which closure goes with which function call and how the data is flowing through those functions. We probably wouldn't even try to write it as a single expression, and would instead write it as a sequence of intermediate results to make it understandable:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let filteredNumbers = filter(seq) { $0 % 2 == 0 }
-let sortedNumbers = sorted(filteredNumbers) { $1 &amp;lt; $0 }
-let numbersAsStrings = map(sortedNumbers) { (n: Int) -&amp;gt; String in n.description }
-let commaSeparatedResult = &amp;quot;, &amp;quot;.join(numbersAsStrings)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;let&lt;/span&gt; &lt;span class="nt"&gt;filteredNumbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;filter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;seq&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$0&lt;/span&gt; &lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="err"&gt;2&lt;/span&gt; &lt;span class="err"&gt;==&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;let&lt;/span&gt; &lt;span class="nt"&gt;sortedNumbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;sorted&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;filteredNumbers&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$1&lt;/span&gt; &lt;span class="err"&gt;&amp;amp;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;$0&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;let&lt;/span&gt; &lt;span class="nt"&gt;numbersAsStrings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;map&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;sortedNumbers&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;String&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;n.description&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;let&lt;/span&gt; &lt;span class="nt"&gt;commaSeparatedResult&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;, &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;join&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;numbersAsStrings&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -692,16 +692,16 @@ let commaSeparatedResult = &amp;quot;, &amp;quot;.join(numbersAsStrings)
 &lt;h2&gt;Life with pipe-forward&lt;/h2&gt;
 &lt;p&gt;Wouldn't it be nice if we could call a function on a value using a postfix notation like we call a method on an object? That is, wouldn't it be nice if we could write something like this?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let pipeResult =
-    seq |&amp;gt; filteredWithPredicate { $0 % 2 == 0 }
-        |&amp;gt; sortedByPredicate { $1 &amp;lt; $0 }
-        |&amp;gt; mappedWithTransform { $0.description }
-        |&amp;gt; String.join(&amp;quot;, &amp;quot;)
+    seq |&amp;amp;gt; filteredWithPredicate { $0 % 2 == 0 }
+        |&amp;amp;gt; sortedByPredicate { $1 &amp;amp;lt; $0 }
+        |&amp;amp;gt; mappedWithTransform { $0.description }
+        |&amp;amp;gt; String.join(&amp;quot;, &amp;quot;)
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We can. That &lt;code&gt;|&amp;gt;&lt;/code&gt; operator is called the "pipe-forward" or "forward pipe" operator in F#.&lt;/p&gt;
 &lt;p&gt;This:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;x |&amp;gt; f
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;x |&amp;amp;gt; f
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -711,7 +711,7 @@ let commaSeparatedResult = &amp;quot;, &amp;quot;.join(numbersAsStrings)
 
 
 &lt;p&gt;and this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;x |&amp;gt; f |&amp;gt; g |&amp;gt; h
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;x |&amp;amp;gt; f |&amp;amp;gt; g |&amp;amp;gt; h
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -722,16 +722,16 @@ let commaSeparatedResult = &amp;quot;, &amp;quot;.join(numbersAsStrings)
 
 &lt;p&gt;It's just syntactic sugar, but it is often clearer to express a sequence of function calls as a chain read left-to-right/top-to-bottom than as a cluster of nested subexpressions.&lt;/p&gt;
 &lt;p&gt;It can be defined as an operator in Swift like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;infix operator |&amp;gt;   { precedence 50 associativity left }
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;infix&lt;/span&gt; &lt;span class="nt"&gt;operator&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;   &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;precedence&lt;/span&gt; &lt;span class="err"&gt;50&lt;/span&gt; &lt;span class="err"&gt;associativity&lt;/span&gt; &lt;span class="err"&gt;left&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 
-public func |&amp;gt; &amp;lt;T,U&amp;gt;(lhs: T, rhs: T -&amp;gt; U) -&amp;gt; U {
-    return rhs(lhs)
-}
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nt"&gt;U&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;(&lt;/span&gt;&lt;span class="nt"&gt;lhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;rhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;U&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;U&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;rhs(lhs)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We have some work to do before we can evaluate &lt;code&gt;pipeResult&lt;/code&gt; above with our &lt;code&gt;|&amp;gt;&lt;/code&gt; operator. The problem is that the &lt;code&gt;filter()&lt;/code&gt;, &lt;code&gt;sorted()&lt;/code&gt;, and &lt;code&gt;map()&lt;/code&gt; functions provided by the Swift standard library don't have their parameters in the order we need, and they are not written to support &lt;a href="http://en.wikipedia.org/wiki/Partial_application"&gt;partial application&lt;/a&gt;.  For example, let's look at the first subexpression:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;seq |&amp;gt; filteredWithPredicate { $0 % 2 == 0 }
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;seq |&amp;amp;gt; filteredWithPredicate { $0 % 2 == 0 }
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -741,32 +741,32 @@ public func |&amp;gt; &amp;lt;T,U&amp;gt;(lhs: T, rhs: T -&amp;gt; U) -&amp;gt; 
 
 
 &lt;p&gt;So we need &lt;code&gt;filteredWithPredicate&lt;/code&gt; to be a &lt;a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Declarations.html#//apple_ref/doc/uid/TP40014097-CH34-XID_591"&gt;curried function&lt;/a&gt; that takes the predicate as the first argument and sequence as second argument. Unfortunately, the library's &lt;code&gt;fillter/sorted/map&lt;/code&gt; functions are not curried and are called with the sequence as the first argument and function as second argument.  To make the &lt;code&gt;pipeResult&lt;/code&gt; expression compile and run, we need to provide some "adapter functions" that have the necessary signatures:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Curried adapter function for Swift Standard Library&amp;#39;s filter() function
-public func filteredWithPredicate&amp;lt;S : SequenceType&amp;gt;
-    (includeElement: (S.Generator.Element) -&amp;gt; Bool)
-    (source: S)
-    -&amp;gt; [S.Generator.Element]
-{
-    return filter(source, includeElement)
-}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Curried&lt;/span&gt; &lt;span class="nt"&gt;adapter&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt; &lt;span class="nt"&gt;for&lt;/span&gt; &lt;span class="nt"&gt;Swift&lt;/span&gt; &lt;span class="nt"&gt;Standard&lt;/span&gt; &lt;span class="nt"&gt;Library&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s filter() function&lt;/span&gt;
+&lt;span class="s1"&gt;public func filteredWithPredicate&amp;amp;lt;S : SequenceType&amp;amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;    (includeElement: (S.Generator.Element) -&amp;amp;gt; Bool)&lt;/span&gt;
+&lt;span class="s1"&gt;    (source: S)&lt;/span&gt;
+&lt;span class="s1"&gt;    -&amp;amp;gt; &lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;S.Generator.Element&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s1"&gt;&lt;/span&gt;
+&lt;span class="s1"&gt;{&lt;/span&gt;
+&lt;span class="s1"&gt;    return filter(source, includeElement)&lt;/span&gt;
+&lt;span class="s1"&gt;}&lt;/span&gt;
 
-// Curried adapter function for Swift Standard Library&amp;#39;s sorted() function
-public func sortedByPredicate&amp;lt;S : SequenceType&amp;gt;
-    (predicate: (S.Generator.Element, S.Generator.Element) -&amp;gt; Bool)
-    (source: S)
-    -&amp;gt; [S.Generator.Element]
-{
-    return sorted(source, predicate)
-}
+&lt;span class="s1"&gt;// Curried adapter function for Swift Standard Library&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="nt"&gt;sorted&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt;
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="nt"&gt;sortedByPredicate&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;S&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;SequenceType&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;predicate&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;S&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Element&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;S&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Element&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;Bool&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;source&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;S&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;S.Generator.Element&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;sorted(source,&lt;/span&gt; &lt;span class="err"&gt;predicate)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 
-// Curried adapter function for Swift Standard Library&amp;#39;s map() function
-public func mappedWithTransform&amp;lt;S: SequenceType, T&amp;gt;
-    (transform: (S.Generator.Element) -&amp;gt; T)
-    (source: S)
-    -&amp;gt; [T]
-{
-    return map(source, transform)
-}
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Curried&lt;/span&gt; &lt;span class="nt"&gt;adapter&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt; &lt;span class="nt"&gt;for&lt;/span&gt; &lt;span class="nt"&gt;Swift&lt;/span&gt; &lt;span class="nt"&gt;Standard&lt;/span&gt; &lt;span class="nt"&gt;Library&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="nt"&gt;map&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt;
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="nt"&gt;mappedWithTransform&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;S&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;SequenceType&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;S&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Element&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;source&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;S&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;map(source,&lt;/span&gt; &lt;span class="err"&gt;transform)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -777,41 +777,41 @@ public func mappedWithTransform&amp;lt;S: SequenceType, T&amp;gt;
 &lt;p&gt;In Microsoft's Visual Studio, if you are writing F# code and you type &lt;code&gt;|&amp;gt;&lt;/code&gt;, the IDE pops up an auto-completion list of all the functions that can be applied to the value on the left, just like typing a &lt;code&gt;.&lt;/code&gt; after an object brings up a list of its methods and properties. Xcode can do this too, but without &lt;code&gt;|&amp;gt;&lt;/code&gt; being a standard Swift operator, few developers will be able to take advantage of it. If you think &lt;code&gt;|&amp;gt;&lt;/code&gt; and functional auto-complete would be a useful addition to Swift and Xcode, you can submit a bug report to Apple requesting it. (You can &lt;a href="http://www.openradar.me/radar?id=5837161337192448"&gt;dupe my radar&lt;/a&gt;.)&lt;/p&gt;
 &lt;h2&gt;Optional chaining&lt;/h2&gt;
 &lt;p&gt;What if we have functions that return Optionals, and want to pipe those to functions that take non-Optional values? We can define a couple of operators to handle those cases:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;infix operator |&amp;gt;!  { precedence 50 associativity left }
-infix operator |&amp;gt;&amp;amp;  { precedence 50 associativity left }
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;infix&lt;/span&gt; &lt;span class="nt"&gt;operator&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;!&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;precedence&lt;/span&gt; &lt;span class="err"&gt;50&lt;/span&gt; &lt;span class="err"&gt;associativity&lt;/span&gt; &lt;span class="err"&gt;left&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;infix&lt;/span&gt; &lt;span class="nt"&gt;operator&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;amp&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;precedence&lt;/span&gt; &lt;span class="err"&gt;50&lt;/span&gt; &lt;span class="err"&gt;associativity&lt;/span&gt; &lt;span class="err"&gt;left&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 
-public func |&amp;gt;! &amp;lt;T,U&amp;gt;(lhs: T?, rhs: T -&amp;gt; U) -&amp;gt; U {
-    return rhs(lhs!)
-}
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;!&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nt"&gt;U&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;(&lt;/span&gt;&lt;span class="nt"&gt;lhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;?,&lt;/span&gt; &lt;span class="nt"&gt;rhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;U&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;U&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;rhs(lhs!)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 
-public func |&amp;gt;&amp;amp; &amp;lt;T,U&amp;gt;(lhs: T?, rhs: T -&amp;gt; U) -&amp;gt; U? {
-    return lhs.map(rhs)
-}
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;amp&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nt"&gt;U&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;(&lt;/span&gt;&lt;span class="nt"&gt;lhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;?,&lt;/span&gt; &lt;span class="nt"&gt;rhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;U&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;U&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;lhs.map(rhs)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The &lt;code&gt;|&amp;gt;!&lt;/code&gt; operator unwraps its left-side argument and passes it to the function on the right. This is safe if we know that the Optional value will never be nil.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;|&amp;gt;&amp;amp;&lt;/code&gt; operator checks whether the left-side argument is &lt;code&gt;nil&lt;/code&gt;. If so, the value of the expression is &lt;code&gt;nil&lt;/code&gt;. If not, then the Optional is unwrapped and the right-side function is applied to it. (I'd rather name this operator &lt;code&gt;|&amp;gt;?&lt;/code&gt;, but Swift doesn't allow the &lt;code&gt;?&lt;/code&gt; character in operator names.)  This is the same as just calling &lt;code&gt;Optional.map()&lt;/code&gt;, but if we are using a pipeline it is useful to use just pipe operators rather than mixing pipes and method calls.&lt;/p&gt;
 &lt;p&gt;Here are some simple usage examples, using the Swift Standard Library's &lt;code&gt;find()&lt;/code&gt; function, which returns an &lt;code&gt;Int?&lt;/code&gt; which is the index of the searched-for value, or &lt;code&gt;nil&lt;/code&gt; if not found:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let elements = [2, 4, 6, 8, 10]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;let&lt;/span&gt; &lt;span class="nt"&gt;elements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
 
-func reportIndexOfValue(value: Int)(index: Int) -&amp;gt; String {
-    let message = &amp;quot;Found \(value) at index \(index)&amp;quot;
-    println(message)
-    return message
-}
+&lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="nt"&gt;reportIndexOfValue&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;value&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;)(&lt;/span&gt;&lt;span class="nt"&gt;index&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;let&lt;/span&gt; &lt;span class="err"&gt;message&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;Found&lt;/span&gt; &lt;span class="err"&gt;\(value)&lt;/span&gt; &lt;span class="err"&gt;at&lt;/span&gt; &lt;span class="err"&gt;index&lt;/span&gt; &lt;span class="err"&gt;\(index)&amp;quot;&lt;/span&gt;
+    &lt;span class="err"&gt;println(message)&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;message&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 
-find(elements, 6) |&amp;gt;! reportIndexOfValue(6)    // &amp;quot;Found 6 at index 2&amp;quot;
+&lt;span class="nt"&gt;find&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;6&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;!&lt;/span&gt; &lt;span class="nt"&gt;reportIndexOfValue&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;6&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;    &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Found 6 at index 2&amp;quot;&lt;/span&gt;
 
-find(elements, 3) |&amp;gt;&amp;amp; reportIndexOfValue(3)    // nil
-find(elements, 4) |&amp;gt;&amp;amp; reportIndexOfValue(4)    // {Some &amp;quot;Found 4 at index 1&amp;quot;}
+&lt;span class="nt"&gt;find&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;amp&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;reportIndexOfValue&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;    &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;nil&lt;/span&gt;
+&lt;span class="nt"&gt;find&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;4&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;amp&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;reportIndexOfValue&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;4&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;    &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;Some&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;Found&lt;/span&gt; &lt;span class="err"&gt;4&lt;/span&gt; &lt;span class="err"&gt;at&lt;/span&gt; &lt;span class="err"&gt;index&lt;/span&gt; &lt;span class="err"&gt;1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Functions with multiple parameters, and tuples&lt;/h2&gt;
 &lt;p&gt;It might seem that the pipe-forward operator is only useful when passing an argument to a function that takes a single parameter. However, a Swift function can be applied to a tuple of arguments, so you can use a tuple on the left side of &lt;code&gt;|&amp;gt;&lt;/code&gt; and a function taking multiple arguments on the right side.&lt;/p&gt;
 &lt;p&gt;In other words, this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(x, y, z) |&amp;gt; f
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(x, y, z) |&amp;amp;gt; f
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -823,23 +823,23 @@ find(elements, 4) |&amp;gt;&amp;amp; reportIndexOfValue(4)    // {Some &amp;quot
 &lt;p&gt;For example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;Foundation&lt;/span&gt;
 
-&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="n"&gt;diagonalLength&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="n"&gt;diagonalLength&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;diagonalLength&lt;/span&gt;                     &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;diagonalLength&lt;/span&gt;                     &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;
 
-&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="n"&gt;multiplyAndDivide&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;multiplier1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;multiplier2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;divisor&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="n"&gt;multiplyAndDivide&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;multiplier1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;multiplier2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;divisor&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;multiplier1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;multiplier2&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;divisor&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;multiplyAndDivide&lt;/span&gt;         &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="mf"&gt;4.0&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;multiplyAndDivide&lt;/span&gt;         &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="mf"&gt;4.0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;These can be useful in more complex pipeline expressions that require use of tuples as arguments, results, or intermediate values. We can use &lt;a href="https://gist.github.com/kristopherjohnson/04dbc470e17f67f836a2"&gt;zip() or zip3()&lt;/a&gt; to combine values from other sequences into tuples to be piped into functions.&lt;/p&gt;
 &lt;p&gt;You could even do something like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let evenNumbers = (seq, { $0 % 2 == 0 }) |&amp;gt; filter
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let evenNumbers = (seq, { $0 % 2 == 0 }) |&amp;amp;gt; filter
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -858,7 +858,7 @@ find(elements, 4) |&amp;gt;&amp;amp; reportIndexOfValue(4)    // {Some &amp;quot
 &lt;p&gt;The above was originally written with an early beta of Swift. As of Xcode 6 beta 4, the Swift standard library provides a &lt;code&gt;lazy()&lt;/code&gt; function that transforms a sequence into an object that has lazily evaluated &lt;code&gt;filter()&lt;/code&gt; and &lt;code&gt;map()&lt;/code&gt; methods, so we could solve the problem like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;let lazyResult =&lt;/span&gt;
 &lt;span class="x"&gt;    &amp;quot;, &amp;quot;.join(lazy(seq).filter(&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;).array&lt;/span&gt;
-&lt;span class="x"&gt;                       .sorted(&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
+&lt;span class="x"&gt;                       .sorted(&lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="na"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
 &lt;span class="x"&gt;                       .map &lt;/span&gt;&lt;span class="cp"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="m"&gt;0.d&lt;/span&gt;&lt;span class="na"&gt;escription&lt;/span&gt; &lt;span class="cp"&gt;}&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -867,34 +867,34 @@ find(elements, 4) |&amp;gt;&amp;amp; reportIndexOfValue(4)    // {Some &amp;quot
 &lt;h2 id="pipeAdapted"&gt;Another afterword&lt;/h2&gt;
 
 &lt;p&gt;Above, after the definitions of the "adapter functions", I wrote "all we did was copy the signatures of the original functions, then curry the parameters and reverse their order." That seems like something we should be able to do with a higher-level function, right?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Given a function with signature (A, B) -&amp;gt; T, return curried
-// function with signature (B)(A) -&amp;gt; T
-func pipeAdapted&amp;lt;A, B, T&amp;gt;(f: (A, B) -&amp;gt; T) -&amp;gt; (B -&amp;gt; A -&amp;gt; T) {
-    return { b in { a in f(a, b) } }
-}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Given&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt; &lt;span class="nt"&gt;with&lt;/span&gt; &lt;span class="nt"&gt;signature&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;return&lt;/span&gt; &lt;span class="nt"&gt;curried&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;function&lt;/span&gt; &lt;span class="nt"&gt;with&lt;/span&gt; &lt;span class="nt"&gt;signature&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;)(&lt;/span&gt;&lt;span class="nt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;
+&lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="nt"&gt;pipeAdapted&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;(&lt;/span&gt;&lt;span class="nt"&gt;f&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;B&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;A&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="err"&gt;b&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;in&lt;/span&gt; &lt;span class="err"&gt;f(a,&lt;/span&gt; &lt;span class="err"&gt;b)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
 
-let pipeAdaptedResult =
-    seq |&amp;gt; pipeAdapted(filter)({ $0 % 2 == 0 })
-        |&amp;gt; pipeAdapted(sorted)({ $1 &amp;lt; $0 })
-        |&amp;gt; pipeAdapted(map)({ $0.description })
-        |&amp;gt; String.join(&amp;quot;, &amp;quot;)
+&lt;span class="nt"&gt;let&lt;/span&gt; &lt;span class="nt"&gt;pipeAdaptedResult&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+    &lt;span class="nt"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;pipeAdapted&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;filter&lt;/span&gt;&lt;span class="o"&gt;)(&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$0&lt;/span&gt; &lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="err"&gt;2&lt;/span&gt; &lt;span class="err"&gt;==&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;pipeAdapted&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;sorted&lt;/span&gt;&lt;span class="o"&gt;)(&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$1&lt;/span&gt; &lt;span class="err"&gt;&amp;amp;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;$0&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;pipeAdapted&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;map&lt;/span&gt;&lt;span class="o"&gt;)(&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$0.description&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;join&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;, &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Here, we use a &lt;code&gt;pipeAdapted()&lt;/code&gt; function to transform the standard library's &lt;code&gt;filter&lt;/code&gt;, &lt;code&gt;sorted&lt;/code&gt;, and &lt;code&gt;map&lt;/code&gt; functions into what we need, instead of writing those adapters. If you and your team members are all FP ninjas who don't bat an eye at throwing functions around, then you may prefer this, but my preference is still for the version that uses the adapter functions.&lt;/p&gt;
 &lt;p&gt;An alternative that may be a little more palatable to non-FP people is to define another pipe operator that lets us specify a function and predicate, like so:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;infix operator |&amp;gt;*  { precedence 50 associativity left }
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;infix&lt;/span&gt; &lt;span class="nt"&gt;operator&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;*&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;precedence&lt;/span&gt; &lt;span class="err"&gt;50&lt;/span&gt; &lt;span class="err"&gt;associativity&lt;/span&gt; &lt;span class="err"&gt;left&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 
-// Transform &amp;quot;x |&amp;gt;* (f, predicate)&amp;quot; to &amp;quot;f(x, predicate)&amp;quot;
-public func |&amp;gt;* &amp;lt;A, B, C, T&amp;gt;(lhs: A, rhs: ((A, (B) -&amp;gt; C) -&amp;gt; T, (B) -&amp;gt; C)) -&amp;gt; T {
-    return (rhs.0)(lhs, rhs.1)
-}
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="nt"&gt;Transform&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;x |&amp;amp;gt;* (f, predicate)&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;f(x, predicate)&amp;quot;&lt;/span&gt;
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;func&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;*&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;C&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;(&lt;/span&gt;&lt;span class="nt"&gt;lhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;rhs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="nt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;C&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;C&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="nt"&gt;-&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;(rhs.0)(lhs,&lt;/span&gt; &lt;span class="err"&gt;rhs.1)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 
-let pipeStarResult =
-    seq |&amp;gt;* (filter, { $0 % 2 == 0 })
-        |&amp;gt;* (sorted, { $1 &amp;lt; $0 })
-        |&amp;gt;* (map, { $0.description })
-        |&amp;gt; String.join(&amp;quot;, &amp;quot;)
+&lt;span class="nt"&gt;let&lt;/span&gt; &lt;span class="nt"&gt;pipeStarResult&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+    &lt;span class="nt"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;*&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;filter&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$0&lt;/span&gt; &lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="err"&gt;2&lt;/span&gt; &lt;span class="err"&gt;==&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;*&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;sorted&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$1&lt;/span&gt; &lt;span class="err"&gt;&amp;amp;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;$0&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;*&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;map&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="err"&gt;$0.description&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;join&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;, &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -902,10 +902,10 @@ let pipeStarResult =
 &lt;p&gt;We can hope that a future version of Swift will provide better built-in support for curried functions and partial application.&lt;/p&gt;
 &lt;p&gt;Finally, one could skip all this "currying" and "adapter" business and use some closures to define ad-hoc anonymous functions that can be applied to sequences in a pipeline:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let closuresResult =
-    seq |&amp;gt; { s in filter(s) { $0 % 2 == 0 } }
-        |&amp;gt; { s in sorted(s) { $1 &amp;lt; $0 } }
-        |&amp;gt; { s in map(s) { $0.description } }
-        |&amp;gt; String.join(&amp;quot;, &amp;quot;)
+    seq |&amp;amp;gt; { s in filter(s) { $0 % 2 == 0 } }
+        |&amp;amp;gt; { s in sorted(s) { $1 &amp;amp;lt; $0 } }
+        |&amp;amp;gt; { s in map(s) { $0.description } }
+        |&amp;amp;gt; String.join(&amp;quot;, &amp;quot;)
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1110,32 +1110,32 @@ Include /private/etc/apache2/extra/httpd-userdir.conf
 &lt;/ol&gt;</content><category term="windows"></category></entry><entry><title>The Easiest Programming Bug I Spent Way Too Much Time Trying to Solve</title><link href="http://undefinedvalue.com/easiest-programming-bug-i-spent-way-too-much-time-trying-solve.html" rel="alternate"></link><published>2013-11-12T21:02:46-05:00</published><updated>2013-11-12T21:02:46-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2013-11-12:/easiest-programming-bug-i-spent-way-too-much-time-trying-solve.html</id><summary type="html">&lt;p&gt;I ran across a question on Quora: &lt;a href="http://www.quora.com/Programming-Languages/Whats-the-easiest-programming-bug-you-spent-way-too-much-time-trying-to-solve"&gt;What's the easiest programming bug you spent way too much time trying to solve?&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here is my answer to that question. Some time during my first few years of programming, I wrote code similar to this little snippet and expected it to print …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I ran across a question on Quora: &lt;a href="http://www.quora.com/Programming-Languages/Whats-the-easiest-programming-bug-you-spent-way-too-much-time-trying-to-solve"&gt;What's the easiest programming bug you spent way too much time trying to solve?&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here is my answer to that question. Some time during my first few years of programming, I wrote code similar to this little snippet and expected it to print "FOO", but instead it prints "None of the above". It is written in C, but should be comprehensible to anyone who knows a language with similar syntax (C++, Java, JavaScript, C#, etc.). It took me about a half day of staring and single-stepping in a debugger to figure out what was wrong. When I looked at the disassembly listing, I was convinced I'd found a bug in the C compiler. Maybe you can figure it out faster than I could.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#include &amp;amp;lt;stdio.h&amp;amp;gt;
 
-&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;FOO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;BAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+int main(int argc, char *argv[])
+{
+    const int FOO = 1;
+    const int BAR = 2;
 
-    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FOO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    int n = FOO;
 
-    &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nl"&gt;FOO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;FOO&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-            &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    switch (n)
+    {
+        FOO:
+            printf(&amp;quot;FOO&amp;quot;);
+            break;
 
-        &lt;span class="nl"&gt;BAR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;BAR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-            &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        BAR:
+            printf(&amp;quot;BAR&amp;quot;);
+            break;
 
-        &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;None of the above&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-            &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
+        default:
+            printf(&amp;quot;None of the above&amp;quot;);
+            break;
+    }
 
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+    return 0;
+}
 &lt;/pre&gt;&lt;/div&gt;</content><category term="puzzle"></category><category term="programming"></category><category term="debugging"></category></entry><entry><title>My HTC One Review</title><link href="http://undefinedvalue.com/my-htc-one-review.html" rel="alternate"></link><published>2013-11-02T15:08:33-04:00</published><updated>2013-11-02T15:08:33-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2013-11-02:/my-htc-one-review.html</id><summary type="html">&lt;p&gt;I've been an iPhone user for the past five years, except for a &lt;a href="http://undefinedvalue.com/2011/09/11/my-visit-android-land"&gt;few weeks&lt;/a&gt; in 2011 when I used an Android phone to see how good it was. At that time, my evaluation was that Android was a second-rate knock-off of iOS.&lt;/p&gt;
 &lt;p&gt;But, with the releases of Android 4 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been an iPhone user for the past five years, except for a &lt;a href="http://undefinedvalue.com/2011/09/11/my-visit-android-land"&gt;few weeks&lt;/a&gt; in 2011 when I used an Android phone to see how good it was. At that time, my evaluation was that Android was a second-rate knock-off of iOS.&lt;/p&gt;
 &lt;p&gt;But, with the releases of Android 4.0 "Ice Cream Sandwich" and 4.1 "Jelly Bean", Android got a lot less ugly, and hardware is finally fast enough that it doesn't feel so slow. Because I make about half my income from Android app development, I decided it was time to give Android another try as my personal phone. I vowed to put the iPhone away, buy a top-of-the-line Android phone, and use it for at least 12 months. My goal was to immerse myself in the Android ecosystem and learn how "regular people" use their Android phones.&lt;/p&gt;
@@ -1629,7 +1629,7 @@ First, I wrote a &lt;a href="http://nodejs.org"&gt;Node.js&lt;/a&gt; script to d
 &lt;p&gt;&lt;img src="https://s3.amazonaws.com/undefinedvalue/ReformatJSONTextService.png" height="413" width="600" alt="Automator screenshot"/&gt;&lt;/p&gt;
 &lt;p&gt;Now, whenever I want to reformat some JSON in a text editor, I just select it, right-click, and choose &lt;strong&gt;Services&amp;nbsp;&amp;gt;&amp;nbsp;Reformat&amp;nbsp;JSON&amp;nbsp;Text&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;And when I want to reformat things from the command line, this works:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;formatjson &amp;lt;ugly.json &amp;gt;pretty.json
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;formatjson &amp;amp;lt;ugly.json &amp;amp;gt;pretty.json
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2367,13 +2367,13 @@ if (fd == -1) {
 Here is the class:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public static class Timed
 {
-    /// &lt;span class="nt"&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;
+    /// &amp;amp;lt;summary&amp;amp;gt;
     /// Execute action then invoke reporting action with elapsed time
-    /// &lt;span class="nt"&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;
-    /// &lt;span class="nt"&gt;&amp;lt;param&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;timedAction&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;action to be executed and elapsed time measured&lt;span class="nt"&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
-    /// &lt;span class="nt"&gt;&amp;lt;param&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;reportAction&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;action to be executed with the elapsed number of milliseconds passed as a parameter&lt;span class="nt"&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
-    /// &lt;span class="nt"&gt;&amp;lt;returns&amp;gt;&lt;/span&gt;number of milliseconds elapsed during timedAction&lt;span class="nt"&gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
-    public static long Execute(Action timedAction, Action&lt;span class="nt"&gt;&amp;lt;long&amp;gt;&lt;/span&gt; reportAction)
+    /// &amp;amp;lt;/summary&amp;amp;gt;
+    /// &amp;amp;lt;param name=&amp;quot;timedAction&amp;quot;&amp;amp;gt;action to be executed and elapsed time measured&amp;amp;lt;/param&amp;amp;gt;
+    /// &amp;amp;lt;param name=&amp;quot;reportAction&amp;quot;&amp;amp;gt;action to be executed with the elapsed number of milliseconds passed as a parameter&amp;amp;lt;/param&amp;amp;gt;
+    /// &amp;amp;lt;returns&amp;amp;gt;number of milliseconds elapsed during timedAction&amp;amp;lt;/returns&amp;amp;gt;
+    public static long Execute(Action timedAction, Action&amp;amp;lt;long&amp;amp;gt; reportAction)
     {
         var stopwatch = new System.Diagnostics.Stopwatch();
 
@@ -2391,11 +2391,11 @@ Here is the class:&lt;/p&gt;
         return elapsedMilliseconds;
     }
 
-    /// &lt;span class="nt"&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;
+    /// &amp;amp;lt;summary&amp;amp;gt;
     /// Invoke specified action and return number of milliseconds elapsed
-    /// &lt;span class="nt"&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;
-    /// &lt;span class="nt"&gt;&amp;lt;param&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;timedAction&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;timed action to be executed&lt;span class="nt"&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
-    /// &lt;span class="nt"&gt;&amp;lt;returns&amp;gt;&lt;/span&gt;number of milliseconds elapsed&lt;span class="nt"&gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+    /// &amp;amp;lt;/summary&amp;amp;gt;
+    /// &amp;amp;lt;param name=&amp;quot;timedAction&amp;quot;&amp;amp;gt;timed action to be executed&amp;amp;lt;/param&amp;amp;gt;
+    /// &amp;amp;lt;returns&amp;amp;gt;number of milliseconds elapsed&amp;amp;lt;/returns&amp;amp;gt;
     public static long Execute(Action timedAction)
     {
         return Timed.Execute(timedAction, null);
@@ -2416,12 +2416,12 @@ Here is the class:&lt;/p&gt;
 &lt;p&gt;one could do this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public void BlurpAllFrables()
 {
-    Timed.Execute(() =&amp;gt;
+    Timed.Execute(() =&amp;amp;gt;
     {
         foreach (var frable in GetFrables())
             frable.Blurp();
     },
-    (long millis) =&amp;gt;
+    (long millis) =&amp;amp;gt;
     {
         Trace.WriteLine(String.Format(&amp;quot;Blurping frables took {0} ms&amp;quot;, millis.ToString()));
     });
@@ -2432,7 +2432,7 @@ Here is the class:&lt;/p&gt;
 &lt;p&gt;or one could do this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public void BlurpAllFrables()
 {
-    var millis = Timed.Execute(() =&amp;gt;
+    var millis = Timed.Execute(() =&amp;amp;gt;
     {
         foreach (var frable in GetFrables())
             frable.Blurp();
@@ -2504,16 +2504,16 @@ I started by following the steps here: &lt;a href="http://www.howtoforge.com/how
 &lt;p&gt;After a couple of hours of Googling and hair-pulling, I discovered that the problem is that Windows Vista and Windows 7 don't support Basic HTTP authentication for WebDAV.  One needs to either use Digest authentication, or &lt;a href="http://support.microsoft.com/kb/841215"&gt;make registry changes&lt;/a&gt; to enable Basic authentication.&lt;/p&gt;
 &lt;p&gt;I didn't want to force registry changes on all the client machines, and Digest authentication is The Right Thing anyway, so I changed my Apache configuration to do it.&lt;/p&gt;
 &lt;p&gt;Here are the new lines that ended up in my &lt;code&gt;/etc/apache2/sites-available/default&lt;/code&gt; file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;/var/www/webdav&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &amp;amp;lt;Directory /var/www/webdav/&amp;amp;gt;
             Options Indexes MultiViews
             AllowOverride None
             Order allow,deny
             allow from all
-    &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+    &amp;amp;lt;/Directory&amp;amp;gt;
 
     Alias /webdav /var/www/webdav
 
-    &lt;span class="nt"&gt;&amp;lt;Location&lt;/span&gt; &lt;span class="err"&gt;/webdav&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &amp;amp;lt;Location /webdav/&amp;amp;gt;
             DAV On
             AuthType Digest
             AuthName &amp;quot;webdav&amp;quot;
@@ -2521,7 +2521,7 @@ I started by following the steps here: &lt;a href="http://www.howtoforge.com/how
             AuthDigestProvider file
             AuthUserFile /var/www/webdav/.digest_passwd.dav
             Require valid-user
-    &lt;span class="nt"&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+    &amp;amp;lt;/Location&amp;amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2552,12 +2552,12 @@ dir \\example.com\webdav
 &lt;p&gt;(Not really, but the problems weren't due to WebDAV.)&lt;/p&gt;</content><category term="webdav"></category><category term="ubuntu"></category></entry><entry><title>Deserializing Objects from XML in C#</title><link href="http://undefinedvalue.com/deserializing-objects-xml-c.html" rel="alternate"></link><published>2011-11-22T15:22:03-05:00</published><updated>2011-11-22T15:22:03-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2011-11-22:/deserializing-objects-xml-c.html</id><summary type="html">&lt;p&gt;Here's another C# code snippet that takes me way too much time to recreate by just reading the documentation. &lt;/p&gt;
 &lt;p&gt;This is a simple example of a class that can be serialized to/from XML.  In this case the "ServerConfig" XML string can contain a list of servers, looking like this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Here's another C# code snippet that takes me way too much time to recreate by just reading the documentation. &lt;/p&gt;
 &lt;p&gt;This is a simple example of a class that can be serialized to/from XML.  In this case the "ServerConfig" XML string can contain a list of servers, looking like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;ServerConfig&lt;/span&gt; &lt;span class="na"&gt;loggingEnabled=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;Servers&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;Server&lt;/span&gt; &lt;span class="na"&gt;host=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;test1.example.com&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;port=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;9999&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;Server&lt;/span&gt; &lt;span class="na"&gt;host=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;test2.example.com&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;port=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;8888&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;/Servers&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/ServerConfig&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;amp;lt;ServerConfig loggingEnabled=&amp;quot;1&amp;quot;&amp;amp;gt;
+  &amp;amp;lt;Servers&amp;amp;gt;
+    &amp;amp;lt;Server host=&amp;quot;test1.example.com&amp;quot; port=&amp;quot;9999&amp;quot; /&amp;amp;gt;
+    &amp;amp;lt;Server host=&amp;quot;test2.example.com&amp;quot; port=&amp;quot;8888&amp;quot; /&amp;amp;gt;
+  &amp;amp;lt;/Servers&amp;amp;gt;
+&amp;amp;lt;/ServerConfig&amp;amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3103,37 +3103,37 @@ I'll say up front that this entire discussion is about the story and characters 
 &lt;p&gt;One nifty feature of Visual&amp;nbsp;Studio is "code snippets", which are basically little bits of code that can be quickly inserted into a source file using Intellisense.  The inserted code includes placeholders that can be replaced with whatever you need.  For example, if you are typing away in a C# source file and type the keyword &lt;code&gt;for&lt;/code&gt;, you'll see the Intellsense window pop up with "for" as the selected item, and if you hit the Tab key a couple of times a complete &lt;code&gt;for&lt;/code&gt; statement with braces, a loop variable, and everything will be inserted.  You can then hit Tab to move to the loop variable name (in case you don't like &lt;code&gt;i&lt;/code&gt;) and again to go into the loop body.&lt;/p&gt;
 &lt;p&gt;(Other IDEs have similar features, calling them &lt;em&gt;abbreviations&lt;/em&gt;, &lt;em&gt;macros&lt;/em&gt;, etc.  You don't need to tell me that Visual&amp;nbsp;Studio isn't magically unique.)&lt;/p&gt;
 &lt;p&gt;Visual&amp;nbsp;Studio has a whole bunch of these snippets built in, but you can also define your own by writing an XML file and saving it where Visual&amp;nbsp;Studio can find it.  For example, here is a snippet I wrote to quickly insert &lt;code&gt;String.Format()&lt;/code&gt; expressions:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot; ?&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;CodeSnippets&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;CodeSnippet&lt;/span&gt; &lt;span class="na"&gt;Format=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1.0.0&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;Header&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;Title&amp;gt;&lt;/span&gt;String.Format&lt;span class="nt"&gt;&amp;lt;/Title&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;Description&amp;gt;&lt;/span&gt;Creates a String.Format() call&lt;span class="nt"&gt;&amp;lt;/Description&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;Author&amp;gt;&lt;/span&gt;Kristopher Johnson&lt;span class="nt"&gt;&amp;lt;/Author&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;SnippetTypes&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;SnippetType&amp;gt;&lt;/span&gt;Expansion&lt;span class="nt"&gt;&amp;lt;/SnippetType&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;/SnippetTypes&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;Shortcut&amp;gt;&lt;/span&gt;sf&lt;span class="nt"&gt;&amp;lt;/Shortcut&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;/Header&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;Snippet&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;Declarations&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;Literal&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;format&lt;span class="nt"&gt;&amp;lt;/ID&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;ToolTip&amp;gt;&lt;/span&gt;Replace with format string&lt;span class="nt"&gt;&amp;lt;/ToolTip&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;Default&amp;gt;&lt;/span&gt;format&lt;span class="nt"&gt;&amp;lt;/Default&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/Literal&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;Literal&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;arguments&lt;span class="nt"&gt;&amp;lt;/ID&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;ToolTip&amp;gt;&lt;/span&gt;Replace with arguments&lt;span class="nt"&gt;&amp;lt;/ToolTip&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;Default&amp;gt;&lt;/span&gt;arguments&lt;span class="nt"&gt;&amp;lt;/Default&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/Literal&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;/Declarations&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;Code&lt;/span&gt; &lt;span class="na"&gt;Language=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;CSharp&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="cp"&gt;&amp;lt;![CDATA[String.Format(&amp;quot;$format$&amp;quot;, $arguments$)$end$]]&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;/Code&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;/Snippet&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;/CodeSnippet&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/CodeSnippets&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;?&lt;/span&gt;&lt;span class="nt"&gt;xml&lt;/span&gt; &lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;?&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;CodeSnippets&lt;/span&gt; &lt;span class="nt"&gt;xmlns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;CodeSnippet&lt;/span&gt; &lt;span class="nt"&gt;Format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0.0&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Header&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Format&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Creates&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="nt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;Format&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="nt"&gt;call&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Kristopher&lt;/span&gt; &lt;span class="nt"&gt;Johnson&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;SnippetTypes&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;SnippetType&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Expansion&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;SnippetType&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;SnippetTypes&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Shortcut&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;sf&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Shortcut&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Header&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Snippet&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Declarations&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Literal&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;format&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;ToolTip&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Replace&lt;/span&gt; &lt;span class="nt"&gt;with&lt;/span&gt; &lt;span class="nt"&gt;format&lt;/span&gt; &lt;span class="nt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;ToolTip&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Default&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;format&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Default&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Literal&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Literal&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;ToolTip&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Replace&lt;/span&gt; &lt;span class="nt"&gt;with&lt;/span&gt; &lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;ToolTip&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Default&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Default&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Literal&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Declarations&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;Code&lt;/span&gt; &lt;span class="nt"&gt;Language&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;CSharp&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;!&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;CDATA&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;Format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$format$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$arguments&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;$end&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;]&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Code&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;Snippet&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;CodeSnippet&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;lt&lt;/span&gt;&lt;span class="o"&gt;;/&lt;/span&gt;&lt;span class="nt"&gt;CodeSnippets&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3154,7 +3154,7 @@ I'll say up front that this entire discussion is about the story and characters 
         tell application &amp;quot;Keynote&amp;quot;
             open theFile
             set theSlideshow to slideshow 1
-            set theDestinationPath to theDestinationFolder &amp;amp; (name of theSlideshow)
+            set theDestinationPath to theDestinationFolder &amp;amp;amp; (name of theSlideshow)
             save theSlideshow in theDestinationPath
             close theSlideshow
         end tell
@@ -3309,8 +3309,8 @@ At this point, you should have a usable Drupal installation, accessible at &lt;c
 &lt;/ol&gt;
 &lt;p&gt;Here is the snippet to be added/modified in &lt;code&gt;settings.php&lt;/code&gt;. In place of &lt;code&gt;some_unique_prefix&lt;/code&gt;, substitute your site's name or some other value that is unique for your site.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$conf = array(
-    &amp;#39;cache_inc&amp;#39; =&amp;gt; &amp;#39;/usr/share/drupal6/sites/all/modules/memcache/memcache.inc&amp;#39;,
-    &amp;#39;memcache_key_prefix&amp;#39; =&amp;gt; &amp;#39;some_unique_prefix&amp;#39;,
+    &amp;#39;cache_inc&amp;#39; =&amp;amp;gt; &amp;#39;/usr/share/drupal6/sites/all/modules/memcache/memcache.inc&amp;#39;,
+    &amp;#39;memcache_key_prefix&amp;#39; =&amp;amp;gt; &amp;#39;some_unique_prefix&amp;#39;,
 );
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -3426,7 +3426,7 @@ She initially thought she had left it back in the teachers' lounge, so she calle
 &lt;p&gt;But of course, Microsoft can't give us something new without throwing in some surprisingly inappropriate behavior.
 &lt;!--break--&gt;
 A couple of days ago, I needed to create a patch for a Subversion repository, and so I typed the typical command to do so (which works fine in UNIX shells and with &lt;code&gt;cmd.exe&lt;/code&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;svn diff &amp;gt; my_patch.diff
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;svn diff &amp;amp;gt; my_patch.diff
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3716,8 +3716,8 @@ Lucky for me, a former boss was enthusiastic about re-hiring me, and so I'm now 
 &lt;p&gt;Define a new class, &lt;code&gt;GradientButton&lt;/code&gt;, derived from &lt;code&gt;UIButton&lt;/code&gt;, like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// GradientButton.h:&lt;/span&gt;
 
-&lt;span class="cp"&gt;#import &amp;lt;UIKit/UIKit.h&amp;gt;&lt;/span&gt;
-&lt;span class="cp"&gt;#import &amp;lt;QuartzCore/QuartzCore.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#import &amp;amp;lt;UIKit/UIKit.h&amp;amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#import &amp;amp;lt;QuartzCore/QuartzCore.h&amp;amp;gt;&lt;/span&gt;
 
 &lt;span class="k"&gt;@interface&lt;/span&gt; &lt;span class="nc"&gt;GradientButton&lt;/span&gt; : &lt;span class="bp"&gt;UIButton&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="bp"&gt;CAGradientLayer&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;shineLayer&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -3833,7 +3833,7 @@ Lucky for me, a former boss was enthusiastic about re-hiring me, and so I'm now 
 &lt;p&gt;Just to verify that our snazzy &lt;code&gt;GradientButton&lt;/code&gt; class hasn't somehow broken the basic button functionality, add an event-handler method to the &lt;code&gt;GradientButtonsViewController&lt;/code&gt; class.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// GradientButtonsViewController.h:&lt;/span&gt;
 
-&lt;span class="cp"&gt;#import &amp;lt;UIKit/UIKit.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#import &amp;amp;lt;UIKit/UIKit.h&amp;amp;gt;&lt;/span&gt;
 
 &lt;span class="k"&gt;@interface&lt;/span&gt; &lt;span class="nc"&gt;GradientButtonsViewController&lt;/span&gt; : &lt;span class="bp"&gt;UIViewController&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -4094,35 +4094,35 @@ Calculator.runTests = function () {
 &lt;p&gt;See the &lt;a href="http://docs.jquery.com/QUnit#API_documentation"&gt;QUnit API documentation&lt;/a&gt; for info about the test functions. All you need to know to understand the above is that &lt;code&gt;test(name, function)&lt;/code&gt; creates a test case, and &lt;code&gt;equals(actual, expected, message)&lt;/code&gt; checks equivalence of results.&lt;/p&gt;
 &lt;h3&gt;HTML Test Runner&lt;/h3&gt;
 &lt;p&gt;Finally, we need an HTML file, &lt;code&gt;calculator_tests.html&lt;/code&gt;, which loads all the modules, runs the tests, and displays the results in a web browser:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;amp;lt;html&amp;amp;gt;
+&amp;amp;lt;head&amp;amp;gt;
 
-&lt;span class="c"&gt;&amp;lt;!-- Load jQuery and QUnit --&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;jquery.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;qunit.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt; &lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;qunit.css&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;media=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;screen&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&amp;amp;lt;!-- Load jQuery and QUnit --&amp;amp;gt;
+&amp;amp;lt;script src=&amp;quot;jquery.js&amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;script src=&amp;quot;qunit.js&amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;qunit.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; /&amp;amp;gt;
 
-&lt;span class="c"&gt;&amp;lt;!-- Load modules to be tested --&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;calculator.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;calculator_tests.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&amp;amp;lt;!-- Load modules to be tested --&amp;amp;gt;
+&amp;amp;lt;script src=&amp;quot;calculator.js&amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;script src=&amp;quot;calculator_tests.js&amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;
 
-&lt;span class="c"&gt;&amp;lt;!-- This jQuery fragment calls Calculator.runTests() after the document loads --&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+&amp;amp;lt;!-- This jQuery fragment calls Calculator.runTests() after the document loads --&amp;amp;gt;
+&amp;amp;lt;script&amp;amp;gt;
 $(document).ready(function(){
     Calculator.runTests();    
 });
-&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&amp;amp;lt;/script&amp;amp;gt;
 
-&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&amp;amp;lt;/head&amp;amp;gt;
 
-&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-&lt;span class="c"&gt;&amp;lt;!-- QUnit will put the results in the elements here --&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;h1&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;qunit-header&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Calculator Tests&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;h2&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;qunit-banner&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;h2&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;qunit-userAgent&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;ol&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;qunit-tests&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&amp;amp;lt;body&amp;amp;gt;
+&amp;amp;lt;!-- QUnit will put the results in the elements here --&amp;amp;gt;
+&amp;amp;lt;h1 id=&amp;quot;qunit-header&amp;quot;&amp;amp;gt;Calculator Tests&amp;amp;lt;/h1&amp;amp;gt;
+&amp;amp;lt;h2 id=&amp;quot;qunit-banner&amp;quot;&amp;amp;gt;&amp;amp;lt;/h2&amp;amp;gt;
+&amp;amp;lt;h2 id=&amp;quot;qunit-userAgent&amp;quot;&amp;amp;gt;&amp;amp;lt;/h2&amp;amp;gt;
+&amp;amp;lt;ol id=&amp;quot;qunit-tests&amp;quot;&amp;amp;gt;&amp;amp;lt;/ol&amp;amp;gt;
+&amp;amp;lt;/body&amp;amp;gt;
+&amp;amp;lt;/html&amp;amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4997,18 +4997,18 @@ The Overly Generic Interface is an interface that provides a very small set of f
 &lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nb"&gt;Object&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="kr"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="c1"&gt;// Return the value of a named property&lt;/span&gt;
-    &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="nx"&gt;getProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;propertyName&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="nx"&gt;getProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;propertyName&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Set the value of a named property&lt;/span&gt;
-    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;propertyName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                     &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;propertyName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                     &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Set the values of multiple named properties with one call&lt;/span&gt;
-    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setProperties&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;properties&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setProperties&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;properties&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Invoke a named operation with a parameter list&lt;/span&gt;
-    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;performOperation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;operationName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                          &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;performOperation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;operationName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                          &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -5026,7 +5026,7 @@ The Overly Generic Interface is an interface that provides a very small set of f
 
 &lt;span class="c1"&gt;// Initialize wife, using the set-all-properties-in-one-operation interface&lt;/span&gt;
 &lt;span class="nx"&gt;Person&lt;/span&gt; &lt;span class="nx"&gt;wife&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;wifeProperties&lt;/span&gt;
+&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;wifeProperties&lt;/span&gt;
 &lt;span class="nx"&gt;wifeProperties&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;firstName&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ValueFromString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Pebble&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="nx"&gt;wifeProperties&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;lastName&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ValueFromString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Johnson&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="nx"&gt;wifeProperties&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Gender&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ValueFromInt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Female&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -5034,8 +5034,8 @@ The Overly Generic Interface is an interface that provides a very small set of f
 
 &lt;span class="c1"&gt;// Invoke the recordMarriage operation&lt;/span&gt;
 &lt;span class="nx"&gt;list&lt;/span&gt; &lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ValueFromPointer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;husband&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
-&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ValueFromPointer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;wife&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ValueFromPointer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;husband&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ValueFromPointer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;wife&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
 &lt;span class="nx"&gt;recorder&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;performOperation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;recordMarriage&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -5077,10 +5077,10 @@ recorder.recordMarriage(husband, wife);
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Person&lt;/span&gt;: &lt;span class="kt"&gt;public&lt;/span&gt; &lt;span class="nb"&gt;Object&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="kr"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="nx"&gt;getFirstName&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setFirstName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setFirstName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
     &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="nx"&gt;getLastName&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setLastName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;setLastName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;newValue&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
     &lt;span class="c1"&gt;// and so on, for all properties&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
@@ -7335,7 +7335,7 @@ the richest AppleScript support of all the Mac browsers I've seen.
 Here's the script:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;tell&lt;/span&gt; &lt;span class="nb"&gt;application&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;OmniWeb&amp;quot;&lt;/span&gt;
     &lt;span class="nb"&gt;activate&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;count&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;count&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nv"&gt;lt&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
         &lt;span class="nb"&gt;make&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;browser&lt;/span&gt; &lt;span class="nb"&gt;at&lt;/span&gt; &lt;span class="nb"&gt;front of&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;
     &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;
     &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;theUrl&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;the clipboard&lt;/span&gt; &lt;span class="k"&gt;as &lt;/span&gt;&lt;span class="nc"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;

@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -80,37 +80,37 @@
 <p>One nifty feature of Visual&nbsp;Studio is "code snippets", which are basically little bits of code that can be quickly inserted into a source file using Intellisense.  The inserted code includes placeholders that can be replaced with whatever you need.  For example, if you are typing away in a C# source file and type the keyword <code>for</code>, you'll see the Intellsense window pop up with "for" as the selected item, and if you hit the Tab key a couple of times a complete <code>for</code> statement with braces, a loop variable, and everything will be inserted.  You can then hit Tab to move to the loop variable name (in case you don't like <code>i</code>) and again to go into the loop body.</p>
 <p>(Other IDEs have similar features, calling them <em>abbreviations</em>, <em>macros</em>, etc.  You don't need to tell me that Visual&nbsp;Studio isn't magically unique.)</p>
 <p>Visual&nbsp;Studio has a whole bunch of these snippets built in, but you can also define your own by writing an XML file and saving it where Visual&nbsp;Studio can find it.  For example, here is a snippet I wrote to quickly insert <code>String.Format()</code> expressions:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
-<span class="nt">&lt;CodeSnippets</span> <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;CodeSnippet</span> <span class="na">Format=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Header&gt;</span>
-      <span class="nt">&lt;Title&gt;</span>String.Format<span class="nt">&lt;/Title&gt;</span>
-      <span class="nt">&lt;Description&gt;</span>Creates a String.Format() call<span class="nt">&lt;/Description&gt;</span>
-      <span class="nt">&lt;Author&gt;</span>Kristopher Johnson<span class="nt">&lt;/Author&gt;</span>
-      <span class="nt">&lt;SnippetTypes&gt;</span>
-        <span class="nt">&lt;SnippetType&gt;</span>Expansion<span class="nt">&lt;/SnippetType&gt;</span>
-      <span class="nt">&lt;/SnippetTypes&gt;</span>
-      <span class="nt">&lt;Shortcut&gt;</span>sf<span class="nt">&lt;/Shortcut&gt;</span>
-    <span class="nt">&lt;/Header&gt;</span>
-    <span class="nt">&lt;Snippet&gt;</span>
-      <span class="nt">&lt;Declarations&gt;</span>
-        <span class="nt">&lt;Literal&gt;</span>
-          <span class="nt">&lt;ID&gt;</span>format<span class="nt">&lt;/ID&gt;</span>
-          <span class="nt">&lt;ToolTip&gt;</span>Replace with format string<span class="nt">&lt;/ToolTip&gt;</span>
-          <span class="nt">&lt;Default&gt;</span>format<span class="nt">&lt;/Default&gt;</span>
-        <span class="nt">&lt;/Literal&gt;</span>
-        <span class="nt">&lt;Literal&gt;</span>
-          <span class="nt">&lt;ID&gt;</span>arguments<span class="nt">&lt;/ID&gt;</span>
-          <span class="nt">&lt;ToolTip&gt;</span>Replace with arguments<span class="nt">&lt;/ToolTip&gt;</span>
-          <span class="nt">&lt;Default&gt;</span>arguments<span class="nt">&lt;/Default&gt;</span>
-        <span class="nt">&lt;/Literal&gt;</span>
-      <span class="nt">&lt;/Declarations&gt;</span>
-      <span class="nt">&lt;Code</span> <span class="na">Language=</span><span class="s">&quot;CSharp&quot;</span><span class="nt">&gt;</span>
-        <span class="cp">&lt;![CDATA[String.Format(&quot;$format$&quot;, $arguments$)$end$]]&gt;</span>
-      <span class="nt">&lt;/Code&gt;</span>
-    <span class="nt">&lt;/Snippet&gt;</span>
-  <span class="nt">&lt;/CodeSnippet&gt;</span>
-<span class="nt">&lt;/CodeSnippets&gt;</span>
+<div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;?</span><span class="nt">xml</span> <span class="nt">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nt">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span> <span class="o">?&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">CodeSnippets</span> <span class="nt">xmlns</span><span class="o">=</span><span class="s2">&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">CodeSnippet</span> <span class="nt">Format</span><span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Header</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Title</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">String</span><span class="p">.</span><span class="nc">Format</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Title</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Description</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">Creates</span> <span class="nt">a</span> <span class="nt">String</span><span class="p">.</span><span class="nc">Format</span><span class="o">()</span> <span class="nt">call</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Description</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Author</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">Kristopher</span> <span class="nt">Johnson</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Author</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">SnippetTypes</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">SnippetType</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">Expansion</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">SnippetType</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">SnippetTypes</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Shortcut</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">sf</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Shortcut</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Header</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Snippet</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Declarations</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Literal</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+          <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">ID</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">format</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">ID</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+          <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">ToolTip</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">Replace</span> <span class="nt">with</span> <span class="nt">format</span> <span class="nt">string</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">ToolTip</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+          <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Default</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">format</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Default</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Literal</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Literal</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+          <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">ID</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">arguments</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">ID</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+          <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">ToolTip</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">Replace</span> <span class="nt">with</span> <span class="nt">arguments</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">ToolTip</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+          <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Default</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">arguments</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Default</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Literal</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Declarations</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Code</span> <span class="nt">Language</span><span class="o">=</span><span class="s2">&quot;CSharp&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;!</span><span class="cp">[</span><span class="nx">CDATA</span><span class="err">[</span><span class="kt">String</span><span class="bp">.</span><span class="nb">Format</span><span class="p">(</span><span class="s2">&quot;$format$&quot;</span><span class="p">,</span> <span class="nv">$arguments</span><span class="err">$</span><span class="p">)</span><span class="nv">$end</span><span class="err">$</span><span class="cp">]</span><span class="o">]&amp;</span><span class="nt">gt</span><span class="o">;</span>
+      <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Code</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">Snippet</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">CodeSnippet</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">CodeSnippets</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
 </pre></div>
 
 

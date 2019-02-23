@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -83,16 +83,16 @@ I started by following the steps here: <a href="http://www.howtoforge.com/how-to
 <p>After a couple of hours of Googling and hair-pulling, I discovered that the problem is that Windows Vista and Windows 7 don't support Basic HTTP authentication for WebDAV.  One needs to either use Digest authentication, or <a href="http://support.microsoft.com/kb/841215">make registry changes</a> to enable Basic authentication.</p>
 <p>I didn't want to force registry changes on all the client machines, and Digest authentication is The Right Thing anyway, so I changed my Apache configuration to do it.</p>
 <p>Here are the new lines that ended up in my <code>/etc/apache2/sites-available/default</code> file:</p>
-<div class="highlight"><pre><span></span>    <span class="nt">&lt;Directory</span> <span class="err">/var/www/webdav</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span>    &amp;lt;Directory /var/www/webdav/&amp;gt;
             Options Indexes MultiViews
             AllowOverride None
             Order allow,deny
             allow from all
-    <span class="nt">&lt;/Directory&gt;</span>
+    &amp;lt;/Directory&amp;gt;
 
     Alias /webdav /var/www/webdav
 
-    <span class="nt">&lt;Location</span> <span class="err">/webdav</span><span class="nt">/&gt;</span>
+    &amp;lt;Location /webdav/&amp;gt;
             DAV On
             AuthType Digest
             AuthName &quot;webdav&quot;
@@ -100,7 +100,7 @@ I started by following the steps here: <a href="http://www.howtoforge.com/how-to
             AuthDigestProvider file
             AuthUserFile /var/www/webdav/.digest_passwd.dav
             Require valid-user
-    <span class="nt">&lt;/Location&gt;</span>
+    &amp;lt;/Location&amp;gt;
 </pre></div>
 
 

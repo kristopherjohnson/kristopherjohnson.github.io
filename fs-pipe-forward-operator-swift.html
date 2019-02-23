@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -90,7 +90,7 @@
 <div class="highlight"><pre><span></span>let numbers = [67, 83, 4, 99, 22, 18, 21, 24, 23, 2, 86]
 
 let result = &quot;, &quot;.join(numbers.filter { $0 % 2 == 0 }
-                              .sorted { $1 &lt; $0 }
+                              .sorted { $1 &amp;lt; $0 }
                               .map { $0.description })
 </pre></div>
 
@@ -102,7 +102,7 @@ let result = &quot;, &quot;.join(numbers.filter { $0 % 2 == 0 }
 <div class="highlight"><pre><span></span><span class="x">let seq = SequenceOf(numbers)</span>
 
 <span class="x">let seqResult =</span>
-<span class="x">    &quot;, &quot;.join(map(sorted(filter(seq)</span><span class="cp">{</span><span class="err">$</span><span class="m">0</span> <span class="o">%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span><span class="cp">}</span><span class="x">)</span><span class="cp">{</span><span class="err">$</span><span class="m">1</span> <span class="o">&lt;</span> <span class="err">$</span><span class="m">0</span><span class="cp">}</span><span class="x">)</span><span class="cp">{</span><span class="err">$</span><span class="m">0.d</span><span class="na">escription</span><span class="cp">}</span><span class="x">)</span>
+<span class="x">    &quot;, &quot;.join(map(sorted(filter(seq)</span><span class="cp">{</span><span class="err">$</span><span class="m">0</span> <span class="o">%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span><span class="cp">}</span><span class="x">)</span><span class="cp">{</span><span class="err">$</span><span class="m">1</span> <span class="o">&amp;</span><span class="na">lt</span><span class="o">;</span> <span class="err">$</span><span class="m">0</span><span class="cp">}</span><span class="x">)</span><span class="cp">{</span><span class="err">$</span><span class="m">0.d</span><span class="na">escription</span><span class="cp">}</span><span class="x">)</span>
 </pre></div>
 
 
@@ -112,16 +112,16 @@ let result = &quot;, &quot;.join(numbers.filter { $0 % 2 == 0 }
         map(
             sorted(
                 filter(seq) { $0 % 2 == 0 }
-            ) { $1 &lt; $0 }
+            ) { $1 &amp;lt; $0 }
         ) { $0.description })
 </pre></div>
 
 
 <p>That's not very readable, is it? We can see at a glance that <code>filter</code>, <code>map</code>, <code>sorted</code>, and <code>join</code> are being used, but we have to read it inside-out and backwards to follow the order of evaluation and figure out which closure goes with which function call and how the data is flowing through those functions. We probably wouldn't even try to write it as a single expression, and would instead write it as a sequence of intermediate results to make it understandable:</p>
-<div class="highlight"><pre><span></span>let filteredNumbers = filter(seq) { $0 % 2 == 0 }
-let sortedNumbers = sorted(filteredNumbers) { $1 &lt; $0 }
-let numbersAsStrings = map(sortedNumbers) { (n: Int) -&gt; String in n.description }
-let commaSeparatedResult = &quot;, &quot;.join(numbersAsStrings)
+<div class="highlight"><pre><span></span><span class="nt">let</span> <span class="nt">filteredNumbers</span> <span class="o">=</span> <span class="nt">filter</span><span class="o">(</span><span class="nt">seq</span><span class="o">)</span> <span class="p">{</span> <span class="err">$0</span> <span class="err">%</span> <span class="err">2</span> <span class="err">==</span> <span class="err">0</span> <span class="p">}</span>
+<span class="nt">let</span> <span class="nt">sortedNumbers</span> <span class="o">=</span> <span class="nt">sorted</span><span class="o">(</span><span class="nt">filteredNumbers</span><span class="o">)</span> <span class="p">{</span> <span class="err">$1</span> <span class="err">&amp;lt</span><span class="p">;</span> <span class="err">$0</span> <span class="p">}</span>
+<span class="nt">let</span> <span class="nt">numbersAsStrings</span> <span class="o">=</span> <span class="nt">map</span><span class="o">(</span><span class="nt">sortedNumbers</span><span class="o">)</span> <span class="p">{</span> <span class="err">(</span><span class="n">n</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">String</span> <span class="err">in</span> <span class="err">n.description</span> <span class="p">}</span>
+<span class="nt">let</span> <span class="nt">commaSeparatedResult</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="p">.</span><span class="nc">join</span><span class="o">(</span><span class="nt">numbersAsStrings</span><span class="o">)</span>
 </pre></div>
 
 
@@ -129,16 +129,16 @@ let commaSeparatedResult = &quot;, &quot;.join(numbersAsStrings)
 <h2>Life with pipe-forward</h2>
 <p>Wouldn't it be nice if we could call a function on a value using a postfix notation like we call a method on an object? That is, wouldn't it be nice if we could write something like this?</p>
 <div class="highlight"><pre><span></span>let pipeResult =
-    seq |&gt; filteredWithPredicate { $0 % 2 == 0 }
-        |&gt; sortedByPredicate { $1 &lt; $0 }
-        |&gt; mappedWithTransform { $0.description }
-        |&gt; String.join(&quot;, &quot;)
+    seq |&amp;gt; filteredWithPredicate { $0 % 2 == 0 }
+        |&amp;gt; sortedByPredicate { $1 &amp;lt; $0 }
+        |&amp;gt; mappedWithTransform { $0.description }
+        |&amp;gt; String.join(&quot;, &quot;)
 </pre></div>
 
 
 <p>We can. That <code>|&gt;</code> operator is called the "pipe-forward" or "forward pipe" operator in F#.</p>
 <p>This:</p>
-<div class="highlight"><pre><span></span>x |&gt; f
+<div class="highlight"><pre><span></span>x |&amp;gt; f
 </pre></div>
 
 
@@ -148,7 +148,7 @@ let commaSeparatedResult = &quot;, &quot;.join(numbersAsStrings)
 
 
 <p>and this:</p>
-<div class="highlight"><pre><span></span>x |&gt; f |&gt; g |&gt; h
+<div class="highlight"><pre><span></span>x |&amp;gt; f |&amp;gt; g |&amp;gt; h
 </pre></div>
 
 
@@ -159,16 +159,16 @@ let commaSeparatedResult = &quot;, &quot;.join(numbersAsStrings)
 
 <p>It's just syntactic sugar, but it is often clearer to express a sequence of function calls as a chain read left-to-right/top-to-bottom than as a cluster of nested subexpressions.</p>
 <p>It can be defined as an operator in Swift like this:</p>
-<div class="highlight"><pre><span></span>infix operator |&gt;   { precedence 50 associativity left }
+<div class="highlight"><pre><span></span><span class="nt">infix</span> <span class="nt">operator</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;</span>   <span class="p">{</span> <span class="err">precedence</span> <span class="err">50</span> <span class="err">associativity</span> <span class="err">left</span> <span class="p">}</span>
 
-public func |&gt; &lt;T,U&gt;(lhs: T, rhs: T -&gt; U) -&gt; U {
-    return rhs(lhs)
-}
+<span class="nt">public</span> <span class="nt">func</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">T</span><span class="o">,</span><span class="nt">U</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;(</span><span class="nt">lhs</span><span class="o">:</span> <span class="nt">T</span><span class="o">,</span> <span class="nt">rhs</span><span class="o">:</span> <span class="nt">T</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">U</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">U</span> <span class="p">{</span>
+    <span class="err">return</span> <span class="err">rhs(lhs)</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p>We have some work to do before we can evaluate <code>pipeResult</code> above with our <code>|&gt;</code> operator. The problem is that the <code>filter()</code>, <code>sorted()</code>, and <code>map()</code> functions provided by the Swift standard library don't have their parameters in the order we need, and they are not written to support <a href="http://en.wikipedia.org/wiki/Partial_application">partial application</a>.  For example, let's look at the first subexpression:</p>
-<div class="highlight"><pre><span></span>seq |&gt; filteredWithPredicate { $0 % 2 == 0 }
+<div class="highlight"><pre><span></span>seq |&amp;gt; filteredWithPredicate { $0 % 2 == 0 }
 </pre></div>
 
 
@@ -178,32 +178,32 @@ public func |&gt; &lt;T,U&gt;(lhs: T, rhs: T -&gt; U) -&gt; U {
 
 
 <p>So we need <code>filteredWithPredicate</code> to be a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Declarations.html#//apple_ref/doc/uid/TP40014097-CH34-XID_591">curried function</a> that takes the predicate as the first argument and sequence as second argument. Unfortunately, the library's <code>fillter/sorted/map</code> functions are not curried and are called with the sequence as the first argument and function as second argument.  To make the <code>pipeResult</code> expression compile and run, we need to provide some "adapter functions" that have the necessary signatures:</p>
-<div class="highlight"><pre><span></span>// Curried adapter function for Swift Standard Library&#39;s filter() function
-public func filteredWithPredicate&lt;S : SequenceType&gt;
-    (includeElement: (S.Generator.Element) -&gt; Bool)
-    (source: S)
-    -&gt; [S.Generator.Element]
-{
-    return filter(source, includeElement)
-}
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nt">Curried</span> <span class="nt">adapter</span> <span class="nt">function</span> <span class="nt">for</span> <span class="nt">Swift</span> <span class="nt">Standard</span> <span class="nt">Library</span><span class="s1">&#39;s filter() function</span>
+<span class="s1">public func filteredWithPredicate&amp;lt;S : SequenceType&amp;gt;</span>
+<span class="s1">    (includeElement: (S.Generator.Element) -&amp;gt; Bool)</span>
+<span class="s1">    (source: S)</span>
+<span class="s1">    -&amp;gt; </span><span class="cp">[</span><span class="nx">S.Generator.Element</span><span class="cp">]</span><span class="s1"></span>
+<span class="s1">{</span>
+<span class="s1">    return filter(source, includeElement)</span>
+<span class="s1">}</span>
 
-// Curried adapter function for Swift Standard Library&#39;s sorted() function
-public func sortedByPredicate&lt;S : SequenceType&gt;
-    (predicate: (S.Generator.Element, S.Generator.Element) -&gt; Bool)
-    (source: S)
-    -&gt; [S.Generator.Element]
-{
-    return sorted(source, predicate)
-}
+<span class="s1">// Curried adapter function for Swift Standard Library&#39;</span><span class="nt">s</span> <span class="nt">sorted</span><span class="o">()</span> <span class="nt">function</span>
+<span class="nt">public</span> <span class="nt">func</span> <span class="nt">sortedByPredicate</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">S</span> <span class="o">:</span> <span class="nt">SequenceType</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">(</span><span class="nt">predicate</span><span class="o">:</span> <span class="o">(</span><span class="nt">S</span><span class="p">.</span><span class="nc">Generator</span><span class="p">.</span><span class="nc">Element</span><span class="o">,</span> <span class="nt">S</span><span class="p">.</span><span class="nc">Generator</span><span class="p">.</span><span class="nc">Element</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">Bool</span><span class="o">)</span>
+    <span class="o">(</span><span class="nt">source</span><span class="o">:</span> <span class="nt">S</span><span class="o">)</span>
+    <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="cp">[</span><span class="nx">S.Generator.Element</span><span class="cp">]</span>
+<span class="p">{</span>
+    <span class="err">return</span> <span class="err">sorted(source,</span> <span class="err">predicate)</span>
+<span class="p">}</span>
 
-// Curried adapter function for Swift Standard Library&#39;s map() function
-public func mappedWithTransform&lt;S: SequenceType, T&gt;
-    (transform: (S.Generator.Element) -&gt; T)
-    (source: S)
-    -&gt; [T]
-{
-    return map(source, transform)
-}
+<span class="o">//</span> <span class="nt">Curried</span> <span class="nt">adapter</span> <span class="nt">function</span> <span class="nt">for</span> <span class="nt">Swift</span> <span class="nt">Standard</span> <span class="nt">Library</span><span class="err">&#39;</span><span class="nt">s</span> <span class="nt">map</span><span class="o">()</span> <span class="nt">function</span>
+<span class="nt">public</span> <span class="nt">func</span> <span class="nt">mappedWithTransform</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">S</span><span class="o">:</span> <span class="nt">SequenceType</span><span class="o">,</span> <span class="nt">T</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">(</span><span class="nt">transform</span><span class="o">:</span> <span class="o">(</span><span class="nt">S</span><span class="p">.</span><span class="nc">Generator</span><span class="p">.</span><span class="nc">Element</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">T</span><span class="o">)</span>
+    <span class="o">(</span><span class="nt">source</span><span class="o">:</span> <span class="nt">S</span><span class="o">)</span>
+    <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="cp">[</span><span class="nx">T</span><span class="cp">]</span>
+<span class="p">{</span>
+    <span class="err">return</span> <span class="err">map(source,</span> <span class="err">transform)</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -214,41 +214,41 @@ public func mappedWithTransform&lt;S: SequenceType, T&gt;
 <p>In Microsoft's Visual Studio, if you are writing F# code and you type <code>|&gt;</code>, the IDE pops up an auto-completion list of all the functions that can be applied to the value on the left, just like typing a <code>.</code> after an object brings up a list of its methods and properties. Xcode can do this too, but without <code>|&gt;</code> being a standard Swift operator, few developers will be able to take advantage of it. If you think <code>|&gt;</code> and functional auto-complete would be a useful addition to Swift and Xcode, you can submit a bug report to Apple requesting it. (You can <a href="http://www.openradar.me/radar?id=5837161337192448">dupe my radar</a>.)</p>
 <h2>Optional chaining</h2>
 <p>What if we have functions that return Optionals, and want to pipe those to functions that take non-Optional values? We can define a couple of operators to handle those cases:</p>
-<div class="highlight"><pre><span></span>infix operator |&gt;!  { precedence 50 associativity left }
-infix operator |&gt;&amp;  { precedence 50 associativity left }
+<div class="highlight"><pre><span></span><span class="nt">infix</span> <span class="nt">operator</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;!</span>  <span class="p">{</span> <span class="err">precedence</span> <span class="err">50</span> <span class="err">associativity</span> <span class="err">left</span> <span class="p">}</span>
+<span class="nt">infix</span> <span class="nt">operator</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">amp</span><span class="o">;</span>  <span class="p">{</span> <span class="err">precedence</span> <span class="err">50</span> <span class="err">associativity</span> <span class="err">left</span> <span class="p">}</span>
 
-public func |&gt;! &lt;T,U&gt;(lhs: T?, rhs: T -&gt; U) -&gt; U {
-    return rhs(lhs!)
-}
+<span class="nt">public</span> <span class="nt">func</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;!</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">T</span><span class="o">,</span><span class="nt">U</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;(</span><span class="nt">lhs</span><span class="o">:</span> <span class="nt">T</span><span class="o">?,</span> <span class="nt">rhs</span><span class="o">:</span> <span class="nt">T</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">U</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">U</span> <span class="p">{</span>
+    <span class="err">return</span> <span class="err">rhs(lhs!)</span>
+<span class="p">}</span>
 
-public func |&gt;&amp; &lt;T,U&gt;(lhs: T?, rhs: T -&gt; U) -&gt; U? {
-    return lhs.map(rhs)
-}
+<span class="nt">public</span> <span class="nt">func</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">amp</span><span class="o">;</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">T</span><span class="o">,</span><span class="nt">U</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;(</span><span class="nt">lhs</span><span class="o">:</span> <span class="nt">T</span><span class="o">?,</span> <span class="nt">rhs</span><span class="o">:</span> <span class="nt">T</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">U</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">U</span><span class="o">?</span> <span class="p">{</span>
+    <span class="err">return</span> <span class="err">lhs.map(rhs)</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p>The <code>|&gt;!</code> operator unwraps its left-side argument and passes it to the function on the right. This is safe if we know that the Optional value will never be nil.</p>
 <p>The <code>|&gt;&amp;</code> operator checks whether the left-side argument is <code>nil</code>. If so, the value of the expression is <code>nil</code>. If not, then the Optional is unwrapped and the right-side function is applied to it. (I'd rather name this operator <code>|&gt;?</code>, but Swift doesn't allow the <code>?</code> character in operator names.)  This is the same as just calling <code>Optional.map()</code>, but if we are using a pipeline it is useful to use just pipe operators rather than mixing pipes and method calls.</p>
 <p>Here are some simple usage examples, using the Swift Standard Library's <code>find()</code> function, which returns an <code>Int?</code> which is the index of the searched-for value, or <code>nil</code> if not found:</p>
-<div class="highlight"><pre><span></span>let elements = [2, 4, 6, 8, 10]
+<div class="highlight"><pre><span></span><span class="nt">let</span> <span class="nt">elements</span> <span class="o">=</span> <span class="cp">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="cp">]</span>
 
-func reportIndexOfValue(value: Int)(index: Int) -&gt; String {
-    let message = &quot;Found \(value) at index \(index)&quot;
-    println(message)
-    return message
-}
+<span class="nt">func</span> <span class="nt">reportIndexOfValue</span><span class="o">(</span><span class="nt">value</span><span class="o">:</span> <span class="nt">Int</span><span class="o">)(</span><span class="nt">index</span><span class="o">:</span> <span class="nt">Int</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">String</span> <span class="p">{</span>
+    <span class="err">let</span> <span class="err">message</span> <span class="err">=</span> <span class="err">&quot;Found</span> <span class="err">\(value)</span> <span class="err">at</span> <span class="err">index</span> <span class="err">\(index)&quot;</span>
+    <span class="err">println(message)</span>
+    <span class="err">return</span> <span class="err">message</span>
+<span class="p">}</span>
 
-find(elements, 6) |&gt;! reportIndexOfValue(6)    // &quot;Found 6 at index 2&quot;
+<span class="nt">find</span><span class="o">(</span><span class="nt">elements</span><span class="o">,</span> <span class="nt">6</span><span class="o">)</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;!</span> <span class="nt">reportIndexOfValue</span><span class="o">(</span><span class="nt">6</span><span class="o">)</span>    <span class="o">//</span> <span class="s2">&quot;Found 6 at index 2&quot;</span>
 
-find(elements, 3) |&gt;&amp; reportIndexOfValue(3)    // nil
-find(elements, 4) |&gt;&amp; reportIndexOfValue(4)    // {Some &quot;Found 4 at index 1&quot;}
+<span class="nt">find</span><span class="o">(</span><span class="nt">elements</span><span class="o">,</span> <span class="nt">3</span><span class="o">)</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">amp</span><span class="o">;</span> <span class="nt">reportIndexOfValue</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span>    <span class="o">//</span> <span class="nt">nil</span>
+<span class="nt">find</span><span class="o">(</span><span class="nt">elements</span><span class="o">,</span> <span class="nt">4</span><span class="o">)</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">amp</span><span class="o">;</span> <span class="nt">reportIndexOfValue</span><span class="o">(</span><span class="nt">4</span><span class="o">)</span>    <span class="o">//</span> <span class="p">{</span><span class="err">Some</span> <span class="err">&quot;Found</span> <span class="err">4</span> <span class="err">at</span> <span class="err">index</span> <span class="err">1&quot;</span><span class="p">}</span>
 </pre></div>
 
 
 <h2>Functions with multiple parameters, and tuples</h2>
 <p>It might seem that the pipe-forward operator is only useful when passing an argument to a function that takes a single parameter. However, a Swift function can be applied to a tuple of arguments, so you can use a tuple on the left side of <code>|&gt;</code> and a function taking multiple arguments on the right side.</p>
 <p>In other words, this:</p>
-<div class="highlight"><pre><span></span>(x, y, z) |&gt; f
+<div class="highlight"><pre><span></span>(x, y, z) |&amp;gt; f
 </pre></div>
 
 
@@ -260,23 +260,23 @@ find(elements, 4) |&gt;&amp; reportIndexOfValue(4)    // {Some &quot;Found 4 at 
 <p>For example:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Foundation</span>
 
-<span class="n">func</span> <span class="n">diagonalLength</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="n">func</span> <span class="n">diagonalLength</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Double</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">width</span> <span class="o">+</span> <span class="n">height</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">let</span> <span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">diagonalLength</span>                     <span class="o">//</span> <span class="n">result</span> <span class="ow">is</span> <span class="mf">5.0</span>
+<span class="n">let</span> <span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">diagonalLength</span>                     <span class="o">//</span> <span class="n">result</span> <span class="ow">is</span> <span class="mf">5.0</span>
 
-<span class="n">func</span> <span class="n">multiplyAndDivide</span><span class="p">(</span><span class="n">multiplier1</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">multiplier2</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">divisor</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="n">func</span> <span class="n">multiplyAndDivide</span><span class="p">(</span><span class="n">multiplier1</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">multiplier2</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">divisor</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Double</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">multiplier1</span> <span class="o">*</span> <span class="n">multiplier2</span> <span class="o">/</span> <span class="n">divisor</span>
 <span class="p">}</span>
 
-<span class="n">let</span> <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">multiplyAndDivide</span>         <span class="o">//</span> <span class="n">result</span> <span class="ow">is</span> <span class="mf">4.0</span>
+<span class="n">let</span> <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">|&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">multiplyAndDivide</span>         <span class="o">//</span> <span class="n">result</span> <span class="ow">is</span> <span class="mf">4.0</span>
 </pre></div>
 
 
 <p>These can be useful in more complex pipeline expressions that require use of tuples as arguments, results, or intermediate values. We can use <a href="https://gist.github.com/kristopherjohnson/04dbc470e17f67f836a2">zip() or zip3()</a> to combine values from other sequences into tuples to be piped into functions.</p>
 <p>You could even do something like this:</p>
-<div class="highlight"><pre><span></span>let evenNumbers = (seq, { $0 % 2 == 0 }) |&gt; filter
+<div class="highlight"><pre><span></span>let evenNumbers = (seq, { $0 % 2 == 0 }) |&amp;gt; filter
 </pre></div>
 
 
@@ -295,7 +295,7 @@ find(elements, 4) |&gt;&amp; reportIndexOfValue(4)    // {Some &quot;Found 4 at 
 <p>The above was originally written with an early beta of Swift. As of Xcode 6 beta 4, the Swift standard library provides a <code>lazy()</code> function that transforms a sequence into an object that has lazily evaluated <code>filter()</code> and <code>map()</code> methods, so we could solve the problem like this:</p>
 <div class="highlight"><pre><span></span><span class="x">let lazyResult =</span>
 <span class="x">    &quot;, &quot;.join(lazy(seq).filter(</span><span class="cp">{</span> <span class="err">$</span><span class="m">0</span> <span class="o">%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span> <span class="cp">}</span><span class="x">).array</span>
-<span class="x">                       .sorted(</span><span class="cp">{</span><span class="err">$</span><span class="m">1</span> <span class="o">&lt;</span> <span class="err">$</span><span class="m">0</span><span class="cp">}</span><span class="x">)</span>
+<span class="x">                       .sorted(</span><span class="cp">{</span><span class="err">$</span><span class="m">1</span> <span class="o">&amp;</span><span class="na">lt</span><span class="o">;</span> <span class="err">$</span><span class="m">0</span><span class="cp">}</span><span class="x">)</span>
 <span class="x">                       .map </span><span class="cp">{</span> <span class="err">$</span><span class="m">0.d</span><span class="na">escription</span> <span class="cp">}</span><span class="x">)</span>
 </pre></div>
 
@@ -304,34 +304,34 @@ find(elements, 4) |&gt;&amp; reportIndexOfValue(4)    // {Some &quot;Found 4 at 
 <h2 id="pipeAdapted">Another afterword</h2>
 
 <p>Above, after the definitions of the "adapter functions", I wrote "all we did was copy the signatures of the original functions, then curry the parameters and reverse their order." That seems like something we should be able to do with a higher-level function, right?</p>
-<div class="highlight"><pre><span></span>// Given a function with signature (A, B) -&gt; T, return curried
-// function with signature (B)(A) -&gt; T
-func pipeAdapted&lt;A, B, T&gt;(f: (A, B) -&gt; T) -&gt; (B -&gt; A -&gt; T) {
-    return { b in { a in f(a, b) } }
-}
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nt">Given</span> <span class="nt">a</span> <span class="nt">function</span> <span class="nt">with</span> <span class="nt">signature</span> <span class="o">(</span><span class="nt">A</span><span class="o">,</span> <span class="nt">B</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">T</span><span class="o">,</span> <span class="nt">return</span> <span class="nt">curried</span>
+<span class="o">//</span> <span class="nt">function</span> <span class="nt">with</span> <span class="nt">signature</span> <span class="o">(</span><span class="nt">B</span><span class="o">)(</span><span class="nt">A</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">T</span>
+<span class="nt">func</span> <span class="nt">pipeAdapted</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">A</span><span class="o">,</span> <span class="nt">B</span><span class="o">,</span> <span class="nt">T</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;(</span><span class="nt">f</span><span class="o">:</span> <span class="o">(</span><span class="nt">A</span><span class="o">,</span> <span class="nt">B</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">T</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="o">(</span><span class="nt">B</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">A</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">T</span><span class="o">)</span> <span class="p">{</span>
+    <span class="err">return</span> <span class="err">{</span> <span class="err">b</span> <span class="err">in</span> <span class="err">{</span> <span class="err">a</span> <span class="err">in</span> <span class="err">f(a,</span> <span class="err">b)</span> <span class="p">}</span> <span class="err">}</span>
+<span class="err">}</span>
 
-let pipeAdaptedResult =
-    seq |&gt; pipeAdapted(filter)({ $0 % 2 == 0 })
-        |&gt; pipeAdapted(sorted)({ $1 &lt; $0 })
-        |&gt; pipeAdapted(map)({ $0.description })
-        |&gt; String.join(&quot;, &quot;)
+<span class="nt">let</span> <span class="nt">pipeAdaptedResult</span> <span class="o">=</span>
+    <span class="nt">seq</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">pipeAdapted</span><span class="o">(</span><span class="nt">filter</span><span class="o">)(</span><span class="p">{</span> <span class="err">$0</span> <span class="err">%</span> <span class="err">2</span> <span class="err">==</span> <span class="err">0</span> <span class="p">}</span><span class="o">)</span>
+        <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">pipeAdapted</span><span class="o">(</span><span class="nt">sorted</span><span class="o">)(</span><span class="p">{</span> <span class="err">$1</span> <span class="err">&amp;lt</span><span class="p">;</span> <span class="err">$0</span> <span class="p">}</span><span class="o">)</span>
+        <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">pipeAdapted</span><span class="o">(</span><span class="nt">map</span><span class="o">)(</span><span class="p">{</span> <span class="err">$0.description</span> <span class="p">}</span><span class="o">)</span>
+        <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">String</span><span class="p">.</span><span class="nc">join</span><span class="o">(</span><span class="s2">&quot;, &quot;</span><span class="o">)</span>
 </pre></div>
 
 
 <p>Here, we use a <code>pipeAdapted()</code> function to transform the standard library's <code>filter</code>, <code>sorted</code>, and <code>map</code> functions into what we need, instead of writing those adapters. If you and your team members are all FP ninjas who don't bat an eye at throwing functions around, then you may prefer this, but my preference is still for the version that uses the adapter functions.</p>
 <p>An alternative that may be a little more palatable to non-FP people is to define another pipe operator that lets us specify a function and predicate, like so:</p>
-<div class="highlight"><pre><span></span>infix operator |&gt;*  { precedence 50 associativity left }
+<div class="highlight"><pre><span></span><span class="nt">infix</span> <span class="nt">operator</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;*</span>  <span class="p">{</span> <span class="err">precedence</span> <span class="err">50</span> <span class="err">associativity</span> <span class="err">left</span> <span class="p">}</span>
 
-// Transform &quot;x |&gt;* (f, predicate)&quot; to &quot;f(x, predicate)&quot;
-public func |&gt;* &lt;A, B, C, T&gt;(lhs: A, rhs: ((A, (B) -&gt; C) -&gt; T, (B) -&gt; C)) -&gt; T {
-    return (rhs.0)(lhs, rhs.1)
-}
+<span class="o">//</span> <span class="nt">Transform</span> <span class="s2">&quot;x |&amp;gt;* (f, predicate)&quot;</span> <span class="nt">to</span> <span class="s2">&quot;f(x, predicate)&quot;</span>
+<span class="nt">public</span> <span class="nt">func</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;*</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">A</span><span class="o">,</span> <span class="nt">B</span><span class="o">,</span> <span class="nt">C</span><span class="o">,</span> <span class="nt">T</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;(</span><span class="nt">lhs</span><span class="o">:</span> <span class="nt">A</span><span class="o">,</span> <span class="nt">rhs</span><span class="o">:</span> <span class="o">((</span><span class="nt">A</span><span class="o">,</span> <span class="o">(</span><span class="nt">B</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">C</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">T</span><span class="o">,</span> <span class="o">(</span><span class="nt">B</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">C</span><span class="o">))</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">T</span> <span class="p">{</span>
+    <span class="err">return</span> <span class="err">(rhs.0)(lhs,</span> <span class="err">rhs.1)</span>
+<span class="p">}</span>
 
-let pipeStarResult =
-    seq |&gt;* (filter, { $0 % 2 == 0 })
-        |&gt;* (sorted, { $1 &lt; $0 })
-        |&gt;* (map, { $0.description })
-        |&gt; String.join(&quot;, &quot;)
+<span class="nt">let</span> <span class="nt">pipeStarResult</span> <span class="o">=</span>
+    <span class="nt">seq</span> <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;*</span> <span class="o">(</span><span class="nt">filter</span><span class="o">,</span> <span class="p">{</span> <span class="err">$0</span> <span class="err">%</span> <span class="err">2</span> <span class="err">==</span> <span class="err">0</span> <span class="p">}</span><span class="o">)</span>
+        <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;*</span> <span class="o">(</span><span class="nt">sorted</span><span class="o">,</span> <span class="p">{</span> <span class="err">$1</span> <span class="err">&amp;lt</span><span class="p">;</span> <span class="err">$0</span> <span class="p">}</span><span class="o">)</span>
+        <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;*</span> <span class="o">(</span><span class="nt">map</span><span class="o">,</span> <span class="p">{</span> <span class="err">$0.description</span> <span class="p">}</span><span class="o">)</span>
+        <span class="o">|&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">String</span><span class="p">.</span><span class="nc">join</span><span class="o">(</span><span class="s2">&quot;, &quot;</span><span class="o">)</span>
 </pre></div>
 
 
@@ -339,10 +339,10 @@ let pipeStarResult =
 <p>We can hope that a future version of Swift will provide better built-in support for curried functions and partial application.</p>
 <p>Finally, one could skip all this "currying" and "adapter" business and use some closures to define ad-hoc anonymous functions that can be applied to sequences in a pipeline:</p>
 <div class="highlight"><pre><span></span>let closuresResult =
-    seq |&gt; { s in filter(s) { $0 % 2 == 0 } }
-        |&gt; { s in sorted(s) { $1 &lt; $0 } }
-        |&gt; { s in map(s) { $0.description } }
-        |&gt; String.join(&quot;, &quot;)
+    seq |&amp;gt; { s in filter(s) { $0 % 2 == 0 } }
+        |&amp;gt; { s in sorted(s) { $1 &amp;lt; $0 } }
+        |&amp;gt; { s in map(s) { $0.description } }
+        |&amp;gt; String.join(&quot;, &quot;)
 </pre></div>
 
 

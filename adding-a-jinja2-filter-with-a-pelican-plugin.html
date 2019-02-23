@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -81,8 +81,8 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>With my <a href="http://undefinedvalue.com/rebuilding-my-blog-again.html">new blog setup</a>, I decided to give <a href="https://en.wikipedia.org/wiki/AdSense">Google AdSense</a> a try.  I don't have many regular readers, but I do have a few pages that attract search-engine traffic.  So, to monetize those older pages without shoving ads in my regular readers' faces, I decided to show ads on posts that were over a month old.  That should be easy enough to add to the <a href="https://github.com/kristopherjohnson/undefinedvalue-pelican/blob/master/themes/undefinedvalue/templates/article.html">article.html</a> template:</p>
-<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">article.date</span><span class="o">|</span><span class="nf">age_in_days</span> <span class="o">&gt;</span> <span class="m">30</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">    &lt;!-- ... Include AdSense code ... --&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">article.date</span><span class="o">|</span><span class="nf">age_in_days</span> <span class="p">&amp;</span><span class="nv">gt</span><span class="p">;</span> <span class="m">30</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &amp;lt;!-- ... Include AdSense code ... --&amp;gt;</span>
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 

@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -147,35 +147,35 @@ Calculator.runTests = function () {
 <p>See the <a href="http://docs.jquery.com/QUnit#API_documentation">QUnit API documentation</a> for info about the test functions. All you need to know to understand the above is that <code>test(name, function)</code> creates a test case, and <code>equals(actual, expected, message)</code> checks equivalence of results.</p>
 <h3>HTML Test Runner</h3>
 <p>Finally, we need an HTML file, <code>calculator_tests.html</code>, which loads all the modules, runs the tests, and displays the results in a web browser:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
+<div class="highlight"><pre><span></span>&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
 
-<span class="c">&lt;!-- Load jQuery and QUnit --&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;jquery.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;qunit.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;qunit.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span> <span class="nt">/&gt;</span>
+&amp;lt;!-- Load jQuery and QUnit --&amp;gt;
+&amp;lt;script src=&quot;jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;qunit.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;qunit.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&amp;gt;
 
-<span class="c">&lt;!-- Load modules to be tested --&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;calculator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;calculator_tests.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+&amp;lt;!-- Load modules to be tested --&amp;gt;
+&amp;lt;script src=&quot;calculator.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;calculator_tests.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
 
-<span class="c">&lt;!-- This jQuery fragment calls Calculator.runTests() after the document loads --&gt;</span>
-<span class="nt">&lt;script&gt;</span>
+&amp;lt;!-- This jQuery fragment calls Calculator.runTests() after the document loads --&amp;gt;
+&amp;lt;script&amp;gt;
 $(document).ready(function(){
     Calculator.runTests();    
 });
-<span class="nt">&lt;/script&gt;</span>
+&amp;lt;/script&amp;gt;
 
-<span class="nt">&lt;/head&gt;</span>
+&amp;lt;/head&amp;gt;
 
-<span class="nt">&lt;body&gt;</span>
-<span class="c">&lt;!-- QUnit will put the results in the elements here --&gt;</span>
-<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;qunit-header&quot;</span><span class="nt">&gt;</span>Calculator Tests<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;qunit-banner&quot;</span><span class="nt">&gt;&lt;/h2&gt;</span>
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;qunit-userAgent&quot;</span><span class="nt">&gt;&lt;/h2&gt;</span>
-<span class="nt">&lt;ol</span> <span class="na">id=</span><span class="s">&quot;qunit-tests&quot;</span><span class="nt">&gt;&lt;/ol&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+&amp;lt;body&amp;gt;
+&amp;lt;!-- QUnit will put the results in the elements here --&amp;gt;
+&amp;lt;h1 id=&quot;qunit-header&quot;&amp;gt;Calculator Tests&amp;lt;/h1&amp;gt;
+&amp;lt;h2 id=&quot;qunit-banner&quot;&amp;gt;&amp;lt;/h2&amp;gt;
+&amp;lt;h2 id=&quot;qunit-userAgent&quot;&amp;gt;&amp;lt;/h2&amp;gt;
+&amp;lt;ol id=&quot;qunit-tests&quot;&amp;gt;&amp;lt;/ol&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
 </pre></div>
 
 

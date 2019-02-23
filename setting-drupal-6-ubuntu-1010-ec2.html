@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -169,8 +169,8 @@ At this point, you should have a usable Drupal installation, accessible at <code
 </ol>
 <p>Here is the snippet to be added/modified in <code>settings.php</code>. In place of <code>some_unique_prefix</code>, substitute your site's name or some other value that is unique for your site.</p>
 <div class="highlight"><pre><span></span>$conf = array(
-    &#39;cache_inc&#39; =&gt; &#39;/usr/share/drupal6/sites/all/modules/memcache/memcache.inc&#39;,
-    &#39;memcache_key_prefix&#39; =&gt; &#39;some_unique_prefix&#39;,
+    &#39;cache_inc&#39; =&amp;gt; &#39;/usr/share/drupal6/sites/all/modules/memcache/memcache.inc&#39;,
+    &#39;memcache_key_prefix&#39; =&amp;gt; &#39;some_unique_prefix&#39;,
 );
 </pre></div>
 

@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -148,35 +148,35 @@
 <h2>Starting the Server Automatically When You Log In</h2>
 <p>It would get annoying to have to type "<code>tiddlywiki /Users/kdj/Dropbox/tw --server 19671</code>" every time you wanted to use your personal wiki. Let's create a <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man5/launchd.plist.5.html#//apple_ref/doc/man/5/launchd.plist">launchd configuration file</a> in the <code>~/Library/LaunchAgents</code> directory that will cause it to be automatically started every time we log in.</p>
 <p>Go to your  <code>~/Library/LaunchAgents</code> directory and create a file named <code>com.tiddlywiki.plist</code> with the following contents, substituting the appropriate path for your data directory and the paths to the <code>node</code> and <code>tiddlywiki</code> executables. (Run <code>which node</code> and <code>which tiddlywiki</code> if you don't know what those paths are.)</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
-<span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;dict&gt;</span>
-  <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
-  <span class="nt">&lt;string&gt;</span>com.tiddlywiki<span class="nt">&lt;/string&gt;</span>
-  <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
-  <span class="nt">&lt;array&gt;</span>
-    <span class="nt">&lt;string&gt;</span>/usr/local/bin/node<span class="nt">&lt;/string&gt;</span>
-    <span class="nt">&lt;string&gt;</span>/usr/local/bin/tiddlywiki<span class="nt">&lt;/string&gt;</span>
-    <span class="nt">&lt;string&gt;</span>/Users/kdj/Dropbox/tw<span class="nt">&lt;/string&gt;</span>
-    <span class="nt">&lt;string&gt;</span>--server<span class="nt">&lt;/string&gt;</span>
-    <span class="nt">&lt;string&gt;</span>19671<span class="nt">&lt;/string&gt;</span>
-  <span class="nt">&lt;/array&gt;</span>
-  <span class="nt">&lt;key&gt;</span>EnvironmentVariables<span class="nt">&lt;/key&gt;</span>
-  <span class="nt">&lt;dict&gt;</span>
-    <span class="nt">&lt;key&gt;</span>PATH<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;string&gt;</span>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin<span class="nt">&lt;/string&gt;</span>
-  <span class="nt">&lt;/dict&gt;</span>
-  <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
-  <span class="nt">&lt;true/&gt;</span>
-  <span class="nt">&lt;key&gt;</span>WorkingDirectory<span class="nt">&lt;/key&gt;</span>
-  <span class="nt">&lt;string&gt;</span>/Users/kdj/Dropbox/tw<span class="nt">&lt;/string&gt;</span>
-  <span class="nt">&lt;key&gt;</span>StandardErrorPath<span class="nt">&lt;/key&gt;</span>
-  <span class="nt">&lt;string&gt;</span>error.log<span class="nt">&lt;/string&gt;</span>
-  <span class="nt">&lt;key&gt;</span>StandardOutputPath<span class="nt">&lt;/key&gt;</span>
-  <span class="nt">&lt;string&gt;</span>output.log<span class="nt">&lt;/string&gt;</span>
-<span class="nt">&lt;/dict&gt;</span>
-<span class="nt">&lt;/plist&gt;</span>
+<div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;?</span><span class="nt">xml</span> <span class="nt">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nt">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="o">?&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;!</span><span class="nt">DOCTYPE</span> <span class="nt">plist</span> <span class="nt">PUBLIC</span> <span class="s2">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="s2">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">plist</span> <span class="nt">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">dict</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">Label</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">com</span><span class="p">.</span><span class="nc">tiddlywiki</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">ProgramArguments</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">array</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;/</span><span class="nt">usr</span><span class="o">/</span><span class="nt">local</span><span class="o">/</span><span class="nt">bin</span><span class="o">/</span><span class="nt">node</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;/</span><span class="nt">usr</span><span class="o">/</span><span class="nt">local</span><span class="o">/</span><span class="nt">bin</span><span class="o">/</span><span class="nt">tiddlywiki</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;/</span><span class="nt">Users</span><span class="o">/</span><span class="nt">kdj</span><span class="o">/</span><span class="nt">Dropbox</span><span class="o">/</span><span class="nt">tw</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">--server</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">19671</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">array</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">EnvironmentVariables</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">dict</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">PATH</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;/</span><span class="nt">usr</span><span class="o">/</span><span class="nt">local</span><span class="o">/</span><span class="nt">bin</span><span class="o">:/</span><span class="nt">usr</span><span class="o">/</span><span class="nt">bin</span><span class="o">:/</span><span class="nt">bin</span><span class="o">:/</span><span class="nt">usr</span><span class="o">/</span><span class="nt">sbin</span><span class="o">:/</span><span class="nt">sbin</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">dict</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">RunAtLoad</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">true</span><span class="o">/&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">WorkingDirectory</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;/</span><span class="nt">Users</span><span class="o">/</span><span class="nt">kdj</span><span class="o">/</span><span class="nt">Dropbox</span><span class="o">/</span><span class="nt">tw</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">StandardErrorPath</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">error</span><span class="p">.</span><span class="nc">log</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">StandardOutputPath</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">key</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+  <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">output</span><span class="p">.</span><span class="nc">log</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">string</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">dict</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">plist</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
 </pre></div>
 
 
@@ -188,7 +188,7 @@
 <div class="highlight"><pre><span></span>export TWPLIST=~/Library/LaunchAgents/com.tiddlywiki.plist
 alias twstart=&quot;launchctl load $TWPLIST&quot;
 alias twstop=&quot;launchctl unload $TWPLIST&quot;
-alias twreload=&quot;twstop &amp;&amp; sleep 1 &amp;&amp; twstart &amp;&amp; echo &#39;TiddlyWiki restarted&#39;&quot;
+alias twreload=&quot;twstop &amp;amp;&amp;amp; sleep 1 &amp;amp;&amp;amp; twstart &amp;amp;&amp;amp; echo &#39;TiddlyWiki restarted&#39;&quot;
 </pre></div>
 
 

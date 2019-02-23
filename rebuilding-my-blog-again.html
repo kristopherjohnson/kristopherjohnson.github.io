@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -95,7 +95,7 @@
 </ul>
 <h2>The Drupal 6 Database</h2>
 <p>My first step was to export the existing articles and metadata from the Drupal database on my blog server, and recreate it on my development machine.  Looking at my Drupal configuration, I was able to find the database name and login information (which I forgot years ago).  I used <code>mysqldump</code> to export the data.</p>
-<div class="highlight"><pre><span></span>mysqldump --user<span class="o">=</span><span class="nv">$dbuser</span> --password<span class="o">=</span><span class="nv">$dbpass</span> --tz-utc --databases <span class="s2">&quot;drupal6_undefinedvalue&quot;</span> &gt; <span class="s2">&quot;drupal6_undefinedvalue.sql&quot;</span>
+<div class="highlight"><pre><span></span>mysqldump --user<span class="o">=</span><span class="nv">$dbuser</span> --password<span class="o">=</span><span class="nv">$dbpass</span> --tz-utc --databases <span class="s2">&quot;drupal6_undefinedvalue&quot;</span> <span class="p">&amp;</span>gt<span class="p">;</span> <span class="s2">&quot;drupal6_undefinedvalue.sql&quot;</span>
 </pre></div>
 
 

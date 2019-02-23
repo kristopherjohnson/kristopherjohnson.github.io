@@ -6,7 +6,7 @@
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -113,8 +113,8 @@
 <p>Define a new class, <code>GradientButton</code>, derived from <code>UIButton</code>, like this:</p>
 <div class="highlight"><pre><span></span><span class="c1">// GradientButton.h:</span>
 
-<span class="cp">#import &lt;UIKit/UIKit.h&gt;</span>
-<span class="cp">#import &lt;QuartzCore/QuartzCore.h&gt;</span>
+<span class="cp">#import &amp;lt;UIKit/UIKit.h&amp;gt;</span>
+<span class="cp">#import &amp;lt;QuartzCore/QuartzCore.h&amp;gt;</span>
 
 <span class="k">@interface</span> <span class="nc">GradientButton</span> : <span class="bp">UIButton</span> <span class="p">{</span>
     <span class="bp">CAGradientLayer</span> <span class="o">*</span><span class="n">shineLayer</span><span class="p">;</span>
@@ -230,7 +230,7 @@
 <p>Just to verify that our snazzy <code>GradientButton</code> class hasn't somehow broken the basic button functionality, add an event-handler method to the <code>GradientButtonsViewController</code> class.</p>
 <div class="highlight"><pre><span></span><span class="c1">// GradientButtonsViewController.h:</span>
 
-<span class="cp">#import &lt;UIKit/UIKit.h&gt;</span>
+<span class="cp">#import &amp;lt;UIKit/UIKit.h&amp;gt;</span>
 
 <span class="k">@interface</span> <span class="nc">GradientButtonsViewController</span> : <span class="bp">UIViewController</span> <span class="p">{</span>
 <span class="p">}</span>
