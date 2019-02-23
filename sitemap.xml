@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/</loc>
-<lastmod>2019-02-23T18:41:04-00:00</lastmod>
+<lastmod>2019-02-23T18:48:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/archives.html</loc>
-<lastmod>2019-02-23T18:41:04-00:00</lastmod>
+<lastmod>2019-02-23T18:48:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/tags.html</loc>
-<lastmod>2019-02-23T18:41:04-00:00</lastmod>
+<lastmod>2019-02-23T18:48:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/categories.html</loc>
-<lastmod>2019-02-23T18:41:04-00:00</lastmod>
+<lastmod>2019-02-23T18:48:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2356,7 +2356,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://undefinedvalue.com/tag/self-indulgence-birthday.html</loc>
+<loc>http://undefinedvalue.com/tag/self-indulgence.html</loc>
+<lastmod>2019-02-23T17:55:41-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/birthday.html</loc>
 <lastmod>2019-02-23T17:55:41-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -2545,22 +2552,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://undefinedvalue.com/tag/self-indulgence.html</loc>
-<lastmod>2017-04-22T19:07:16-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://undefinedvalue.com/tag/swift.html</loc>
 <lastmod>2017-04-22T19:07:16-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://undefinedvalue.com/tag/birthday.html</loc>
-<lastmod>2017-01-17T05:27:46-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
