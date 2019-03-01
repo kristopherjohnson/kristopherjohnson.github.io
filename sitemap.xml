@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/</loc>
-<lastmod>2019-02-23T18:48:59-00:00</lastmod>
+<lastmod>2019-02-28T19:52:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/archives.html</loc>
-<lastmod>2019-02-23T18:48:59-00:00</lastmod>
+<lastmod>2019-02-28T19:52:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/tags.html</loc>
-<lastmod>2019-02-23T18:48:59-00:00</lastmod>
+<lastmod>2019-02-28T19:52:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/categories.html</loc>
-<lastmod>2019-02-23T18:48:59-00:00</lastmod>
+<lastmod>2019-02-28T19:52:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://undefinedvalue.com/pages/kjresume.html</loc>
 <lastmod>2017-07-22T14:26:00-04:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tscp-translated-to-rust.html</loc>
+<lastmod>2019-02-28T19:25:45-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2350,7 +2357,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/category/blog.html</loc>
-<lastmod>2019-02-23T17:55:41-04:56</lastmod>
+<lastmod>2019-02-28T19:25:45-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/chess.html</loc>
+<lastmod>2019-02-28T19:25:45-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/rust.html</loc>
+<lastmod>2019-02-28T19:25:45-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2540,13 +2561,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://undefinedvalue.com/tag/mysql.html</loc>
 <lastmod>2017-07-08T15:00:00-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://undefinedvalue.com/tag/chess.html</loc>
-<lastmod>2017-04-22T19:07:16-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -4310,7 +4324,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/author/kristopher-johnson.html</loc>
-<lastmod>2019-02-23T17:55:41-04:56</lastmod>
+<lastmod>2019-02-28T19:25:45-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
