@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <title>TSCP Translated to Rust | Undefined Value</title>
+    <title>tscp | Undefined Value</title>
     <meta charset="utf-8" />
     <link href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
     <link href="http://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
     <link href="http://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
-    <link href="http://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/normalize.css" />
@@ -14,10 +13,6 @@
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/highlight.css" />
     <link rel="stylesheet" href="http://undefinedvalue.com/theme/css/style.css" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
-
-    <meta name="tags" content="chess" />
-    <meta name="tags" content="rust" />
-    <meta name="tags" content="tscp" />
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -60,42 +55,31 @@
         <div class="nine columns">
 
 
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="http://undefinedvalue.com/tscp-translated-to-rust.html" rel="bookmark"
-         title="Permalink to TSCP Translated to Rust">TSCP Translated to Rust</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-02-28T19:25:45.962361-05:00">
-      2019-02-28
-    </time>
-    <ul class="tags">
-        <li><a class="tag" href="http://undefinedvalue.com/tag/chess.html">chess</a></li>
-        <li><a class="tag" href="http://undefinedvalue.com/tag/rust.html">rust</a></li>
-        <li><a class="tag" href="http://undefinedvalue.com/tag/tscp.html">tscp</a></li>
-    </ul>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <p>A couple of years ago, I wrote <a href="my-first-chess-program.html">My First Chess Program</a>.  I wrote it in <a href="https://swift.org">Swift</a>.  It was slow, due more to my lack of knowledge rather than due to any problems with Swift.  While I was writing it, I decided not to study any other chess programs, but I did actually sneak a peak at some code in (Tom Kerrigan's Simple Chess Program)[http://www.tckerrigan.com/Chess/TSCP/] (TSCP) to get an idea of what a better chess program might look like.  At the time, I meant to eventually go back and study TSCP and incorporate its good ideas into my Swift chess engine.</p>
-<p>But that was a couple of years ago.  I'm not interested in Swift anymore (Swift is fine; it just doesn't interest me), but I have been learning (Rust)[https://www.rust-lang.org], and I thought translating TSCP's (C)[https://en.wikipedia.org/wiki/C_(programming_language)] code to Rust would be a way to both learn more about Rust and to study how a better chess engine works.</p>
-<p>The result is available here: <a href="https://github.com/kristopherjohnson/tscp-rust">tscp-rust</a>.  Tom Kerrigan has given me permission to distribute my translation, but note that he still holds the copyright, and any additional redistribution is under his terms.</p>
-<p>A lot of Rust's syntax is inspired by C, so the guts of the program look very similar.  I decided early to do as straightforward a translation as I could, without any re-design or changes to make it more "Rust-like".  However, I also wanted to minimize the amount of <code>unsafe</code> code (in the Rust sense), so I did tinker with a couple of data structures, and moved the global variables into a <code>struct</code> that gets passed between functions.</p>
-<p>During development, I added a lot of trace output to both the C and Rust code, so I could verify that the Rust code was evaluating identical positions and getting identical results at all stages of thinking about the next move.  I found several transcription errors that I might not have found through simple testing, because the incorrect Rust program "worked" in the sense that it made valid moves, but it picked different moves to be best</p>
-<p>The result has pretty good performance.  The <code>bench</code> command for the Rust version runs in about 580 ms, whereas the same command in the C version runs in about 520 ms.  I could probably improve the Rust performance, but I'm happy that it's in the same ballpark.  </p>
-<p>Embarrassing story: When I first contacted Tom Kerrigan about my Rust translation, I told him that the Rust version surprisingly ran a lot faster than the C version.  He didn't believe me, but I was <em>sure</em> that I had built the C version with all optimizations enabled, and theorized that Rust's memory safety guarantees had somehow enabled optimizations that weren't available to a C compiler.  It turned out that while the C Makefile did specify the <code>-O3</code> option for the compiler, the rule wasn't actually being applied when building the program.  So when I fixed the Makefile so that the rule worked, the C code was faster, as expected.  The good news there is that I was able to contribute the fixed Makefile back to the main TSCP codebase.</p>
-<p>With the program translated to Rust, there are a few exercises that I want to try to explore Rust's concurrency mechanisms.  My first goal is to get it to think ahead while the opponent thinks about their move (known as "pondering" in chess-programming circles).  My next goal is to implement multicore parallel search using (ideas on Tom Kerrigan's web site)[http://www.tckerrigan.com/Chess/Parallel_Search/].</p>
-<p>My thanks to Tom Kerrigan for this cool toy.</p>
-  </div><!-- /.entry-content -->
-</section>
-<ul>
-    <li>Previous article: 
-        <a href="http://undefinedvalue.com/52.html">
-            52
-        </a>
-    </li>
-</ul>
+<section id="content">
+<h2>tscp</h2>
+
+<ol id="post-list">
+    <li><article class="hentry">
+        <header> <h2 class="entry-title"><a href="http://undefinedvalue.com/tscp-translated-to-rust.html" rel="bookmark" title="Permalink to TSCP Translated to Rust">TSCP Translated to Rust</a></h2> </header>
+        <footer class="post-info">
+            <time class="published" datetime="2019-02-28T19:25:45.962361-05:00">
+                2019-02-28
+            </time>
+            <ul class="tags">
+                <li><a class="tag" href="http://undefinedvalue.com/tag/chess.html">chess</a></li>
+                <li><a class="tag" href="http://undefinedvalue.com/tag/rust.html">rust</a></li>
+                <li><a class="tag" href="http://undefinedvalue.com/tag/tscp.html">tscp</a></li>
+            </ul>
+        </footer><!-- /.post-info -->
+        <div class="entry-content">
+            <p>A couple of years ago, I wrote <a href="my-first-chess-program.html">My First Chess Program</a>.  I wrote it in <a href="https://swift.org">Swift</a>.  It was slow, due more to my lack of knowledge rather than due to any problems with Swift.  While I was writing it, I decided not to study any other chess programs, but I …</p>
+            <p class="read-more">
+                » <a href="http://undefinedvalue.com/tscp-translated-to-rust.html" title="Read the rest of TSCP Translated to Rust">Read more</a>
+            </p>
+        </div><!-- /.entry-content -->
+    </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
 
         </div><!-- /.nine columns -->
 
