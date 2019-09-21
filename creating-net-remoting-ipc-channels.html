@@ -89,33 +89,33 @@ Here's the code, which is intended to work on .NET Framework 2.0 and higher on W
 <script src="https://gist.github.com/3047562.js?file=IpcRemotingUtil.cs"></script>
 
 <p>On the server side, I use it like this:</p>
-<div class="highlight"><pre><span></span>var channel = IpcRemotingUtil.CreateIpcChannel(MyServer.IpcPortName);
-ChannelServices.RegisterChannel(channel, true);
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">IpcRemotingUtil</span><span class="p">.</span><span class="n">CreateIpcChannel</span><span class="p">(</span><span class="n">MyServer</span><span class="p">.</span><span class="n">IpcPortName</span><span class="p">);</span>
+<span class="n">ChannelServices</span><span class="p">.</span><span class="n">RegisterChannel</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 
-var entry = new WellKnownServiceTypeEntry(
-    typeof(MyRemoteObject),
-    &quot;MyRemoteObject.rem&quot;,
-    WellKnownObjectMode.Singleton);
-RemotingConfiguration.RegisterWellKnownServiceType(entry);
+<span class="n">var</span> <span class="n">entry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WellKnownServiceTypeEntry</span><span class="p">(</span>
+    <span class="n">typeof</span><span class="p">(</span><span class="n">MyRemoteObject</span><span class="p">),</span>
+    <span class="ss">&quot;MyRemoteObject.rem&quot;</span><span class="p">,</span>
+    <span class="n">WellKnownObjectMode</span><span class="p">.</span><span class="n">Singleton</span><span class="p">);</span>
+<span class="n">RemotingConfiguration</span><span class="p">.</span><span class="n">RegisterWellKnownServiceType</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
 </pre></div>
 
 
 <p>And on the client side, I use it like this:</p>
-<div class="highlight"><pre><span></span>var channel = IpcRemotingUtil.CreateIpcChannelWithUniquePortName();
-ChannelServices.RegisterChannel(channel, true);
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">IpcRemotingUtil</span><span class="p">.</span><span class="n">CreateIpcChannelWithUniquePortName</span><span class="p">();</span>
+<span class="n">ChannelServices</span><span class="p">.</span><span class="n">RegisterChannel</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 
-var objectUri = String.Format(&quot;ipc://{0}/MyRemoteObject.rem&quot;,
-    MyServer.IpcPortName);
-var remoteObject = (MyRemoteObject)Activator.GetObject(
-    typeof(MyRemoteObject), objectUri);
-try
-{
-    remoteObject.FooBarAndBaz();
-}
-catch (Exception ex)
-{
-    // aaaiiiyyyeee
-}
+<span class="n">var</span> <span class="n">objectUri</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="ss">&quot;ipc://{0}/MyRemoteObject.rem&quot;</span><span class="p">,</span>
+    <span class="n">MyServer</span><span class="p">.</span><span class="n">IpcPortName</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">remoteObject</span> <span class="o">=</span> <span class="p">(</span><span class="n">MyRemoteObject</span><span class="p">)</span><span class="n">Activator</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span>
+    <span class="n">typeof</span><span class="p">(</span><span class="n">MyRemoteObject</span><span class="p">),</span> <span class="n">objectUri</span><span class="p">);</span>
+<span class="n">try</span>
+<span class="err">{</span>
+    <span class="n">remoteObject</span><span class="p">.</span><span class="n">FooBarAndBaz</span><span class="p">();</span>
+<span class="err">}</span>
+<span class="n">catch</span> <span class="p">(</span><span class="k">Exception</span> <span class="n">ex</span><span class="p">)</span>
+<span class="err">{</span>
+    <span class="o">//</span> <span class="n">aaaiiiyyyeee</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -142,11 +142,11 @@ catch (Exception ex)
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                     <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                     <li><a href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html">Review: Coursera's "Applied Data Science with Python" Specialization</a></li>
-                    <li><a href="http://undefinedvalue.com/everything-on-the-internet-is-not-directed-at-you.html">Everything on the Internet Is Not Directed at You</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

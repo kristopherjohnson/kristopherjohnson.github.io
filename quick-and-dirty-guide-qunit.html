@@ -97,49 +97,49 @@
 <h3>Production Code to be Tested</h3>
 <p>Next, we will need some JavaScript code to test. Some poor confused souls put their JavaScript code and tests in their HTML files, but we're going to do things The Right Way and put the production code and the test code into their own files.</p>
 <p>Here is our production module, <code>calculator.js</code>, which provides sophisticated mathematical functionality:</p>
-<div class="highlight"><pre><span></span>// calculator.js
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nv">calculator</span>.<span class="nv">js</span>
 
-var Calculator = function () {
-    this.add      = function (a, b) { return a + b; };
-    this.subtract = function (a, b) { return a - b; };
-    this.multiply = function (a, b) { return a * b; };
-    this.divide   = function (a, b) { return a / b; };
-};
+<span class="nv">var</span> <span class="nv">Calculator</span> <span class="o">=</span> <span class="nv">function</span> <span class="ss">()</span> {
+    <span class="nv">this</span>.<span class="nv">add</span>      <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">+</span> <span class="nv">b</span><span class="c1">; };</span>
+    <span class="nv">this</span>.<span class="nv">subtract</span> <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">-</span> <span class="nv">b</span><span class="c1">; };</span>
+    <span class="nv">this</span>.<span class="nv">multiply</span> <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">*</span> <span class="nv">b</span><span class="c1">; };</span>
+    <span class="nv">this</span>.<span class="nv">divide</span>   <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">/</span> <span class="nv">b</span><span class="c1">; };</span>
+}<span class="c1">;</span>
 </pre></div>
 
 
 <h3>Test Cases</h3>
 <p>Here are our tests, in <code>calculator_tests.js</code>:</p>
-<div class="highlight"><pre><span></span>// calculator_tests.js
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">calculator_tests</span><span class="p">.</span><span class="n">js</span>
 
-Calculator.runTests = function () {
+<span class="n">Calculator</span><span class="p">.</span><span class="n">runTests</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="err">{</span>
 
-    test(&quot;add&quot;, function () {
-        var c = new Calculator();
-        equals(c.add(1, 1), 2, &quot;1 + 1&quot;);
-        equals(c.add(2, 2), 4, &quot;2 + 2&quot;);
-    });
+    <span class="n">test</span><span class="p">(</span><span class="ss">&quot;add&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="err">{</span>
+        <span class="n">var</span> <span class="k">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="ss">&quot;1 + 1&quot;</span><span class="p">);</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="ss">&quot;2 + 2&quot;</span><span class="p">);</span>
+    <span class="err">}</span><span class="p">);</span>
 
-    test(&quot;subtract&quot;, function () {
-        var c = new Calculator();
-        equals(c.subtract(1, 1), 0, &quot;1 - 1&quot;);
-        equals(c.subtract(100, 1), 99, &quot;100 - 1&quot;);
-    });
+    <span class="n">test</span><span class="p">(</span><span class="ss">&quot;subtract&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="err">{</span>
+        <span class="n">var</span> <span class="k">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">subtract</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">&quot;1 - 1&quot;</span><span class="p">);</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">subtract</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">99</span><span class="p">,</span> <span class="ss">&quot;100 - 1&quot;</span><span class="p">);</span>
+    <span class="err">}</span><span class="p">);</span>
 
-    test(&quot;multiply&quot;, function () {
-        var c = new Calculator();
-        equals(c.multiply(1, 1), 1, &quot;1 * 1&quot;);
-        equals(c.multiply(2, 2), 4, &quot;2 * 2&quot;);
-        equals(c.multiply(17, 23), 391, &quot;17 * 23&quot;);
-    });
+    <span class="n">test</span><span class="p">(</span><span class="ss">&quot;multiply&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="err">{</span>
+        <span class="n">var</span> <span class="k">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">&quot;1 * 1&quot;</span><span class="p">);</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="ss">&quot;2 * 2&quot;</span><span class="p">);</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">23</span><span class="p">),</span> <span class="mi">391</span><span class="p">,</span> <span class="ss">&quot;17 * 23&quot;</span><span class="p">);</span>
+    <span class="err">}</span><span class="p">);</span>
 
-    test(&quot;divide&quot;, function () {
-        var c = new Calculator();
-        equals(c.divide(1, 1), 1, &quot;1 / 1&quot;);
-        equals(c.divide(8, 2), 4, &quot;8 / 2&quot;);
-        equals(c.divide(1, 0), Infinity, &quot;1 / 0&quot;);
-    });
-};
+    <span class="n">test</span><span class="p">(</span><span class="ss">&quot;divide&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="err">{</span>
+        <span class="n">var</span> <span class="k">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">&quot;1 / 1&quot;</span><span class="p">);</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="ss">&quot;8 / 2&quot;</span><span class="p">);</span>
+        <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Infinity</span><span class="p">,</span> <span class="ss">&quot;1 / 0&quot;</span><span class="p">);</span>
+    <span class="err">}</span><span class="p">);</span>
+<span class="err">}</span><span class="p">;</span>
 </pre></div>
 
 
@@ -147,35 +147,35 @@ Calculator.runTests = function () {
 <p>See the <a href="http://docs.jquery.com/QUnit#API_documentation">QUnit API documentation</a> for info about the test functions. All you need to know to understand the above is that <code>test(name, function)</code> creates a test case, and <code>equals(actual, expected, message)</code> checks equivalence of results.</p>
 <h3>HTML Test Runner</h3>
 <p>Finally, we need an HTML file, <code>calculator_tests.html</code>, which loads all the modules, runs the tests, and displays the results in a web browser:</p>
-<div class="highlight"><pre><span></span>&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
+<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
 
-&amp;lt;!-- Load jQuery and QUnit --&amp;gt;
-&amp;lt;script src=&quot;jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;qunit.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;qunit.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&amp;gt;
+<span class="c">&lt;!-- Load jQuery and QUnit --&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;jquery.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;qunit.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;qunit.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span> <span class="nt">/&gt;</span>
 
-&amp;lt;!-- Load modules to be tested --&amp;gt;
-&amp;lt;script src=&quot;calculator.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;calculator_tests.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+<span class="c">&lt;!-- Load modules to be tested --&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;calculator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;calculator_tests.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 
-&amp;lt;!-- This jQuery fragment calls Calculator.runTests() after the document loads --&amp;gt;
-&amp;lt;script&amp;gt;
+<span class="c">&lt;!-- This jQuery fragment calls Calculator.runTests() after the document loads --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
 $(document).ready(function(){
     Calculator.runTests();    
 });
-&amp;lt;/script&amp;gt;
+<span class="nt">&lt;/script&gt;</span>
 
-&amp;lt;/head&amp;gt;
+<span class="nt">&lt;/head&gt;</span>
 
-&amp;lt;body&amp;gt;
-&amp;lt;!-- QUnit will put the results in the elements here --&amp;gt;
-&amp;lt;h1 id=&quot;qunit-header&quot;&amp;gt;Calculator Tests&amp;lt;/h1&amp;gt;
-&amp;lt;h2 id=&quot;qunit-banner&quot;&amp;gt;&amp;lt;/h2&amp;gt;
-&amp;lt;h2 id=&quot;qunit-userAgent&quot;&amp;gt;&amp;lt;/h2&amp;gt;
-&amp;lt;ol id=&quot;qunit-tests&quot;&amp;gt;&amp;lt;/ol&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
+<span class="nt">&lt;body&gt;</span>
+<span class="c">&lt;!-- QUnit will put the results in the elements here --&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;qunit-header&quot;</span><span class="nt">&gt;</span>Calculator Tests<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;qunit-banner&quot;</span><span class="nt">&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;qunit-userAgent&quot;</span><span class="nt">&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;ol</span> <span class="na">id=</span><span class="s">&quot;qunit-tests&quot;</span><span class="nt">&gt;&lt;/ol&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
 </pre></div>
 
 
@@ -203,11 +203,11 @@ $(document).ready(function(){
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                     <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                     <li><a href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html">Review: Coursera's "Applied Data Science with Python" Specialization</a></li>
-                    <li><a href="http://undefinedvalue.com/everything-on-the-internet-is-not-directed-at-you.html">Everything on the Internet Is Not Directed at You</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

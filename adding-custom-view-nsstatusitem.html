@@ -135,7 +135,7 @@ A little background: a <em>status item</em> is one of those little thingees you 
 
 
 <p>The <code>statusItem</code> property can be simply synthesized:</p>
-<div class="highlight"><pre><span></span>@synthesize statusItem;
+<div class="highlight"><pre><span></span><span class="nv">@synthesize</span><span class="w"> </span><span class="n">statusItem</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 
@@ -166,8 +166,8 @@ A little background: a <em>status item</em> is one of those little thingees you 
 
 <p>The <code>title</code> property affects the display, so we can't just synthesize it.  When the <code>title</code> is set, we need to determine the bounding rectangle of the text, and then set the status item's <code>length</code> so that it can contain the text.  Setting the status item's length also updates the custom view's bounds.</p>
 <p>After some experimentation and zooming, I figured out that when a normal <code>NSStatusItem</code> draws its title, there is a horizontal margin of six pixels between the side of the item's display and the text, and a margin of three pixels between the bottom of the display and the text.  We need those values to calculate status item size:</p>
-<div class="highlight"><pre><span></span>#define StatusItemViewPaddingWidth  6
-#define StatusItemViewPaddingHeight 3
+<div class="highlight"><pre><span></span><span class="o">#</span><span class="n">define</span> <span class="n">StatusItemViewPaddingWidth</span>  <span class="mi">6</span>
+<span class="o">#</span><span class="n">define</span> <span class="n">StatusItemViewPaddingHeight</span> <span class="mi">3</span>
 </pre></div>
 
 
@@ -279,11 +279,11 @@ A little background: a <em>status item</em> is one of those little thingees you 
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                     <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                     <li><a href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html">Review: Coursera's "Applied Data Science with Python" Specialization</a></li>
-                    <li><a href="http://undefinedvalue.com/everything-on-the-internet-is-not-directed-at-you.html">Everything on the Internet Is Not Directed at You</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

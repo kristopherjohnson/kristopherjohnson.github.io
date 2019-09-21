@@ -41,7 +41,7 @@ the richest AppleScript support of all the Mac browsers I've seen.
 Here's the script:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;tell&lt;/span&gt; &lt;span class="nb"&gt;application&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;OmniWeb&amp;quot;&lt;/span&gt;
     &lt;span class="nb"&gt;activate&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;count&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nv"&gt;lt&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;count&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
         &lt;span class="nb"&gt;make&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;browser&lt;/span&gt; &lt;span class="nb"&gt;at&lt;/span&gt; &lt;span class="nb"&gt;front of&lt;/span&gt; &lt;span class="nb"&gt;browsers&lt;/span&gt;
     &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;
     &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;theUrl&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;the clipboard&lt;/span&gt; &lt;span class="k"&gt;as &lt;/span&gt;&lt;span class="nc"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -50,9 +50,7 @@ Here's the script:&lt;/p&gt;
         &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="na"&gt;active&lt;/span&gt; &lt;span class="no"&gt;tab&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nv"&gt;theNewTab&lt;/span&gt;
     &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;tell&lt;/span&gt;
 &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;tell&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="applescript"></category></entry><entry><title>Name Taken</title><link href="http://undefinedvalue.com/name-taken.html" rel="alternate"></link><published>2004-11-10T05:21:00-05:00</published><updated>2004-11-10T05:21:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-10:/name-taken.html</id><summary type="html">&lt;p&gt;It turns out that there is already an alarm clock utility named
-"Rouser": &lt;a href="http://www.pcmag.com/article2/0,1759,1654716,00.asp"&gt;http://www.pcmag.com/article2/0,1759,1654716,00.asp&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;So the search for a name for my alarm clock has to continue.&lt;/p&gt;</summary><content type="html">&lt;p&gt;It turns out that there is already an alarm clock utility named
+&lt;/pre&gt;&lt;/div&gt;</content><category term="applescript"></category></entry><entry><title>Name Taken</title><link href="http://undefinedvalue.com/name-taken.html" rel="alternate"></link><published>2004-11-10T05:21:00-05:00</published><updated>2004-11-10T05:21:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-10:/name-taken.html</id><content type="html">&lt;p&gt;It turns out that there is already an alarm clock utility named
 "Rouser": &lt;a href="http://www.pcmag.com/article2/0,1759,1654716,00.asp"&gt;http://www.pcmag.com/article2/0,1759,1654716,00.asp&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;So the search for a name for my alarm clock has to continue.&lt;/p&gt;</content><category term="rouser"></category><category term="menubarcountdown"></category></entry><entry><title>Looping a Helicopter</title><link href="http://undefinedvalue.com/looping-a-helicopter.html" rel="alternate"></link><published>2004-11-07T23:50:00-05:00</published><updated>2004-11-07T23:50:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-11-07:/looping-a-helicopter.html</id><summary type="html">&lt;p&gt;In the movie &lt;em&gt;Blue Thunder&lt;/em&gt;, one of the plot devices used to build up
 the mystique of Roy Scheider's character is his claim to have looped a
@@ -838,7 +836,7 @@ so I'll give those a try. Eventually, I'll overcome my natural laziness
 and figure out how to build it myself.&lt;/p&gt;
 &lt;p&gt;By default, the Command key is used as the Emacs Meta key. I prefer
 using the Alt/Option key, so I added this to my .emacs file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  (setq mac-command-key-is-meta nil)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;setq&lt;/span&gt; &lt;span class="n"&gt;mac&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;key&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;meta&lt;/span&gt; &lt;span class="n"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="mac"></category><category term="emacs"></category></entry><entry><title>AirPort Card Freak-Out</title><link href="http://undefinedvalue.com/airport-card-freak-out.html" rel="alternate"></link><published>2004-10-13T00:18:00-04:00</published><updated>2004-10-13T00:18:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-10-13:/airport-card-freak-out.html</id><summary type="html">&lt;p&gt;Last night, for no apparent reason, I suddenly lost the WiFi connection
 on the iMac. I was unable to access the Internet or the other machines
 on my home network. Every attempt to reconnect to the network gave me an
@@ -874,7 +872,7 @@ need to write my own alarm clock application. This will be my chance to
 learn to write a Cocoa app.&lt;/p&gt;
 &lt;p&gt;In the meantime, I'm just going to use the UNIX 'at' command from the
 Terminal to trigger the speech synthesizer. I can use it like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;localhost:~ kdj$ at 13:50say -v Vicki &amp;#39;Kris, it is time to go back to work!&amp;#39;^D
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;kdj&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;at&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Vicki&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Kris, it is time to go back to work!&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1100,11 +1098,7 @@ hobbies, but I never actually interact with anyone. I need to find
 something that interests me that will get me into groups of people.&lt;/p&gt;
 &lt;p&gt;All these hobbies are really cutting into my TV-watching time. And one
 of these days, I may need to re-classify house-cleaning as a hobby so
-that I can find time to do that.&lt;/p&gt;</content><category term="hobbies"></category><category term="self-indulgence"></category></entry><entry><title>Web Site Reconfiguration</title><link href="http://undefinedvalue.com/web-site-reconfiguration.html" rel="alternate"></link><published>2004-07-04T13:57:00-04:00</published><updated>2004-07-04T13:57:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-07-04:/web-site-reconfiguration.html</id><summary type="html">&lt;p&gt;My web hosting provider was bought out by another provider. That new
-provider has now "upgraded" my old account by moving it to their
-servers. So now all my CGI scripts aren't working, and I can't use FTP
-or SSH to fix them. Grrr.&lt;/p&gt;
-&lt;p&gt;Thank you iQuest Hosting.&lt;/p&gt;</summary><content type="html">&lt;p&gt;My web hosting provider was bought out by another provider. That new
+that I can find time to do that.&lt;/p&gt;</content><category term="hobbies"></category><category term="self-indulgence"></category></entry><entry><title>Web Site Reconfiguration</title><link href="http://undefinedvalue.com/web-site-reconfiguration.html" rel="alternate"></link><published>2004-07-04T13:57:00-04:00</published><updated>2004-07-04T13:57:00-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-07-04:/web-site-reconfiguration.html</id><content type="html">&lt;p&gt;My web hosting provider was bought out by another provider. That new
 provider has now "upgraded" my old account by moving it to their
 servers. So now all my CGI scripts aren't working, and I can't use FTP
 or SSH to fix them. Grrr.&lt;/p&gt;
@@ -1382,15 +1376,7 @@ Windows installs, but every one I've done has been basically (a) boot
 with the CD, (b) follow the onscreen instructions, (c) OK, everything
 works. Sure, QNX is not a "consumer" operating system, and a lot of my
 problems were related to having ancient hardware, but still, I think it
-should have been easier.&lt;/p&gt;</content><category term="qnx"></category></entry><entry><title>My Evil Web Site</title><link href="http://undefinedvalue.com/my-evil-web-site.html" rel="alternate"></link><published>2004-02-28T20:26:00-05:00</published><updated>2004-02-28T20:26:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-28:/my-evil-web-site.html</id><summary type="html">&lt;p&gt;Using the &lt;a href="http://homokaasu.org/gematriculator/"&gt;Gematriculator&lt;/a&gt;, I am
-shocked to discover that my web site &lt;a href="http://kristopherjohnson.net/"&gt;http://kristopherjohnson.net/&lt;/a&gt; is
-60% evil.&lt;/p&gt;
-&lt;p&gt;Luckily, my blog is currently 69% good, and my
-&lt;a href="http://kristopherjohnson.net/kjresume.html"&gt;resumé&lt;/a&gt; is only 34% evil,
-so I may have hope for salvation.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;a href="http://homokaasu.org/gematriculator/?referer"&gt;&lt;img alt="This site is certified 33% EVIL by the
-Gematriculator" src="http://homokaasu.org/pics/g/e33.jpg"&gt;&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Using the &lt;a href="http://homokaasu.org/gematriculator/"&gt;Gematriculator&lt;/a&gt;, I am
+should have been easier.&lt;/p&gt;</content><category term="qnx"></category></entry><entry><title>My Evil Web Site</title><link href="http://undefinedvalue.com/my-evil-web-site.html" rel="alternate"></link><published>2004-02-28T20:26:00-05:00</published><updated>2004-02-28T20:26:00-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2004-02-28:/my-evil-web-site.html</id><content type="html">&lt;p&gt;Using the &lt;a href="http://homokaasu.org/gematriculator/"&gt;Gematriculator&lt;/a&gt;, I am
 shocked to discover that my web site &lt;a href="http://kristopherjohnson.net/"&gt;http://kristopherjohnson.net/&lt;/a&gt; is
 60% evil.&lt;/p&gt;
 &lt;p&gt;Luckily, my blog is currently 69% good, and my

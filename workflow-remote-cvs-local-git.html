@@ -82,84 +82,84 @@
 <!--break-->
 I'm assuming the reader has a basic understanding of CVS and Git. If not, see the <a href="http://ximbiot.com/cvs/manual/">CVS manual</a> and/or the <a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">Git tutorial</a>. I predominantly work on Windows, but I use <a href="http://en.wikipedia.org/wiki/Windows_PowerShell">PowerShell</a>, so there is no difference between the commands I use on Windows and those I use on Mac OS X or Linux.</p>
 <p>In the examples, I'll use a few variables:</p>
-<div class="highlight"><pre><span></span>USER=myusername
-CVSROOT=:pserver:$USER@cvsserver:2401/cvsrepository
-PROJECT=myprojectname
-DROPBOX=mydropboxfolder
+<div class="highlight"><pre><span></span><span class="k">USER</span><span class="o">=</span><span class="n">myusername</span><span class="w"></span>
+<span class="n">CVSROOT</span><span class="o">=</span><span class="err">:</span><span class="nl">pserver</span><span class="p">:</span><span class="err">$</span><span class="k">USER</span><span class="nv">@cvsserver</span><span class="err">:</span><span class="mi">2401</span><span class="o">/</span><span class="n">cvsrepository</span><span class="w"></span>
+<span class="n">PROJECT</span><span class="o">=</span><span class="n">myprojectname</span><span class="w"></span>
+<span class="n">DROPBOX</span><span class="o">=</span><span class="n">mydropboxfolder</span><span class="w"></span>
 </pre></div>
 
 
 <p>($DROPBOX refers to my <a href="https://www.dropbox.com/referrals/NTE0Mzc3MDY5?src=global0">Dropbox</a> directory, where I keep all sorts of little files that I want synched to all my computers.  If you haven't looked at Dropbox, do.)</p>
 <p>First, we need to get the CVS repository.  Git does have a <a href="http://www.kernel.org/pub/software/scm/git/docs/git-cvsimport.html">git-cvsimport</a> command that I could use to suck all the CVS stuff into a local Git repository, but the CVS repository is huge, so that would be very slow, and frankly, I don't really trust <code>git-cvsimport</code>. So I just do what I would normally do to get stuff from CVS:</p>
-<div class="highlight"><pre><span></span>cvs login
-cd ~/work
-cvs checkout $PROJECT
+<div class="highlight"><pre><span></span><span class="n">cvs</span> <span class="n">login</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="k">work</span>
+<span class="n">cvs</span> <span class="n">checkout</span> <span class="err">$</span><span class="n">PROJECT</span>
 </pre></div>
 
 
 <p>Next, I set up the local Git repository:</p>
-<div class="highlight"><pre><span></span>cd ~/work/$PROJECT
-git init
+<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="err">$</span><span class="n">PROJECT</span>
+<span class="n">git</span> <span class="n">init</span>
 </pre></div>
 
 
 <p>The working directory contains a lot of files that I don't want or need to track with Git, so I've got a standard <code>.gitignore</code> file that looks like this:</p>
-<div class="highlight"><pre><span></span>CVS
-.#*
+<div class="highlight"><pre><span></span><span class="n">CVS</span>
+<span class="p">.</span><span class="o">#*</span>
 
-.hg
-.hgignore
+<span class="p">.</span><span class="n">hg</span>
+<span class="p">.</span><span class="n">hgignore</span>
 
-bin
-obj
-Debug
-Release
-TestResults
-*.obj
-*.suo
-*.ncb
-*.user
-*.tli
-*.tlh
-*.idb
-*.pdb
+<span class="n">bin</span>
+<span class="n">obj</span>
+<span class="n">Debug</span>
+<span class="n">Release</span>
+<span class="n">TestResults</span>
+<span class="o">*</span><span class="p">.</span><span class="n">obj</span>
+<span class="o">*</span><span class="p">.</span><span class="n">suo</span>
+<span class="o">*</span><span class="p">.</span><span class="n">ncb</span>
+<span class="o">*</span><span class="p">.</span><span class="k">user</span>
+<span class="o">*</span><span class="p">.</span><span class="n">tli</span>
+<span class="o">*</span><span class="p">.</span><span class="n">tlh</span>
+<span class="o">*</span><span class="p">.</span><span class="n">idb</span>
+<span class="o">*</span><span class="p">.</span><span class="n">pdb</span>
 
-build
-*.pbxuser
-*.perspectivev3
-.DS_Store
-xcuserdata
+<span class="n">build</span>
+<span class="o">*</span><span class="p">.</span><span class="n">pbxuser</span>
+<span class="o">*</span><span class="p">.</span><span class="n">perspectivev3</span>
+<span class="p">.</span><span class="n">DS_Store</span>
+<span class="n">xcuserdata</span>
 
-*.old
-*.log
-*.out
-*.cache
+<span class="o">*</span><span class="p">.</span><span class="k">old</span>
+<span class="o">*</span><span class="p">.</span><span class="n">log</span>
+<span class="o">*</span><span class="p">.</span><span class="k">out</span>
+<span class="o">*</span><span class="p">.</span><span class="k">cache</span>
 </pre></div>
 
 
 <p>I just copy it from my Dropbox:</p>
-<div class="highlight"><pre><span></span>cp $DROPBOX/.gitignore .
+<div class="highlight"><pre><span></span><span class="n">cp</span> <span class="err">$</span><span class="n">DROPBOX</span><span class="o">/</span><span class="p">.</span><span class="n">gitignore</span> <span class="p">.</span>
 </pre></div>
 
 
 <p>Now, I'm ready to import everything into the Git repository:</p>
-<div class="highlight"><pre><span></span>git add .
-git commit -m &quot;Initial commit&quot;
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">add</span> <span class="p">.</span>
+<span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">m</span> <span class="ss">&quot;Initial commit&quot;</span>
 </pre></div>
 
 
 <p>I keep a local tag <code>cvssync</code> that indicates the last time that the Git and CVS repositories matched.</p>
-<div class="highlight"><pre><span></span>git tag cvssync
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="n">cvssync</span>
 </pre></div>
 
 
 <p>Now I'm ready to do some work.  I always want the <code>master</code> Git branch to match CVS, so I create a topic branch where I do my work:</p>
-<div class="highlight"><pre><span></span>git checkout -b develop
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">develop</span>
 </pre></div>
 
 
 <p>After very efficiently and productively adding all the error-free code needed to implement whatever I'm implementing, I'm ready to commit on my <code>develop</code> branch.</p>
-<div class="highlight"><pre><span></span>git commit -am &quot;Implemented the whosey-whatsit&quot;
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">am</span> <span class="ss">&quot;Implemented the whosey-whatsit&quot;</span>
 </pre></div>
 
 
@@ -167,46 +167,46 @@ git commit -m &quot;Initial commit&quot;
 <p>Now my boss calls and asks when the thing is going to be ready, and I tell him I'll check it into CVS right away.  </p>
 <p>First, I quit Visual Studio or whatever editor(s) I'm using, because the next few operations will cause the contents of files to change, and IDE's often don't handle that gracefully. This step also ensures that I don't forget to save all my changed files.</p>
 <p>I have to merge the <code>develop</code> branch back into the <code>master</code> branch:</p>
-<div class="highlight"><pre><span></span>git checkout master
-git merge develop
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">develop</span>
 </pre></div>
 
 
 <p>Then, I pull in whatever changes others have added to CVS</p>
-<div class="highlight"><pre><span></span>cvs update -d
-git commit -am &quot;Sync with CVS&quot;
+<div class="highlight"><pre><span></span><span class="n">cvs</span> <span class="k">update</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">am</span> <span class="ss">&quot;Sync with CVS&quot;</span>
 </pre></div>
 
 
 <p>(I skip the <code>git commit</code> here if there were no changes from CVS.)</p>
 <p>I check what I've changed since the <code>cvssync</code> tag, to remind myself and to verify it is right:</p>
-<div class="highlight"><pre><span></span>git log cvssync..
-cvs diff
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="n">cvssync</span><span class="p">..</span>
+<span class="n">cvs</span> <span class="n">diff</span>
 </pre></div>
 
 
 <p>Finally, I can push my changes to CVS:</p>
-<div class="highlight"><pre><span></span>cvs commit -m &quot;Implemented the whosey-whatsit&quot;
+<div class="highlight"><pre><span></span><span class="n">cvs</span> <span class="k">commit</span> <span class="o">-</span><span class="n">m</span> <span class="ss">&quot;Implemented the whosey-whatsit&quot;</span>
 </pre></div>
 
 
 <p>My employer likes to put the <code>$Id$</code> tag into source files, so after a <code>cvs commit</code>, any committed files are going to have new identifiers, so I need to commit those changes to my <code>master</code> branch</p>
-<div class="highlight"><pre><span></span>git commit -am &quot;Sync with CVS&quot;
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">am</span> <span class="ss">&quot;Sync with CVS&quot;</span>
 </pre></div>
 
 
 <p>I update my <code>cvssync</code> tag:</p>
-<div class="highlight"><pre><span></span>git tag -f cvssync
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">f</span> <span class="n">cvssync</span>
 </pre></div>
 
 
 <p>If, while I'm doing my work, others check things into CVS, and I need those changes, here is what I generally do (after quitting Visual Studio):</p>
-<div class="highlight"><pre><span></span>git commit -am &quot;Check in work branch&quot;
-git checkout master
-cvs update -d
-git commit -am &quot;Pull from CVS&quot;
-git checkout develop
-git rebase master
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">am</span> <span class="ss">&quot;Check in work branch&quot;</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="n">cvs</span> <span class="k">update</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">am</span> <span class="ss">&quot;Pull from CVS&quot;</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">develop</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">master</span>
 </pre></div>
 
 
@@ -233,11 +233,11 @@ git rebase master
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                     <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                     <li><a href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html">Review: Coursera's "Applied Data Science with Python" Specialization</a></li>
-                    <li><a href="http://undefinedvalue.com/everything-on-the-internet-is-not-directed-at-you.html">Everything on the Internet Is Not Directed at You</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

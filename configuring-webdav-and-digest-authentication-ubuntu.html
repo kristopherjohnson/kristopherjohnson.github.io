@@ -83,16 +83,16 @@ I started by following the steps here: <a href="http://www.howtoforge.com/how-to
 <p>After a couple of hours of Googling and hair-pulling, I discovered that the problem is that Windows Vista and Windows 7 don't support Basic HTTP authentication for WebDAV.  One needs to either use Digest authentication, or <a href="http://support.microsoft.com/kb/841215">make registry changes</a> to enable Basic authentication.</p>
 <p>I didn't want to force registry changes on all the client machines, and Digest authentication is The Right Thing anyway, so I changed my Apache configuration to do it.</p>
 <p>Here are the new lines that ended up in my <code>/etc/apache2/sites-available/default</code> file:</p>
-<div class="highlight"><pre><span></span>    &amp;lt;Directory /var/www/webdav/&amp;gt;
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;Directory</span> <span class="err">/var/www/webdav</span><span class="nt">/&gt;</span>
             Options Indexes MultiViews
             AllowOverride None
             Order allow,deny
             allow from all
-    &amp;lt;/Directory&amp;gt;
+    <span class="nt">&lt;/Directory&gt;</span>
 
     Alias /webdav /var/www/webdav
 
-    &amp;lt;Location /webdav/&amp;gt;
+    <span class="nt">&lt;Location</span> <span class="err">/webdav</span><span class="nt">/&gt;</span>
             DAV On
             AuthType Digest
             AuthName &quot;webdav&quot;
@@ -100,30 +100,30 @@ I started by following the steps here: <a href="http://www.howtoforge.com/how-to
             AuthDigestProvider file
             AuthUserFile /var/www/webdav/.digest_passwd.dav
             Require valid-user
-    &amp;lt;/Location&amp;gt;
+    <span class="nt">&lt;/Location&gt;</span>
 </pre></div>
 
 
 <p>I had to enable the <code>auth_digest</code> module:</p>
-<div class="highlight"><pre><span></span>sudo a2enmod auth_digest
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">a2enmod</span> <span class="n">auth_digest</span>
 </pre></div>
 
 
 <p>Then I had to create the digest authentication file, adding the user <code>test</code>:</p>
-<div class="highlight"><pre><span></span>sudo htdigest -c /var/www/webdav/.digest_passwd.dav webdav test
-sudo chown root:www-data /var/www/webdav/.digest_passwd.dav
-sudo chmod 640 /var/www/webdav/.digest_passwd.dav
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">htdigest</span> <span class="o">-</span><span class="k">c</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="p">.</span><span class="n">digest_passwd</span><span class="p">.</span><span class="n">dav</span> <span class="n">webdav</span> <span class="n">test</span>
+<span class="n">sudo</span> <span class="n">chown</span> <span class="n">root</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="k">data</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="p">.</span><span class="n">digest_passwd</span><span class="p">.</span><span class="n">dav</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">640</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="p">.</span><span class="n">digest_passwd</span><span class="p">.</span><span class="n">dav</span>
 </pre></div>
 
 
 <p>With all those changes made, I did this</p>
-<div class="highlight"><pre><span></span>sudo /etc/init.d/apache2 restart
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">apache2</span> <span class="k">restart</span>
 </pre></div>
 
 
 <p>And then I verified that I could do the following from my Windows box:</p>
-<div class="highlight"><pre><span></span>net use \\example.com\webdav MYPASSWORD /user:test
-dir \\example.com\webdav
+<div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="err">\\</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="err">\</span><span class="n">webdav</span> <span class="n">MYPASSWORD</span> <span class="o">/</span><span class="k">user</span><span class="p">:</span><span class="n">test</span>
+<span class="n">dir</span> <span class="err">\\</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="err">\</span><span class="n">webdav</span>
 </pre></div>
 
 
@@ -151,11 +151,11 @@ dir \\example.com\webdav
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                     <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                     <li><a href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html">Review: Coursera's "Applied Data Science with Python" Specialization</a></li>
-                    <li><a href="http://undefinedvalue.com/everything-on-the-internet-is-not-directed-at-you.html">Everything on the Internet Is Not Directed at You</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

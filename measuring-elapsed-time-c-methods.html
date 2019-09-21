@@ -82,81 +82,81 @@
 <p>But it gets tedious to keep adding those <code>var stopwatch = new Stopwatch(); stopwatch.Start();</code> and <code>stopwatch.Stop(); Print(stopwatch.ElapsedMilliseconds);</code> lines all over the place, and it also makes the code less readable, so I made a little class to simplify things.
 <!--break-->
 Here is the class:</p>
-<div class="highlight"><pre><span></span>public static class Timed
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">static</span> <span class="nv">class</span> <span class="nv">Timed</span>
 {
-    /// &amp;lt;summary&amp;gt;
-    /// Execute action then invoke reporting action with elapsed time
-    /// &amp;lt;/summary&amp;gt;
-    /// &amp;lt;param name=&quot;timedAction&quot;&amp;gt;action to be executed and elapsed time measured&amp;lt;/param&amp;gt;
-    /// &amp;lt;param name=&quot;reportAction&quot;&amp;gt;action to be executed with the elapsed number of milliseconds passed as a parameter&amp;lt;/param&amp;gt;
-    /// &amp;lt;returns&amp;gt;number of milliseconds elapsed during timedAction&amp;lt;/returns&amp;gt;
-    public static long Execute(Action timedAction, Action&amp;lt;long&amp;gt; reportAction)
+    <span class="o">///</span> <span class="o">&lt;</span><span class="nv">summary</span><span class="o">&gt;</span>
+    <span class="o">///</span> <span class="nv">Execute</span> <span class="nv">action</span> <span class="k">then</span> <span class="nv">invoke</span> <span class="nv">reporting</span> <span class="nv">action</span> <span class="nv">with</span> <span class="nv">elapsed</span> <span class="nv">time</span>
+    <span class="o">///</span> <span class="o">&lt;/</span><span class="nv">summary</span><span class="o">&gt;</span>
+    <span class="o">///</span> <span class="o">&lt;</span><span class="nv">param</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">timedAction</span><span class="s2">&quot;</span><span class="o">&gt;</span><span class="nv">action</span> <span class="nv">to</span> <span class="nv">be</span> <span class="nv">executed</span> <span class="nv">and</span> <span class="nv">elapsed</span> <span class="nv">time</span> <span class="nv">measured</span><span class="o">&lt;/</span><span class="nv">param</span><span class="o">&gt;</span>
+    <span class="o">///</span> <span class="o">&lt;</span><span class="nv">param</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">reportAction</span><span class="s2">&quot;</span><span class="o">&gt;</span><span class="nv">action</span> <span class="nv">to</span> <span class="nv">be</span> <span class="nv">executed</span> <span class="nv">with</span> <span class="nv">the</span> <span class="nv">elapsed</span> <span class="nv">number</span> <span class="nv">of</span> <span class="nv">milliseconds</span> <span class="nv">passed</span> <span class="nv">as</span> <span class="nv">a</span> <span class="nv">parameter</span><span class="o">&lt;/</span><span class="nv">param</span><span class="o">&gt;</span>
+    <span class="o">///</span> <span class="o">&lt;</span><span class="nv">returns</span><span class="o">&gt;</span><span class="nv">number</span> <span class="nv">of</span> <span class="nv">milliseconds</span> <span class="nv">elapsed</span> <span class="nv">during</span> <span class="nv">timedAction</span><span class="o">&lt;/</span><span class="nv">returns</span><span class="o">&gt;</span>
+    <span class="nv">public</span> <span class="nv">static</span> <span class="nv">long</span> <span class="nv">Execute</span><span class="ss">(</span><span class="nv">Action</span> <span class="nv">timedAction</span>, <span class="nv">Action</span><span class="o">&lt;</span><span class="nv">long</span><span class="o">&gt;</span> <span class="nv">reportAction</span><span class="ss">)</span>
     {
-        var stopwatch = new System.Diagnostics.Stopwatch();
+        <span class="nv">var</span> <span class="nv">stopwatch</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">System</span>.<span class="nv">Diagnostics</span>.<span class="nv">Stopwatch</span><span class="ss">()</span><span class="c1">;</span>
 
-        stopwatch.Start();
-        timedAction();
-        stopwatch.Stop();
+        <span class="nv">stopwatch</span>.<span class="nv">Start</span><span class="ss">()</span><span class="c1">;</span>
+        <span class="nv">timedAction</span><span class="ss">()</span><span class="c1">;</span>
+        <span class="nv">stopwatch</span>.<span class="nv">Stop</span><span class="ss">()</span><span class="c1">;</span>
 
-        var elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+        <span class="nv">var</span> <span class="nv">elapsedMilliseconds</span> <span class="o">=</span> <span class="nv">stopwatch</span>.<span class="nv">ElapsedMilliseconds</span><span class="c1">;</span>
 
-        if (reportAction != null)
+        <span class="k">if</span> <span class="ss">(</span><span class="nv">reportAction</span> <span class="o">!=</span> <span class="nv">null</span><span class="ss">)</span>
         {
-            reportAction(elapsedMilliseconds);
+            <span class="nv">reportAction</span><span class="ss">(</span><span class="nv">elapsedMilliseconds</span><span class="ss">)</span><span class="c1">;</span>
         }
 
-        return elapsedMilliseconds;
+        <span class="k">return</span> <span class="nv">elapsedMilliseconds</span><span class="c1">;</span>
     }
 
-    /// &amp;lt;summary&amp;gt;
-    /// Invoke specified action and return number of milliseconds elapsed
-    /// &amp;lt;/summary&amp;gt;
-    /// &amp;lt;param name=&quot;timedAction&quot;&amp;gt;timed action to be executed&amp;lt;/param&amp;gt;
-    /// &amp;lt;returns&amp;gt;number of milliseconds elapsed&amp;lt;/returns&amp;gt;
-    public static long Execute(Action timedAction)
+    <span class="o">///</span> <span class="o">&lt;</span><span class="nv">summary</span><span class="o">&gt;</span>
+    <span class="o">///</span> <span class="nv">Invoke</span> <span class="nv">specified</span> <span class="nv">action</span> <span class="nv">and</span> <span class="k">return</span> <span class="nv">number</span> <span class="nv">of</span> <span class="nv">milliseconds</span> <span class="nv">elapsed</span>
+    <span class="o">///</span> <span class="o">&lt;/</span><span class="nv">summary</span><span class="o">&gt;</span>
+    <span class="o">///</span> <span class="o">&lt;</span><span class="nv">param</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">timedAction</span><span class="s2">&quot;</span><span class="o">&gt;</span><span class="nv">timed</span> <span class="nv">action</span> <span class="nv">to</span> <span class="nv">be</span> <span class="nv">executed</span><span class="o">&lt;/</span><span class="nv">param</span><span class="o">&gt;</span>
+    <span class="o">///</span> <span class="o">&lt;</span><span class="nv">returns</span><span class="o">&gt;</span><span class="nv">number</span> <span class="nv">of</span> <span class="nv">milliseconds</span> <span class="nv">elapsed</span><span class="o">&lt;/</span><span class="nv">returns</span><span class="o">&gt;</span>
+    <span class="nv">public</span> <span class="nv">static</span> <span class="nv">long</span> <span class="nv">Execute</span><span class="ss">(</span><span class="nv">Action</span> <span class="nv">timedAction</span><span class="ss">)</span>
     {
-        return Timed.Execute(timedAction, null);
+        <span class="k">return</span> <span class="nv">Timed</span>.<span class="nv">Execute</span><span class="ss">(</span><span class="nv">timedAction</span>, <span class="nv">null</span><span class="ss">)</span><span class="c1">;</span>
     }
 }
 </pre></div>
 
 
 <p>So, for example, if one wanted to measure the time used by the loop in this method:</p>
-<div class="highlight"><pre><span></span>public void BlurpAllFrables()
-{
-    foreach (var frable in GetFrables())
-        frable.Blurp();
-}
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">void</span> <span class="n">BlurpAllFrables</span><span class="p">()</span>
+<span class="err">{</span>
+    <span class="n">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">frable</span> <span class="k">in</span> <span class="n">GetFrables</span><span class="p">())</span>
+        <span class="n">frable</span><span class="p">.</span><span class="n">Blurp</span><span class="p">();</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p>one could do this:</p>
-<div class="highlight"><pre><span></span>public void BlurpAllFrables()
-{
-    Timed.Execute(() =&amp;gt;
-    {
-        foreach (var frable in GetFrables())
-            frable.Blurp();
-    },
-    (long millis) =&amp;gt;
-    {
-        Trace.WriteLine(String.Format(&quot;Blurping frables took {0} ms&quot;, millis.ToString()));
-    });
-}
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">void</span> <span class="n">BlurpAllFrables</span><span class="p">()</span>
+<span class="err">{</span>
+    <span class="n">Timed</span><span class="p">.</span><span class="k">Execute</span><span class="p">(()</span> <span class="o">=&gt;</span>
+    <span class="err">{</span>
+        <span class="n">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">frable</span> <span class="k">in</span> <span class="n">GetFrables</span><span class="p">())</span>
+            <span class="n">frable</span><span class="p">.</span><span class="n">Blurp</span><span class="p">();</span>
+    <span class="err">}</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">long</span> <span class="n">millis</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="err">{</span>
+        <span class="n">Trace</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="ss">&quot;Blurping frables took {0} ms&quot;</span><span class="p">,</span> <span class="n">millis</span><span class="p">.</span><span class="n">ToString</span><span class="p">()));</span>
+    <span class="err">}</span><span class="p">);</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p>or one could do this:</p>
-<div class="highlight"><pre><span></span>public void BlurpAllFrables()
-{
-    var millis = Timed.Execute(() =&amp;gt;
-    {
-        foreach (var frable in GetFrables())
-            frable.Blurp();
-    });
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">void</span> <span class="n">BlurpAllFrables</span><span class="p">()</span>
+<span class="err">{</span>
+    <span class="n">var</span> <span class="n">millis</span> <span class="o">=</span> <span class="n">Timed</span><span class="p">.</span><span class="k">Execute</span><span class="p">(()</span> <span class="o">=&gt;</span>
+    <span class="err">{</span>
+        <span class="n">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">frable</span> <span class="k">in</span> <span class="n">GetFrables</span><span class="p">())</span>
+            <span class="n">frable</span><span class="p">.</span><span class="n">Blurp</span><span class="p">();</span>
+    <span class="err">}</span><span class="p">);</span>
 
-    Trace.WriteLine(String.Format(&quot;Blurping frables took {0} ms&quot;, millis.ToString()));
-}
+    <span class="n">Trace</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="ss">&quot;Blurping frables took {0} ms&quot;</span><span class="p">,</span> <span class="n">millis</span><span class="p">.</span><span class="n">ToString</span><span class="p">()));</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -183,11 +183,11 @@ Here is the class:</p>
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                     <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                     <li><a href="http://undefinedvalue.com/coursera-applied-data-science-with-python-specialization-review.html">Review: Coursera's "Applied Data Science with Python" Specialization</a></li>
-                    <li><a href="http://undefinedvalue.com/everything-on-the-internet-is-not-directed-at-you.html">Everything on the Internet Is Not Directed at You</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">
