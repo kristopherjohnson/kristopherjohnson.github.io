@@ -79,34 +79,36 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>I've written before that my first exposure to computers was a simple text-based
-"<a href="lunar-lander.html">Lunar Lander</a>" game. Earlier this year I did some research
+"<a href="lunar-lander.html">Lunar Lander</a>" game.</p>
+<p>Earlier this year I did some research
 and I found the
-<a href="http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg">original LUNAR source code</a>
+<a href="http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg">original LUNAR source code</a>,
 which is in the
 <a href="https://en.wikipedia.org/wiki/FOCAL_(programming_language)">FOCAL</a>
 programming language, and some
-<a href="https://www.atariarchives.org/basicgames/showpage.php?page=106">translations to Basic</a>.</p>
+<a href="https://www.atariarchives.org/basicgames/showpage.php?page=106">translations to BASIC</a>.</p>
 <p>I decided I needed to port this to a modern programming language like
 <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>.</p>
 <p>(Yes, that's intended ironically.)</p>
-<p>The result is "LUNAR for C", which you can find <a href="https://github.com/kristopherjohnson/lunar-c">on GitHub</a>.</p>
+<p>The result is "LUNAR for C", which you can find on GitHub:
+<a href="https://github.com/kristopherjohnson/lunar-c">kristopherjohnson/lunar-c</a>.</p>
 <p>I also decided to port it to <a href="https://www.rust-lang.org">Rust</a>, which I was
 exploring at the time. Porting to Rust was not straightforward, because the
 original source code has <a href="https://en.wikipedia.org/wiki/Goto">goto-based</a>
 control flow, and Rust doesn't have a <code>goto</code> statement.  One way to deal with
 this is to implement a simple
 <a href="https://en.wikipedia.org/wiki/Finite-state_machine">state machine</a> in Rust, and
-the result of that experiment is available in
-<a href="https://gist.github.com/kristopherjohnson/83c6a6b8a1b7c6929ced83e922abccc1">a Gist</a>.
+the result of that experiment is available in a Gist:
+<a href="https://gist.github.com/kristopherjohnson/83c6a6b8a1b7c6929ced83e922abccc1">lunar.rs</a>.
 But I also planned to do some machine-learning experiments to find the ideal
 solution to the lunar-landing problem, so I created a very over-engineered
-"LUNAR for Rust" version that is available <a href="https://github.com/kristopherjohnson/lunar-rust">on
-GitHub</a>.</p>
+"LUNAR for Rust" version that is available on GitHub:
+<a href="https://github.com/kristopherjohnson/lunar-rust">kristopherjohnson/lunar-rust</a>.</p>
 <p>If you want to play the game yourself, and you have a C compiler, I recommend
 building the C version.</p>
-<p>Thank you to Jim Storer (the original author of LUNAR), David H. Ahl (author of
-the Basic ports), and every other programmer who has created a lunar-landing
-game that I've played.</p>
+<p>Thank you to Jim Storer (the original author of LUNAR), to David H. Ahl (author
+of the BASIC ports), and to every other programmer who has created a
+lunar-landing game that I've played.</p>
   </div><!-- /.entry-content -->
 </section>
 <ul>

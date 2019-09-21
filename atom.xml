@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value</title><link href="http://undefinedvalue.com/" rel="alternate"></link><link href="http://undefinedvalue.com/atom.xml" rel="self"></link><id>http://undefinedvalue.com/</id><updated>2019-09-21T10:23:54-04:00</updated><subtitle>Kris Johnson's Blog</subtitle><entry><title>LUNAR for C and Rust</title><link href="http://undefinedvalue.com/lunar-for-c-and-rust.html" rel="alternate"></link><published>2019-09-21T10:23:54-04:00</published><updated>2019-09-21T10:23:54-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2019-09-21:/lunar-for-c-and-rust.html</id><summary type="html">&lt;p&gt;I've written before that my first exposure to computers was a simple text-based
-"&lt;a href="lunar-lander.html"&gt;Lunar Lander&lt;/a&gt;" game. Earlier this year I did some research
+"&lt;a href="lunar-lander.html"&gt;Lunar Lander&lt;/a&gt;" game.&lt;/p&gt;
+&lt;p&gt;Earlier this year I did some research
 and I found the
-&lt;a href="http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg"&gt;original LUNAR source code&lt;/a&gt;
+&lt;a href="http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg"&gt;original LUNAR source code&lt;/a&gt;,
 which is in the
 &lt;a href="https://en.wikipedia.org/wiki/FOCAL_(programming_language)"&gt;FOCAL&lt;/a&gt;
 programming language, and some
-&lt;a href="https://www.atariarchives.org/basicgames/showpage.php?page=106"&gt;translations to Basic&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="https://www.atariarchives.org/basicgames/showpage.php?page=106"&gt;translations to BASIC&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I decided I needed to port this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've written before that my first exposure to computers was a simple text-based
-"&lt;a href="lunar-lander.html"&gt;Lunar Lander&lt;/a&gt;" game. Earlier this year I did some research
+"&lt;a href="lunar-lander.html"&gt;Lunar Lander&lt;/a&gt;" game.&lt;/p&gt;
+&lt;p&gt;Earlier this year I did some research
 and I found the
-&lt;a href="http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg"&gt;original LUNAR source code&lt;/a&gt;
+&lt;a href="http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg"&gt;original LUNAR source code&lt;/a&gt;,
 which is in the
 &lt;a href="https://en.wikipedia.org/wiki/FOCAL_(programming_language)"&gt;FOCAL&lt;/a&gt;
 programming language, and some
-&lt;a href="https://www.atariarchives.org/basicgames/showpage.php?page=106"&gt;translations to Basic&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="https://www.atariarchives.org/basicgames/showpage.php?page=106"&gt;translations to BASIC&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I decided I needed to port this to a modern programming language like
 &lt;a href="https://en.wikipedia.org/wiki/C_(programming_language)"&gt;C&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;(Yes, that's intended ironically.)&lt;/p&gt;
-&lt;p&gt;The result is "LUNAR for C", which you can find &lt;a href="https://github.com/kristopherjohnson/lunar-c"&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The result is "LUNAR for C", which you can find on GitHub:
+&lt;a href="https://github.com/kristopherjohnson/lunar-c"&gt;kristopherjohnson/lunar-c&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I also decided to port it to &lt;a href="https://www.rust-lang.org"&gt;Rust&lt;/a&gt;, which I was
 exploring at the time. Porting to Rust was not straightforward, because the
 original source code has &lt;a href="https://en.wikipedia.org/wiki/Goto"&gt;goto-based&lt;/a&gt;
 control flow, and Rust doesn't have a &lt;code&gt;goto&lt;/code&gt; statement.  One way to deal with
 this is to implement a simple
 &lt;a href="https://en.wikipedia.org/wiki/Finite-state_machine"&gt;state machine&lt;/a&gt; in Rust, and
-the result of that experiment is available in
-&lt;a href="https://gist.github.com/kristopherjohnson/83c6a6b8a1b7c6929ced83e922abccc1"&gt;a Gist&lt;/a&gt;.
+the result of that experiment is available in a Gist:
+&lt;a href="https://gist.github.com/kristopherjohnson/83c6a6b8a1b7c6929ced83e922abccc1"&gt;lunar.rs&lt;/a&gt;.
 But I also planned to do some machine-learning experiments to find the ideal
 solution to the lunar-landing problem, so I created a very over-engineered
-"LUNAR for Rust" version that is available &lt;a href="https://github.com/kristopherjohnson/lunar-rust"&gt;on
-GitHub&lt;/a&gt;.&lt;/p&gt;
+"LUNAR for Rust" version that is available on GitHub:
+&lt;a href="https://github.com/kristopherjohnson/lunar-rust"&gt;kristopherjohnson/lunar-rust&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you want to play the game yourself, and you have a C compiler, I recommend
 building the C version.&lt;/p&gt;
-&lt;p&gt;Thank you to Jim Storer (the original author of LUNAR), David H. Ahl (author of
-the Basic ports), and every other programmer who has created a lunar-landing
-game that I've played.&lt;/p&gt;</content><category term="lunar"></category><category term="c"></category><category term="rust"></category></entry><entry><title>Blitz</title><link href="http://undefinedvalue.com/blitz.html" rel="alternate"></link><published>2019-05-14T19:04:41-04:00</published><updated>2019-05-14T19:04:41-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2019-05-14:/blitz.html</id><summary type="html">&lt;p&gt;&lt;img src="/files/blitz_sitting.jpg" alt="Blitz sitting on grass" height="320px" width="320px" style="float: right; margin-left: 8px;"&gt;&lt;/p&gt;
+&lt;p&gt;Thank you to Jim Storer (the original author of LUNAR), to David H. Ahl (author
+of the BASIC ports), and to every other programmer who has created a
+lunar-landing game that I've played.&lt;/p&gt;</content><category term="lunar"></category><category term="c"></category><category term="rust"></category></entry><entry><title>Blitz</title><link href="http://undefinedvalue.com/blitz.html" rel="alternate"></link><published>2019-05-14T19:04:41-04:00</published><updated>2019-05-14T19:04:41-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2019-05-14:/blitz.html</id><summary type="html">&lt;p&gt;&lt;img src="/files/blitz_sitting.jpg" alt="Blitz sitting on grass" height="320px" width="320px" style="float: right; margin-left: 8px;"&gt;&lt;/p&gt;
 &lt;p&gt;Last week we had to say goodbye to our nine-year-old Miniature Schnauzer, Blitz.&lt;/p&gt;
 &lt;p&gt;She was such a sweet, playful dog.  She always had a confused-but-curious expression on her face, and big floppy ears.  She always pranced when she walked around outside.&lt;/p&gt;
 &lt;p&gt;Many mornings, we would wrestle.  She would pose in …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img src="/files/blitz_sitting.jpg" alt="Blitz sitting on grass" height="320px" width="320px" style="float: right; margin-left: 8px;"&gt;&lt;/p&gt;
