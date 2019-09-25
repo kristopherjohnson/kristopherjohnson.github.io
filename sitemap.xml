@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/</loc>
-<lastmod>2019-09-24T20:27:24-00:00</lastmod>
+<lastmod>2019-09-24T20:32:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/archives.html</loc>
-<lastmod>2019-09-24T20:27:24-00:00</lastmod>
+<lastmod>2019-09-24T20:32:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/tags.html</loc>
-<lastmod>2019-09-24T20:27:24-00:00</lastmod>
+<lastmod>2019-09-24T20:32:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/categories.html</loc>
-<lastmod>2019-09-24T20:27:24-00:00</lastmod>
+<lastmod>2019-09-24T20:32:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/pages/about-me.html</loc>
-<lastmod>2017-07-16T18:21:00-04:00</lastmod>
+<lastmod>2019-09-24T20:32:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
