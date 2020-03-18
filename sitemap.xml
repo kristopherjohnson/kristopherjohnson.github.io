@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/</loc>
-<lastmod>2020-01-02T10:45:06-00:00</lastmod>
+<lastmod>2020-03-18T19:38:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/archives.html</loc>
-<lastmod>2020-01-02T10:45:06-00:00</lastmod>
+<lastmod>2020-03-18T19:38:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/tags.html</loc>
-<lastmod>2020-01-02T10:45:06-00:00</lastmod>
+<lastmod>2020-03-18T19:38:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://undefinedvalue.com/categories.html</loc>
-<lastmod>2020-01-02T10:45:06-00:00</lastmod>
+<lastmod>2020-03-18T19:38:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://undefinedvalue.com/pages/kjresume.html</loc>
 <lastmod>2019-11-19T19:26:00-05:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/53.html</loc>
+<lastmod>2020-03-18T19:34:12-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2378,7 +2385,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/category/blog.html</loc>
-<lastmod>2020-01-02T09:14:53-04:56</lastmod>
+<lastmod>2020-03-18T19:34:12-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/self-indulgence.html</loc>
+<lastmod>2020-03-18T19:34:12-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://undefinedvalue.com/tag/birthday.html</loc>
+<lastmod>2020-03-18T19:34:12-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2449,20 +2470,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://undefinedvalue.com/tag/tscp.html</loc>
 <lastmod>2019-02-28T19:25:45-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://undefinedvalue.com/tag/self-indulgence.html</loc>
-<lastmod>2019-02-23T17:55:41-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://undefinedvalue.com/tag/birthday.html</loc>
-<lastmod>2019-02-23T17:55:41-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -4366,7 +4373,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://undefinedvalue.com/author/kristopher-johnson.html</loc>
-<lastmod>2020-01-02T09:14:53-04:56</lastmod>
+<lastmod>2020-03-18T19:34:12-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

@@ -79,23 +79,23 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>iOS's <a href="https://developer.apple.com/library/ios/#documentation/uikit/reference/UIColor_Class/Reference/Reference.html">UIColor</a> class makes it pretty easy to specify a color using red, green, blue (RGB) and alpha components:</p>
-<div class="highlight"><pre><span></span> <span class="c1">// set pale yellow color</span>
+<div class="highlight"><pre><span></span><code> <span class="c1">// set pale yellow color</span>
  <span class="n">label</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">1.0</span>
                                    <span class="nl">green</span><span class="p">:</span><span class="mf">1.0</span>
                                     <span class="nl">blue</span><span class="p">:</span><span class="mf">0.5</span>
                                    <span class="nl">alpha</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>However, as with many Cocoa API's, it's pretty verbose. Web developers would specify that color using the hexcode shorthand <code>#ffff80</code>, and many graphics editing tools would generate a hexcode value like that rather than values in the range 0.0&ndash;1.0.</p>
 <p>So I made a simple category on UIColor that lets one write stuff like this:</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;UIColor+KDJPackedRGB.h&quot;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;UIColor+KDJPackedRGB.h&quot;</span><span class="cp"></span>
 
 <span class="c1">// ...</span>
 
 <span class="c1">// set pale yellow color</span>
 <span class="n">label</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRGB24</span><span class="p">:</span><span class="mh">0xffff80</span><span class="p">];</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>See <a href="https://gist.github.com/kristopherjohnson/5606209">https://gist.github.com/kristopherjohnson/5606209</a></p>
@@ -121,11 +121,11 @@
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
-                    <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

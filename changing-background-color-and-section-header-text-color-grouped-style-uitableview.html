@@ -88,7 +88,7 @@
 <p>To review: when you create a table view with the grouped style, each section of the table shows up as a rounded rectangle, section titles are displayed as dark gray text between the rectangles, and the background is gray. I wanted the background to be a pale pastel color, so I looked into how to change that.</p>
 <p>Of course, I first looked at the options in Interface Builder.  A table view has a background color that can be set in IB, but setting that didn't accomplish anything.</p>
 <p>With a bit of Googling, I learned that the way to give a table view a background color is to set the background color to <code>[UIColor clearColor]</code>, and let the color (or image) of whatever is behind the table view show through. So, I set my window's <code>backgroundColor</code> to the color I wanted, and then added this to my table view's controller class:</p>
-<div class="highlight"><pre><span></span><span class="cp">#define TableViewTag 8888</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define TableViewTag 8888</span>
 
 <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
     <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
@@ -97,13 +97,13 @@
     <span class="bp">UITableView</span> <span class="o">*</span><span class="n">tableView</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">viewWithTag</span><span class="p">:</span><span class="n">TableViewTag</span><span class="p">];</span>
     <span class="n">tableView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">clearColor</span><span class="p">];</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>In Interface Builder, I set the tag of the table view to 8888. Another way to do this would be to have an outlet for the table view, but I didn't want to do that in this particular case.</p>
 <p>So, that gave the table the background color I wanted, but I then noticed that the dark-gray section titles didn't look good against that color. I started looking for some sort of "<code>sectionHeaderTextColor</code>" property on the table view, but of course, there was no such thing.</p>
 <p>After more Googling, I concluded that there was no way to just set the color. What you have to do is provide your own custom section header view containing a text label. With that, you can set whatever colors you want. So, I added these implementations of <code>UITableViewDataSource</code> protocol methods to my table view controller:</p>
-<div class="highlight"><pre><span></span><span class="cp">#define SectionHeaderHeight 40</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SectionHeaderHeight 40</span>
 
 
 <span class="p">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">heightForHeaderInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span> <span class="p">{</span>
@@ -143,7 +143,7 @@
 
     <span class="k">return</span> <span class="n">view</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>I also added a suitable implementation of <code>tableView:titleForHeaderInSection:</code>, and everything worked.</p>
@@ -170,11 +170,11 @@
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
-                    <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

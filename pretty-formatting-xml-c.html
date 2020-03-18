@@ -79,30 +79,30 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>I had a need to convert an XML string to a nice, indented format.  It was a little more complicated than I expected, so I'm posting this snippet here where I can find it again when I need it.</p>
-<div class="highlight"><pre><span></span><span class="nv">using</span> <span class="nv">System</span><span class="c1">;</span>
-<span class="nv">using</span> <span class="nv">System</span>.<span class="nv">Text</span><span class="c1">;</span>
-<span class="nv">using</span> <span class="nv">System</span>.<span class="nv">Xml</span><span class="c1">;</span>
-<span class="nv">using</span> <span class="nv">System</span>.<span class="nv">Xml</span>.<span class="nv">Linq</span><span class="c1">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="k">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">System</span><span class="p">.</span><span class="nb">Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">System</span><span class="p">.</span><span class="n">Xml</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">System</span><span class="p">.</span><span class="n">Xml</span><span class="p">.</span><span class="n">Linq</span><span class="p">;</span>
 
-<span class="nv">static</span> <span class="nv">string</span> <span class="nv">PrettyXml</span><span class="ss">(</span><span class="nv">string</span> <span class="nv">xml</span><span class="ss">)</span>
-{
-    <span class="nv">var</span> <span class="nv">stringBuilder</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">StringBuilder</span><span class="ss">()</span><span class="c1">;</span>
+<span class="k">static</span> <span class="n">string</span> <span class="n">PrettyXml</span><span class="p">(</span><span class="n">string</span> <span class="n">xml</span><span class="p">)</span>
+<span class="err">{</span>
+    <span class="n">var</span> <span class="n">stringBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
 
-    <span class="nv">var</span> <span class="nv">element</span> <span class="o">=</span> <span class="nv">XElement</span>.<span class="nv">Parse</span><span class="ss">(</span><span class="nv">xml</span><span class="ss">)</span><span class="c1">;</span>
+    <span class="n">var</span> <span class="n">element</span> <span class="o">=</span> <span class="n">XElement</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">xml</span><span class="p">);</span>
 
-    <span class="nv">var</span> <span class="nv">settings</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">XmlWriterSettings</span><span class="ss">()</span><span class="c1">;</span>
-    <span class="nv">settings</span>.<span class="nv">OmitXmlDeclaration</span> <span class="o">=</span> <span class="nv">true</span><span class="c1">;</span>
-    <span class="nv">settings</span>.<span class="nv">Indent</span> <span class="o">=</span> <span class="nv">true</span><span class="c1">;</span>
-    <span class="nv">settings</span>.<span class="nv">NewLineOnAttributes</span> <span class="o">=</span> <span class="nv">true</span><span class="c1">;</span>
+    <span class="n">var</span> <span class="n">settings</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XmlWriterSettings</span><span class="p">();</span>
+    <span class="n">settings</span><span class="p">.</span><span class="n">OmitXmlDeclaration</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">settings</span><span class="p">.</span><span class="n">Indent</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">settings</span><span class="p">.</span><span class="n">NewLineOnAttributes</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 
-    <span class="nv">using</span> <span class="ss">(</span><span class="nv">var</span> <span class="nv">xmlWriter</span> <span class="o">=</span> <span class="nv">XmlWriter</span>.<span class="nv">Create</span><span class="ss">(</span><span class="nv">stringBuilder</span>, <span class="nv">settings</span><span class="ss">))</span>
-    {
-        <span class="nv">element</span>.<span class="nv">Save</span><span class="ss">(</span><span class="nv">xmlWriter</span><span class="ss">)</span><span class="c1">;</span>
-    }
+    <span class="k">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">xmlWriter</span> <span class="o">=</span> <span class="n">XmlWriter</span><span class="p">.</span><span class="k">Create</span><span class="p">(</span><span class="n">stringBuilder</span><span class="p">,</span> <span class="n">settings</span><span class="p">))</span>
+    <span class="err">{</span>
+        <span class="n">element</span><span class="p">.</span><span class="n">Save</span><span class="p">(</span><span class="n">xmlWriter</span><span class="p">);</span>
+    <span class="err">}</span>
 
-    <span class="k">return</span> <span class="nv">stringBuilder</span>.<span class="nv">ToString</span><span class="ss">()</span><span class="c1">;</span>
-}
-</pre></div>
+    <span class="k">return</span> <span class="n">stringBuilder</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <p>Note that this method can throw exceptions for a variety of reasons.</p>
@@ -128,11 +128,11 @@
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
                     <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
-                    <li><a href="http://undefinedvalue.com/52.html">52</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">
