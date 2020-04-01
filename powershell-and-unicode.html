@@ -83,32 +83,32 @@
 <p>But of course, Microsoft can't give us something new without throwing in some surprisingly inappropriate behavior.
 <!--break-->
 A couple of days ago, I needed to create a patch for a Subversion repository, and so I typed the typical command to do so (which works fine in UNIX shells and with <code>cmd.exe</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="err">svn diff &gt; my_patch.diff</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">svn</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="n">my_patch</span><span class="p">.</span><span class="n">diff</span>
+</pre></div>
 
 
 <p>I then looked at my patch to verify that it looked good:</p>
-<div class="highlight"><pre><span></span><code><span class="err">cat my_patch.diff | more</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">my_patch</span><span class="p">.</span><span class="n">diff</span> <span class="o">|</span> <span class="k">more</span>
+</pre></div>
 
 
 <p>Everything looked fine. However, when I later tried to apply the patch to another Subversion workspace:</p>
-<div class="highlight"><pre><span></span><code><span class="err">patch -p0 -i my_patch.diff</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">patch</span> <span class="o">-</span><span class="n">p0</span> <span class="o">-</span><span class="n">i</span> <span class="n">my_patch</span><span class="p">.</span><span class="n">diff</span>
+</pre></div>
 
 
 <p>I got errors. I opened up <code>my_patch.diff</code> in Vim, and realized it was a UTF-16-encoded file.</p>
 <p>Neither <code>svn</code> nor <code>patch</code> know how to deal with Unicode. How did this happen?</p>
 <p>After wasting an hour trying various <code>svn</code> command-line options and diff utilities, I finally stumbled onto the answer. It turns out that, in PowerShell, <code>svn diff &gt; my_patch.diff</code> is equivalent to this command:</p>
-<div class="highlight"><pre><span></span><code><span class="err">svn diff | out-file my_patch.diff</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">svn</span> <span class="n">diff</span> <span class="o">|</span> <span class="k">out</span><span class="o">-</span><span class="n">file</span> <span class="n">my_patch</span><span class="p">.</span><span class="n">diff</span>
+</pre></div>
 
 
 <p>and (get this), the <code>out-file</code> cmdlet <strong>encodes its output as UTF-16 by default</strong>, regardless of what the input encoding was.</p>
 <p>This default behavior makes sense for <code>out-file</code>, but it is counter-intuitive that the <code>&gt;</code> redirection operator would take ASCII and convert it to Unicode.</p>
 <p>To make PowerShell do the right thing, you have to do this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">svn diff | out-file -encoding ascii my_patch.diff</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">svn</span> <span class="n">diff</span> <span class="o">|</span> <span class="k">out</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="k">encoding</span> <span class="n">ascii</span> <span class="n">my_patch</span><span class="p">.</span><span class="n">diff</span>
+</pre></div>
 
 
 <p>Grrr.</p>

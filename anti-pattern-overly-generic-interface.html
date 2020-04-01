@@ -77,32 +77,32 @@
     <p>While learning about <a href="http://en.wikipedia.org/wiki/Core_Animation">Core Animation</a>, I was disappointed to find that it is plagued by the anti-pattern that I call the <em>Overly Generic Interface</em>.
 <!--break-->
 The Overly Generic Interface is an interface that provides a very small set of functions, but each function takes parameters that allow one to do a lot of different things.  For example, in C++ an overly generic interface would look like this:</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span> <span class="n">A</span> <span class="n">Value</span> <span class="k">object</span> <span class="n">can</span> <span class="k">hold</span> <span class="n">a</span> <span class="n">string</span><span class="p">,</span> <span class="n">an</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">a</span> <span class="nb">float</span><span class="p">,</span> <span class="n">an</span> <span class="k">object</span> <span class="n">pointer</span><span class="p">,</span> <span class="n">etc</span><span class="p">.</span>
-<span class="k">class</span> <span class="n">Value</span> <span class="err">{</span>
-    <span class="o">//</span> <span class="p">...</span>
-<span class="err">}</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nv">A</span> <span class="nv">Value</span> <span class="nv">object</span> <span class="nv">can</span> <span class="nv">hold</span> <span class="nv">a</span> <span class="nv">string</span>, <span class="nv">an</span> <span class="nv">integer</span>, <span class="nv">a</span> <span class="nv">float</span>, <span class="nv">an</span> <span class="nv">object</span> <span class="nv">pointer</span>, <span class="nv">etc</span>.
+<span class="nv">class</span> <span class="nv">Value</span> {
+    <span class="o">//</span> ...
+}<span class="c1">;</span>
 
-<span class="k">class</span> <span class="k">Object</span> <span class="err">{</span>
-<span class="k">public</span><span class="p">:</span>
-    <span class="o">//</span> <span class="k">Return</span> <span class="n">the</span> <span class="n">value</span> <span class="k">of</span> <span class="n">a</span> <span class="n">named</span> <span class="n">property</span>
-    <span class="n">Value</span> <span class="n">getProperty</span><span class="p">(</span><span class="n">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">propertyName</span><span class="p">);</span>
+<span class="nv">class</span> <span class="nv">Object</span> {
+<span class="nv">public</span>:
+    <span class="o">//</span> <span class="k">Return</span> <span class="nv">the</span> <span class="nv">value</span> <span class="nv">of</span> <span class="nv">a</span> <span class="nv">named</span> <span class="nv">property</span>
+    <span class="nv">Value</span> <span class="nv">getProperty</span><span class="ss">(</span><span class="nv">const</span> <span class="nv">string</span><span class="o">&amp;</span> <span class="nv">propertyName</span><span class="ss">)</span><span class="c1">;</span>
 
-    <span class="o">//</span> <span class="k">Set</span> <span class="n">the</span> <span class="n">value</span> <span class="k">of</span> <span class="n">a</span> <span class="n">named</span> <span class="n">property</span>
-    <span class="n">void</span> <span class="n">setProperty</span><span class="p">(</span><span class="n">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">propertyName</span><span class="p">,</span>
-                     <span class="n">const</span> <span class="n">Value</span><span class="o">&amp;</span> <span class="n">newValue</span><span class="p">);</span>
+    <span class="o">//</span> <span class="nv">Set</span> <span class="nv">the</span> <span class="nv">value</span> <span class="nv">of</span> <span class="nv">a</span> <span class="nv">named</span> <span class="nv">property</span>
+    <span class="nv">void</span> <span class="nv">setProperty</span><span class="ss">(</span><span class="nv">const</span> <span class="nv">string</span><span class="o">&amp;</span> <span class="nv">propertyName</span>,
+                     <span class="nv">const</span> <span class="nv">Value</span><span class="o">&amp;</span> <span class="nv">newValue</span><span class="ss">)</span><span class="c1">;</span>
 
-    <span class="o">//</span> <span class="k">Set</span> <span class="n">the</span> <span class="k">values</span> <span class="k">of</span> <span class="n">multiple</span> <span class="n">named</span> <span class="n">properties</span> <span class="k">with</span> <span class="n">one</span> <span class="k">call</span>
-    <span class="n">void</span> <span class="n">setProperties</span><span class="p">(</span><span class="n">const</span> <span class="k">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">Value</span><span class="o">&gt;</span> <span class="n">properties</span><span class="p">);</span>
+    <span class="o">//</span> <span class="nv">Set</span> <span class="nv">the</span> <span class="nv">values</span> <span class="nv">of</span> <span class="nv">multiple</span> <span class="nv">named</span> <span class="nv">properties</span> <span class="nv">with</span> <span class="nv">one</span> <span class="nv">call</span>
+    <span class="nv">void</span> <span class="nv">setProperties</span><span class="ss">(</span><span class="nv">const</span> <span class="nv">map</span><span class="o">&lt;</span><span class="nv">string</span>, <span class="nv">Value</span><span class="o">&gt;</span> <span class="nv">properties</span><span class="ss">)</span><span class="c1">;</span>
 
-    <span class="o">//</span> <span class="n">Invoke</span> <span class="n">a</span> <span class="n">named</span> <span class="k">operation</span> <span class="k">with</span> <span class="n">a</span> <span class="k">parameter</span> <span class="n">list</span>
-    <span class="n">void</span> <span class="n">performOperation</span><span class="p">(</span><span class="n">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">operationName</span><span class="p">,</span>
-                          <span class="n">const</span> <span class="n">list</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;&amp;</span> <span class="k">parameters</span><span class="p">);</span>
-<span class="err">}</span><span class="p">;</span>
-</code></pre></div>
+    <span class="o">//</span> <span class="nv">Invoke</span> <span class="nv">a</span> <span class="nv">named</span> <span class="nv">operation</span> <span class="nv">with</span> <span class="nv">a</span> <span class="nv">parameter</span> <span class="nv">list</span>
+    <span class="nv">void</span> <span class="nv">performOperation</span><span class="ss">(</span><span class="nv">const</span> <span class="nv">string</span><span class="o">&amp;</span> <span class="nv">operationName</span>,
+                          <span class="nv">const</span> <span class="nv">list</span><span class="o">&lt;</span><span class="nv">Value</span><span class="o">&gt;&amp;</span> <span class="nv">parameters</span><span class="ss">)</span><span class="c1">;</span>
+}<span class="c1">;</span>
+</pre></div>
 
 
 <p>And application code that uses the interface looks something like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">class</span> <span class="nt">Person</span><span class="o">:</span> <span class="nt">public</span> <span class="nt">Object</span> <span class="p">{</span> <span class="err">...</span> <span class="p">}</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="nt">class</span> <span class="nt">Person</span><span class="o">:</span> <span class="nt">public</span> <span class="nt">Object</span> <span class="p">{</span> <span class="err">...</span> <span class="p">}</span><span class="o">;</span>
 
 <span class="nt">enum</span> <span class="nt">Gender</span> <span class="p">{</span> <span class="err">Female,</span> <span class="err">Male</span> <span class="p">}</span><span class="o">;</span>
 
@@ -125,7 +125,7 @@ The Overly Generic Interface is an interface that provides a very small set of f
 <span class="nt">params</span><span class="p">.</span><span class="nc">push_back</span><span class="o">(</span><span class="nt">ValueFromPointer</span><span class="o">(&amp;</span><span class="nt">husband</span><span class="o">));</span>
 <span class="nt">params</span><span class="p">.</span><span class="nc">push_back</span><span class="o">(</span><span class="nt">ValueFromPointer</span><span class="o">(&amp;</span><span class="nt">wife</span><span class="o">));</span>
 <span class="nt">recorder</span><span class="p">.</span><span class="nc">performOperation</span><span class="o">(</span><span class="s2">&quot;recordMarriage&quot;</span><span class="o">,</span> <span class="nt">params</span><span class="o">);</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>The supposed benefits (as far as I can tell) of a very generic interface are these:</p>
@@ -147,7 +147,7 @@ The Overly Generic Interface is an interface that provides a very small set of f
 <li>Magic is not always helpful. The magic names often have a syntax that is different from that of the “host language,” so programmers essentially have another language to learn.</li>
 </ul>
 <p>As an illustration of the first objection, I think the following would be a lot more readable and easier to maintain than the above:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Person</span> <span class="n">husband</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">Person</span> <span class="n">husband</span><span class="p">;</span>
 <span class="n">husband</span><span class="p">.</span><span class="n">setFirstName</span><span class="p">(</span><span class="ss">&quot;Kristopher&quot;</span><span class="p">);</span>
 <span class="n">husband</span><span class="p">.</span><span class="n">setLastName</span><span class="p">(</span><span class="ss">&quot;Johnson&quot;</span><span class="p">);</span>
 <span class="n">husband</span><span class="p">.</span><span class="n">setGender</span><span class="p">(</span><span class="n">Male</span><span class="p">);</span>
@@ -158,21 +158,21 @@ The Overly Generic Interface is an interface that provides a very small set of f
 <span class="n">wife</span><span class="p">.</span><span class="n">setGender</span><span class="p">(</span><span class="n">Female</span><span class="p">);</span>
 
 <span class="n">recorder</span><span class="p">.</span><span class="n">recordMarriage</span><span class="p">(</span><span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">);</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Note that the <code>Person</code> class here could be derived from <code>Object</code>, like this:</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="n">Person:</span> <span class="n">public</span> <span class="n">Object</span> {
-<span class="n">public:</span>
-    <span class="n">string</span> <span class="n">getFirstName</span>();
-    <span class="n">void</span> <span class="n">setFirstName</span>(<span class="n">const</span> <span class="n">string</span>&amp; <span class="n">newValue</span>);
+<div class="highlight"><pre><span></span><span class="nv">class</span> <span class="nv">Person</span>: <span class="nv">public</span> <span class="nv">Object</span> {
+<span class="nv">public</span>:
+    <span class="nv">string</span> <span class="nv">getFirstName</span><span class="ss">()</span><span class="c1">;</span>
+    <span class="nv">void</span> <span class="nv">setFirstName</span><span class="ss">(</span><span class="nv">const</span> <span class="nv">string</span><span class="o">&amp;</span> <span class="nv">newValue</span><span class="ss">)</span><span class="c1">;</span>
 
-    <span class="n">string</span> <span class="n">getLastName</span>();
-    <span class="n">void</span> <span class="n">setLastName</span>(<span class="n">const</span> <span class="n">string</span>&amp; <span class="n">newValue</span>);
+    <span class="nv">string</span> <span class="nv">getLastName</span><span class="ss">()</span><span class="c1">;</span>
+    <span class="nv">void</span> <span class="nv">setLastName</span><span class="ss">(</span><span class="nv">const</span> <span class="nv">string</span><span class="o">&amp;</span> <span class="nv">newValue</span><span class="ss">)</span><span class="c1">;</span>
 
-    // <span class="o">and</span> <span class="nb">so</span> <span class="n">on</span>, <span class="k">for</span> <span class="nb">all</span> <span class="n">properties</span>
-};
-</code></pre></div>
+    <span class="o">//</span> <span class="nv">and</span> <span class="nv">so</span> <span class="nv">on</span>, <span class="k">for</span> <span class="nv">all</span> <span class="nv">properties</span>
+}<span class="c1">;</span>
+</pre></div>
 
 
 <p>and in this case you would have both the generic <code>Object</code> interface and the specific <code>Person</code> interfaces available.  I have no objection to that.</p>

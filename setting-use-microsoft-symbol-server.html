@@ -77,8 +77,8 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>When debugging native Win32 code, it is useful to have the debug symbols for all of Microsoft's DLLs.  The easiest way to set this up is to just set an environment variable before starting Visual Studio (or other Microsoft debugging tools):</p>
-<div class="highlight"><pre><span></span><code><span class="err">set _NT_SYMBOL_PATH=srv*c:\symbols*http://msdl.microsoft.com/download/symbols</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="k">set</span> <span class="n">_NT_SYMBOL_PATH</span><span class="o">=</span><span class="n">srv</span><span class="o">*</span><span class="k">c</span><span class="p">:</span><span class="err">\</span><span class="n">symbols</span><span class="o">*</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">msdl</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">symbols</span>
+</pre></div>
 
 
 <p>The first time you run the debugger after setting this, it will take some time to start as it downloads symbol files from the Internet into your local symbol cache, but it will be faster after that.  Whenever you update your system with patches or service packs, the new symbols will automatically be downloaded the next time you debug.</p>

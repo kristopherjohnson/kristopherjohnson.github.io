@@ -88,11 +88,11 @@ The short answer is "Nothing". I have found a few mentions of kernel extensions 
 <p>The cool kids all remap their Caps Lock key to work as the Control key. The reasoning is that programmers have to use the Control key a lot, and nobody has typed anything in all caps since 1968, so there is no need for a Caps Lock key. I have resisted doing any remapping of my keyboards, because I often have to use computers and keyboards that are not mine, and I didn't want to have to remember which keyboards are remapped and which are not. But since the Caps Lock key is useless to me, I decided to go ahead and give it a try.</p>
 <p>This is easy to do on OS X: just go to <em>System Preferences</em> -&gt; <em>Keyboard</em> and click the <em>Modifier Keys...</em> button, and then you can change the Caps Lock key to work as Control.</p>
 <p>But then I don't have a Caps Lock key anymore, and I'd like to have one when I need to type "DANGER WILL ROBINSON! DANGER! DANGER! DANGER". Actually, joking aside, typing stuff in all caps comes up a lot in programming, and I've never understood why any programmers say they never need Caps Lock. Do they really hold down Shift while typing something like this?</p>
-<div class="highlight"><pre><span></span><code><span class="err">int fd = creat(&quot;file.dat&quot;, O_RDWR | O_CREAT | O_DSYNC | O_RSYNC);</span>
-<span class="err">if (fd == -1) {</span>
-<span class="err">    if (errno == EEXIST) {</span>
-<span class="err">        /* ... */</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="nv">int</span> <span class="nv">fd</span> <span class="o">=</span> <span class="nv">creat</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">file.dat</span><span class="s2">&quot;</span>, <span class="nv">O_RDWR</span> <span class="o">|</span> <span class="nv">O_CREAT</span> <span class="o">|</span> <span class="nv">O_DSYNC</span> <span class="o">|</span> <span class="nv">O_RSYNC</span><span class="ss">)</span><span class="c1">;</span>
+<span class="k">if</span> <span class="ss">(</span><span class="nv">fd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="ss">)</span> {
+    <span class="k">if</span> <span class="ss">(</span><span class="nv">errno</span> <span class="o">==</span> <span class="nv">EEXIST</span><span class="ss">)</span> {
+        <span class="cm">/* ... */</span>
+</pre></div>
 
 
 <p>I wanted to map some other key to Caps Lock for those times when I needed it. Some people swap their Caps Lock with Control, but I knew that wouldn't work for me: my fingers expect Control to be where it is, and I frequently use Control along with Command and/or Option, and hitting all those at once is awkward if the only Control key is where the Caps Lock key usually is.</p>

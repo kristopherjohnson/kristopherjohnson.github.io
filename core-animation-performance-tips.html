@@ -94,13 +94,13 @@
 <h3>Watch Out for Misaligned Images</h3>
 <p>If you run an app with Instruments with the Core Animation tool, it has an option to highlight "misaligned images." I couldn't find a lot of information on this, but apparently if you give layers positions that are not perfectly aligned to pixels, Core Animation does some anti-aliasing when rendering those layers, which degrades performance.</p>
 <p>The easy fix is to just round all positions to whole pixels, via something like this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">- (void) setSpritePosition:(CGPoint)position {</span>
-<span class="err">    CGPoint alignedPosition;</span>
-<span class="err">    alignedPosition.x = floorf(0.5f + position.x);</span>
-<span class="err">    alignedPosition.y = floorf(0.5f + position.y);</span>
-<span class="err">    sprite.position = alignedPosition;</span>
+<div class="highlight"><pre><span></span><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span> <span class="n">setSpritePosition</span><span class="p">:(</span><span class="n">CGPoint</span><span class="p">)</span><span class="k">position</span> <span class="err">{</span>
+    <span class="n">CGPoint</span> <span class="n">alignedPosition</span><span class="p">;</span>
+    <span class="n">alignedPosition</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">floorf</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span> <span class="o">+</span> <span class="k">position</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">alignedPosition</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">floorf</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span> <span class="o">+</span> <span class="k">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+    <span class="n">sprite</span><span class="p">.</span><span class="k">position</span> <span class="o">=</span> <span class="n">alignedPosition</span><span class="p">;</span>
 <span class="err">}</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>This got rid of most of my misaligned images, but I do still have some sprites that get rotated or scaled via a transform, and such images are always misaligned, unless they are rotated by some multiple of 90 degrees. Thankfully, I only have a few such sprites.</p>

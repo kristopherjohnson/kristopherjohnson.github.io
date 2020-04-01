@@ -95,8 +95,8 @@
 </ul>
 <h2>The Drupal 6 Database</h2>
 <p>My first step was to export the existing articles and metadata from the Drupal database on my blog server, and recreate it on my development machine.  Looking at my Drupal configuration, I was able to find the database name and login information (which I forgot years ago).  I used <code>mysqldump</code> to export the data.</p>
-<div class="highlight"><pre><span></span><code>mysqldump --user<span class="o">=</span><span class="nv">$dbuser</span> --password<span class="o">=</span><span class="nv">$dbpass</span> --tz-utc --databases <span class="s2">&quot;drupal6_undefinedvalue&quot;</span> &gt; <span class="s2">&quot;drupal6_undefinedvalue.sql&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span>mysqldump --user<span class="o">=</span><span class="nv">$dbuser</span> --password<span class="o">=</span><span class="nv">$dbpass</span> --tz-utc --databases <span class="s2">&quot;drupal6_undefinedvalue&quot;</span> &gt; <span class="s2">&quot;drupal6_undefinedvalue.sql&quot;</span>
+</pre></div>
 
 
 <p>Then, after copying the file to my dev machine, I loaded it with the MySQL command <code>source drupal6_undefinedvalue.sql</code>.</p>
@@ -144,10 +144,10 @@
 <p>So I decided to use Pelican as my site generator.</p>
 <h2>Python 3 Virtual Environment</h2>
 <p>To ensure I'd be able to easily run the Pelican generator on any machine, now or in the future, I set up a Python&nbsp;3 <a href="https://docs.python.org/3.5/library/venv.html">virtual environment</a> and installed the necessary packages:</p>
-<div class="highlight"><pre><span></span><code><span class="err">python3 -m venv-pelican-blog                # create the environment</span>
-<span class="err">source venv-pelican-blog/bin/activate       # activate the environment</span>
-<span class="err">pip install pelican pelican-alias markdown  # install dependencies</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span><span class="o">-</span><span class="n">pelican</span><span class="o">-</span><span class="n">blog</span>                <span class="o">#</span> <span class="k">create</span> <span class="n">the</span> <span class="n">environment</span>
+<span class="k">source</span> <span class="n">venv</span><span class="o">-</span><span class="n">pelican</span><span class="o">-</span><span class="n">blog</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>       <span class="o">#</span> <span class="n">activate</span> <span class="n">the</span> <span class="n">environment</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span> <span class="n">pelican</span><span class="o">-</span><span class="k">alias</span> <span class="n">markdown</span>  <span class="o">#</span> <span class="n">install</span> <span class="n">dependencies</span>
+</pre></div>
 
 
 <p>And then before running any Pelican commands, I have to make sure I run the command <code>source venv-pelican-blog/bin/activate</code>.</p>
@@ -163,10 +163,10 @@
 <h2>Publishing the New Site</h2>
 <p>I had already set up my personal <code>kristopherjohnson.github.io</code> repo as a GitHub Pages site.  I set up a Makefile rule that would copy the output from Pelican to that local repo, commit the change, and then push that repo to GitHub.  </p>
 <p>So, all I have to do to regenerate the site and push it to the cloud is this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">cd ~/work/undefinedvalue-pelican</span>
-<span class="err">source venv-pelican-blog/bin/activate</span>
-<span class="err">make github</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="n">undefinedvalue</span><span class="o">-</span><span class="n">pelican</span>
+<span class="k">source</span> <span class="n">venv</span><span class="o">-</span><span class="n">pelican</span><span class="o">-</span><span class="n">blog</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">make</span> <span class="n">github</span>
+</pre></div>
 
 
 <p>It takes about four seconds to run <code>make github</code>.  After that, it takes a minute or so before the changes are actually visible on the site.</p>

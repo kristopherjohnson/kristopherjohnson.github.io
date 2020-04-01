@@ -81,27 +81,27 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>With my <a href="http://undefinedvalue.com/rebuilding-my-blog-again.html">new blog setup</a>, I decided to give <a href="https://en.wikipedia.org/wiki/AdSense">Google AdSense</a> a try.  I don't have many regular readers, but I do have a few pages that attract search-engine traffic.  So, to monetize those older pages without shoving ads in my regular readers' faces, I decided to show ads on posts that were over a month old.  That should be easy enough to add to the <a href="https://github.com/kristopherjohnson/undefinedvalue-pelican/blob/master/themes/undefinedvalue/templates/article.html">article.html</a> template:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="nv">article.date</span><span class="o">|</span><span class="nf">age_in_days</span> <span class="o">&gt;</span> <span class="m">30</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">    &lt;!-- ... Include AdSense code ... --&gt;</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span>{<span class="o">%</span> <span class="k">if</span> <span class="nv">article</span>.<span class="nv">date</span><span class="o">|</span><span class="nv">age_in_days</span> <span class="o">&gt;</span> <span class="mi">30</span> <span class="o">%</span>}
+    <span class="o">&lt;!--</span> ... <span class="k">Include</span> <span class="nv">AdSense</span> <span class="nv">code</span> ... <span class="o">--&gt;</span>
+{<span class="o">%</span> <span class="k">endif</span> <span class="o">%</span>}
+</pre></div>
 
 
 <p>Only one problem: there is no <code>age_in_days</code> filter provided by Pelican or Jinja.  I'd have to write a custom filter myself.</p>
 <p>A Jinja <a href="http://jinja.pocoo.org/docs/2.9/api/#custom-filters">custom filter</a> is just a Python function that takes an argument and produces a result.  My filter function is pretty simple:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="k">def</span> <span class="nf">age_in_days</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a number of days between now and a specified datetime.&quot;&quot;&quot;</span>
     <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">dt</span>
     <span class="k">return</span> <span class="n">delta</span><span class="o">.</span><span class="n">days</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>I had to figure out how to add that to Pelican's Jinja2 template-rendering environment.  I found a <a href="https://linkpeek.com/blog/how-to-add-a-custom-jinja-filter-to-pelican.html">How to add a custom Jinja filter to Pelican post</a> that showed how to import a function and set the Pelican's <code>JINJA_FILTERS</code> variable in <code>pelicanconf.py</code>, but I didn't like the idea of adding imports and functions to a configuration file.  I decided it would be cleaner (and more fun) to figure out how to make a <a href="http://docs.getpelican.com/en/3.7.1/plugins.html">Pelican plugin</a> that provided my filter.</p>
 <p>It wasn't hard to figure this out, because I found a <a href="https://github.com/MinchinWeb/minchin.pelican.jinja_filters">Jinja Filters plugin</a> that provides a set of filters, so I could just copy the little bits I needed from that for registering my filter. A Pelican plugin must <a href="http://docs.getpelican.com/en/3.7.1/plugins.html#how-to-create-plugins">provide a <code>register()</code> function</a> that sets up a mapping of Pelican "signals" to functions that are to be called.  My plugin handles the <code>generator_init</code> signal by adding the <code>age_in_days</code> filter to Pelican's Jinja environment:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">signals</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">signals</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">ageindays</span>
 
 <span class="k">def</span> <span class="nf">add_filter</span><span class="p">(</span><span class="n">pelican</span><span class="p">):</span>
@@ -111,13 +111,13 @@
 <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Plugin registration.&quot;&quot;&quot;</span>
     <span class="n">signals</span><span class="o">.</span><span class="n">generator_init</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">add_filter</span><span class="p">)</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Then I had to update my <code>pelicanconf.py</code> to load this plugin in addition to the other plugins I use:</p>
-<div class="highlight"><pre><span></span><code><span class="n">PLUGIN_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../plugins&#39;</span><span class="p">,</span> <span class="s1">&#39;../pelican-plugins&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">PLUGIN_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../plugins&#39;</span><span class="p">,</span> <span class="s1">&#39;../pelican-plugins&#39;</span><span class="p">]</span>
 <span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age_in_days&#39;</span><span class="p">,</span> <span class="s1">&#39;pelican_alias&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;sitemap&#39;</span><span class="p">]</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>And that's it.</p>

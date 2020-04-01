@@ -97,20 +97,20 @@
 <h3>Production Code to be Tested</h3>
 <p>Next, we will need some JavaScript code to test. Some poor confused souls put their JavaScript code and tests in their HTML files, but we're going to do things The Right Way and put the production code and the test code into their own files.</p>
 <p>Here is our production module, <code>calculator.js</code>, which provides sophisticated mathematical functionality:</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span> <span class="n">calculator</span><span class="p">.</span><span class="n">js</span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nv">calculator</span>.<span class="nv">js</span>
 
-<span class="n">var</span> <span class="n">Calculator</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="err">{</span>
-    <span class="n">this</span><span class="p">.</span><span class="k">add</span>      <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="err">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="err">}</span><span class="p">;</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">subtract</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="err">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span> <span class="err">}</span><span class="p">;</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">multiply</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="err">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span> <span class="err">}</span><span class="p">;</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">divide</span>   <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="err">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span> <span class="err">}</span><span class="p">;</span>
-<span class="err">}</span><span class="p">;</span>
-</code></pre></div>
+<span class="nv">var</span> <span class="nv">Calculator</span> <span class="o">=</span> <span class="nv">function</span> <span class="ss">()</span> {
+    <span class="nv">this</span>.<span class="nv">add</span>      <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">+</span> <span class="nv">b</span><span class="c1">; };</span>
+    <span class="nv">this</span>.<span class="nv">subtract</span> <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">-</span> <span class="nv">b</span><span class="c1">; };</span>
+    <span class="nv">this</span>.<span class="nv">multiply</span> <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">*</span> <span class="nv">b</span><span class="c1">; };</span>
+    <span class="nv">this</span>.<span class="nv">divide</span>   <span class="o">=</span> <span class="nv">function</span> <span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span> { <span class="k">return</span> <span class="nv">a</span> <span class="o">/</span> <span class="nv">b</span><span class="c1">; };</span>
+}<span class="c1">;</span>
+</pre></div>
 
 
 <h3>Test Cases</h3>
 <p>Here are our tests, in <code>calculator_tests.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="o">//</span> <span class="n">calculator_tests</span><span class="p">.</span><span class="n">js</span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">calculator_tests</span><span class="p">.</span><span class="n">js</span>
 
 <span class="n">Calculator</span><span class="p">.</span><span class="n">runTests</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="err">{</span>
 
@@ -140,14 +140,14 @@
         <span class="k">equals</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Infinity</span><span class="p">,</span> <span class="ss">&quot;1 / 0&quot;</span><span class="p">);</span>
     <span class="err">}</span><span class="p">);</span>
 <span class="err">}</span><span class="p">;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Here, I've made my test function a member of the module I'm testing, but you can define it however you want.</p>
 <p>See the <a href="http://docs.jquery.com/QUnit#API_documentation">QUnit API documentation</a> for info about the test functions. All you need to know to understand the above is that <code>test(name, function)</code> creates a test case, and <code>equals(actual, expected, message)</code> checks equivalence of results.</p>
 <h3>HTML Test Runner</h3>
 <p>Finally, we need an HTML file, <code>calculator_tests.html</code>, which loads all the modules, runs the tests, and displays the results in a web browser:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;html&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
 
 <span class="c">&lt;!-- Load jQuery and QUnit --&gt;</span>
@@ -176,7 +176,7 @@ $(document).ready(function(){
 <span class="nt">&lt;ol</span> <span class="na">id=</span><span class="s">&quot;qunit-tests&quot;</span><span class="nt">&gt;&lt;/ol&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>With all those files in place, just open <code>calculator_tests.html</code> in a web browser, and it will show the results. Successful tests will be green, and failed tests will be red. You can click the individual tests to get detailed lists of the assertions.</p>

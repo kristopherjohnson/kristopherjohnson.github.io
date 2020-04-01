@@ -83,7 +83,7 @@ I started by following the steps here: <a href="http://www.howtoforge.com/how-to
 <p>After a couple of hours of Googling and hair-pulling, I discovered that the problem is that Windows Vista and Windows 7 don't support Basic HTTP authentication for WebDAV.  One needs to either use Digest authentication, or <a href="http://support.microsoft.com/kb/841215">make registry changes</a> to enable Basic authentication.</p>
 <p>I didn't want to force registry changes on all the client machines, and Digest authentication is The Right Thing anyway, so I changed my Apache configuration to do it.</p>
 <p>Here are the new lines that ended up in my <code>/etc/apache2/sites-available/default</code> file:</p>
-<div class="highlight"><pre><span></span><code>    <span class="nt">&lt;Directory</span> <span class="err">/var/www/webdav</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;Directory</span> <span class="err">/var/www/webdav</span><span class="nt">/&gt;</span>
             Options Indexes MultiViews
             AllowOverride None
             Order allow,deny
@@ -101,30 +101,30 @@ I started by following the steps here: <a href="http://www.howtoforge.com/how-to
             AuthUserFile /var/www/webdav/.digest_passwd.dav
             Require valid-user
     <span class="nt">&lt;/Location&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>I had to enable the <code>auth_digest</code> module:</p>
-<div class="highlight"><pre><span></span><code><span class="err">sudo a2enmod auth_digest</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">a2enmod</span> <span class="n">auth_digest</span>
+</pre></div>
 
 
 <p>Then I had to create the digest authentication file, adding the user <code>test</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="err">sudo htdigest -c /var/www/webdav/.digest_passwd.dav webdav test</span>
-<span class="err">sudo chown root:www-data /var/www/webdav/.digest_passwd.dav</span>
-<span class="err">sudo chmod 640 /var/www/webdav/.digest_passwd.dav</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">htdigest</span> <span class="o">-</span><span class="k">c</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="p">.</span><span class="n">digest_passwd</span><span class="p">.</span><span class="n">dav</span> <span class="n">webdav</span> <span class="n">test</span>
+<span class="n">sudo</span> <span class="n">chown</span> <span class="n">root</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="k">data</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="p">.</span><span class="n">digest_passwd</span><span class="p">.</span><span class="n">dav</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">640</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="p">.</span><span class="n">digest_passwd</span><span class="p">.</span><span class="n">dav</span>
+</pre></div>
 
 
 <p>With all those changes made, I did this</p>
-<div class="highlight"><pre><span></span><code><span class="err">sudo /etc/init.d/apache2 restart</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">apache2</span> <span class="k">restart</span>
+</pre></div>
 
 
 <p>And then I verified that I could do the following from my Windows box:</p>
-<div class="highlight"><pre><span></span><code><span class="err">net use \\example.com\webdav MYPASSWORD /user:test</span>
-<span class="err">dir \\example.com\webdav</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="err">\\</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="err">\</span><span class="n">webdav</span> <span class="n">MYPASSWORD</span> <span class="o">/</span><span class="k">user</span><span class="p">:</span><span class="n">test</span>
+<span class="n">dir</span> <span class="err">\\</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="err">\</span><span class="n">webdav</span>
+</pre></div>
 
 
 <p>With that done, I then set up WPKG and everything was easy and smooth!</p>
