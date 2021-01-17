@@ -83,7 +83,7 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>Let's say that you are using a beta version of a new operating system that you can't name because it is covered by a non-disclosure agreement, and you have also installed the newest version of its development tools, which are also covered by NDA, and when you try to run the <code>git svn</code> command, you get this output:</p>
-<div class="highlight"><pre><span></span><span class="n">dyld</span><span class="o">:</span> <span class="n">lazy</span> <span class="n">symbol</span> <span class="n">binding</span> <span class="n">failed</span><span class="o">:</span> <span class="n">Symbol</span> <span class="n">not</span> <span class="n">found</span><span class="o">:</span> <span class="n">_Perl_Gthr_key_ptr</span>
+<div class="highlight"><pre><span></span><code><span class="n">dyld</span><span class="o">:</span> <span class="n">lazy</span> <span class="n">symbol</span> <span class="n">binding</span> <span class="n">failed</span><span class="o">:</span> <span class="n">Symbol</span> <span class="n">not</span> <span class="n">found</span><span class="o">:</span> <span class="n">_Perl_Gthr_key_ptr</span>
   <span class="n">Referenced</span> <span class="n">from</span><span class="o">:</span> <span class="sr">/usr/../Library/Perl/5.12/darwin-thread-multi-2level/auto/SVN/_Core/</span><span class="n">_Core</span><span class="o">.</span><span class="na">bundle</span>
   <span class="n">Expected</span> <span class="k">in</span><span class="o">:</span> <span class="n">flat</span> <span class="kd">namespace</span>
 
@@ -92,32 +92,27 @@
   <span class="n">Expected</span> <span class="k">in</span><span class="o">:</span> <span class="n">flat</span> <span class="kd">namespace</span>
 
 <span class="n">error</span><span class="o">:</span> <span class="n">git</span><span class="o">-</span><span class="n">svn</span> <span class="n">died</span> <span class="n">of</span> <span class="n">signal</span> <span class="mi">5</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Apparently, the problem is that <code>git-svn</code> is implemented in Perl, and there is something wrong with the Perl configuration used when you run <code>/usr/bin/git</code>.</p>
 <p>What do you do?</p>
 <p>It turns out you can fix this by putting the Git executables provided by the new development tools at the head of your PATH, by executing this command (or adding it to <code>.bashrc</code>):</p>
-<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="ss">&quot;/Applications/XXXXX.app/Contents/Developer/usr/libexec/git-core&quot;</span><span class="p">:</span><span class="err">$</span><span class="n">PATH</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">export PATH=&quot;/Applications/XXXXX.app/Contents/Developer/usr/libexec/git-core&quot;:$PATH</span>
+</code></pre></div>
 
 <p>where <code>XXXXX.app</code> is the unnamed development tool.</p>
 <p>Alternatively, you can add all the command-line tools to your PATH like this:</p>
-<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="err">”</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">XXXXX</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="err">”</span><span class="p">:</span><span class="err">$</span><span class="n">PATH</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">export PATH=”/Applications/XXXXX.app/Contents/Developer/usr/bin/”:$PATH</span>
+</code></pre></div>
 
 <p>Credit to <a href="http://vandadnp.wordpress.com/2012/04/06/git-from-command-line-after-installing-xcode-on-os-x-lion/">Vandad Nahavandipoor</a> for the hint.</p>
 <p>Another option would be to use the <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcrun.1.html">xcrun</a> utility to run <code>git</code>. You can do this:</p>
-<div class="highlight"><pre><span></span><span class="n">xcrun</span> <span class="n">git</span> <span class="n">svn</span> <span class="n">blah</span><span class="o">-</span><span class="n">blah</span><span class="o">-</span><span class="n">blah</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">xcrun git svn blah-blah-blah</span>
+</code></pre></div>
 
 <p>or put this into your <code>.bashrc</code> so that you don't have to remember to type <code>xcrun</code>:</p>
-<div class="highlight"><pre><span></span><span class="k">alias</span> <span class="n">git</span><span class="o">=</span><span class="s1">&#39;xcrun git&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">alias git=&#39;xcrun git&#39;</span>
+</code></pre></div>
 
 <p>If you are the kind of person who thinks its a good idea to replace system files with symlinks, you might try symlinking <code>/usr/bin/git</code> to <code>/Applications/XXXXX.app/Contents/Developer/usr/libexec/git-core/git</code>. However, that alone doesn't work, because Git will still run the <code>git-svn</code> executable from its default location, <code>/Library/Developer/CommandLineTools/usr/libexec/git-core</code>, and you will still have the <code>_Perl_Gthr_key_ptr</code> problem. So you also need to symlink the default location to <code>/Applications/XXXXX.app/Contents/Developer/usr/libexec/git-core/</code>, or set the <code>GIT_EXEC_PATH</code> environment variable.</p>
   </div><!-- /.entry-content -->
@@ -142,11 +137,11 @@
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/54.html">54</a></li>
                     <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
-                    <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

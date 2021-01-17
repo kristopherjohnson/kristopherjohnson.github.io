@@ -77,11 +77,9 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p><i>Warning: Geeky programmer content below.</i></p>
-
 <p>
 While learning a new codebase, I was a little disturbed when I saw this:
 </p>
-
 <pre>
   enum IsVerifying {
     IsVerifyingFalse,
@@ -110,11 +108,9 @@ While learning a new codebase, I was a little disturbed when I saw this:
 
   /* etc. (There are about a dozen more of these.) */
 </pre>
-
 <p>
 And there was a lot of verbose code for dealing with these types, such as
 </p>
-
 <pre>
   if (Verified()) {
     verified = IsVerifiedTrue;
@@ -132,15 +128,12 @@ And there was a lot of verbose code for dealing with these types, such as
 
   /* etc. */
 </pre>
-
 <p>
 What's wrong with using plain-old-Boolean values <tt>false</tt> and <tt>true</tt>, or 0 and 1?
 </p>
-
 <p>
 Well, after poking around the code more, I did find the reason that the original programmer did this.  He has a lot of functions that take several flags as parameters, and something like this:
 </p>
-
 <pre>
   SetStates(IsVerifyingFalse,
             IsVerifiedTrue,
@@ -148,15 +141,12 @@ Well, after poking around the code more, I did find the reason that the original
             IsActiveFalse,
             IsOnlineFalse);
 </pre>
-
 <p>
 is easier to understand than something like this:
 </p>
-
 <pre>
   SetStates(false, true, true, false, false);
 </pre>
-
 <p>
 But still, <i>yyeeaagghh</i> is the proper reaction to seeing something like this.
 </p>
@@ -182,11 +172,11 @@ But still, <i>yyeeaagghh</i> is the proper reaction to seeing something like thi
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/54.html">54</a></li>
                     <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
-                    <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

@@ -77,10 +77,9 @@
     <p>
 The developers of <a href="http://www.scons.org">SCons</a> don't seem to be very interested in this, but I've found a way to dramatically speed up SCons builds for MSVC8 (Visual Studio 2005's C++ compiler).
 </p>
-
 <p><pp>
 We've got a fairly big codebase with a few levels.  It was taking over a minute to read all the SConstruct/SConscript files, even when there was nothing to do.
-</p>
+</p></p>
 <p>
 I ran the profiler, and found that the bulk of the time was in minidom.py and expatbuilder.py.  This was surprising, because I didn't think SCons used XML.
 <p>
@@ -92,17 +91,17 @@ So, I hacked up my personal copy of SCons/Tool/msvc.py, and now instead of over 
 <p>
 The idea is to cache the results of _get_msvc8_path, so that the XML parsing doesn't happen every time.  I added a global variable to msvc.py, containing an empty dictionary:
 </p>
-<pre></p>
-<h1>START NEW CODE</h1>
-<h1>KDJ: cache results of _get_msvc8_path in a dictionary</h1>
-<p>cached_msvc8_path = {}</p>
-<h1>END NEW CODE</h1>
-<p></pre>
+<pre>
+# START NEW CODE
+# KDJ: cache results of _get_msvc8_path in a dictionary
+cached_msvc8_path = {}
+# END NEW CODE
+</pre>
 <p>
 Then, I changed a few lines in get_msvc_path as follows:
 </p>
 <pre>
-    if version_num &gt;= 8.0:
+    if version_num >= 8.0:
         # ORIGINAL: return _get_msvc8_path(path, str(version_num), platform, suite)
         # START NEW CODE
         global cached_msvc8_path
@@ -110,9 +109,9 @@ Then, I changed a few lines in get_msvc_path as follows:
             cached_msvc8_path[path] = _get_msvc8_path(path, str(version_num), platform, suite)
         return cached_msvc8_path[path]
         # END NEW CODE
-    elif version_num &gt;= 7.0:
+    elif version_num >= 7.0:
         return _get_msvc7_path(path, str(version_num), platform)
-</pre></p>
+</pre>
   </div><!-- /.entry-content -->
 </section>
 <ul>
@@ -135,11 +134,11 @@ Then, I changed a few lines in get_msvc_path as follows:
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/54.html">54</a></li>
                     <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
-                    <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

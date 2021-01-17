@@ -80,9 +80,9 @@
   <div class="entry-content">
     <p><strong>Note: This is an old post. I now use jq (<a href="http://stedolan.github.io/jq/">http://stedolan.github.io/jq/</a>) instead of the <code>formatjson</code> Node script described below, and I recommend that you do too.</strong></p>
 <p>I had some JSON files that were not indented consistently. I edit these files by hand, so I wanted a way to easily reformat them.</p>
-<p>My text editor has a reformatting command, but I really hate what it produces, so I decided to make my own JSON reformatting service for OS X that I could use in any application.
+<p>My text editor has a reformatting command, but I really hate what it produces, so I decided to make my own JSON reformatting service for OS X that I could use in any application.</p>
 <!--break-->
-First, I wrote a <a href="http://nodejs.org">Node.js</a> script to do the reformatting:</p>
+<p>First, I wrote a <a href="http://nodejs.org">Node.js</a> script to do the reformatting:</p>
 <script src="https://gist.github.com/kristopherjohnson/5065599.js"></script>
 
 <p>(Also available as <a href="http://gist.github.com/kristopherjohnson/5153772">Literate CoffeeScript</a>).</p>
@@ -100,9 +100,8 @@ First, I wrote a <a href="http://nodejs.org">Node.js</a> script to do the reform
 <p><img src="https://s3.amazonaws.com/undefinedvalue/ReformatJSONTextService.png" height="413" width="600" alt="Automator screenshot"/></p>
 <p>Now, whenever I want to reformat some JSON in a text editor, I just select it, right-click, and choose <strong>Services&nbsp;&gt;&nbsp;Reformat&nbsp;JSON&nbsp;Text</strong>.</p>
 <p>And when I want to reformat things from the command line, this works:</p>
-<div class="highlight"><pre><span></span><span class="n">formatjson</span> <span class="o">&lt;</span><span class="n">ugly</span><span class="p">.</span><span class="n">json</span> <span class="o">&gt;</span><span class="n">pretty</span><span class="p">.</span><span class="n">json</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">formatjson &lt;ugly.json &gt;pretty.json</span>
+</code></pre></div>
 
 <p>If you'd rather have a web page that does this, see <a href="http://undefinedvalue.com/2013/03/02/web-page-reformatting-json-text">A Web Page for Reformatting JSON Text</a>.</p>
   </div><!-- /.entry-content -->
@@ -127,11 +126,11 @@ First, I wrote a <a href="http://nodejs.org">Node.js</a> script to do the reform
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/54.html">54</a></li>
                     <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
-                    <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

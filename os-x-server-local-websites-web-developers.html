@@ -70,37 +70,33 @@
     </time>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p><a href="https://itunes.apple.com/us/app/os-x-server/id714547929">OS X Server</a> is now available free of charge for members of Apple's iOS Developer Program, so I have it installed on most of my machines. Unfortunately, having OS X Server installed complicates the use of the built-in local Apache web server which I use for web development. I've figured out how to make things work the way I like, and I have written this article so that I can find the information again when I need it. Maybe it will help somebody else too.
-<!--break--></p>
+    <p><a href="https://itunes.apple.com/us/app/os-x-server/id714547929">OS X Server</a> is now available free of charge for members of Apple's iOS Developer Program, so I have it installed on most of my machines. Unfortunately, having OS X Server installed complicates the use of the built-in local Apache web server which I use for web development. I've figured out how to make things work the way I like, and I have written this article so that I can find the information again when I need it. Maybe it will help somebody else too.</p>
+<!--break-->
 <h2>Enabling Local Websites</h2>
 <p>First, to enable the web server, open the OS X Server app, select <strong>Websites</strong> in the sidebar,  and flip the switch to <strong>On</strong>. You should be able to visit <a href="http://localhost/">http://localhost/</a> in a web browser and see a page titled "Welcome to OS X Server".</p>
 <p>While you are on the Websites configuration screen, you may want to enable PHP and Python web applications.</p>
 <p>If you have the Xcode service enabled, then instead of "Welcome to OS X Server" you may see the Xcode Bots page. This may be OK with you, but if you would rather not see the Xcode stuff in place of the default website, then in the Server app, go to the <strong>Websites</strong> screen, double-click <strong>Server Website</strong> to edit it, click the <strong>Edit...</strong> button next to <strong>Index Files</strong>, and remove the <code>/xcode</code> entry. Now, visiting <a href="http://localhost/">http://localhost/</a> should take you to the "Welcome to OS X Server" screen, and you can visit <a href="http://localhost/xcode">http://localhost/xcode</a> to see Xcode Bots.</p>
 <h2>Website Directories</h2>
 <p>Next, you need to know where you can put your website files so that they will be served by the server. By default, the server will look for files in <code>/Library/Server/Web/Data/Sites/Default</code>. You could put your files in that directory, but I prefer to use symlinks so that I can keep all my files in my home directory. So, for example, if your main website file is <code>/Users/kdj/work/mywebapp/index.html</code>, you can symlink it like this:</p>
-<div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">kdj</span><span class="o">/</span><span class="k">work</span><span class="o">/</span><span class="n">mywebapp</span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Server</span><span class="o">/</span><span class="n">Web</span><span class="o">/</span><span class="k">Data</span><span class="o">/</span><span class="n">Sites</span><span class="o">/</span><span class="k">Default</span><span class="o">/</span><span class="n">mywebapp</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">ln -s /Users/kdj/work/mywebapp /Library/Server/Web/Data/Sites/Default/mywebapp</span>
+</code></pre></div>
 
 <p>Then if you visit <code>http://localhost/mywebapp</code>, you should see your website.</p>
 <h2>Per-user Website Directories</h2>
 <p>Alternatively, instead of making modifications to the <code>/Library/Server/Web/Data/Sites</code> directory, you might want to set up per-user websites as are available on OS X when Server is not installed and "Web Sharing" is enabled. To do this, you have to edit the <code>https_server_app.conf</code> configuration file. This file is only writable by root by default, so you will need to use <code>sudo</code>. So, for example, if you use <code>vi</code>, then do this to edit the file:</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vi</span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Server</span><span class="o">/</span><span class="n">Web</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">httpd_server_app</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">sudo vi /Library/Server/Web/Config/apache2/httpd_server_app.conf</span>
+</code></pre></div>
 
 <p>You need to uncomment two lines. First, uncomment the line for <code>apple_userdir_module</code> to enable it:</p>
-<div class="highlight"><pre><span></span>#Server-specific modules
+<div class="highlight"><pre><span></span><code>#Server-specific modules
 # SERVER_INSTALL_PATH_PREFIX should be set as Environment variable in launchd.plist
 LoadModule apple_userdir_module <span class="cp">${</span><span class="n">SERVER_INSTALL_PATH_PREFIX</span><span class="cp">}</span>/usr/libexec/apache2/mod_userdir_apple.so
-</pre></div>
-
+</code></pre></div>
 
 <p>Then uncomment the line that includes the user configurations:</p>
-<div class="highlight"><pre><span></span># <span class="nv">User</span> <span class="nv">home</span> <span class="nv">directories</span>
-<span class="k">Include</span> <span class="o">/</span><span class="nv">private</span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">apache2</span><span class="o">/</span><span class="nv">extra</span><span class="o">/</span><span class="nv">httpd</span><span class="o">-</span><span class="nv">userdir</span>.<span class="nv">conf</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err"># User home directories</span>
+<span class="err">Include /private/etc/apache2/extra/httpd-userdir.conf</span>
+</code></pre></div>
 
 <p>Then, after stopping and restarting the Websites service, you should be able to access directories under your <code>~/Sites</code> directory. For example, if your user account name is <code>kdj</code>, and you have a website at <code>/Users/kdj/Sites/mywebapp/index.html</code>, then you should be able to visit <a href="http://localhost/~kdj/mywebapp">http://localhost/~kdj/mywebapp</a>.</p>
 <h2>MAMP</h2>
@@ -129,11 +125,11 @@ LoadModule apple_userdir_module <span class="cp">${</span><span class="n">SERVER
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/54.html">54</a></li>
                     <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
-                    <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

@@ -80,33 +80,33 @@
   <div class="entry-content">
     <p>I ran across a question on Quora: <a href="http://www.quora.com/Programming-Languages/Whats-the-easiest-programming-bug-you-spent-way-too-much-time-trying-to-solve">What's the easiest programming bug you spent way too much time trying to solve?</a>.</p>
 <p>Here is my answer to that question. Some time during my first few years of programming, I wrote code similar to this little snippet and expected it to print "FOO", but instead it prints "None of the above". It is written in C, but should be comprehensible to anyone who knows a language with similar syntax (C++, Java, JavaScript, C#, etc.). It took me about a half day of staring and single-stepping in a debugger to figure out what was wrong. When I looked at the disassembly listing, I was convinced I'd found a bug in the C compiler. Maybe you can figure it out faster than I could.</p>
-<div class="highlight"><pre><span></span>#<span class="k">include</span> <span class="o">&lt;</span><span class="nv">stdio</span>.<span class="nv">h</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-<span class="nv">int</span> <span class="nv">main</span><span class="ss">(</span><span class="nv">int</span> <span class="nv">argc</span>, <span class="nv">char</span> <span class="o">*</span><span class="nv">argv</span>[]<span class="ss">)</span>
-{
-    <span class="nv">const</span> <span class="nv">int</span> <span class="nv">FOO</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">;</span>
-    <span class="nv">const</span> <span class="nv">int</span> <span class="nv">BAR</span> <span class="o">=</span> <span class="mi">2</span><span class="c1">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">FOO</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">BAR</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
-    <span class="nv">int</span> <span class="nv">n</span> <span class="o">=</span> <span class="nv">FOO</span><span class="c1">;</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">FOO</span><span class="p">;</span>
 
-    <span class="nv">switch</span> <span class="ss">(</span><span class="nv">n</span><span class="ss">)</span>
-    {
-        <span class="nv">FOO</span>:
-            <span class="nv">printf</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">FOO</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-            <span class="k">break</span><span class="c1">;</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nl">FOO</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
 
-        <span class="nv">BAR</span>:
-            <span class="nv">printf</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">BAR</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-            <span class="k">break</span><span class="c1">;</span>
+        <span class="nl">BAR</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;BAR&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
 
-        <span class="nv">default</span>:
-            <span class="nv">printf</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">None of the above</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-            <span class="k">break</span><span class="c1">;</span>
-    }
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;None of the above&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="k">return</span> <span class="mi">0</span><span class="c1">;</span>
-}
-</pre></div>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
   </div><!-- /.entry-content -->
 </section>
 <ul>
@@ -129,11 +129,11 @@
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/54.html">54</a></li>
                     <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
-                    <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">

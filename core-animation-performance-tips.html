@@ -86,22 +86,21 @@
 <li>All the code is well-factored idiomatic Objective-C. Unlike a lot of iPhone/iPad game programmers, I'm not writing all the guts in low-level C or C++ and then sprinkling a minimal amount of Cocoa on top to interface with the OS.</li>
 <li>I'm using Core&nbsp;Animation as my "engine", rather than the OpenGL ES API or an off-the-shelf gaming engine. (Note: My game only needs a couple dozen sprites.)</li>
 </ul>
-<p>So far, things have worked out well. I was worried that using Objective-C and Core&nbsp;Animation might lead to performance issues on the iPad, but that hasn't been the case. I have run into a couple of issues with Core&nbsp;Animation that were pretty easy to fix.
-<!--break--></p>
+<p>So far, things have worked out well. I was worried that using Objective-C and Core&nbsp;Animation might lead to performance issues on the iPad, but that hasn't been the case. I have run into a couple of issues with Core&nbsp;Animation that were pretty easy to fix.</p>
+<!--break-->
 <h3>Layer Creation Is Expensive</h3>
 <p>My game's "sprites" are just Core&nbsp;Animation layers. When I initially implemented the game, I was creating layers and adding them to the view as needed, and then deleting them when they were no longer needed. This turned out to cause problems; a few frames would get dropped whenever a layer was created.</p>
 <p>The fix for this was to create a pool of layers and add them all to the view at startup, and reuse those layers as needed. Unused layers get their <code>hidden</code> property set false.</p>
 <h3>Watch Out for Misaligned Images</h3>
 <p>If you run an app with Instruments with the Core Animation tool, it has an option to highlight "misaligned images." I couldn't find a lot of information on this, but apparently if you give layers positions that are not perfectly aligned to pixels, Core Animation does some anti-aliasing when rendering those layers, which degrades performance.</p>
 <p>The easy fix is to just round all positions to whole pixels, via something like this:</p>
-<div class="highlight"><pre><span></span><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span> <span class="n">setSpritePosition</span><span class="p">:(</span><span class="n">CGPoint</span><span class="p">)</span><span class="k">position</span> <span class="err">{</span>
-    <span class="n">CGPoint</span> <span class="n">alignedPosition</span><span class="p">;</span>
-    <span class="n">alignedPosition</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">floorf</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span> <span class="o">+</span> <span class="k">position</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
-    <span class="n">alignedPosition</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">floorf</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span> <span class="o">+</span> <span class="k">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
-    <span class="n">sprite</span><span class="p">.</span><span class="k">position</span> <span class="o">=</span> <span class="n">alignedPosition</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="err">- (void) setSpritePosition:(CGPoint)position {</span>
+<span class="err">    CGPoint alignedPosition;</span>
+<span class="err">    alignedPosition.x = floorf(0.5f + position.x);</span>
+<span class="err">    alignedPosition.y = floorf(0.5f + position.y);</span>
+<span class="err">    sprite.position = alignedPosition;</span>
 <span class="err">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>This got rid of most of my misaligned images, but I do still have some sprites that get rotated or scaled via a transform, and such images are always misaligned, unless they are rotated by some multiple of 90 degrees. Thankfully, I only have a few such sprites.</p>
   </div><!-- /.entry-content -->
@@ -126,11 +125,11 @@
             <div class="recent">
                 <h2>Recent Posts</h2>
                 <ul>
+                    <li><a href="http://undefinedvalue.com/54.html">54</a></li>
                     <li><a href="http://undefinedvalue.com/53.html">53</a></li>
                     <li><a href="http://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
                     <li><a href="http://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
                     <li><a href="http://undefinedvalue.com/blitz.html">Blitz</a></li>
-                    <li><a href="http://undefinedvalue.com/tscp-translated-to-rust.html">TSCP Translated to Rust</a></li>
                 </ul>
             </div><!-- ./recent -->
             <div class="blogroll">
