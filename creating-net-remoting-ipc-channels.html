@@ -83,13 +83,13 @@
 <li>By default, user-defined types will not be deserialized, to prevent deserialization-based attacks by malicious clients. To disable this "feature", one must set the <code>TypeFilterLevel</code> to <code>Full</code>.</li>
 <li>My service runs as the LocalSystem user, whereas the client application runs in the logged-in user's security context. By default, the user's account would not be able open the IPC port that the service creates. The fix to this is to set the channel's <code>authorizedGroup</code> to the name of a user group that is allowed to open the port.</li>
 </ul>
-<p>So, as usual, the resulting code looks simple, but it took a couple of hours to figure out what had to be written.</p>
+<p>So, as usual, the resulting code looks simple, but it took a couple of hours to figure out what had to be written.
 <!--break-->
-<p>Here's the code, which is intended to work on .NET Framework 2.0 and higher on Windows XP and newer operating systems:</p>
+Here's the code, which is intended to work on .NET Framework 2.0 and higher on Windows XP and newer operating systems:</p>
 <script src="https://gist.github.com/3047562.js?file=IpcRemotingUtil.cs"></script>
 
 <p>On the server side, I use it like this:</p>
-<div class="highlight"><pre><span></span><code><span class="n">var</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">IpcRemotingUtil</span><span class="p">.</span><span class="n">CreateIpcChannel</span><span class="p">(</span><span class="n">MyServer</span><span class="p">.</span><span class="n">IpcPortName</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">IpcRemotingUtil</span><span class="p">.</span><span class="n">CreateIpcChannel</span><span class="p">(</span><span class="n">MyServer</span><span class="p">.</span><span class="n">IpcPortName</span><span class="p">);</span>
 <span class="n">ChannelServices</span><span class="p">.</span><span class="n">RegisterChannel</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 
 <span class="n">var</span> <span class="n">entry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WellKnownServiceTypeEntry</span><span class="p">(</span>
@@ -97,10 +97,11 @@
     <span class="ss">&quot;MyRemoteObject.rem&quot;</span><span class="p">,</span>
     <span class="n">WellKnownObjectMode</span><span class="p">.</span><span class="n">Singleton</span><span class="p">);</span>
 <span class="n">RemotingConfiguration</span><span class="p">.</span><span class="n">RegisterWellKnownServiceType</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>And on the client side, I use it like this:</p>
-<div class="highlight"><pre><span></span><code><span class="n">var</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">IpcRemotingUtil</span><span class="p">.</span><span class="n">CreateIpcChannelWithUniquePortName</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">IpcRemotingUtil</span><span class="p">.</span><span class="n">CreateIpcChannelWithUniquePortName</span><span class="p">();</span>
 <span class="n">ChannelServices</span><span class="p">.</span><span class="n">RegisterChannel</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 
 <span class="n">var</span> <span class="n">objectUri</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="ss">&quot;ipc://{0}/MyRemoteObject.rem&quot;</span><span class="p">,</span>
@@ -115,7 +116,8 @@
 <span class="err">{</span>
     <span class="o">//</span> <span class="n">aaaiiiyyyeee</span>
 <span class="err">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Note that both sides use <code>IpcChannel</code> so that the server can invoke callbacks in the client.  If you don't need callbacks, you could use <code>IpcServerChannel</code> and <code>IpcClientChannel</code> instead of <code>IpcChannel</code>.  If you do that, you need to make sure you set the <code>TypeFilterLevel</code> and <code>authorizedGroup</code> on the <code>IpcServerChannel</code> as is done above for the <code>IpcChannel</code>.</p>
   </div><!-- /.entry-content -->

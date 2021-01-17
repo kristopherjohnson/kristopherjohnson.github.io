@@ -81,9 +81,11 @@
     <p>
 For an iPhone app that I'm working on, I want to be able to save the screen image to the Photos album.  My first attempt at this was complicated: I created a color space, a bitmap context, a <tt>CGImage</tt>, and finally a <tt>UIImage</tt>, copying and pasting most of the code from the <em>Quartz 2D Programming Guide</em>.  Unfortunately, it didn't work; I kept getting BAD_ACCESS signals when I called <tt>UIImageWriteToSavedPhotosAlbum()</tt>, even though it looked to me like everything was correct.
 </p>
+
 <p>
 After Googling for a bit for known issues with UIImageWriteToSavedPhotosAlbum, I ran across a far easier solution to the problem.  Here are the methods I ended up with:
 </p>
+
 <div style="overflow: scroll; border: 1px solid #666"><pre>
 // Create an image for the view and save it to the Photos library
 - (void)savePhotoOfView:(UIView *)view
@@ -117,6 +119,7 @@ After Googling for a bit for known issues with UIImageWriteToSavedPhotosAlbum, I
     [alert release];
 }
 </pre></div>
+
 <p>
 These just call the view's <tt>drawRect</tt> method to create an image, save the image to the Photos library, and then pop up an alert box to let the user know what happened.
 </p>

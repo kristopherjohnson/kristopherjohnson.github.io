@@ -99,18 +99,19 @@ finally came up with a script that would let me copy the MP3 URL to the
 clipboard, and then select "Open Clipboard Location in iTunes" from my
 Script Menu. Here's the script, which I saved as "Open Clipboard
 Location in iTunes.scpt" in <code>~/Library/Scripts</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;iTunes&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;iTunes&quot;</span>
     <span class="k">set</span> <span class="nv">theLocation</span> <span class="k">to</span> <span class="p">(</span><span class="nb">the clipboard</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>
     <span class="nb">open location</span> <span class="nv">theLocation</span>
 <span class="k">end</span> <span class="k">tell</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Very simple, like it should be.</p>
 <p>After that little exercise, I decided I'd like a similar script that
 would open a URL from the clipboard in a new tab in OmniWeb. OmniWeb has
 the richest AppleScript support of all the Mac browsers I've seen.
 Here's the script:</p>
-<div class="highlight"><pre><span></span><code><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;OmniWeb&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;OmniWeb&quot;</span>
     <span class="nb">activate</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">count</span> <span class="nb">browsers</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="k">then</span>
         <span class="nb">make</span> <span class="nb">new</span> <span class="nb">browser</span> <span class="nb">at</span> <span class="nb">front of</span> <span class="nb">browsers</span>
@@ -121,7 +122,7 @@ Here's the script:</p>
         <span class="k">set</span> <span class="na">active</span> <span class="no">tab</span> <span class="k">to</span> <span class="nv">theNewTab</span>
     <span class="k">end</span> <span class="k">tell</span>
 <span class="k">end</span> <span class="k">tell</span>
-</code></pre></div>
+</pre></div>
   </div><!-- /.entry-content -->
 </section>
 <ul>

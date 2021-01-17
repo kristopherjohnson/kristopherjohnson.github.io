@@ -93,8 +93,8 @@ appropriately display the sections and rows, and will take action when a row is 
 When the block is invoked, a <code>KJMenuItemInvocation</code> structure is passed to it. This structure
 contains pointers to the menu item, cell, and controller, so there is no reason for the block
 to retain any of these objects itself.  (Beware of retain cycles if the block <em>does</em> reference
-the menu item, cell, or controller.)</p>
-<!--break-->
+the menu item, cell, or controller.)
+<!--break--></p>
 <h2>Usage</h2>
 <p>Someday, this will be a proper library, but right now the library is distributed as a demo
 application that contains reusable classes.</p>
@@ -110,7 +110,7 @@ your own application:</p>
 a subclass of <code>UITableViewController</code>.  In the <code>viewDidLoad</code> method, we add a first section with
 two items, each of which displays its text in an alert box, and a second section that has
 an item that pushes a new controller onto the navigation stack.</p>
-<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
     <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
 
     <span class="c1">// Add first section</span>
@@ -156,7 +156,8 @@ an item that pushes a new controller onto the navigation stack.</p>
     <span class="p">};</span>
     <span class="p">[</span><span class="n">section</span> <span class="nl">addItem</span><span class="p">:</span><span class="n">item</span><span class="p">];</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>For a complete example, see the demo application's <a href="https://github.com/kristopherjohnson/KJMenuTableViewController/blob/master/KJMenuTableViewController/RootViewController.m">RootViewController.m</a>.</p>
 <h2>Future Directions</h2>

@@ -90,8 +90,9 @@
 <h3>Node</h3>
 <p>The TiddlyWiki server requires <a href="nodejs.org">Node</a>, so you will need to install that if you don't already have it.</p>
 <p>If you are already using <a href="http://brew.sh">Homebrew</a>, then installation is as easy as this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">brew install node</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">node</span>
+</pre></div>
+
 
 <p>If you aren't using Homebrew, then go to <a href="https://nodejs.org">https://nodejs.org</a> and click the <em>Install</em> button.</p>
 <h3>Time Machine</h3>
@@ -99,50 +100,55 @@
 <p>If you haven't already set up Time Machine on your Mac, then go do it <em>right now</em>. See <a href="https://support.apple.com/en-us/HT201250">https://support.apple.com/en-us/HT201250</a> for details.</p>
 <h2>Installing TiddlyWiki</h2>
 <p>The TiddlyWiki server is available as an <a href="https://www.npmjs.com/package/tiddlywiki">NPM module</a>, so once you have Node installed, all you have to do is this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">npm install -g tiddlywiki</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="k">g</span> <span class="n">tiddlywiki</span>
+</pre></div>
+
 
 <p>You can do this to verify it is installed and usable:</p>
-<div class="highlight"><pre><span></span><code><span class="err">tiddlywiki --help</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">tiddlywiki</span> <span class="c1">--help</span>
+</pre></div>
+
 
 <h2>Initializing Your Wiki Directory</h2>
 <p>You'll need to decide where to store your TiddlyWiki data. As I'm using Dropbox, I'll store everything in <code>/Users/kdj/Dropbox/tw</code>, but you can use whatever directory makes sense for you.</p>
 <p>Run this command to initialize the directory for a TiddlyWiki server:</p>
-<div class="highlight"><pre><span></span><code><span class="err">tiddlywiki /Users/kdj/Dropbox/tw --init server</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">tiddlywiki</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">kdj</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">tw</span> <span class="c1">--init server</span>
+</pre></div>
+
 
 <p>Note: you can run <code>tiddlywiki --editions</code> to see if any edition other than <code>server</code> might serve as a better starting point for you. I know that <code>server</code> works.</p>
 <p>After running the above command, you should see that the specified directory contains a <code>tiddlywiki.info</code> file. This is the configuration file that controls how the server works.</p>
 <h2>Enabling the Markdown Plugin</h2>
 <p>TiddlyWiki's <a href="http://tiddlywiki.com/plugins/tiddlywiki/markdown/">Markdown plugin</a> is included with the distribution, but is not enabled by default. To enable it, you have to edit your <code>tiddlywiki.info</code> file and add <code>"tiddlywiki/markdown"</code> to the <code>plugins</code> section. When you have finished editing, the file should look like this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">{</span>
-<span class="err">    &quot;description&quot;: &quot;Basic client-server edition&quot;,</span>
-<span class="err">    &quot;plugins&quot;: [</span>
-<span class="err">        &quot;tiddlywiki/tiddlyweb&quot;,</span>
-<span class="err">        &quot;tiddlywiki/filesystem&quot;,</span>
-<span class="err">        &quot;tiddlywiki/codemirror&quot;,</span>
-<span class="err">        &quot;tiddlywiki/highlight&quot;,</span>
-<span class="err">        &quot;tiddlywiki/markdown&quot;</span>
-<span class="err">    ],</span>
-<span class="err">    &quot;themes&quot;: [</span>
-<span class="err">        &quot;tiddlywiki/vanilla&quot;,</span>
-<span class="err">        &quot;tiddlywiki/snowwhite&quot;</span>
-<span class="err">    ]</span>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+    <span class="ss">&quot;description&quot;</span><span class="p">:</span> <span class="ss">&quot;Basic client-server edition&quot;</span><span class="p">,</span>
+    <span class="ss">&quot;plugins&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="ss">&quot;tiddlywiki/tiddlyweb&quot;</span><span class="p">,</span>
+        <span class="ss">&quot;tiddlywiki/filesystem&quot;</span><span class="p">,</span>
+        <span class="ss">&quot;tiddlywiki/codemirror&quot;</span><span class="p">,</span>
+        <span class="ss">&quot;tiddlywiki/highlight&quot;</span><span class="p">,</span>
+        <span class="ss">&quot;tiddlywiki/markdown&quot;</span>
+    <span class="p">],</span>
+    <span class="ss">&quot;themes&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="ss">&quot;tiddlywiki/vanilla&quot;</span><span class="p">,</span>
+        <span class="ss">&quot;tiddlywiki/snowwhite&quot;</span>
+    <span class="p">]</span>
 <span class="err">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <h2>Running the Server</h2>
 <p>With everything set up, you can do this to run the server:</p>
-<div class="highlight"><pre><span></span><code><span class="err">tiddlywiki /Users/kdj/Dropbox/tw --server 19671</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">tiddlywiki</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">kdj</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">tw</span> <span class="c1">--server 19671</span>
+</pre></div>
+
 
 <p>And then view it in a web browser: <a href="http://localhost:19671">http://localhost:19671</a></p>
 <p>Run <code>tiddlywiki --help server</code> to see what other options are available. You may want to use a different port, set a username/password, or otherwise customize the behavior.</p>
 <h2>Starting the Server Automatically When You Log In</h2>
 <p>It would get annoying to have to type "<code>tiddlywiki /Users/kdj/Dropbox/tw --server 19671</code>" every time you wanted to use your personal wiki. Let's create a <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man5/launchd.plist.5.html#//apple_ref/doc/man/5/launchd.plist">launchd configuration file</a> in the <code>~/Library/LaunchAgents</code> directory that will cause it to be automatically started every time we log in.</p>
 <p>Go to your  <code>~/Library/LaunchAgents</code> directory and create a file named <code>com.tiddlywiki.plist</code> with the following contents, substituting the appropriate path for your data directory and the paths to the <code>node</code> and <code>tiddlywiki</code> executables. (Run <code>which node</code> and <code>which tiddlywiki</code> if you don't know what those paths are.)</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
 <span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
@@ -171,18 +177,20 @@
   <span class="nt">&lt;string&gt;</span>output.log<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 <span class="nt">&lt;/plist&gt;</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>After saving that file, log out and then log back in, and try to visit <a href="http://localhost:19671">http://localhost:19671</a>. If it works, great! If not, look for an <code>error.log</code> or <code>output.log</code> file in your data directory that may explain what went wrong.</p>
 <h2>Restarting the Server</h2>
 <p>Unfortunately, using Dropbox to sync TiddlyWiki data between machines does not work as expected.  The TiddlyWiki server does not monitor changes to the filesystem, so even though Dropbox will copy changed files between machines, each TiddlyWiki instance just keeps displaying whatever data it read when it was launched.</p>
 <p>So, after saving changes on one machine, we have to restart the TiddlyWiki server on the other machines to have those changes displayed everywhere.</p>
 <p>The TiddlyWiki developers <a href="http://tiddlywiki.narkive.com/npq5d9XI/tw-tiddlywiki-desktop-command-to-restart-node-instances">may eventually fix this</a>, but in the meantime, we can define some shell commands to make it easy to restart the server when necessary.  Add these lines to your <code>~/.bashrc</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="err">export TWPLIST=~/Library/LaunchAgents/com.tiddlywiki.plist</span>
-<span class="err">alias twstart=&quot;launchctl load $TWPLIST&quot;</span>
-<span class="err">alias twstop=&quot;launchctl unload $TWPLIST&quot;</span>
-<span class="err">alias twreload=&quot;twstop &amp;&amp; sleep 1 &amp;&amp; twstart &amp;&amp; echo &#39;TiddlyWiki restarted&#39;&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">TWPLIST</span><span class="o">=~/</span><span class="n">Library</span><span class="o">/</span><span class="n">LaunchAgents</span><span class="o">/</span><span class="n">com</span><span class="p">.</span><span class="n">tiddlywiki</span><span class="p">.</span><span class="n">plist</span>
+<span class="k">alias</span> <span class="n">twstart</span><span class="o">=</span><span class="ss">&quot;launchctl load $TWPLIST&quot;</span>
+<span class="k">alias</span> <span class="n">twstop</span><span class="o">=</span><span class="ss">&quot;launchctl unload $TWPLIST&quot;</span>
+<span class="k">alias</span> <span class="n">twreload</span><span class="o">=</span><span class="ss">&quot;twstop &amp;&amp; sleep 1 &amp;&amp; twstart &amp;&amp; echo &#39;TiddlyWiki restarted&#39;&quot;</span>
+</pre></div>
+
 
 <p>With these definitions, you can just execute <code>twreload</code> and refresh your browser whenever you sit down at one of your computers, and that local TiddlyWiki will refresh itself from Dropbox.</p>
 <h2>Further Steps</h2>

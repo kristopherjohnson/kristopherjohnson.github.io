@@ -77,27 +77,34 @@
     <p>
 A couple of months ago, I posted <a href="http://kristopherjohnson.blogspot.com/2007/06/python-server-start.html">Python Server Start</a>, a simple template for starting implementation of a network server in Python.  I got a comment from "dt" suggesting that what I really wanted to use was the standard Python <tt>SocketServer</tt> module.
 </p>
+
 <p>
 Today, I had to write a "real server" in Python, so I finally got around to looking into <tt>SocketServer</tt>.  The documentation wasn't helpful, but the source code for the module was straightforward, so I figured things out pretty quickly.
 </p>
+
 <p>
 After work, I decided to create a more generic version of what I'd done while I was on the clock.  What follows is my new "starting point" for implementing a server process in Python.  It's about 300 lines long, which is a bit large for a "Hello, world!" kind of program, but it has these nifty new features:
 </p>
+
 <ul>
 <li>The server starts a daemon process, disconnected from the user's terminal, like it should.</li>
 <li>The server writes to a log file</li>
 <li>It implements a simple protocol between client and server.  Basically, the client just sends its command-line arguments to the server, and the server processes the command and sends output back, which the client writes to standard output.  (This protocol should, of course, be replaced with whatever protocol your real server has to handle; the template is just in place for testing and demonstration.)</li>
 <li>It can work with TCP/IP sockets, or can use UNIX domain sockets (on platforms that support them).</li>
 </ul>
+
 <p>
 I've only tried it on Mac OS X and Linux.  It will need some work for Windows, but thankfully, I haven't had to do much Windows programming lately, so I'm not going to worry about it.
 </p>
+
 <p>
 Making the necessary changes to use a base of <tt>ForkingTCPServer</tt>, <tt>ThreadingTCPServer</tt>, <tt>ThreadingUnixStreamServer</tt>, or other variations is left as an exercise for the reader.
 </p>
+
 <p>
 I welcome any suggestions for improvement.
 </p>
+
 <pre>
 #!/usr/bin/env python
 

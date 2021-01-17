@@ -75,8 +75,9 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>I hit a little snag while adding a feature to an iPhone app today. I added this code to load a logo to be displayed in a view:</p>
-<div class="highlight"><pre><span></span><code><span class="bp">UIImage</span> <span class="o">*</span><span class="n">logoImage</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Icon.png&quot;</span><span class="p">];</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="bp">UIImage</span> <span class="o">*</span><span class="n">logoImage</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Icon.png&quot;</span><span class="p">];</span>
+</pre></div>
+
 
 <p>This worked fine in the iPhone Simulator, so I thought I was done. I loaded the app onto my iPod Touch, and it didn't work. Running in the debugger, I discovered that <code>logoImage</code> was being set to <code>nil</code>.</p>
 <p>Why would this not work on a device, when it ran fine in the simulator?</p>

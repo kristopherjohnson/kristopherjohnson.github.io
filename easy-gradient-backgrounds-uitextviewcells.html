@@ -80,8 +80,8 @@
     </ul>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>When you create a table-view-based iPhone app, by default you get tables with plain white rows.  But all the cool kids are making apps with 3D-ish gradient backgrounds.  You want to make those kinds of apps too, right?  This article explains how.</p>
-<!--break-->
+    <p>When you create a table-view-based iPhone app, by default you get tables with plain white rows.  But all the cool kids are making apps with 3D-ish gradient backgrounds.  You want to make those kinds of apps too, right?  This article explains how.
+<!--break--></p>
 <h2>Overview</h2>
 <p>Making table cells with custom backgrounds is a common thing for iPhone developers to want to do, and there is a lot of information around the net about how to do it.  Why should you read this tutorial?  Well, this tutorial is designed to make it as easy as possible: just copy some files to your project, make a couple of source code changes, and <em>bang!</em> instant gradient backgrounds.  With easy stuff like this out of the way, you can concentrate on doing whatever is unique for your application.</p>
 <p>Also, unlike some older tutorials, this one lets you use the built-in <code>UITableViewCell</code> <code>textLabel</code> and <code>detailTextLabel</code> properties, rather than creating your own custom cell from scratch.  So it's easy to retrofit existing code.</p>
@@ -96,7 +96,7 @@
 <li>Save the project as "GradientTableViewCellExample"</li>
 </ol>
 <p>Open the <code>RootViewController.m</code> source file, and replace the <code>tableView:numberOfRowsInSection:</code> and <code>tableView:cellForRowAtIndexPath:</code> methods with these bodies:</p>
-<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span>
  <span class="nf">numberOfRowsInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span> <span class="p">{</span>
 
     <span class="k">return</span> <span class="mi">1000</span><span class="p">;</span>
@@ -122,7 +122,8 @@
 
     <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Build and run the project, and you'll see this:</p>
 <p><img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/NoGradient.png" alt="App with no gradient"></p>
@@ -134,7 +135,7 @@
 <h2>Adding the GradientTableViewCell class</h2>
 <p>Grab the source files <a href="http://undefinedvalue.com/sites/undefinedvalue.com/files/GradientTableViewCell.h">GradientTableViewCell.h</a> and <a href="http://undefinedvalue.com/sites/undefinedvalue.com/files/GradientTableViewCell.m">GradientTableViewCell.m</a>, and add them to your project.</p>
 <p><code>GradientTableViewCell</code> overrides two methods of <code>UITableViewCell</code>.  First, we override the <code>initWithStyle:reuseIdentifier:</code> method so that it adds the gradient background image, stretching it to fill the cell.</p>
-<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithStyle:</span><span class="p">(</span><span class="n">UITableViewCellStyle</span><span class="p">)</span><span class="nv">style</span> <span class="nf">reuseIdentifier:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">reuseIdentifier</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithStyle:</span><span class="p">(</span><span class="n">UITableViewCellStyle</span><span class="p">)</span><span class="nv">style</span> <span class="nf">reuseIdentifier:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">reuseIdentifier</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="nl">initWithStyle</span><span class="p">:</span><span class="n">style</span> <span class="nl">reuseIdentifier</span><span class="p">:</span><span class="n">reuseIdentifier</span><span class="p">])</span> <span class="p">{</span>
         <span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;CellGradientBackground.png&quot;</span><span class="p">];</span>
         <span class="bp">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIImageView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithImage</span><span class="p">:</span><span class="n">image</span><span class="p">];</span>
@@ -144,10 +145,11 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Then, we have to override the <code>setSelected:animated:</code> method.  The inherited method sets the cell's subviews' background colors, but we want the subviews to have transparent backgrounds so that the gradient background shows through:</p>
-<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setSelected:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">selected</span> <span class="nf">animated:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setSelected:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">selected</span> <span class="nf">animated:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
 
     <span class="p">[</span><span class="nb">super</span> <span class="nl">setSelected</span><span class="p">:</span><span class="n">selected</span> <span class="nl">animated</span><span class="p">:</span><span class="n">animated</span><span class="p">];</span>
 
@@ -155,23 +157,27 @@
         <span class="n">view</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">clearColor</span><span class="p">];</span>
     <span class="p">}</span>    
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <h2>Using the GradientTableViewCell class</h2>
 <p>Now, we just have to change our <code>RootViewController.m</code> file so that it will use <code>GradientTableViewCell</code> instead of a plain old <code>UITableViewCell</code>.</p>
 <p>Add an <code>#import</code> at the top:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#import &quot;GradientTableViewCell.h&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="c1">#import &quot;GradientTableViewCell.h&quot;</span>
+</pre></div>
+
 
 <p>Then, change this line in <code>tableView:cellForRowAtIndexPath:</code></p>
-<div class="highlight"><pre><span></span><code><span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UITableViewCell</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleSubtitle</span>
+<div class="highlight"><pre><span></span><span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UITableViewCell</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleSubtitle</span>
                               <span class="nl">reuseIdentifier</span><span class="p">:</span><span class="n">CellIdentifier</span><span class="p">];</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>to this:</p>
-<div class="highlight"><pre><span></span><code><span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GradientTableViewCell</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleSubtitle</span>
+<div class="highlight"><pre><span></span><span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GradientTableViewCell</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleSubtitle</span>
                                     <span class="nl">reuseIdentifier</span><span class="p">:</span><span class="n">CellIdentifier</span><span class="p">];</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Build and run the project, and you should get this:</p>
 <p><img src="http://undefinedvalue.com/sites/undefinedvalue.com/files/WithGradient.png" alt="With gradient"></p>
