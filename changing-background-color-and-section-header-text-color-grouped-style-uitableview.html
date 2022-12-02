@@ -88,63 +88,61 @@
 <p>To review: when you create a table view with the grouped style, each section of the table shows up as a rounded rectangle, section titles are displayed as dark gray text between the rectangles, and the background is gray. I wanted the background to be a pale pastel color, so I looked into how to change that.</p>
 <p>Of course, I first looked at the options in Interface Builder.  A table view has a background color that can be set in IB, but setting that didn't accomplish anything.</p>
 <p>With a bit of Googling, I learned that the way to give a table view a background color is to set the background color to <code>[UIColor clearColor]</code>, and let the color (or image) of whatever is behind the table view show through. So, I set my window's <code>backgroundColor</code> to the color I wanted, and then added this to my table view's controller class:</p>
-<div class="highlight"><pre><span></span><span class="cp">#define TableViewTag 8888</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define TableViewTag 8888</span>
 
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
-    <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="nb">super</span><span class="w"> </span><span class="n">viewDidLoad</span><span class="p">];</span><span class="w"></span>
 
-    <span class="c1">// Make table view&#39;s background transparent to allow window background to be visible</span>
-    <span class="bp">UITableView</span> <span class="o">*</span><span class="n">tableView</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">viewWithTag</span><span class="p">:</span><span class="n">TableViewTag</span><span class="p">];</span>
-    <span class="n">tableView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">clearColor</span><span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="c1">// Make table view&#39;s background transparent to allow window background to be visible</span>
+<span class="w">    </span><span class="bp">UITableView</span><span class="w"> </span><span class="o">*</span><span class="n">tableView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="bp">UITableView</span><span class="w"> </span><span class="o">*</span><span class="p">)[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span><span class="w"> </span><span class="n">viewWithTag</span><span class="o">:</span><span class="n">TableViewTag</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">tableView</span><span class="p">.</span><span class="n">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">UIColor</span><span class="w"> </span><span class="n">clearColor</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>In Interface Builder, I set the tag of the table view to 8888. Another way to do this would be to have an outlet for the table view, but I didn't want to do that in this particular case.</p>
 <p>So, that gave the table the background color I wanted, but I then noticed that the dark-gray section titles didn't look good against that color. I started looking for some sort of "<code>sectionHeaderTextColor</code>" property on the table view, but of course, there was no such thing.</p>
 <p>After more Googling, I concluded that there was no way to just set the color. What you have to do is provide your own custom section header view containing a text label. With that, you can set whatever colors you want. So, I added these implementations of <code>UITableViewDataSource</code> protocol methods to my table view controller:</p>
-<div class="highlight"><pre><span></span><span class="cp">#define SectionHeaderHeight 40</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SectionHeaderHeight 40</span>
 
 
-<span class="p">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">heightForHeaderInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">([</span><span class="nb">self</span> <span class="nl">tableView</span><span class="p">:</span><span class="n">tableView</span> <span class="nl">titleForHeaderInSection</span><span class="p">:</span><span class="n">section</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">SectionHeaderHeight</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="c1">// If no section header title, no section header needed</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">tableView</span><span class="w"> </span><span class="nf">heightForHeaderInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">([</span><span class="nb">self</span><span class="w"> </span><span class="n">tableView</span><span class="o">:</span><span class="n">tableView</span><span class="w"> </span><span class="n">titleForHeaderInSection</span><span class="o">:</span><span class="n">section</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nil</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">SectionHeaderHeight</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// If no section header title, no section header needed</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 
-<span class="p">-</span> <span class="p">(</span><span class="bp">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">viewForHeaderInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span> <span class="p">{</span>
-    <span class="bp">NSString</span> <span class="o">*</span><span class="n">sectionTitle</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">tableView</span><span class="p">:</span><span class="n">tableView</span> <span class="nl">titleForHeaderInSection</span><span class="p">:</span><span class="n">section</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">sectionTitle</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="p">-</span> <span class="p">(</span><span class="bp">UIView</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">tableView</span><span class="w"> </span><span class="nf">viewForHeaderInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">sectionTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">tableView</span><span class="o">:</span><span class="n">tableView</span><span class="w"> </span><span class="n">titleForHeaderInSection</span><span class="o">:</span><span class="n">section</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sectionTitle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nil</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">nil</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="c1">// Create label with section title</span>
-    <span class="bp">UILabel</span> <span class="o">*</span><span class="n">label</span> <span class="o">=</span> <span class="p">[[[</span><span class="bp">UILabel</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span>
-    <span class="n">label</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
-    <span class="n">label</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">clearColor</span><span class="p">];</span>
-    <span class="n">label</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithHue</span><span class="p">:(</span><span class="mf">136.0</span><span class="o">/</span><span class="mf">360.0</span><span class="p">)</span>  <span class="c1">// Slightly bluish green</span>
-                                 <span class="nl">saturation</span><span class="p">:</span><span class="mf">1.0</span>
-                                 <span class="nl">brightness</span><span class="p">:</span><span class="mf">0.60</span>
-                                      <span class="nl">alpha</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
-    <span class="n">label</span><span class="p">.</span><span class="n">shadowColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">whiteColor</span><span class="p">];</span>
-    <span class="n">label</span><span class="p">.</span><span class="n">shadowOffset</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-    <span class="n">label</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIFont</span> <span class="nl">boldSystemFontOfSize</span><span class="p">:</span><span class="mi">16</span><span class="p">];</span>
-    <span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">sectionTitle</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Create label with section title</span>
+<span class="w">    </span><span class="bp">UILabel</span><span class="w"> </span><span class="o">*</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[[</span><span class="bp">UILabel</span><span class="w"> </span><span class="n">alloc</span><span class="p">]</span><span class="w"> </span><span class="n">init</span><span class="p">]</span><span class="w"> </span><span class="n">autorelease</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">label</span><span class="p">.</span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">label</span><span class="p">.</span><span class="n">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">UIColor</span><span class="w"> </span><span class="n">clearColor</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">label</span><span class="p">.</span><span class="n">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">UIColor</span><span class="w"> </span><span class="n">colorWithHue</span><span class="o">:</span><span class="p">(</span><span class="mf">136.0</span><span class="o">/</span><span class="mf">360.0</span><span class="p">)</span><span class="w">  </span><span class="c1">// Slightly bluish green</span>
+<span class="w">                                 </span><span class="nl">saturation</span><span class="p">:</span><span class="mf">1.0</span><span class="w"></span>
+<span class="w">                                 </span><span class="nl">brightness</span><span class="p">:</span><span class="mf">0.60</span><span class="w"></span>
+<span class="w">                                      </span><span class="nl">alpha</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">label</span><span class="p">.</span><span class="n">shadowColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">UIColor</span><span class="w"> </span><span class="n">whiteColor</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">label</span><span class="p">.</span><span class="n">shadowOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CGSizeMake</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">label</span><span class="p">.</span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">UIFont</span><span class="w"> </span><span class="n">boldSystemFontOfSize</span><span class="o">:</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">label</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sectionTitle</span><span class="p">;</span><span class="w"></span>
 
-    <span class="c1">// Create header view and add label as a subview</span>
-    <span class="bp">UIView</span> <span class="o">*</span><span class="n">view</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="n">SectionHeaderHeight</span><span class="p">)];</span>
-    <span class="p">[</span><span class="n">view</span> <span class="n">autorelease</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">label</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">// Create header view and add label as a subview</span>
+<span class="w">    </span><span class="bp">UIView</span><span class="w"> </span><span class="o">*</span><span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="bp">UIView</span><span class="w"> </span><span class="n">alloc</span><span class="p">]</span><span class="w"> </span><span class="n">initWithFrame</span><span class="o">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w"> </span><span class="n">SectionHeaderHeight</span><span class="p">)];</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">view</span><span class="w"> </span><span class="n">autorelease</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">view</span><span class="w"> </span><span class="n">addSubview</span><span class="o">:</span><span class="n">label</span><span class="p">];</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="n">view</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">view</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>I also added a suitable implementation of <code>tableView:titleForHeaderInSection:</code>, and everything worked.</p>
 <p>If there is a simpler way to do this, I'd love to hear about it.</p>
@@ -190,11 +188,11 @@
                     <ul>
                         <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
 
-                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
-                        <li><a href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
-                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
-                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
-                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a rel="me" href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                     </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->

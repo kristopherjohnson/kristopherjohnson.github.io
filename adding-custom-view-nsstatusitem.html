@@ -82,14 +82,13 @@
     </ul>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>My <a href="http://capablehands.net/menubarcountdown">Menubar Countdown</a> application uses an <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSStatusItem_Class/Reference/Reference.html">NSStatusItem</a> to display itself in the menu bar.  I recently had to add a custom view to that status item, and thought I'd share what I learned about the process here.
+    <p>My <a href="http://capablehands.net/menubarcountdown">Menubar Countdown</a> application uses an <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSStatusItem_Class/Reference/Reference.html">NSStatusItem</a> to display itself in the menu bar.  I recently had to add a custom view to that status item, and thought I'd share what I learned about the process here.</p>
 <!--break-->
-A little background: a <em>status item</em> is one of those little thingees you see on the right side of the Mac OS&nbsp;X menu bar, such as the clock, the Spotlight icon, the sound volume control, and so forth.  Programmatically, you create a status item by doing this:</p>
-<div class="highlight"><pre><span></span><span class="n">NSStatusBar</span> <span class="o">*</span><span class="n">statusBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSStatusBar</span> <span class="n">systemStatusBar</span><span class="p">];</span>
-<span class="n">NSStatusItem</span> <span class="n">statusItem</span> <span class="o">=</span> <span class="p">[</span><span class="n">statusBar</span> <span class="nl">statusItemWithLength</span><span class="p">:</span><span class="n">NSVariableStatusItemLength</span><span class="p">];</span>
-<span class="p">[</span><span class="n">statusItem</span> <span class="k">retain</span><span class="p">];</span>
-</pre></div>
-
+<p>A little background: a <em>status item</em> is one of those little thingees you see on the right side of the Mac OS&nbsp;X menu bar, such as the clock, the Spotlight icon, the sound volume control, and so forth.  Programmatically, you create a status item by doing this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">NSStatusBar</span><span class="w"> </span><span class="o">*</span><span class="n">statusBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">NSStatusBar</span><span class="w"> </span><span class="n">systemStatusBar</span><span class="p">];</span><span class="w"></span>
+<span class="n">NSStatusItem</span><span class="w"> </span><span class="n">statusItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">statusBar</span><span class="w"> </span><span class="n">statusItemWithLength</span><span class="o">:</span><span class="n">NSVariableStatusItemLength</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">statusItem</span><span class="w"> </span><span class="k">retain</span><span class="p">];</span><span class="w"></span>
+</code></pre></div>
 
 <p>Once you've created a status item, you can do these things with it:</p>
 <ul>
@@ -103,155 +102,146 @@ A little background: a <em>status item</em> is one of those little thingees you 
 <p>After a couple of hours of Googling and experimentation, I wound up with something that worked.</p>
 <p>I decided I wanted a view class with two properties: <code>statusItem</code>, which would be a pointer to the <code>NSStatusItem</code> associated with the view, and <code>title</code>, which would be the string displayed in the menu bar.  The <code>title</code> attribute would make it easy to update the app, as I could just change every instance of <code>[statusItem setTitle:...]</code> to <code>[statusItemView setTitle:...]</code>.</p>
 <p>Here is my class declaration:</p>
-<div class="highlight"><pre><span></span><span class="k">@interface</span> <span class="nc">StatusItemView</span> : <span class="nc">NSView</span> <span class="p">{</span>
-    <span class="n">NSStatusItem</span> <span class="o">*</span><span class="n">statusItem</span><span class="p">;</span>
-    <span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span><span class="p">;</span>
-    <span class="kt">BOOL</span> <span class="n">isMenuVisible</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">@property</span> <span class="p">(</span><span class="k">retain</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="n">NSStatusItem</span> <span class="o">*</span><span class="n">statusItem</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="k">retain</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span><span class="p">;</span>
-<span class="k">@end</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">@interface</span> <span class="nc">StatusItemView</span> : <span class="nc">NSView</span> <span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">NSStatusItem</span><span class="w"> </span><span class="o">*</span><span class="n">statusItem</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">title</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">BOOL</span><span class="w"> </span><span class="n">isMenuVisible</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">@property</span><span class="w"> </span><span class="p">(</span><span class="k">retain</span><span class="p">,</span><span class="w"> </span><span class="k">nonatomic</span><span class="p">)</span><span class="w"> </span><span class="n">NSStatusItem</span><span class="w"> </span><span class="o">*</span><span class="n">statusItem</span><span class="p">;</span><span class="w"></span>
+<span class="k">@property</span><span class="w"> </span><span class="p">(</span><span class="k">retain</span><span class="p">,</span><span class="w"> </span><span class="k">nonatomic</span><span class="p">)</span><span class="w"> </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">title</span><span class="p">;</span><span class="w"></span>
+<span class="k">@end</span><span class="w"></span>
+</code></pre></div>
 
 <p>(The purpose of the <code>isMenuVisible</code> instance variable will be explained later.)</p>
 <p>The initialization and deallocation methods are straightforward:</p>
-<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithFrame:</span><span class="p">(</span><span class="n">NSRect</span><span class="p">)</span><span class="nv">frame</span> <span class="p">{</span>
-    <span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">statusItem</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s">@&quot;&quot;</span><span class="p">;</span>
-        <span class="n">isMenuVisible</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithFrame:</span><span class="p">(</span><span class="n">NSRect</span><span class="p">)</span><span class="nv">frame</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">super</span><span class="w"> </span><span class="n">initWithFrame</span><span class="o">:</span><span class="n">frame</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">statusItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nil</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">isMenuVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">self</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dealloc</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">statusItem</span> <span class="k">release</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">title</span> <span class="k">release</span><span class="p">];</span>
-    <span class="p">[</span><span class="nb">super</span> <span class="n">dealloc</span><span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dealloc</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">statusItem</span><span class="w"> </span><span class="k">release</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">title</span><span class="w"> </span><span class="k">release</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="nb">super</span><span class="w"> </span><span class="n">dealloc</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>The <code>statusItem</code> property can be simply synthesized:</p>
-<div class="highlight"><pre><span></span><span class="nv">@synthesize</span><span class="w"> </span><span class="n">statusItem</span><span class="p">;</span><span class="w"></span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">@synthesize</span><span class="w"> </span><span class="n">statusItem</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 
 <p>Next, we'll tackle menu handling.  When our view is clicked, we want to display the menu, and while the menu is displayed, we want our item to be displayed in a highlighted state.  <code>NSStatusItem</code> provides the method <code>popUpStatusItemMenu:</code> to display the menu in the right place under the menu bar.  To deal with highlighting, we have an instance variable <code>isMenuVisible</code> that will be set to <code>YES</code> whenever the menu is being displayed, and <code>NO</code> when it is not.  We can use the <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/nsmenu_Class/Reference/Reference.html">NSMenu</a> delegate <code>menuWillOpen:</code> and <code>menuDidClose</code> methods to be notified when the menu is shown or closed.</p>
-<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">mouseDown:</span><span class="p">(</span><span class="bp">NSEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span> <span class="p">{</span>
-    <span class="p">[[</span><span class="nb">self</span> <span class="n">menu</span><span class="p">]</span> <span class="nl">setDelegate</span><span class="p">:</span><span class="nb">self</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">statusItem</span> <span class="nl">popUpStatusItemMenu</span><span class="p">:[</span><span class="nb">self</span> <span class="n">menu</span><span class="p">]];</span>
-    <span class="p">[</span><span class="nb">self</span> <span class="nl">setNeedsDisplay</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">mouseDown:</span><span class="p">(</span><span class="bp">NSEvent</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">event</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[[</span><span class="nb">self</span><span class="w"> </span><span class="n">menu</span><span class="p">]</span><span class="w"> </span><span class="n">setDelegate</span><span class="o">:</span><span class="nb">self</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">statusItem</span><span class="w"> </span><span class="n">popUpStatusItemMenu</span><span class="o">:</span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">menu</span><span class="p">]];</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setNeedsDisplay</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">rightMouseDown:</span><span class="p">(</span><span class="bp">NSEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span> <span class="p">{</span>
-    <span class="c1">// Treat right-click just like left-click</span>
-    <span class="p">[</span><span class="nb">self</span> <span class="nl">mouseDown</span><span class="p">:</span><span class="n">event</span><span class="p">];</span>
-<span class="p">}</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">rightMouseDown:</span><span class="p">(</span><span class="bp">NSEvent</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">event</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Treat right-click just like left-click</span>
+<span class="w">    </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">mouseDown</span><span class="o">:</span><span class="n">event</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">menuWillOpen:</span><span class="p">(</span><span class="n">NSMenu</span> <span class="o">*</span><span class="p">)</span><span class="nv">menu</span> <span class="p">{</span>
-    <span class="n">isMenuVisible</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
-    <span class="p">[</span><span class="nb">self</span> <span class="nl">setNeedsDisplay</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-<span class="p">}</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">menuWillOpen:</span><span class="p">(</span><span class="n">NSMenu</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">menu</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">isMenuVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">YES</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setNeedsDisplay</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">menuDidClose:</span><span class="p">(</span><span class="n">NSMenu</span> <span class="o">*</span><span class="p">)</span><span class="nv">menu</span> <span class="p">{</span>
-    <span class="n">isMenuVisible</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
-    <span class="p">[</span><span class="n">menu</span> <span class="nl">setDelegate</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>    
-    <span class="p">[</span><span class="nb">self</span> <span class="nl">setNeedsDisplay</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">menuDidClose:</span><span class="p">(</span><span class="n">NSMenu</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">menu</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">isMenuVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">menu</span><span class="w"> </span><span class="n">setDelegate</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w">    </span>
+<span class="w">    </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setNeedsDisplay</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>The <code>title</code> property affects the display, so we can't just synthesize it.  When the <code>title</code> is set, we need to determine the bounding rectangle of the text, and then set the status item's <code>length</code> so that it can contain the text.  Setting the status item's length also updates the custom view's bounds.</p>
 <p>After some experimentation and zooming, I figured out that when a normal <code>NSStatusItem</code> draws its title, there is a horizontal margin of six pixels between the side of the item's display and the text, and a margin of three pixels between the bottom of the display and the text.  We need those values to calculate status item size:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span><span class="n">define</span> <span class="n">StatusItemViewPaddingWidth</span>  <span class="mi">6</span>
-<span class="o">#</span><span class="n">define</span> <span class="n">StatusItemViewPaddingHeight</span> <span class="mi">3</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>#define StatusItemViewPaddingWidth  6
+#define StatusItemViewPaddingHeight 3
+</code></pre></div>
 
 <p>To determine the text's bounding rectangle, we can call <code>NSString</code>'s <code>boundingRectWithSize:options:attributes:</code> method, but to do that, we need to construct an <em>attributes</em> dictionary that describes the font and other aspects of drawing.  We'll use the same attributes dictionary in our <code>drawRect:</code> method, so when we construct it we'll include the desired foreground drawing color in the attributes.</p>
-<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="n">NSColor</span> <span class="o">*</span><span class="p">)</span><span class="nf">titleForegroundColor</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">isMenuVisible</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">NSColor</span> <span class="n">whiteColor</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">NSColor</span> <span class="n">blackColor</span><span class="p">];</span>
-    <span class="p">}</span>    
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="n">NSColor</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nf">titleForegroundColor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isMenuVisible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="n">NSColor</span><span class="w"> </span><span class="n">whiteColor</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="n">NSColor</span><span class="w"> </span><span class="n">blackColor</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w">    </span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">-</span> <span class="p">(</span><span class="bp">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nf">titleAttributes</span> <span class="p">{</span>
-    <span class="c1">// Use default menu bar font size</span>
-    <span class="n">NSFont</span> <span class="o">*</span><span class="n">font</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSFont</span> <span class="nl">menuBarFontOfSize</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSDictionary</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nf">titleAttributes</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Use default menu bar font size</span>
+<span class="w">    </span><span class="n">NSFont</span><span class="w"> </span><span class="o">*</span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">NSFont</span><span class="w"> </span><span class="n">menuBarFontOfSize</span><span class="o">:</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
 
-    <span class="n">NSColor</span> <span class="o">*</span><span class="n">foregroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="n">titleForegroundColor</span><span class="p">];</span>
+<span class="w">    </span><span class="n">NSColor</span><span class="w"> </span><span class="o">*</span><span class="n">foregroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">titleForegroundColor</span><span class="p">];</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="p">[</span><span class="bp">NSDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys</span><span class="p">:</span>
-            <span class="n">font</span><span class="p">,</span>            <span class="n">NSFontAttributeName</span><span class="p">,</span>
-            <span class="n">foregroundColor</span><span class="p">,</span> <span class="n">NSForegroundColorAttributeName</span><span class="p">,</span>
-            <span class="nb">nil</span><span class="p">];</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="bp">NSDictionary</span><span class="w"> </span><span class="n">dictionaryWithObjectsAndKeys</span><span class="o">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">font</span><span class="p">,</span><span class="w">            </span><span class="n">NSFontAttributeName</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">foregroundColor</span><span class="p">,</span><span class="w"> </span><span class="n">NSForegroundColorAttributeName</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">-</span> <span class="p">(</span><span class="n">NSRect</span><span class="p">)</span><span class="nf">titleBoundingRect</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">title</span> <span class="nl">boundingRectWithSize</span><span class="p">:</span><span class="n">NSMakeSize</span><span class="p">(</span><span class="mf">1e100</span><span class="p">,</span> <span class="mf">1e100</span><span class="p">)</span>
-                               <span class="nl">options</span><span class="p">:</span><span class="mi">0</span>
-                            <span class="nl">attributes</span><span class="p">:[</span><span class="nb">self</span> <span class="n">titleAttributes</span><span class="p">]];</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">-</span> <span class="p">(</span><span class="n">NSRect</span><span class="p">)</span><span class="nf">titleBoundingRect</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="n">title</span><span class="w"> </span><span class="n">boundingRectWithSize</span><span class="o">:</span><span class="n">NSMakeSize</span><span class="p">(</span><span class="mf">1e100</span><span class="p">,</span><span class="w"> </span><span class="mf">1e100</span><span class="p">)</span><span class="w"></span>
+<span class="w">                               </span><span class="nl">options</span><span class="p">:</span><span class="mi">0</span><span class="w"></span>
+<span class="w">                            </span><span class="nl">attributes</span><span class="p">:[</span><span class="nb">self</span><span class="w"> </span><span class="n">titleAttributes</span><span class="p">]];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>With the <code>titleBoundingRect</code> method defined, we can implement the <code>title</code> property:</p>
-<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setTitle:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">newTitle</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">title</span> <span class="nl">isEqual</span><span class="p">:</span><span class="n">newTitle</span><span class="p">])</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">newTitle</span> <span class="k">retain</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">title</span> <span class="k">release</span><span class="p">];</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="n">newTitle</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setTitle:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">newTitle</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">title</span><span class="w"> </span><span class="n">isEqual</span><span class="o">:</span><span class="n">newTitle</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">newTitle</span><span class="w"> </span><span class="k">retain</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">title</span><span class="w"> </span><span class="k">release</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newTitle</span><span class="p">;</span><span class="w"></span>
 
-        <span class="c1">// Update status item size (which will also update this view&#39;s bounds)</span>
-        <span class="n">NSRect</span> <span class="n">titleBounds</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="n">titleBoundingRect</span><span class="p">];</span>
-        <span class="kt">int</span> <span class="n">newWidth</span> <span class="o">=</span> <span class="n">titleBounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">StatusItemViewPaddingWidth</span><span class="p">);</span>
-        <span class="p">[</span><span class="n">statusItem</span> <span class="nl">setLength</span><span class="p">:</span><span class="n">newWidth</span><span class="p">];</span>
+<span class="w">        </span><span class="c1">// Update status item size (which will also update this view&#39;s bounds)</span>
+<span class="w">        </span><span class="n">NSRect</span><span class="w"> </span><span class="n">titleBounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">titleBoundingRect</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">newWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">titleBounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">StatusItemViewPaddingWidth</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">statusItem</span><span class="w"> </span><span class="n">setLength</span><span class="o">:</span><span class="n">newWidth</span><span class="p">];</span><span class="w"></span>
 
-        <span class="p">[</span><span class="nb">self</span> <span class="nl">setNeedsDisplay</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setNeedsDisplay</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">title</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">title</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nf">title</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">title</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>And finally, we can implement <code>drawRect:</code>.  <code>NSStatusItem</code> provides a method <code>drawStatusBarBackgroundInRect:withHighlight:</code> that will draw the appropriate background for a status item, so we just call that and then draw the title at the correct position.</p>
-<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawRect:</span><span class="p">(</span><span class="n">NSRect</span><span class="p">)</span><span class="nv">rect</span> <span class="p">{</span>
-    <span class="c1">// Draw status bar background, highlighted if menu is showing</span>
-    <span class="p">[</span><span class="n">statusItem</span> <span class="nl">drawStatusBarBackgroundInRect</span><span class="p">:[</span><span class="nb">self</span> <span class="n">bounds</span><span class="p">]</span>
-                                <span class="nl">withHighlight</span><span class="p">:</span><span class="n">isMenuVisible</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawRect:</span><span class="p">(</span><span class="n">NSRect</span><span class="p">)</span><span class="nv">rect</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Draw status bar background, highlighted if menu is showing</span>
+<span class="w">    </span><span class="p">[</span><span class="n">statusItem</span><span class="w"> </span><span class="n">drawStatusBarBackgroundInRect</span><span class="o">:</span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">bounds</span><span class="p">]</span><span class="w"></span>
+<span class="w">                                </span><span class="nl">withHighlight</span><span class="p">:</span><span class="n">isMenuVisible</span><span class="p">];</span><span class="w"></span>
 
-    <span class="c1">// Draw title string</span>
-    <span class="n">NSPoint</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">NSMakePoint</span><span class="p">(</span><span class="n">StatusItemViewPaddingWidth</span><span class="p">,</span>
-                                 <span class="n">StatusItemViewPaddingHeight</span><span class="p">);</span>
-    <span class="p">[</span><span class="n">title</span> <span class="nl">drawAtPoint</span><span class="p">:</span><span class="n">origin</span>
-        <span class="nl">withAttributes</span><span class="p">:[</span><span class="nb">self</span> <span class="n">titleAttributes</span><span class="p">]];</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="c1">// Draw title string</span>
+<span class="w">    </span><span class="n">NSPoint</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NSMakePoint</span><span class="p">(</span><span class="n">StatusItemViewPaddingWidth</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                 </span><span class="n">StatusItemViewPaddingHeight</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">title</span><span class="w"> </span><span class="n">drawAtPoint</span><span class="o">:</span><span class="n">origin</span><span class="w"></span>
+<span class="w">        </span><span class="nl">withAttributes</span><span class="p">:[</span><span class="nb">self</span><span class="w"> </span><span class="n">titleAttributes</span><span class="p">]];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>That's it for the view class.  Here is the code in my application controller that sets it all up:</p>
-<div class="highlight"><pre><span></span><span class="n">statusItem</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSStatusBar</span> <span class="n">systemStatusBar</span><span class="p">]</span> <span class="nl">statusItemWithLength</span><span class="p">:</span><span class="n">NSVariableStatusItemLength</span><span class="p">];</span>
-<span class="p">[</span><span class="n">statusItem</span> <span class="k">retain</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="n">statusItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="n">NSStatusBar</span><span class="w"> </span><span class="n">systemStatusBar</span><span class="p">]</span><span class="w"> </span><span class="n">statusItemWithLength</span><span class="o">:</span><span class="n">NSVariableStatusItemLength</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">statusItem</span><span class="w"> </span><span class="k">retain</span><span class="p">];</span><span class="w"></span>
 
-<span class="n">statusItemView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">StatusItemView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-<span class="p">[</span><span class="n">statusItemView</span> <span class="k">retain</span><span class="p">];</span>
-<span class="n">statusItemView</span><span class="p">.</span><span class="n">statusItem</span> <span class="o">=</span> <span class="n">statusItem</span><span class="p">;</span>
-<span class="p">[</span><span class="n">statusItemView</span> <span class="nl">setMenu</span><span class="p">:</span><span class="n">menu</span><span class="p">];</span>
-<span class="p">[</span><span class="n">statusItemView</span> <span class="nl">setToolTip</span><span class="p">:</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">@&quot;Menubar Countdown&quot;</span><span class="p">,</span>
-                                             <span class="s">@&quot;Status Item Tooltip&quot;</span><span class="p">)];</span>
-<span class="p">[</span><span class="n">statusItem</span> <span class="nl">setView</span><span class="p">:</span><span class="n">statusItemView</span><span class="p">];</span>
-<span class="p">[</span><span class="n">statusItemView</span> <span class="nl">setTitle</span><span class="p">:</span><span class="s">@&quot;00:00:00&quot;</span><span class="p">];</span>
-</pre></div>
-
+<span class="n">statusItemView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="n">StatusItemView</span><span class="w"> </span><span class="n">alloc</span><span class="p">]</span><span class="w"> </span><span class="n">init</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">statusItemView</span><span class="w"> </span><span class="k">retain</span><span class="p">];</span><span class="w"></span>
+<span class="n">statusItemView</span><span class="p">.</span><span class="n">statusItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">statusItem</span><span class="p">;</span><span class="w"></span>
+<span class="p">[</span><span class="n">statusItemView</span><span class="w"> </span><span class="n">setMenu</span><span class="o">:</span><span class="n">menu</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">statusItemView</span><span class="w"> </span><span class="n">setToolTip</span><span class="o">:</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">@&quot;Menubar Countdown&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                             </span><span class="s">@&quot;Status Item Tooltip&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="p">[</span><span class="n">statusItem</span><span class="w"> </span><span class="n">setView</span><span class="o">:</span><span class="n">statusItemView</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">statusItemView</span><span class="w"> </span><span class="n">setTitle</span><span class="o">:</span><span class="s">@&quot;00:00:00&quot;</span><span class="p">];</span><span class="w"></span>
+</code></pre></div>
 
 <p>(There is a minor gotcha here: You have to call the status item's <code>setView:</code> before calling the view's <code>setTitle:</code>, because the view needs to call the status item's <code>setLength:</code> method.  I could have fixed that, but decided it wasn't worth the effort.)</p>
 <p>Here, we are creating the view programmatically. I tried creating it in Interface Builder and setting all the connections that way, but the result was a view with funky <code>bounds</code> and <code>frame</code> properties that didn't display itself the right way.  Google found some other people with the same problem, and while some had found solutions, I didn't understand them. (Maybe someone can explain it to me.)</p>
@@ -299,11 +289,11 @@ A little background: a <em>status item</em> is one of those little thingees you 
                     <ul>
                         <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
 
-                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
-                        <li><a href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
-                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
-                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
-                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a rel="me" href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                     </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->

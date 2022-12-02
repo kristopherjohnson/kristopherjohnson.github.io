@@ -75,9 +75,8 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>I hit a little snag while adding a feature to an iPhone app today. I added this code to load a logo to be displayed in a view:</p>
-<div class="highlight"><pre><span></span><span class="bp">UIImage</span> <span class="o">*</span><span class="n">logoImage</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Icon.png&quot;</span><span class="p">];</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="bp">UIImage</span><span class="w"> </span><span class="o">*</span><span class="n">logoImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">UIImage</span><span class="w"> </span><span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;Icon.png&quot;</span><span class="p">];</span><span class="w"></span>
+</code></pre></div>
 
 <p>This worked fine in the iPhone Simulator, so I thought I was done. I loaded the app onto my iPod Touch, and it didn't work. Running in the debugger, I discovered that <code>logoImage</code> was being set to <code>nil</code>.</p>
 <p>Why would this not work on a device, when it ran fine in the simulator?</p>
@@ -125,11 +124,11 @@
                     <ul>
                         <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
 
-                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
-                        <li><a href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
-                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
-                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
-                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a rel="me" href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                     </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->

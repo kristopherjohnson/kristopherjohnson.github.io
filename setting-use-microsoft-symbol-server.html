@@ -77,9 +77,8 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>When debugging native Win32 code, it is useful to have the debug symbols for all of Microsoft's DLLs.  The easiest way to set this up is to just set an environment variable before starting Visual Studio (or other Microsoft debugging tools):</p>
-<div class="highlight"><pre><span></span><span class="k">set</span> <span class="n">_NT_SYMBOL_PATH</span><span class="o">=</span><span class="n">srv</span><span class="o">*</span><span class="k">c</span><span class="p">:</span><span class="err">\</span><span class="n">symbols</span><span class="o">*</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">msdl</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">symbols</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">set</span><span class="w"> </span><span class="n">_NT_SYMBOL_PATH</span><span class="o">=</span><span class="n">srv</span><span class="o">*</span><span class="n">c</span><span class="p">:</span>\<span class="n">symbols</span><span class="o">*</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">msdl</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">symbols</span><span class="w"></span>
+</code></pre></div>
 
 <p>The first time you run the debugger after setting this, it will take some time to start as it downloads symbol files from the Internet into your local symbol cache, but it will be faster after that.  Whenever you update your system with patches or service packs, the new symbols will automatically be downloaded the next time you debug.</p>
 <p>For more information, see these pages:</p>
@@ -130,11 +129,11 @@
                     <ul>
                         <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
 
-                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
-                        <li><a href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
-                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
-                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
-                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a rel="me" href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                     </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->

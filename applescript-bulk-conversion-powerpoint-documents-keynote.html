@@ -83,20 +83,19 @@
 <p>At first I tried using Apple's Automator utility, which is supposed to make stuff like this easy, but I couldn't figure it out. So, I took the plunge into AppleScript.</p>
 <p>As with every foray I make into AppleScriptLand, I was frustrated, annoyed, saddened, and exhausted by the experience. But I did succeed (if two hours spent futzing with AppleScript can possibly be called a <em>success</em>).</p>
 <p>So, if you have need for a utility for converting a bunch of PowerPoint files to Keynote, open up the AppleScript Editor and copy and paste this script into the window:</p>
-<div class="highlight"><pre><span></span><span class="nv">on</span> <span class="nv">open</span> <span class="nv">droppedFiles</span>
-    <span class="nv">set</span> <span class="nv">theDestinationFolder</span> <span class="nv">to</span> <span class="ss">(</span><span class="nv">choose</span> <span class="nv">folder</span> <span class="nv">with</span> <span class="nv">prompt</span> <span class="s2">&quot;</span><span class="s">Choose destination folder</span><span class="s2">&quot;</span><span class="ss">)</span> <span class="nv">as</span> <span class="nv">Unicode</span> <span class="nv">text</span>
-    <span class="nv">repeat</span> <span class="nv">with</span> <span class="nv">theFile</span> <span class="nv">in</span> <span class="nv">droppedFiles</span>
-        <span class="nv">tell</span> <span class="nv">application</span> <span class="s2">&quot;</span><span class="s">Keynote</span><span class="s2">&quot;</span>
-            <span class="nv">open</span> <span class="nv">theFile</span>
-            <span class="nv">set</span> <span class="nv">theSlideshow</span> <span class="nv">to</span> <span class="nv">slideshow</span> <span class="mi">1</span>
-            <span class="nv">set</span> <span class="nv">theDestinationPath</span> <span class="nv">to</span> <span class="nv">theDestinationFolder</span> <span class="o">&amp;</span> <span class="ss">(</span><span class="nv">name</span> <span class="nv">of</span> <span class="nv">theSlideshow</span><span class="ss">)</span>
-            <span class="nv">save</span> <span class="nv">theSlideshow</span> <span class="nv">in</span> <span class="nv">theDestinationPath</span>
-            <span class="nv">close</span> <span class="nv">theSlideshow</span>
-        <span class="k">end</span> <span class="nv">tell</span>
-    <span class="k">end</span> <span class="nv">repeat</span>
-<span class="k">end</span> <span class="nv">open</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">on</span><span class="w"> </span><span class="nv">open</span><span class="w"> </span><span class="nv">droppedFiles</span><span class="w"></span>
+<span class="w">    </span><span class="nv">set</span><span class="w"> </span><span class="nv">theDestinationFolder</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="ss">(</span><span class="nv">choose</span><span class="w"> </span><span class="nv">folder</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">prompt</span><span class="w"> </span><span class="s2">&quot;Choose destination folder&quot;</span><span class="ss">)</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">Unicode</span><span class="w"> </span><span class="nv">text</span><span class="w"></span>
+<span class="w">    </span><span class="nv">repeat</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">theFile</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">droppedFiles</span><span class="w"></span>
+<span class="w">        </span><span class="nv">tell</span><span class="w"> </span><span class="nv">application</span><span class="w"> </span><span class="s2">&quot;Keynote&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="nv">open</span><span class="w"> </span><span class="nv">theFile</span><span class="w"></span>
+<span class="w">            </span><span class="nv">set</span><span class="w"> </span><span class="nv">theSlideshow</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">slideshow</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="nv">set</span><span class="w"> </span><span class="nv">theDestinationPath</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">theDestinationFolder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ss">(</span><span class="nv">name</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">theSlideshow</span><span class="ss">)</span><span class="w"></span>
+<span class="w">            </span><span class="nv">save</span><span class="w"> </span><span class="nv">theSlideshow</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">theDestinationPath</span><span class="w"></span>
+<span class="w">            </span><span class="nv">close</span><span class="w"> </span><span class="nv">theSlideshow</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="nv">tell</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="nv">repeat</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nv">open</span><span class="w"></span>
+</code></pre></div>
 
 <p>Click the <strong>Compile</strong> button, and assuming you see no errors, choose <strong>File -&gt; Save</strong>, set the File Format to <strong>Application</strong>, and save it to the desired place with the desired name.</p>
 <p>Then, to convert files, just select them in the Finder and drag them onto the application icon. You will be prompted for a destination folder, then the script will do its thing.</p>
@@ -144,11 +143,11 @@
                     <ul>
                         <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
 
-                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
-                        <li><a href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
-                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
-                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
-                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a rel="me" href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                     </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->

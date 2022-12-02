@@ -84,8 +84,8 @@
 <p>Of course, this means I have to figure out how to move everything from where it is to a new EC2 instance. Most of the stuff I care about is managed in <a href="http://drupal.org/">Drupal</a>, so step one is figuring out how to set up Drupal on an EC2 host.</p>
 <p>I decided to go with <a href="http://www.ubuntu.com">Ubuntu</a> as my OS, because I'm a long-time Debian user and my brushes with Ubuntu have been positive. A little research showed that they had an easy-to-install <code>drupal6</code> package and a few other packages that I plan to use in my plans for world conquest.</p>
 <p>But no matter how easy/straightforward things look, they are always a little bit complicated. Here are my notes for setting things up, which may be helpful to others, and will probably be helpful to me whenever I end up redoing this.</p>
-<p>I assume the reader has basic knowledge of how to connect to servers via SSH, knows a little bit about setting up Apache and Drupal, and is comfortable using a text editor to modify configuration files.
-<!--break--></p>
+<p>I assume the reader has basic knowledge of how to connect to servers via SSH, knows a little bit about setting up Apache and Drupal, and is comfortable using a text editor to modify configuration files.</p>
+<!--break-->
 <h3>Launch Ubuntu 10.10 Instance on EC2</h3>
 <p>(For more details and help, check out the <a href="https://help.ubuntu.com/community/EC2StartersGuide">EC2StartersGuide</a> in Ubuntu Community Documentation.)</p>
 <ol>
@@ -168,12 +168,11 @@ At this point, you should have a usable Drupal installation, accessible at <code
 <li>Go to Administer &gt; Site configuration &gt; Memcache and enable "Show memcache statistics at the bottom of each page". After this is enabled, you can scroll down to the bottom of the page to verify that memcache is working and that things are in the cache. (You can then disable this if you find the display annoying.)</li>
 </ol>
 <p>Here is the snippet to be added/modified in <code>settings.php</code>. In place of <code>some_unique_prefix</code>, substitute your site's name or some other value that is unique for your site.</p>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="n">conf</span> <span class="o">=</span> <span class="nb">array</span><span class="p">(</span>
-    <span class="s1">&#39;cache_inc&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/usr/share/drupal6/sites/all/modules/memcache/memcache.inc&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;memcache_key_prefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;some_unique_prefix&#39;</span><span class="p">,</span>
-<span class="p">);</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>$conf = array(
+    &#39;cache_inc&#39; =&gt; &#39;/usr/share/drupal6/sites/all/modules/memcache/memcache.inc&#39;,
+    &#39;memcache_key_prefix&#39; =&gt; &#39;some_unique_prefix&#39;,
+);
+</code></pre></div>
 
 <h3>Set up Alternative PHP Cache</h3>
 <p>As a further measure to reduce the number of I/O requests and improve performance, we'll install the <a href="http://www.php.net/manual/en/intro.apc.php">Alternative PHP Cache</a> (APC).</p>
@@ -234,9 +233,8 @@ apc.stat = 0
 <p>For more details on this method of setting up multisite on Ubuntu, see http://drupal.org/node/138889</p>
 <p>After setting up a few sites this way, I found that the daily Drupal cron job would run for some of my sites, but not for others. The cron job is triggered by the file <code>/etc/cron.d/drupal6</code>, which calls <code>/usr/share/drupal6/scripts.cron.sh</code>, but I never figured out exactly why it was working for some sites and other others.</p>
 <p>I was able to get the cron job running for all sites by adding a <code>baseurl.php</code> file to each of the <code>/usr/share/drupal6/sites</code> subdirectories. <code>/usr/share/drupal6/scripts.cron.sh</code> looks at this file, and at <code>settings.php</code>, to determine the appropriate URL for invoking the script that site. The contents of each file should look like this:</p>
-<div class="highlight"><pre><span></span><span class="o">$</span><span class="nt">base_url</span> <span class="o">=</span> <span class="s1">&#39;http://example.com&#39;</span><span class="o">;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="nt">base_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://example.com&#39;</span><span class="o">;</span><span class="w"></span>
+</code></pre></div>
 
 <p>Substitute the appropriate host name for <code>example.com</code>. Note that the URL should <em>not</em> have a slash at the end.</p>
 <h3>Cleaning Up</h3>
@@ -311,11 +309,11 @@ apc.stat = 0
                     <ul>
                         <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
 
-                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
-                        <li><a href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
-                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
-                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
-                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a rel="me" href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                     </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->

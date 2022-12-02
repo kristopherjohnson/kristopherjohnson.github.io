@@ -93,8 +93,8 @@ appropriately display the sections and rows, and will take action when a row is 
 When the block is invoked, a <code>KJMenuItemInvocation</code> structure is passed to it. This structure
 contains pointers to the menu item, cell, and controller, so there is no reason for the block
 to retain any of these objects itself.  (Beware of retain cycles if the block <em>does</em> reference
-the menu item, cell, or controller.)
-<!--break--></p>
+the menu item, cell, or controller.)</p>
+<!--break-->
 <h2>Usage</h2>
 <p>Someday, this will be a proper library, but right now the library is distributed as a demo
 application that contains reusable classes.</p>
@@ -110,54 +110,53 @@ your own application:</p>
 a subclass of <code>UITableViewController</code>.  In the <code>viewDidLoad</code> method, we add a first section with
 two items, each of which displays its text in an alert box, and a second section that has
 an item that pushes a new controller onto the navigation stack.</p>
-<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
-    <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="nb">super</span><span class="w"> </span><span class="n">viewDidLoad</span><span class="p">];</span><span class="w"></span>
 
-    <span class="c1">// Add first section</span>
+<span class="w">    </span><span class="c1">// Add first section</span>
 
-    <span class="n">KJMenuSection</span> <span class="o">*</span><span class="n">section</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuSection</span> <span class="nl">sectionWithHeaderTitle</span><span class="p">:</span><span class="s">@&quot;First Section&quot;</span><span class="p">];</span>
-    <span class="n">section</span><span class="p">.</span><span class="n">footerTitle</span> <span class="o">=</span> <span class="s">@&quot;Select item above to display alert&quot;</span><span class="p">;</span>
-    <span class="p">[</span><span class="nb">self</span> <span class="nl">addSection</span><span class="p">:</span><span class="n">section</span><span class="p">];</span>
+<span class="w">    </span><span class="n">KJMenuSection</span><span class="w"> </span><span class="o">*</span><span class="n">section</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">KJMenuSection</span><span class="w"> </span><span class="n">sectionWithHeaderTitle</span><span class="o">:</span><span class="s">@&quot;First Section&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">section</span><span class="p">.</span><span class="n">footerTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;Select item above to display alert&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">addSection</span><span class="o">:</span><span class="n">section</span><span class="p">];</span><span class="w"></span>
 
-    <span class="n">KJMenuItem</span> <span class="o">*</span><span class="n">item</span><span class="p">;</span>
+<span class="w">    </span><span class="n">KJMenuItem</span><span class="w"> </span><span class="o">*</span><span class="n">item</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuItem</span> <span class="nl">itemWithTitle</span><span class="p">:</span><span class="s">@&quot;First&quot;</span><span class="p">];</span>
-    <span class="n">item</span><span class="p">.</span><span class="n">detailText</span> <span class="o">=</span> <span class="s">@&quot;This is the first item&quot;</span><span class="p">;</span>
-    <span class="n">item</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span> <span class="n">inv</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">RootViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="p">(</span><span class="n">RootViewController</span> <span class="o">*</span><span class="p">)</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">;</span>
-        <span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">titleText</span><span class="p">;</span>
-        <span class="bp">NSString</span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="p">;</span>
-        <span class="p">[</span><span class="n">controller</span> <span class="nl">displayAlertWithTitle</span><span class="p">:</span><span class="n">title</span> <span class="nl">message</span><span class="p">:</span><span class="n">message</span><span class="p">];</span>
-    <span class="p">};</span>
-    <span class="p">[</span><span class="n">section</span> <span class="nl">addItem</span><span class="p">:</span><span class="n">item</span><span class="p">];</span>
+<span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">KJMenuItem</span><span class="w"> </span><span class="n">itemWithTitle</span><span class="o">:</span><span class="s">@&quot;First&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;This is the first item&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span><span class="w"> </span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">RootViewController</span><span class="w"> </span><span class="o">*</span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RootViewController</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">titleText</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">controller</span><span class="w"> </span><span class="n">displayAlertWithTitle</span><span class="o">:</span><span class="n">title</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="n">message</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">section</span><span class="w"> </span><span class="n">addItem</span><span class="o">:</span><span class="n">item</span><span class="p">];</span><span class="w"></span>
 
-    <span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuItem</span> <span class="nl">itemWithTitle</span><span class="p">:</span><span class="s">@&quot;Second&quot;</span><span class="p">];</span>
-    <span class="n">item</span><span class="p">.</span><span class="n">detailText</span> <span class="o">=</span> <span class="s">@&quot;This is the second item&quot;</span><span class="p">;</span>
-    <span class="n">item</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span> <span class="n">inv</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">RootViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="p">(</span><span class="n">RootViewController</span> <span class="o">*</span><span class="p">)</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">;</span>
-        <span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">titleText</span><span class="p">;</span>
-        <span class="bp">NSString</span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="p">;</span>
-        <span class="p">[</span><span class="n">controller</span> <span class="nl">displayAlertWithTitle</span><span class="p">:</span><span class="n">title</span> <span class="nl">message</span><span class="p">:</span><span class="n">message</span><span class="p">];</span>
-    <span class="p">};</span>
-    <span class="p">[</span><span class="n">section</span> <span class="nl">addItem</span><span class="p">:</span><span class="n">item</span><span class="p">];</span>
+<span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">KJMenuItem</span><span class="w"> </span><span class="n">itemWithTitle</span><span class="o">:</span><span class="s">@&quot;Second&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;This is the second item&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span><span class="w"> </span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">RootViewController</span><span class="w"> </span><span class="o">*</span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RootViewController</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">titleText</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inv</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">detailText</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">controller</span><span class="w"> </span><span class="n">displayAlertWithTitle</span><span class="o">:</span><span class="n">title</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="n">message</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">section</span><span class="w"> </span><span class="n">addItem</span><span class="o">:</span><span class="n">item</span><span class="p">];</span><span class="w"></span>
 
-    <span class="c1">// Add second section</span>
+<span class="w">    </span><span class="c1">// Add second section</span>
 
-    <span class="n">section</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuSection</span> <span class="nl">sectionWithHeaderTitle</span><span class="p">:</span><span class="s">@&quot;Second Section&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="nb">self</span> <span class="nl">addSection</span><span class="p">:</span><span class="n">section</span><span class="p">];</span>
+<span class="w">    </span><span class="n">section</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">KJMenuSection</span><span class="w"> </span><span class="n">sectionWithHeaderTitle</span><span class="o">:</span><span class="s">@&quot;Second Section&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">addSection</span><span class="o">:</span><span class="n">section</span><span class="p">];</span><span class="w"></span>
 
-    <span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="n">KJMenuItem</span> <span class="nl">itemWithTitle</span><span class="p">:</span><span class="s">@&quot;Push view&quot;</span>
-                       <span class="nl">accessoryType</span><span class="p">:</span><span class="n">UITableViewCellAccessoryDisclosureIndicator</span><span class="p">];</span>
-    <span class="n">item</span><span class="p">.</span><span class="n">autoDeselectAfterSelect</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
-    <span class="n">item</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span> <span class="n">inv</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">MyViewController</span> <span class="o">*</span><span class="n">subcontroller</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyViewController</span> <span class="n">alloc</span><span class="p">]</span>
-                                           <span class="nl">initWithNibName</span><span class="p">:</span><span class="s">@&quot;MyViewController&quot;</span> <span class="nl">bundle</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">pushViewController</span><span class="p">:</span><span class="n">subcontroller</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-    <span class="p">};</span>
-    <span class="p">[</span><span class="n">section</span> <span class="nl">addItem</span><span class="p">:</span><span class="n">item</span><span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">KJMenuItem</span><span class="w"> </span><span class="n">itemWithTitle</span><span class="o">:</span><span class="s">@&quot;Push view&quot;</span><span class="w"></span>
+<span class="w">                       </span><span class="nl">accessoryType</span><span class="p">:</span><span class="n">UITableViewCellAccessoryDisclosureIndicator</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">autoDeselectAfterSelect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="n">KJMenuItemInvocation</span><span class="w"> </span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">MyViewController</span><span class="w"> </span><span class="o">*</span><span class="n">subcontroller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="n">MyViewController</span><span class="w"> </span><span class="n">alloc</span><span class="p">]</span><span class="w"></span>
+<span class="w">                                           </span><span class="nl">initWithNibName</span><span class="p">:</span><span class="s">@&quot;MyViewController&quot;</span><span class="w"> </span><span class="n">bundle</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">inv</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">navigationController</span><span class="w"> </span><span class="n">pushViewController</span><span class="o">:</span><span class="n">subcontroller</span><span class="w"> </span><span class="n">animated</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">section</span><span class="w"> </span><span class="n">addItem</span><span class="o">:</span><span class="n">item</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>For a complete example, see the demo application's <a href="https://github.com/kristopherjohnson/KJMenuTableViewController/blob/master/KJMenuTableViewController/RootViewController.m">RootViewController.m</a>.</p>
 <h2>Future Directions</h2>
@@ -211,11 +210,11 @@ an item that pushes a new controller onto the navigation stack.</p>
                     <ul>
                         <li><a href="http://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
 
-                        <li><a href="http://twitter.com/OldManKris">Twitter</a></li>
-                        <li><a href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
-                        <li><a href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
-                        <li><a href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
-                        <li><a href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                        <li><a rel="me" href="https://mastodon.xyz/web/accounts/159318">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
                     </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
