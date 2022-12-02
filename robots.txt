@@ -3,5 +3,5 @@ Disallow: /archives/
 Disallow: /author/
 Disallow: /category/
 Disallow: /index2.html
-Sitemap: http://undefinedvalue.com/sitemap.xml
+Sitemap: https://undefinedvalue.com/sitemap.xml
 
