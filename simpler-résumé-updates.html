@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Simpler Résumé Updates | Undefined Value</title>
+    <meta charset="utf-8" />
+    <link href="https://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Full Atom Feed" />
+    <link href="https://undefinedvalue.com/atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Atom Feed" />
+    <link href="https://undefinedvalue.com/rss.xml" type="application/rss+xml" rel="alternate" title="Undefined Value RSS Feed" />
+    <link href="https://undefinedvalue.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Undefined Value Categories Atom Feed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="//fonts.googleapis.com/css?family=Oswald%7CLato%7CInconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="https://undefinedvalue.com/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://undefinedvalue.com/theme/css/skeleton.css" />
+    <link rel="stylesheet" href="https://undefinedvalue.com/theme/css/highlight.css" />
+    <link rel="stylesheet" href="https://undefinedvalue.com/theme/css/style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <meta name="tags" content="automation" />
+    <meta name="tags" content="jobsearch" />
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43697246-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body id="index" class="home">
+
+  <div class="container">
+
+    <div class="row">
+        <div class="logo">
+            <a href="https://undefinedvalue.com/">
+                <img src="https://undefinedvalue.com/theme/images/undefinedvalue_logo.png" alt="Logo">
+            </a>
+        </div><!-- /.logo -->
+        <header id="banner" class="body">
+            <h1><a href="https://undefinedvalue.com/">Undefined Value</a></h1>
+            <strong>Kris Johnson's Blog</strong>
+        </header><!-- /#banner -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <nav id="menu"><ul>
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="https://undefinedvalue.com/pages/about-me.html">About Me</a></li>
+            <li><a href="https://undefinedvalue.com/pages/kjresume.html">My Résumé</a></li>
+          <li><a href="https://undefinedvalue.com/search.html">Search</a></li>
+        </ul></nav><!-- /#menu -->
+    </div><!-- /.row -->
+
+    <div class="row">
+
+        <div class="nine columns">
+
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://undefinedvalue.com/simpler-résumé-updates.html" rel="bookmark"
+         title="Permalink to Simpler Résumé Updates">Simpler Résumé Updates</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2023-04-08T13:12:37.538605-04:00">
+      2023-04-08
+    </time>
+    <ul class="tags">
+        <li><a class="tag" href="https://undefinedvalue.com/tag/automation.html">automation</a></li>
+        <li><a class="tag" href="https://undefinedvalue.com/tag/jobsearch.html">jobsearch</a></li>
+    </ul>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I decided to update my résumé this week. No, I haven't lost my job, and I'm not
+actively looking for a new one, but a little while ago I asked people on
+Mastodon how to acquire practical experience with "cloud stuff" if your job
+doesn't provide it, and someone suggested
+<a href="https://cloudresumechallenge.dev">The Cloud Resume Challenge</a>.  (Unfortunately
+I can't find the post that suggested it, and can't remember who made it, but
+thank you anonymous helpful Mastodon person.)</p>
+<p>The challenge is to create a website that displays your résumé, but uses various
+features of AWS, Azure, Google Cloud Platform, or whatever cloud provider you
+want to explore.  So, when you go looking for a cloud-related job, you have your
+résumé online and you can talk to an interviewer about all the interesting stuff
+you learned about deploying a website to the cloud with load balancing and
+serverless code and whatever else you want to brag about.</p>
+<p>I've started the learning process (and I've passed the AWS Certified Cloud
+Practioner exam), but before I go further I decided I should probably have an
+up-to-date résumé.  For the past couple of decades I've had a résumé in multiple
+formats (Word, PDF, RTF, etc.) and when I've needed to update it, I've had to
+make edits to all of those files and then deploy them to all the places where it
+is available for download.</p>
+<p>Making similar small edits to a few files every few years isn't a lot of work,
+but it does seem like the kind of thing I should automate for my fancy new
+cloud-native résumé website deployment.</p>
+<p>This turned out to be pretty easy.  I started with the plain-text ("ASCII")
+format of my résumé and converted it into
+<a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a> format by adding
+a few formatting tags.  The result of that process is visible here:
+<a href="https://github.com/kristopherjohnson/resume/blob/main/src/kjresume.md">https://github.com/kristopherjohnson/resume/blob/main/src/kjresume.md</a>.</p>
+<p>Then I set up a
+<a href="https://github.com/kristopherjohnson/resume/blob/main/Makefile">Makefile</a> with
+rules for using <a href="https://pandoc.org">Pandoc</a> to generate all the other formats
+from that source file.  So, whenever I need to update my résumé, I just edit
+<code>kjresume.md</code> and then I can execute <code>make all</code> to generate all the other
+formats, and then push that back up to my
+<a href="https://github.com/kristopherjohnson/resume">https://github.com/kristopherjohnson/resume</a> repository.</p>
+<p>Finally, I just have to update all the pages that have links to my résumé (for
+example, the <a href="https://undefinedvalue.com/pages/kjresume.html">My Résumé</a> page on
+this website) so that they point to the auto-updated files in my GitHub repo.</p>
+<p>The best thing is now I don't have to install Microsoft Word again whenever I
+want to update my résumé.</p>
+  </div><!-- /.entry-content -->
+</section>
+<ul>
+    <li>Previous article: 
+        <a href="https://undefinedvalue.com/54.html">
+            54
+        </a>
+    </li>
+</ul>
+
+        </div><!-- /.nine columns -->
+
+        <div class="three columns">
+        <section id="extras" class="body">
+            <div class="recent">
+                <h2>Recent Posts</h2>
+                <ul>
+                    <li><a href="https://undefinedvalue.com/simpler-résumé-updates.html">Simpler Résumé Updates</a></li>
+                    <li><a href="https://undefinedvalue.com/54.html">54</a></li>
+                    <li><a href="https://undefinedvalue.com/53.html">53</a></li>
+                    <li><a href="https://undefinedvalue.com/menubar-countdown-21.html">Menubar Countdown 2.1</a></li>
+                    <li><a href="https://undefinedvalue.com/lunar-for-c-and-rust.html">LUNAR for C and Rust</a></li>
+                </ul>
+            </div><!-- ./recent -->
+            <div class="blogroll">
+                    <h2>Other Stuff</h2>
+                    <ul>
+                        <li><a href="http://secretspacelab.com/tcm.html">What's Good on TCM?</a></li>
+                        <li><a href="https://github.com/kristopherjohnson">GitHub</a></li>
+                        <li><a href="https://bitbucket.org/KristopherJohnson/">Bitbucket</a></li>
+                    </ul>
+            </div><!-- /.blogroll -->
+            <div class="social">
+                    <h2>Follow</h2>
+                    <ul>
+                        <li><a href="https://undefinedvalue.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+
+                        <li><a rel="me" href="https://mastodon.xyz/@oldmankris">Mastodon</a></li>
+                        <li><a rel="me" href="http://stackoverflow.com/users/1175/kristopher-johnson">Stack Overflow</a></li>
+                        <li><a rel="me" href="http://www.linkedin.com/in/kristopherdjohnson">LinkedIn</a></li>
+                        <li><a rel="me" href="https://www.flickr.com/photos/kristopherjohnson/">Flickr</a></li>
+                        <li><a rel="me" href="http://twitter.com/OldManKris">Twitter</a></li>
+                    </ul>
+            </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        </div><!-- /.three columns -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <footer id="contentinfo" class="body">
+            © 2003-2023 Kristopher Johnson
+        </footer><!-- /#contentinfo -->
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+
+</body>
+</html>

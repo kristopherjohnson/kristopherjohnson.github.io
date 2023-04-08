@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value</title><link href="https://undefinedvalue.com/" rel="alternate"></link><link href="https://undefinedvalue.com/feeds/all.atom.xml" rel="self"></link><id>https://undefinedvalue.com/</id><updated>2021-01-17T17:38:33-05:00</updated><subtitle>Kris Johnson's Blog</subtitle><entry><title>54</title><link href="https://undefinedvalue.com/54.html" rel="alternate"></link><published>2021-01-17T17:38:33-05:00</published><updated>2021-01-17T17:38:33-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2021-01-17:/54.html</id><summary type="html">&lt;p&gt;Well, 2020 was quite a year.  The COVID-19 pandemic, the killing of George Floyd and the subsequent protests, the Presidential election, the subsequent unfounded accusations of widespread election fraud, and incitement of an attack on the Capitol.  Talking about how the year went for me seems incredibly self-centered, but this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well, 2020 was quite a year.  The COVID-19 pandemic, the killing of George Floyd and the subsequent protests, the Presidential election, the subsequent unfounded accusations of widespread election fraud, and incitement of an attack on the Capitol.  Talking about how the year went for me seems incredibly self-centered, but this is what i do every birthday.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Undefined Value</title><link href="https://undefinedvalue.com/" rel="alternate"></link><link href="https://undefinedvalue.com/feeds/all.atom.xml" rel="self"></link><id>https://undefinedvalue.com/</id><updated>2023-04-08T13:12:37-04:00</updated><subtitle>Kris Johnson's Blog</subtitle><entry><title>Simpler Résumé Updates</title><link href="https://undefinedvalue.com/simpler-r%C3%A9sum%C3%A9-updates.html" rel="alternate"></link><published>2023-04-08T13:12:37-04:00</published><updated>2023-04-08T13:12:37-04:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2023-04-08:/simpler-résumé-updates.html</id><summary type="html">&lt;p&gt;I decided to update my résumé this week. No, I haven't lost my job, and I'm not
+actively looking for a new one, but a little while ago I asked people on
+Mastodon how to acquire practical experience with "cloud stuff" if your job
+doesn't provide it, and someone suggested …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I decided to update my résumé this week. No, I haven't lost my job, and I'm not
+actively looking for a new one, but a little while ago I asked people on
+Mastodon how to acquire practical experience with "cloud stuff" if your job
+doesn't provide it, and someone suggested
+&lt;a href="https://cloudresumechallenge.dev"&gt;The Cloud Resume Challenge&lt;/a&gt;.  (Unfortunately
+I can't find the post that suggested it, and can't remember who made it, but
+thank you anonymous helpful Mastodon person.)&lt;/p&gt;
+&lt;p&gt;The challenge is to create a website that displays your résumé, but uses various
+features of AWS, Azure, Google Cloud Platform, or whatever cloud provider you
+want to explore.  So, when you go looking for a cloud-related job, you have your
+résumé online and you can talk to an interviewer about all the interesting stuff
+you learned about deploying a website to the cloud with load balancing and
+serverless code and whatever else you want to brag about.&lt;/p&gt;
+&lt;p&gt;I've started the learning process (and I've passed the AWS Certified Cloud
+Practioner exam), but before I go further I decided I should probably have an
+up-to-date résumé.  For the past couple of decades I've had a résumé in multiple
+formats (Word, PDF, RTF, etc.) and when I've needed to update it, I've had to
+make edits to all of those files and then deploy them to all the places where it
+is available for download.&lt;/p&gt;
+&lt;p&gt;Making similar small edits to a few files every few years isn't a lot of work,
+but it does seem like the kind of thing I should automate for my fancy new
+cloud-native résumé website deployment.&lt;/p&gt;
+&lt;p&gt;This turned out to be pretty easy.  I started with the plain-text ("ASCII")
+format of my résumé and converted it into
+&lt;a href="https://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt; format by adding
+a few formatting tags.  The result of that process is visible here:
+&lt;a href="https://github.com/kristopherjohnson/resume/blob/main/src/kjresume.md"&gt;https://github.com/kristopherjohnson/resume/blob/main/src/kjresume.md&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then I set up a
+&lt;a href="https://github.com/kristopherjohnson/resume/blob/main/Makefile"&gt;Makefile&lt;/a&gt; with
+rules for using &lt;a href="https://pandoc.org"&gt;Pandoc&lt;/a&gt; to generate all the other formats
+from that source file.  So, whenever I need to update my résumé, I just edit
+&lt;code&gt;kjresume.md&lt;/code&gt; and then I can execute &lt;code&gt;make all&lt;/code&gt; to generate all the other
+formats, and then push that back up to my
+&lt;a href="https://github.com/kristopherjohnson/resume"&gt;https://github.com/kristopherjohnson/resume&lt;/a&gt; repository.&lt;/p&gt;
+&lt;p&gt;Finally, I just have to update all the pages that have links to my résumé (for
+example, the &lt;a href="https://undefinedvalue.com/pages/kjresume.html"&gt;My Résumé&lt;/a&gt; page on
+this website) so that they point to the auto-updated files in my GitHub repo.&lt;/p&gt;
+&lt;p&gt;The best thing is now I don't have to install Microsoft Word again whenever I
+want to update my résumé.&lt;/p&gt;</content><category term="Blog"></category><category term="automation"></category><category term="jobsearch"></category></entry><entry><title>54</title><link href="https://undefinedvalue.com/54.html" rel="alternate"></link><published>2021-01-17T17:38:33-05:00</published><updated>2021-01-17T17:38:33-05:00</updated><author><name>Kristopher Johnson</name></author><id>tag:undefinedvalue.com,2021-01-17:/54.html</id><summary type="html">&lt;p&gt;Well, 2020 was quite a year.  The COVID-19 pandemic, the killing of George Floyd and the subsequent protests, the Presidential election, the subsequent unfounded accusations of widespread election fraud, and incitement of an attack on the Capitol.  Talking about how the year went for me seems incredibly self-centered, but this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well, 2020 was quite a year.  The COVID-19 pandemic, the killing of George Floyd and the subsequent protests, the Presidential election, the subsequent unfounded accusations of widespread election fraud, and incitement of an attack on the Capitol.  Talking about how the year went for me seems incredibly self-centered, but this is what i do every birthday.&lt;/p&gt;
 &lt;p&gt;Thankfully, my family and I have been lucky this year.  My stepson lost his food-service job when the pandemic hit, and my wife has struggled to keep up with all the demands being made of teachers, but we're healthy and secure, as are our families and friends. &lt;/p&gt;
 &lt;p&gt;As I write this, Joe Biden is going to be inaugurated in a few days.  We can hope for more competent and responsible leadership (it really can't get any worse).  About 4,000 people are dying in the US each day.  Vaccines are becoming available, but the government distribution has been yet another screwup.&lt;/p&gt;
 &lt;p&gt;Donald Trump has been impeached for a second time, due to his involvement in the attack on the Capitol, and the Senate will try him in the coming weeks.  Polls show that 75% of Republicans don't believe Biden legitimately won the election.  I don't know what will come in the next few months, but I think we can expect the partisanship of the past few decades to continue.&lt;/p&gt;
